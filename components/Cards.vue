@@ -1,16 +1,16 @@
 <template>
 <section id="cards">
-  <div class="card" v-for="card in germanBody">
-    <div class="media">
+  <article v-for="card in germanBody" class="grid">
+    <div id="image">
       <video v-if="['webp', 'mp4'].includes(card.media.split('.').pop() || '')" :src="card.media" autoplay preload="auto" muted loop />
       <img v-else :src="card.media" alt="">
     </div>
-    <div class="content">
+    <div id="text">
       <h1>{{ card.header }}</h1>
       <p>{{ card.lead }}</p>
-      <button @click="goTo('footer')" v-if="card.action" class="border">{{ card.action }}</button>
+      <button class="outline" @click="goTo('footer')" v-if="card.action">{{ card.action }}</button>
     </div>
-  </div>
+  </article>
 </section>
 </template>
 
@@ -24,81 +24,31 @@ const goTo = (target: string) => {
 </script>
 
 <style lang="sass" scoped>
-#cards
-  width: 100%
-  margin-bottom: 4em
-  place-items: center
-  display: grid
+video
+  aspect-ratio: 1
+
+h1
+  margin-block: .5em .8em
 
 img, video
-  width: 100%
-  height: 100%
-  object-fit: cover
-  border-radius: .5em
+  height: clamp(200px, 100%, 100%)
 
+  
+@media (min-width: 992px)
+  article
+    padding-inline: 7em
+    gap: 2em
+    grid-template-columns: 4fr 3fr
 
-.media
-  width: 500px
-  height: 500px
-  border-radius: .5em
-  overflow: hidden
+  article:nth-of-type(2n)
+    grid-template-columns: 3fr 4fr
 
-
-.card
-  display: grid
-  grid-template-columns: auto auto
-  width: 80%
-  gap: 4em
-  margin-block: 5em
-
-  &:nth-of-type(2n)
-    .media
+    #image
       order: 2
 
-  h1
-    line-height: 1.2em
-    
-@media screen and (max-width: 700px) //smartphone
-  #cards
-    padding-inline: 1em
+@media (max-width: 991px)
+  img, video
+    max-height: 70vh
 
-  .media
-    width: 100%
-    order: 1
-
-  .content
-    order: 2
-    
-    h1
-      text-align: center
-
-  .card
-    display: flex
-    flex-direction: column
-    gap: 1.5em
-    width: 100%
-    max-height: calc(100vh - 2em)
-
-  .border
-    background-color: var(--secondary)
-    color: var(--secondary-contrast)
-    border: none
-    width: 100%
-
-@media screen and (min-width: 701px) and (max-width: 1200px) //tablet
-  .card
-    width: 90%
-    gap: 1.5em
-
-  .media
-    width: 40vw
-    height: 400px
-
-  h1
-    font-size: max(1.5em, 2em)
-
-@media screen and (min-width: 500px)
-  .card
-    width: 100%
 
 </style>

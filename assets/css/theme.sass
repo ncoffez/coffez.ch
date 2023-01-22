@@ -1,0 +1,42 @@
+:root
+  --text: #121212
+  --text-muted: #121212c9
+  --background: #ffffff
+  --primary: #2e72a7
+  --primary-background: #0f63a31e
+  --secondary: #32a0a8
+  --secondary-contrast: #ffffff
+  --tertiary: #5310e3
+  --tertiary-contrast: #ffffff
+  --primary-contrast: #ffffff
+  --light: #e2e2e2
+  --lighter: #f1f1f1
+  --darker: #00000010
+
+::-webkit-scrollbar
+  background: rgba(0,0,0,0)
+
+
+::-webkit-scrollbar-thumb
+  background-color: var(--secondary)
+  border-radius: .7em
+
+@media (prefers-color-scheme: dark)
+  :root
+    --text: #f5f5f5
+    --text-muted: #f5f5f598
+    --background: #121212
+    --primary: #2e72a7
+    --primary-background: #0f63a31e
+    --primary-contrast: #ffffff
+    --secondary: #1d8188
+    --secondary-contrast: #ffffff
+    --tertiary: #7e51de
+    --tertiary-contrast: #ffffff
+    --light: #212121
+    --lighter: #1b1b1b
+    --darker: #00000095
+    scrollbar-color: dark
+
+  ::-webkit-scrollbar-thumb
+    background-color: var(--text)

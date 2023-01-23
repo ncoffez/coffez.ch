@@ -4,10 +4,10 @@ Find this page on https://www.coffez.ch
 
 ## Tools
 This site was developed by Nicolas Coffez and uses the following tools: 
-  - [Firebase](https://firebase.google.com/)
+  - [Google Firebase](https://firebase.google.com/)
   - [Vue 3](https://vuejs.org/)
   - [Nuxt](https://nuxt.com/)
-  - [Picocss](https://picocss.com/)
+  - [Pico CSS](https://picocss.com/)
 
 ## Contact
 Get in touch with me at ncoffez@gmail.com.

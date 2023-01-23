@@ -37,9 +37,7 @@ Cookies bleiben über das Ende einer Browser-Sitzung gespeichert und können bei
 Ein genereller Widerspruch gegen den Einsatz der zu Zwecken des Onlinemarketing eingesetzten Cookies kann bei einer
 Vielzahl der Dienste, vor allem im Fall des Trackings, über die US-amerikanische Seite
 http://www.aboutads.info/choices/
-http://www.aboutads.info/choices/
-oder die EU-Seite http://www.youronlinechoices.com/
-http://www.youronlinechoices.com/ erklärt werden. Des Weiteren kann die Speicherung von
+oder die EU-Seite http://www.youronlinechoices.com/ erklärt werden. Des Weiteren kann die Speicherung von
 Cookies mittels deren Abschaltung in den Einstellungen des Browsers erreicht werden. Bitte beachten Sie, dass dann
 gegebenenfalls nicht alle Funktionen dieses Onlineangebotes genutzt werden können.
 
@@ -71,7 +69,6 @@ Nutzerprofile, wobei Sie sich zur Ausübung dessen an Google richten müssen. We
 Umfang der Datenerhebung und ihrer Verarbeitung durch Google erhalten Sie neben weiteren Informationen zu Ihren
 diesbezüglichen Rechten und Einstellungsmöglichkeiten zum Schutze Ihrer Privatsphäre unter:
 http://www.google.de/intl/de/policies/privacy
-www.google.de/intl/de/policies/privacy.
 
 ## Datenschutzerklärung für Google Analytics
 Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited. Wenn der Verantwortliche
@@ -95,7 +92,6 @@ Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, 
 auszuwerten, um Reports über die Websitenaktivitäten zusammenzustellen und um weitere mit der Websitennutzung und
 der Internetnutzung verbundene Dienstleistungen gegenüber dem Websitenbetreiber zu erbringen. Für die Ausnahmefälle,
 in denen personenbezogene Daten in die USA übertragen werden, hat sich Google dem EU-US Privacy Shield unterworfen,
-https://www.privacyshield.gov/EU-US-Framework
 https://www.privacyshield.gov/EU-US-Framework.
 Google Analytics verwendet Cookies. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website
 werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Sie können die
@@ -120,10 +116,8 @@ Diese Website nutzt zur einheitlichen Darstellung von Schriftarten so genannte W
 bereitgestellt werden. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Web Fonts in ihren
 Browsercache, um Texte und Schriftarten korrekt anzuzeigen. Wenn Ihr Browser Web Fonts nicht unterstützt, wird
 eine Standardschrift von Ihrem Computer genutzt.
-Weitere Informationen zu Google Web Fonts finden Sie unter https://developers.google.com/fonts/faq
-https://developers.google.com/fonts/faq und in der
+Weitere Informationen zu Google Web Fonts finden Sie unter https://developers.google.com/fonts/faq und in der
 Datenschutzerklärung von Google: https://www.google.com/policies/privacy/
-https://www.google.com/policies/privacy/
 
 ## Allgemeiner Haftungsausschluss
 Alle Angaben unseres Internetangebotes wurden sorgfältig geprüft. Wir bemühen uns, unser

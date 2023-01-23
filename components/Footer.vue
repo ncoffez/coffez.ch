@@ -4,8 +4,8 @@
     <div></div>
     <div class="center-align">Copyright © Coffez.ch {{ new Date().getFullYear() }} </div>
     <div class="right-align">
-      <a href="">Impressum</a><br>
-      <a href="">Datenschutz</a>
+      <a href="https://github.com/ncoffez/coffez.ch/blob/master/impressum.MD">Impressum</a><br>
+      <a href="https://github.com/ncoffez/coffez.ch/blob/master/privacy.MD">Datenschutz</a>
     </div>
   </div>
 </footer>

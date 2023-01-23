@@ -1,42 +1,18 @@
-# Nuxt 3 Minimal Starter
+# Coffez.ch
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Find this page on https://www.coffez.ch
 
-## Setup
+## Tools
+This site was developed by Nicolas Coffez and uses the following tools: 
+  - [Firebase|https://firebase.google.com/]
+  - [Vue 3|https://vuejs.org/]
+  - [Nuxt|https://nuxt.com/]
+  - [Picocss|https://picocss.com/]
 
-Make sure to install the dependencies:
+## Contact
+Get in touch with me at ncoffez@gmail.com.
 
-```bash
-# yarn
-yarn install
+## License
 
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[MIT|https://opensource.org/licenses/MIT]  
+Copyright © 2023 - present, Nicolas Coffez

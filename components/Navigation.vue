@@ -1,11 +1,10 @@
 <template>
-<header>
-
+<header id="desktop-top-nav">
   <nav class="container">
     <ul>
-      <b>Coffez.ch</b>
+      <div id="logo">Coffez.ch</div>
     </ul>
-    <ul>
+    <ul id="menu">
       <li @click="scrollTo('header')">Home</li>
       <li @click="scrollTo('cards')">Über uns</li>
       <li @click="scrollTo('portfolio')">Portfolio</li>
@@ -25,4 +24,11 @@ import { scrollTo } from '~~/methods/scrollTo';
 button#contact-link
   border: none
 
+@media (max-width: 500px)
+  #menu
+    display: none
+
+#logo
+  font-size: 1.3em
+  font-weight: 700
 </style>

@@ -43,4 +43,7 @@ footer
     grid-template-columns: 1fr 1fr 1fr
     gap: 2em
 
+@media (max-width: 500px)
+  section
+    margin-top: 3em
 </style>

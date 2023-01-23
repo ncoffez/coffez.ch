@@ -8,7 +8,7 @@
     <div id="text">
       <h1>{{ card.header }}</h1>
       <p>{{ card.lead }}</p>
-      <button class="outline" @click="goTo('footer')" v-if="card.action">{{ card.action }}</button>
+      <!-- <button class="outline" @click="goTo('contact')" v-if="card.action">{{ card.action }}</button> -->
     </div>
   </article>
 </section>

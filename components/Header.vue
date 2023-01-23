@@ -1,6 +1,6 @@
 <template>
 <section>
-  <div class="grid" id="header-section">
+  <div class="grid">
     <div>
         <h1>Dein Anlass wird zur <span class="colored-text">Party</span></h1>
         <p>Buche mit Coffez.ch eine einzigartige Dienstleistung und versichere dass deine Veranstaltung zum Erfolg wird.
@@ -43,6 +43,10 @@ h1
 @media (max-width: 991px)
   .img-box
     display: none
+
+@media (max-width: 500px)
+  h1
+    margin-top: 1rem
 
 
 @media (prefers-color-scheme: light)

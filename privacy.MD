@@ -2,13 +2,13 @@
 
 Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:
 
-Coffez.ch
-Nicolas Coffez
-Kasthoferstrasse 50
-3006 Bern
-Telefon: +41 78 260 67 77
-E-Mail: info@coffez.ch
-Website: https://www.coffez.ch/
+Coffez.ch  
+Nicolas Coffez  
+Kasthoferstrasse 50  
+3006 Bern  
+Telefon: +41 78 260 67 77  
+E-Mail: info@coffez.ch  
+Website: https://www.coffez.ch/  
 
 ## Allgemeiner Hinweis
 

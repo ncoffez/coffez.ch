@@ -1,4 +1,5 @@
 import { ServerClient } from "postmark";
+import notifySlack from "./notifySlack";
 
 async function sendpostmark(data: any, context: any) {
   const postmarkToken: string = process.env.POSTMARK_TOKEN || "";
@@ -19,12 +20,17 @@ async function sendpostmark(data: any, context: any) {
         company_address: "Kasthoferstrasse 50, 3006 Bern",
       },
     });
-    console.log(`Sent message successfully. Server replied with "${response}".`)
+    console.log(
+      `Sent message successfully. Server replied with "${response}".`
+    );
+
+    await notifySlack(data);
     return response;
   } catch (e) {
-    const msg = `sendpostmark.ts failed. Server replied with "${e}".`
-    console.error(msg)
-    return msg
+    const msg = `sendpostmark.ts failed. Server replied with "${e}".`;
+    console.error(msg);
+    await notifySlack(msg, true);
+    return msg;
   }
 }
 

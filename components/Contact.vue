@@ -45,6 +45,7 @@ const submit = async () => {
     phone: formData.value.phone,
     name: formData.value.name
   }
+  console.log(JSON.stringify(message))
   try {
     const res = await httpsCallable(functions, 'sendmail')(Object.assign({}, message))
     if (res) console.log(res.data);

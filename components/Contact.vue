@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { httpsCallable } from 'firebase/functions';
-import { functions } from '~~/plugins/firebase';
+import { functions } from '@/firebase'
 
 
 const formData = ref({
@@ -46,7 +46,7 @@ const submit = async () => {
     name: formData.value.name
   }
   try {
-    const res = await httpsCallable(functions, 'sendMail')(message)
+    const res = await httpsCallable(functions, 'sendmail')(Object.assign({}, message))
     if (res) console.log(res.data);
     formData.value = { name: '', email: '', phone: '', message: '', state: "sent", error: '' }
   } catch (e) {

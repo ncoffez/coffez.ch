@@ -1,4 +1,5 @@
 import * as functions from "firebase-functions";
-import { sendMail } from './sendMail'
+// import sendmail from "./sendmail";
+import sendpostmark from "./sendpostmark";
 
-exports.sendMail = functions.https.onCall(sendMail);
+exports.sendmail = functions.https.onCall(sendpostmark);

@@ -2,7 +2,4 @@
 export default defineNuxtConfig({
   typescript: { shim: false },
   css: ["@/assets/global.sass", "@/assets/theme.scss"],
-  runtimeConfig: {
-    apiKey: process.env.FIREBASE_CONFIG,
-  },
 });

@@ -31,4 +31,7 @@ button#contact-link
 #logo
   font-size: 1.3em
   font-weight: 700
+
+#menu > li
+  cursor: pointer
 </style>

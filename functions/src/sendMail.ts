@@ -1,10 +1,12 @@
-import * as nodemailer from 'nodemailer'
+import * as nodemailer from "nodemailer";
 
-export async function sendMail(data: any, context: any) {
+async function sendmail(data: any, context: any) {
   try {
-    console.log(`Credentials: ${process.env.MAIL_USER}, ${process.env.MAIL_PASS}.`);
+    console.log(
+      `Credentials: ${process.env.MAIL_USER}, ${process.env.MAIL_PASS}.`
+    );
     const transporter = nodemailer.createTransport({
-      host: 'asmtp.mail.hostpoint.ch',
+      host: "asmtp.mail.hostpoint.ch",
       port: 465,
       secure: true,
       auth: {
@@ -16,7 +18,7 @@ export async function sendMail(data: any, context: any) {
     const info = await transporter.sendMail({
       from: `"Coffez.ch" <noreply@coffez.ch>`,
       to: data.to,
-      subject: 'Neue Nachricht auf Coffez.ch',
+      subject: "Neue Nachricht auf Coffez.ch",
       text: data.message,
       html: `<h1>Hallo ${data.name},</h1>
       <p>Danke für deine Anfrage, du wirst in Kürze von einem Coffez.ch-Mitarbeiter kontaktiert.</p>
@@ -41,9 +43,10 @@ export async function sendMail(data: any, context: any) {
       <p class="sub align-center">{{{ pm:unsubscribe }}}</p>`,
     });
 
-    console.log('Message sent: %s', info.messageId);
-
+    console.log("Message sent: %s", info.messageId);
   } catch (e) {
     console.log(`Something went wrong: ${e}.`);
   }
 }
+
+export default sendmail

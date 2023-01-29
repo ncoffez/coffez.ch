@@ -1,5 +1,5 @@
 <template>
-<section>
+<section id="portfolio">
   <h1>Portfolio
     <span @click="mask.scrollBy({ behavior: 'smooth', left: -800 })" class="material-symbols-outlined">chevron_left</span>
     <span @click="mask.scrollBy({ behavior: 'smooth', left: 800 })" class="material-symbols-outlined">chevron_right</span>

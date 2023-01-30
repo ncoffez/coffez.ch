@@ -21,11 +21,23 @@ async function sendpostmark(data: any, context: any) {
       },
     });
     console.log(
-      `Sent message successfully. Server replied with "${response}".`
+      `Sent message successfully. Server replied with "${JSON.stringify(
+        response
+      )}.`
     );
 
-    await notifySlack(data);
-    return response;
+    const slack = await notifySlack(data);
+    console.log({
+      slackStatus: slack.status,
+      slackStatusText: slack?.statusText,
+    });
+    return [
+      response,
+      {
+        slackStatus: slack.status,
+        slackStatusText: slack?.statusText,
+      },
+    ];
   } catch (e) {
     const msg = `sendpostmark.ts failed. Server replied with "${e}".`;
     console.error(msg);

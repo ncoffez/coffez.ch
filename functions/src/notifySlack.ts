@@ -49,15 +49,14 @@ async function notifySlack(data: any, plain_text = false) {
   }
 
   const fetch = require("node-fetch");
-  const botWebhook =
-    "https://hooks.slack.com/services/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";
+  const botWebhook = process.env.SLACK_WEBHOOK;
   try {
     const response = await fetch(botWebhook, {
       method: "post",
       body: body,
       headers: { "Content-Type": "application/json" },
     });
-    const data = await response.json();
+    const data = await response;
     return data;
   } catch (e) {
     console.log(`Fetch failed. ${e}`);

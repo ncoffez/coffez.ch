@@ -8,6 +8,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "ESNext",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "compileOnSave": true,
   "include": [

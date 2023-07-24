@@ -1,14 +1,5 @@
 <template>
-<header class="container">
-  <Navigation />
-</header>
-<main class="container">
-  <Header />
-  <Cards />
-  <Portfolio />
-  <Contact />
-</main>
-<Footer />
+  <NuxtPage />
 </template>
 
 <script setup>

@@ -1,16 +1,19 @@
 # Coffez.ch
 
-Find this page on https://www.coffez.ch
+Find this page on <https://www.coffez.ch>
 
 ## Tools
-This site was developed by Nicolas Coffez and uses the following tools: 
-  - [Google Firebase](https://firebase.google.com/)
-  - [Vue 3](https://vuejs.org/)
-  - [Nuxt](https://nuxt.com/)
-  - [Pico CSS](https://picocss.com/)
+
+This site was developed by Nicolas Coffez and uses the following tools:
+
+- [Google Firebase](https://firebase.google.com/)
+- [Vue 3](https://vuejs.org/)
+- [Nuxt](https://nuxt.com/)
+- [Pico CSS](https://picocss.com/)
 
 ## Contact
-Get in touch with me at ncoffez@gmail.com.
+
+Get in touch with me at <ncoffez@gmail.com>.
 
 ## License
 

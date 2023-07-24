@@ -2,4 +2,5 @@
 export default defineNuxtConfig({
   typescript: { shim: false },
   css: ["@/assets/global.sass", "@/assets/theme.scss"],
+  ssr: false
 });

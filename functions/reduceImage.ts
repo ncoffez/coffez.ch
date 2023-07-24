@@ -1,9 +1,7 @@
 import * as functions from 'firebase-functions';
-import admin from '../firestore'
+import admin from './firestore'
 import sharp from 'sharp';
 import axios from 'axios';
-
-admin.initializeApp();
 
 export async function reduceImage(snap: functions.firestore.DocumentSnapshot, context: functions.EventContext) {
     const data = snap.data();

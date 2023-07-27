@@ -1,12 +1,13 @@
 {
     "private": true,
     "scripts": {
-        "build": "nuxt build && cd functions && npm run build && cd ..",
+        "build": "nuxt build",
+        "functions": "cd functions && npm run build && cd ..",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
-        "deploy": "npm run generate && npm run build && firebase deploy"
+        "deploy": "npm run build && npm run functions && firebase deploy"
     },
     "devDependencies": {
         "firebase-functions": "^4.4.1",

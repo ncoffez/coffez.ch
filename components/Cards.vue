@@ -3,7 +3,11 @@
   <article v-for="card in germanBody" class="grid">
     <div id="image">
       <video v-if="['webp', 'mp4'].includes(card.media.split('.').pop() || '')" :src="card.media" autoplay preload="auto" muted loop />
-      <img v-else :src="card.media" alt="">
+      <picture v-else>
+        <source :srcset="card.mediaWebp" type="image/webp">
+        <source :srcset="card.media" type="image/jpeg">
+        <img :src="card.media" alt="">
+      </picture>
     </div>
     <div id="text">
       <h1>{{ card.header }}</h1>

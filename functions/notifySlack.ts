@@ -49,7 +49,7 @@ async function notifySlack(data: any, plain_text = false) {
   }
 
   const fetch = require("node-fetch");
-  const botWebhook = process.env.SLACK_WEBHOOK;
+  const botWebhook = "https://hooks.slack.com/services/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";
   try {
     const response = await fetch(botWebhook, {
       method: "post",

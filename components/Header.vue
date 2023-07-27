@@ -10,7 +10,11 @@
       <button @click="scrollTo('contact')">Uns kontaktieren</button>
     </div>
     <div class="img-box">
-      <img src="/img/PascalCoffez2.jpg" alt="">
+      <picture>
+        <source srcset="/img/PascalCoffez.webp" type="image/webp">
+        <source srcset="/img/PascalCoffez.jpg" type="image/jpeg">
+        <img src="/img/PascalCoffez.jpg" alt="">
+      </picture>
     </div>
   </div>
   <Brands />

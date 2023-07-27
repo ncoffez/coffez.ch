@@ -2,7 +2,7 @@ import { ServerClient } from "postmark";
 import notifySlack from "./notifySlack";
 
 async function sendpostmark(data: any, context: any) {
-  const postmarkToken: string = process.env.POSTMARK_TOKEN || "";
+  const postmarkToken: string = process.env.postmarkToken || "";
   let client = new ServerClient(postmarkToken);
 
   try {

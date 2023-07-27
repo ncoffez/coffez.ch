@@ -2,13 +2,14 @@
   <main class="container">
     <div class="grid">
       <div id="image">
-        <img :src="data?.urlZapier" alt="" srcset="" />
+        <img :src="data?.urlFirebaseReduced" alt="" srcset="" />
       </div>
       <div id="actions">
-        <h1>{{ data?.originalName }}</h1>
-        <p>{{ data?.createdDate }}</p>
-        <pre>{{ JSON.stringify(data) }}</pre>
-        <button role="button" class="outline secondary" @click="fetchDocument(routeId)">Refresh</button>
+        <hgroup>
+          <h1>{{ data?.originalName }}</h1>
+          <p>{{ toDate(data?.createdDate) }}</p>
+        </hgroup>
+        <a :href="data?.urlFirebaseReduced" role="button" class="outline secondary">Download</a>
         <button>Buy</button>
       </div>
     </div>
@@ -16,32 +17,28 @@
 </template>
 
 <script setup lang="ts">
+import { Timestamp } from "firebase/firestore";
 const data: Ref<any> = ref(null);
-const routeId: any = ref(useRoute().params.id);
+const route: any = useRoute();
 
-onMounted(async () => {
-  await fetchDocument(routeId);
-});
+async function fetchDocument() {
+  const response = await useFetch(`/api/getPortrait/${route.params.id}`);
+  console.log({... response.data.value});
+  data.value = response.data.value;
+}
 
-const fetchDocument = async (route: any) => {
-  const res = await useFetch("/api/getPortrait", {
-    method: "post",
-    body: {
-      id: route,
-    },
-  });
+watch(
+  route,
+  (newRoute, oldRoute) => {
+    if (newRoute?.params.id !== oldRoute?.params.id) {
+      fetchDocument();
+    }
+  },
+  { immediate: true }
+);
 
-  const { status, body, error }: any = { ...res.data.value };
-  if (status == 200) {
-    data.value = body;
-    console.log(`Fetched doc from firestore.`);
-    console.log({ ...data.value });
-  }
-  else if (status == 404) {
-    console.log(`Was unable to fetch data from firestore. ${error}`);
-  } else {
-    console.log(`Response returned empty. ${JSON.stringify(res.data.value)}`);
-  }
+const toDate = (date: { _seconds: any; _nanoseconds: any }) => {
+  return new Timestamp(date?._seconds, date?._nanoseconds).toDate().toLocaleString() || date;
 };
 </script>
 
@@ -53,5 +50,14 @@ const fetchDocument = async (route: any) => {
   display: grid
 
 .grid
-  gap: 3em
+  gap: 0 3em
+
+a[role="button"]
+  margin: 1em 0
+
+@media (min-width: 992px)
+  .grid
+    height: 100vh
+
+
 </style>

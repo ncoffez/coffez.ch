@@ -1,8 +1,8 @@
 import admin, { ServiceAccount } from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
-import * as rawServiceAccount from "./adminServiceAccountKey.json";
+import { getStorage } from "firebase-admin/storage";
 
-const serviceAccount = rawServiceAccount as ServiceAccount;
+const serviceAccount = process.env.adminServiceAccountKey as ServiceAccount;
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -10,4 +10,5 @@ admin.initializeApp({
 });
 
 export const db = getFirestore();
+export const storage = getStorage();
 export default admin;

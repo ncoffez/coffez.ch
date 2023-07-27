@@ -1,9 +1,10 @@
 <template>
   <div>
-    <NuxtPage />
+    <NuxtPage/>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+</script>
 
 <style lang="sass" scoped></style>

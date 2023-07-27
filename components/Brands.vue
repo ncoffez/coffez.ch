@@ -11,12 +11,12 @@
 
 <script setup lang="ts">
 const logos = [
-  'itconcepts.png',
-  'iwc.png',
-  'manor.png',
-  'matis.png',
-  'ubs.png',
-  'zkb.png',
+  'itconcepts.svg',
+  'iwc.svg',
+  'manor.svg',
+  'matis.svg',
+  'ubs.svg',
+  'zkb.svg',
 ];
 </script>
 

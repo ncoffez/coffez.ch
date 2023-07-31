@@ -3,7 +3,7 @@ import admin from "./firestore";
 import slack from "./slack";
 import sharp from "sharp";
 import axios from "axios";
-import { createQrCode } from './createQrCode'
+import { createQrCode } from './createQrCode';
 
 const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
 
@@ -81,12 +81,12 @@ export async function reduceImage(snap: functions.firestore.DocumentSnapshot, co
   ]);
 }
 
-async function downloadImage(url) {
+async function downloadImage(url:string) {
   functions.logger.debug(`Function downloadImage launched with URL ${url}.`);
   const response = await axios.get(url, {
     responseType: "arraybuffer",
     headers: {
-      Authorization: `Bearer ${process.env.slackToken}`, // replace with your Slack token
+      Authorization: `Bearer ${process.env.SLACK_TOKEN}`, // replace with your Slack token
     },
   });
   return response.data;

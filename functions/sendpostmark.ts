@@ -1,12 +1,16 @@
 import { ServerClient } from "postmark";
 import notifySlack from "./notifySlack";
+import { HttpStatusCode } from "axios";
 
 async function sendpostmark(data: any, context: any) {
-  const postmarkToken: string = process.env.postmarkToken || "";
-  let client = new ServerClient(postmarkToken);
+  if (!process.env.POSTMARK_TOKEN) {
+    throw new Error("Missing POSTMARK_TOKEN environment variable");
+  }
+  const client = new ServerClient(process.env.POSTMARK_TOKEN);
+  let error: any = {};
 
   try {
-    const response = await client.sendEmailWithTemplate({
+    await client.sendEmailWithTemplate({
       From: "info@coffez.ch",
       To: data.to,
       TemplateAlias: "contact-form",
@@ -20,30 +24,17 @@ async function sendpostmark(data: any, context: any) {
         company_address: "Kasthoferstrasse 50, 3006 Bern",
       },
     });
-    console.log(
-      `Sent message successfully. Server replied with "${JSON.stringify(
-        response
-      )}.`
-    );
-
-    const slack = await notifySlack(data);
-    console.log({
-      slackStatus: slack.status,
-      slackStatusText: slack?.statusText,
-    });
-    return [
-      response,
-      {
-        slackStatus: slack.status,
-        slackStatusText: slack?.statusText,
-      },
-    ];
-  } catch (e) {
-    const msg = `sendpostmark.ts failed. Server replied with "${e}".`;
-    console.error(msg);
-    await notifySlack(msg, true);
-    return msg;
+  } catch (postmarkError) {
+    error.postmark = `Postmark notification failed. ${postmarkError}`;
   }
+
+  try {
+    await notifySlack(data);
+  } catch (slackError) {
+    error.slack = `Slack notification failed. ${slackError}`;
+  }
+  if (error.slack || error.postmark) throw { slack: error.slack, postmark: error.postmark };
+  return HttpStatusCode.Ok
 }
 
 export default sendpostmark;

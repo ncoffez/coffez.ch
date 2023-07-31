@@ -23,7 +23,6 @@ const route: any = useRoute();
 
 async function fetchDocument() {
   const response = await useFetch(`/api/getPortrait/${route.params.id}`);
-  console.log({... response.data.value});
   data.value = response.data.value;
 }
 

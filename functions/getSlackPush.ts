@@ -60,7 +60,7 @@ export async function getSlackPush(req: any, res: any) {
 
   const alreadyPublished = await admin.firestore().collection("portraits").where("thread", "==", document.thread).get();
   if (alreadyPublished.empty) {
-    admin.firestore().collection("portraits").add(document);
+    await admin.firestore().collection("portraits").add(document);
   }
   res.sendStatus(200);
 }

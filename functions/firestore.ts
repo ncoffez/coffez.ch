@@ -1,11 +1,9 @@
-import admin, { ServiceAccount } from "firebase-admin";
+import admin from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 
-const serviceAccount = process.env.adminServiceAccountKey as ServiceAccount;
-
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert('./adminServiceAccountKey.json'),
   databaseURL: "https://coffez-ch-default-rtdb.europe-west1.firebasedatabase.app",
 });
 

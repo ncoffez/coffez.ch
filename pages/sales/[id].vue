@@ -9,7 +9,7 @@
           <h1>{{ data?.originalName }}</h1>
           <p>{{ toDate(data?.createdDate) }}</p>
         </hgroup>
-        <a :href="data?.urlFirebaseReduced" role="button" class="outline secondary">Download</a>
+        <a :href="data?.urlFirebaseReduced" role="button" class="outline secondary" download="Coffez-portrait.jpg">Download</a>
         <button>Buy</button>
       </div>
     </div>
@@ -53,6 +53,11 @@ const toDate = (date: { _seconds: any; _nanoseconds: any }) => {
 
 a[role="button"]
   margin: 1em 0
+
+h1
+  max-width: calc(100vw - 1em)
+  overflow-wrap: break-word
+  word-wrap: break-word
 
 @media (min-width: 992px)
   .grid

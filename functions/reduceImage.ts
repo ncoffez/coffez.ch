@@ -3,7 +3,7 @@ import admin from "./firestore";
 import slack from "./slack";
 import sharp from "sharp";
 import axios from "axios";
-import { createQrCode } from './createQrCode';
+import { createQrCode } from "./createQrCode";
 
 const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
 
@@ -50,19 +50,26 @@ export async function reduceImage(snap: functions.firestore.DocumentSnapshot, co
     bucket.file(jpgPath).save(jpgBuffer, { contentType: "image/jpeg" }),
   ]);
 
-  const [originalUrl, reducedUrl, webpUrl, jpgUrl] = await Promise.all([
-    bucket.file(originalPath).getSignedUrl({ action: "read", expires: "03-01-2500" }),
-    bucket.file(reducedPath).getSignedUrl({ action: "read", expires: "03-01-2500" }),
-    bucket.file(webpPath).getSignedUrl({ action: "read", expires: "03-01-2500" }),
-    bucket.file(jpgPath).getSignedUrl({ action: "read", expires: "03-01-2500" }),
+  await Promise.all([
+    bucket.file(originalPath).makePublic(),
+    bucket.file(reducedPath).makePublic(),
+    bucket.file(webpPath).makePublic(),
+    bucket.file(jpgPath).makePublic(),
   ]);
+
+  const [originalUrl, reducedUrl, webpUrl, jpgUrl] = [
+    bucket.file(originalPath).publicUrl(),
+    bucket.file(reducedPath).publicUrl(),
+    bucket.file(webpPath).publicUrl(),
+    bucket.file(jpgPath).publicUrl(),
+  ];
 
   // Update Firestore document with URLs of the stored images
   const newUrls = {
-    urlFirebaseOriginal: originalUrl[0],
-    urlFirebaseReduced: reducedUrl[0],
-    urlFirebaseWebp: webpUrl[0],
-    urlFirebaseJpg: jpgUrl[0],
+    urlFirebaseOriginal: originalUrl,
+    urlFirebaseReduced: reducedUrl,
+    urlFirebaseWebp: webpUrl,
+    urlFirebaseJpg: jpgUrl,
   };
 
   await Promise.all([
@@ -70,7 +77,7 @@ export async function reduceImage(snap: functions.firestore.DocumentSnapshot, co
     slack.files.upload({
       file: reducedImageBuffer,
       filename: `${context.params.id}.jpeg`,
-      channels: CHANNEL_IMPRIMANTES,
+      channels: data?.channel || CHANNEL_IMPRIMANTES,
       initial_comment: `Lien client: https://coffez.ch/sales/${context.params.id}`,
       thread_ts: data?.thread,
     }),
@@ -81,7 +88,7 @@ export async function reduceImage(snap: functions.firestore.DocumentSnapshot, co
   ]);
 }
 
-async function downloadImage(url:string) {
+async function downloadImage(url: string) {
   functions.logger.debug(`Function downloadImage launched with URL ${url}.`);
   const response = await axios.get(url, {
     responseType: "arraybuffer",

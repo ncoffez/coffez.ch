@@ -1,40 +1,70 @@
+
 import { ServerClient } from "postmark";
 import notifySlack from "./notifySlack";
-import { HttpStatusCode } from "axios";
+import { logger } from "firebase-functions/v1";
+import { Request, Response } from 'express';
 
-async function sendpostmark(data: any, context: any) {
-  if (!process.env.POSTMARK_TOKEN) {
-    throw new Error("Missing POSTMARK_TOKEN environment variable");
+// Function to validate the request body
+function validateRequestBody(body: any): boolean {
+  return body && body.to && body.name && body.message && body.phone;
+}
+
+// Function to construct the email template
+function constructEmailTemplate(body: any) {
+  return {
+    From: process.env.EMAIL_FROM || "info@coffez.ch", // Use an environment variable for the 'From' address
+    To: body.to,
+    TemplateAlias: "contact-form",
+    TemplateModel: {
+      product_url: "https://coffez.ch",
+      product_name: "Coffez.ch",
+      userName: body.name,
+      message: body.message,
+      userPhone: body.phone,
+      company_name: "Coffez.ch",
+      company_address: process.env.COMPANY_ADDRESS || "Kasthoferstrasse 50, 3006 Bern", // Use an environment variable for the company address
+    },
+  };
+}
+
+async function sendpostmark(req: Request, res: Response) {
+  // Check if POSTMARK_TOKEN environment variable is defined
+  if (!process.env.POSTMARK_TOKEN || process.env.POSTMARK_TOKEN === '') {
+    logger.error("Missing POSTMARK_TOKEN environment variable");
+    res.status(500).send("Internal Server Error: Missing POSTMARK_TOKEN environment variable");
+    return;
   }
+
   const client = new ServerClient(process.env.POSTMARK_TOKEN);
-  let error: any = {};
+
+  // Validate the request body
+  if (!validateRequestBody(req.body)) {
+    logger.error("Bad Request: Missing required fields in request body");
+    res.status(400).send("Bad Request: Missing required fields in request body");
+    return;
+  }
+
+  // Construct the email template
+  const emailWithTemplate = constructEmailTemplate(req.body);
+  logger.info(emailWithTemplate);
 
   try {
-    await client.sendEmailWithTemplate({
-      From: "info@coffez.ch",
-      To: data.to,
-      TemplateAlias: "contact-form",
-      TemplateModel: {
-        product_url: "https://coffez.ch",
-        product_name: "Coffez.ch",
-        userName: data.name,
-        message: data.message,
-        userPhone: data.phone,
-        company_name: "Coffez.ch",
-        company_address: "Kasthoferstrasse 50, 3006 Bern",
-      },
-    });
+    await client.sendEmailWithTemplate(emailWithTemplate);
   } catch (postmarkError) {
-    error.postmark = `Postmark notification failed. ${postmarkError}`;
+    logger.error(`Postmark notification failed. ${postmarkError}`);
+    res.status(500).send("Internal Server Error: Failed to send email with Postmark");
+    return;
   }
 
   try {
-    await notifySlack(data);
+    await notifySlack(req.body);
   } catch (slackError) {
-    error.slack = `Slack notification failed. ${slackError}`;
+    logger.error(`Slack notification failed. ${slackError}`);
+    res.status(500).send("Internal Server Error: Failed to send Slack notification");
+    return;
   }
-  if (error.slack || error.postmark) throw { slack: error.slack, postmark: error.postmark };
-  return HttpStatusCode.Ok
+
+  res.status(200).send("Success: Notifications sent");
 }
 
 export default sendpostmark;

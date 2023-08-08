@@ -28,6 +28,13 @@ export async function getSlackPush(req: any, res: any) {
     res.status(400).send("Automated message: Will not treat requests from App Coffez Bot.");
     return;
   }
+
+  if (!["C05JJB9DRDY","C05LK82ALGL"].includes(event.channel_id)) {
+    logger.debug("No action performed, Will only handle media in channels #imprimantes and #imprimantes_debug.");
+    res.status(400).send("No action performed, Will only handle media in channels #imprimantes and #imprimantes_debug.");
+    return
+  }
+
   // respond early to prevent multiple Push triggers.
 
   const { file } = await slack.files.info({ file: event.file_id });

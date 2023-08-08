@@ -51,7 +51,7 @@ async function notifySlack(data: any, plain_text = false) {
   }
 
   try {
-    const response = await fetch(process.env.SLACK_WEBHOOK!, {
+    const response = await fetch(process.env.SLACK_COMMANDES!, {
       method: "post",
       body: body,
       headers: { "Content-Type": "application/json" },

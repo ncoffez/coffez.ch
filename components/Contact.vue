@@ -33,7 +33,7 @@ const submit = async () => {
   message.value.state = "sending";
   console.log(JSON.stringify(message.value));
   try {
-    const response = await useFetch('/api/sendMailConfirmation', { method: 'post', body: message.value });
+    const response = await useFetch('/api/sendMailConfirmation', { method: 'post', body: JSON.stringify(message.value) });
     message.value = new Message("sent");
   } catch (e) {
     console.log(`Mailversand fehlgeschlagen`, e);

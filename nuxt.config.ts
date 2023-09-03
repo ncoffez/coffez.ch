@@ -27,6 +27,7 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://unpkg.com/@picocss/pico@latest/css/pico.min.css",
         },
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
       ],
       htmlAttrs: {
         lang: "de-CH",

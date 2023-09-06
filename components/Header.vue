@@ -5,7 +5,7 @@
         <h1>Dein Anlass wird zur <span class="colored-text">Party</span></h1>
         <p>Buche mit Coffez.ch eine einzigartige Dienstleistung und versichere dass deine Veranstaltung zum Erfolg wird.
           <br>Mit seinen Karikaturen bringt <b>Pascal Coffez</b>
-          deine Gäste aus ihrer Komfortzone und sichert eine angenehme und lockere Athmosphäre in jeder Situation.
+          deine Gäste aus ihrer Komfortzone und sichert eine angenehme und lockere Atmosphäre in jeder Situation.
         </p>
       <button @click="scrollTo('contact')">Uns kontaktieren</button>
     </div>

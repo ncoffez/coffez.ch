@@ -2,12 +2,12 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "functions": "cd functions && bun run build && cd ..",
+    "functions": "cd functions && npm run build && cd ..",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "bun run build && bun run functions && firebase deploy"
+    "deploy": "npm run build && npm run functions && firebase deploy"
   },
   "devDependencies": {
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",

@@ -3,7 +3,7 @@ import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 
 admin.initializeApp({
-  credential: admin.credential.cert('./adminServiceAccountKey.json'),
+  credential: admin.credential.cert('~/adminServiceAccountKey.json'),
   databaseURL: "https://coffez-ch-default-rtdb.europe-west1.firebasedatabase.app",
 });
 

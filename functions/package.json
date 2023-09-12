@@ -19,7 +19,7 @@
     "axios": "^1.4.0",
     "firebase-admin": "^11.10.1",
     "firebase-functions": "^4.4.1",
-    "node-fetch": "^2.6.12",
+    "node-fetch": "^2.7.0",
     "postmark": "^3.0.15",
     "qrcode": "^1.5.3",
     "sharp": "^0.32.4"
@@ -29,7 +29,7 @@
     "@types/node-fetch": "^2.6.4",
     "@types/nodemailer": "^6.4.7",
     "@types/qrcode": "^1.5.1",
-    "typescript": "^4.9.4"
+    "typescript": "^5.2.2"
   },
   "private": true
 }

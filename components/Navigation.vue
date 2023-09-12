@@ -3,12 +3,13 @@
     <nav class="container">
       <div id="logo">Coffez.ch</div>
       <ul id="menu">
-        <li @click="scrollTo('header')">Home</li>
-        <li @click="scrollTo('cards')">Über uns</li>
-        <li @click="scrollTo('portfolio')">Portfolio</li>
+        <li @click="scrollTo('header')">{{$t('navigation.home')}}</li>
+        <li @click="scrollTo('cards')">{{  $t('navigation.about') }}</li>
+        <li @click="scrollTo('portfolio')">{{ $t('navigation.portfolio') }}</li>
       </ul>
       <ul>
-        <li><button @click="scrollTo('contact')" id="contact-link" class="outline">Kontakt</button></li>
+        <li><button @click="scrollTo('contact')" id="contact-link" class="outline">{{$t('navigation.contact')}}</button></li>
+        <li><LanguageSwitcher /></li>
       </ul>
     </nav>
   </header>

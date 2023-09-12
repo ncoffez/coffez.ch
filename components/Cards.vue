@@ -1,30 +1,26 @@
 <template>
-<section id="cards">
-  <article v-for="card in germanBody" class="grid">
-    <div id="image">
-      <video v-if="['webp', 'mp4'].includes(card.media.split('.').pop() || '')" :src="card.media" autoplay preload="auto" muted loop />
-      <picture v-else>
-        <source :srcset="card.mediaWebp" type="image/webp">
-        <source :srcset="card.media" type="image/jpeg">
-        <img :src="card.media" alt="">
-      </picture>
-    </div>
-    <div id="text">
-      <h1>{{ card.header }}</h1>
-      <p>{{ card.lead }}</p>
-      <!-- <button class="outline" @click="goTo('contact')" v-if="card.action">{{ card.action }}</button> -->
-    </div>
-  </article>
-</section>
+  <section id="cards">
+    <article v-for="card in ($tm('sections') as any)" :key="card.id" class="grid">
+      <div id="image">
+        <video v-if="card?.media?.type === 'video'" :src="card.media?.modern" autoplay preload="auto" muted loop />
+        <picture v-else>
+          <source :srcset="card.media?.modern" type="image/webp" />
+          <source :srcset="card.media?.legacy" type="image/jpeg" />
+          <img :src="card.media?.legacy" :alt="card.header" />
+        </picture>
+      </div>
+      <div id="text">
+        <h1>{{ card.header }}</h1>
+        <p>{{ card.lead }}</p>
+        <button class="outline" @click="scrollTo('contact')" v-if="card.action">{{ card.action }}</button>
+      </div>
+    </article>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { germanBody } from '~~/assets/texts';
-
-const goTo = (target: string) => {
-  document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
-}
-
+import { germanBody } from "~~/assets/texts";
+import { scrollTo } from "~~/methods/scrollTo";
 </script>
 
 <style lang="sass" scoped>
@@ -37,7 +33,7 @@ h1
 img, video
   height: clamp(200px, 100%, 100%)
 
-  
+
 @media (min-width: 992px)
   article
     padding-inline: 7em
@@ -53,6 +49,4 @@ img, video
 @media (max-width: 991px)
   img, video
     max-height: 70vh
-
-
 </style>

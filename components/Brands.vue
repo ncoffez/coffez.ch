@@ -5,7 +5,7 @@
       <img :src="`/img/Logos/${logo}`" :alt="logo" srcset="">
     </div>
   </div>
-  <footer>* Diese Unternehmen vertrauen uns</footer>
+  <footer>* {{$t('theseBrandsTrustUs')}}</footer>
 </section>
 </template>
 
@@ -22,7 +22,7 @@ const logos = [
 
 <style lang="sass" scoped>
 section
-  margin-block: 6em 3em
+  margin-block: 4em 3em
 
 .logo
   filter: invert(.5)

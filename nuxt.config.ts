@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: { enabled: false },
   runtimeConfig: {
     firebase: {
       apiKey: process.env.NUXT_API_KEY, // can be overridden by NUXT_PUBLIC_API_BASE environment variable
@@ -72,6 +73,29 @@ export default defineNuxtConfig({
           content: "https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg",
         },
       ],
+    },
+  },
+  modules: ["@nuxtjs/i18n"],
+  i18n: {
+    vueI18n: "./i18.config.js",
+    strategy: "no_prefix",
+    locales: [
+      {
+        code: "de",
+        name: "Deutsch",
+      },
+      {
+        code: "fr",
+        name: "Français",
+      },
+      {
+        code: "en",
+        name: "English",
+      },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      fallbackLocale: "de",
     },
   },
 });

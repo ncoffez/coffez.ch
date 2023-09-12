@@ -1,24 +1,26 @@
 {
-    "private": true,
-    "scripts": {
-        "build": "nuxt build",
-        "functions": "cd functions && npm run build && cd ..",
-        "dev": "nuxt dev",
-        "generate": "nuxt generate",
-        "preview": "nuxt preview",
-        "postinstall": "nuxt prepare",
-        "deploy": "npm run build && npm run functions && firebase deploy"
-    },
-    "devDependencies": {
-        "firebase-functions": "^4.4.1",
-        "nuxt": "^3.6.0",
-        "postmark": "^3.0.18",
-        "sass": "^1.57.1",
-        "sass-loader": "^10.1.1"
-    },
-    "dependencies": {
-        "axios": "^1.4.0",
-        "firebase": "^10.1.0",
-        "firebase-admin": "^11.10.1"
-    }
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "functions": "cd functions && bun run build && cd ..",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "deploy": "bun run build && bun run functions && firebase deploy"
+  },
+  "devDependencies": {
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
+    "bun-types": "^1.0.1",
+    "firebase-functions": "^4.4.1",
+    "nuxt": "^3.6.0",
+    "postmark": "^3.0.18",
+    "sass": "^1.57.1",
+    "sass-loader": "^10.1.1"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "firebase": "^10.1.0",
+    "firebase-admin": "^11.10.1"
+  }
 }

@@ -1,24 +1,24 @@
 <template>
   <article id="contact" class="grid">
     <form v-show="message.state !== 'sent'" @submit.prevent="submit()">
-      <h1>Uns kontaktieren</h1>
-      <label for="name">Name</label>
+      <h1>{{$t('contact.title')}}</h1>
+      <label for="name">{{$t('contact.name')}}</label>
       <input type="name" name="name" v-model="message.name" autocomplete="name" />
-      <label for="email">Mail</label>
+      <label for="email">{{$t('contact.mail')}}</label>
       <input type="email" name="email" v-model="message.email" autocomplete="email" />
-      <label for="phone">Telefon</label>
+      <label for="phone">{{$t('contact.phone')}}</label>
       <input type="phone" name="phone" v-model="message.phone" autocomplete="tel" />
-      <label for="message">Nachricht</label>
+      <label for="message">{{$t('contact.message')}}</label>
       <textarea id="textarea" required name="message" v-model="message.message" />
 
       <button type="submit" :aria-busy="message.state === 'sending'" :disabled="message.state !== 'ready'">
-        {{ message.state === "sent" ? "Gesendet" : "Senden" }}
+        {{ message.state === "sent" ? $t('contact.sent') : $t('contact.send') }}
       </button>
-      <small v-if="message.error">Die Nachricht konnte nicht gesendet werden. {{ message.error }}</small>
+      <small v-if="message.error">{{$t('contact.error')}} {{ message.error }}</small>
     </form>
     <div id="message-sent" v-show="message.state === 'sent'">
-      <h1>Erfolgreich gesendet</h1>
-      <p>Besten Dank für deine Meldung. Du wirst in Kürze kontaktiert.</p>
+      <h1>{{$t('contact.success.title')}}</h1>
+      <p>{{$t('contact.success.subtitle')}}</p>
     </div>
     <div class="form-image" alt="Foto des Matterhorns von Fabrice Villard"></div>
   </article>

@@ -1,20 +1,16 @@
 <template>
-<header class="container">
-  <Navigation />
-</header>
-<main class="container">
-  <Header />
-  <Cards />
-  <Portfolio />
-  <Contact />
-</main>
-<Footer />
+  <header class="container">
+    <Navigation />
+  </header>
+  <main class="container">
+    <Header />
+    <Cards />
+    <Portfolio />
+    <Contact />
+  </main>
+  <Footer />
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

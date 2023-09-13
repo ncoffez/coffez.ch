@@ -7,14 +7,21 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-
-    "functions": "cd functions && npm run build && cd ..",
-    "deploy": "npm run build && npm run functions && firebase deploy"
+    "functions": "cd functions && bun run build && cd ..",
+    "deploy": "bun run build && bun run functions && firebase deploy",
+    "echo-resource-dir": "echo $RESOURCE_DIR"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxtjs/i18n": "next",
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
+    "bun-types": "^1.0.1",
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "latest",
+    "firebase-functions-test": "^3.1.0",
     "nuxt": "^3.7.2",
     "sass": "^1.66.1"
+  },
+  "dependencies": {
+    "firebase": "^10.3.1"
   }
 }

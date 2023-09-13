@@ -1,22 +1,31 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: {enabled: false},
   runtimeConfig: {
-  
     firebase: {
       apiKey: process.env.NUXT_API_KEY, // can be overridden by NUXT_PUBLIC_API_BASE environment variable
       authDomain: process.env.NUXT_AUTH_DOMAIN,
-      databaseURL: process.env.NUXT_DATABASE_URL,
+      // databaseURL: process.env.NUXT_DATABASE_URL,
       projectId: process.env.NUXT_PROJECT_ID,
       storageBucket: process.env.NUXT_STORAGE_BUCKET,
       messagingSenderId: process.env.NUXT_MESSAGING_SENDER_ID,
       appId: process.env.NUXT_APP_ID,
-      measurementId: process.env.NUXT_MEASUREMENT_ID,
+      // measurementId: process.env.NUXT_MEASUREMENT_ID,
     },
     public: {},
   },
   typescript: { shim: false },
   nitro: {
     preset: "firebase",
+
+    firebase: {
+      gen: 2,
+      httpsOptions: {
+        region: 'europe-west1',
+        maxInstances: 3,
+        cpu: "gcf_gen1",
+      },
+    }
   },
   css: ["@/assets/global.sass", "@/assets/theme.scss"],
   ssr: true,

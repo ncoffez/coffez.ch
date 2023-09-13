@@ -6,10 +6,12 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017"
+    "target": "ES2017",
+    "esModuleInterop": true
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "src",
+    "."
   ]
 }

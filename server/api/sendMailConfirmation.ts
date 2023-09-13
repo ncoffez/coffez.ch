@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 export default defineEventHandler(async (event) => {
   const data = await readBody(event);
-  const url = "https://us-central1-coffez-ch.cloudfunctions.net/sendmail";
+  const url = "https://sendmail-huczelrjxq-oa.a.run.app";
   
   const payload = {
     to: data.email,

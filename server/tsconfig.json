@@ -1,6 +1,16 @@
 {
   "extends": "../.nuxt/tsconfig.server.json",
   "exclude": [
-    "../firebase.js",
-  ]
+    "/.output/**/*",
+    "/functions/**/*",
+  ],
+  "include": [
+    ".",
+  ],
+  "compilerOptions": {
+    "types": [
+      "bun-types",
+      "../.nuxt/types/nitro-imports"
+    ]
+  }
 }

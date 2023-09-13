@@ -4,9 +4,9 @@
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "serve": "bun run build && firebase emulators:start --only functions",
-    "shell": "bun run build && firebase functions:shell",
-    "start": "bun run shell",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@types/qrcode": "^1.5.2",
+    "bun-types": "latest",
     "firebase-functions-test": "^3.1.0",
-    "typescript": "^4.9.0",
-    "bun-types": "latest"
+    "typescript": "^4.9.0"
   },
   "private": true
 }

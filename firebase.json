@@ -9,7 +9,7 @@
       "source": "functions",
       "codebase": "default",
       "ignore": ["node_modules", ".git", "firebase-debug.log", "firebase-debug.*.log", ".env"],
-      "predeploy": ["bun run build --cwd \"$RESOURCE_DIR\""]
+      "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"]
     }
   ],
   "firestore": {

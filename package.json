@@ -1,12 +1,15 @@
 {
-  "name": "nuxt-app",
+  "name": "coffez-ch-rebuild",
   "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+
+    "functions": "cd functions && npm run build && cd ..",
+    "deploy": "npm run build && npm run functions && firebase deploy"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

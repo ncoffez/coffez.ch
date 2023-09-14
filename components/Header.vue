@@ -44,6 +44,10 @@ h1
 @media (max-width: 500px)
   h1
     margin-top: 1rem
+    font-size: 3.3em
+
+  section
+    margin-top: 2em
 
 .colored-text
   background: -webkit-linear-gradient(45deg, #8e24aa, var(--primary))

@@ -24,7 +24,7 @@ button#contact-link
   border: none
 
 @media (max-width: 500px)
-  #menu
+  #menu, #contact-link
     display: none
 
 #logo

@@ -92,14 +92,17 @@ export default defineNuxtConfig({
       {
         code: "de",
         name: "Deutsch",
+        flag: "https://hatscripts.github.io/circle-flags/flags/de.svg"
       },
       {
         code: "fr",
         name: "Français",
+        flag: "https://hatscripts.github.io/circle-flags/flags/fr.svg"
       },
       {
         code: "en",
         name: "English",
+        flag: "https://hatscripts.github.io/circle-flags/flags/gb.svg"
       },
     ],
     detectBrowserLanguage: {

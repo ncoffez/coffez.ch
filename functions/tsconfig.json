@@ -8,13 +8,9 @@
     "strict": true,
     "target": "ES2017",
     "esModuleInterop": true,
-    "types": [
-      "bun-types"
-    ]
   },
   "compileOnSave": true,
   "include": [
     "src",
-    "."
   ]
 }

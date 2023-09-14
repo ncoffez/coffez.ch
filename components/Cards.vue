@@ -12,14 +12,13 @@
       <div id="text">
         <h1>{{ card.header }}</h1>
         <p>{{ card.lead }}</p>
-        <button class="outline" @click="scrollTo('contact')" v-if="card.action">{{ card.action }}</button>
+        <button class="" @click="scrollTo('contact')" v-if="card.action">{{ card.action }}</button>
       </div>
     </article>
   </section>
 </template>
 
 <script setup lang="ts">
-import { germanBody } from "~~/assets/texts";
 import { scrollTo } from "~~/methods/scrollTo";
 </script>
 

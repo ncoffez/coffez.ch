@@ -44,7 +44,7 @@ h1
 @media (max-width: 500px)
   h1
     margin-top: 1rem
-    font-size: 3.3em
+    font-size: 2.7em
 
   section
     margin-top: 2em

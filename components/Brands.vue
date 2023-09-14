@@ -5,7 +5,7 @@
       <img :src="`/img/Logos/${logo}`" :alt="logo" srcset="">
     </div>
   </div>
-  <footer>* {{$t('theseBrandsTrustUs')}}</footer>
+  <footer aria-hidden="true">* {{$t('theseBrandsTrustUs')}}</footer>
 </section>
 </template>
 
@@ -33,7 +33,7 @@ img
 
 footer
   text-align: end
-  padding-block: 1em
+  padding-top: 2em
   font-size: .8em
   font-style: italic
   filter: opacity(50%)
@@ -46,4 +46,8 @@ footer
 @media (max-width: 500px)
   section
     margin-top: 3em
+
+  .grid
+    grid-template-columns: 1fr 1fr
+    gap: 2em 1em
 </style>

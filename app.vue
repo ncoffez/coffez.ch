@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <NuxtPage/>
-  </div>
+	<div>
+		<NuxtPage />
+		<GlowEffect/>
+	</div>
 </template>
-
-<script setup>
-</script>
-
-<style lang="sass" scoped></style>

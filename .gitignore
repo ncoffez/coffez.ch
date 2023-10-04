@@ -29,4 +29,3 @@ node_modules
 *.log*
 .firebase
 adminServiceAccountKey.json
-bun.lockb

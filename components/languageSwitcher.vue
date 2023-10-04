@@ -1,41 +1,24 @@
-<script setup>
-const { setLocale, locales, locale } = useI18n();
-let selectedLanguage = ref(locale);
-watch(selectedLanguage, (newLang) => setLocale(newLang))
-</script>
-
 <template>
-<div class="picker">
-  <div class="flag-container" v-for="language in locales">
-    <img :class="language.code === locale ? 'active' : 'inactive'" class="language-flag"
-      @click="selectedLanguage = language.code" :src="language.flag" alt="language.name" />
-  </div>
-</div>
+	<details role="list" ref="listbox" open="false">
+		<summary aria-haspopup="listbox">
+			{{ localeProperties.name }}
+		</summary>
+		<ul role="listbox">
+			<li v-for="language in (locales as LocaleObject[])">
+				<a @click="selectedLanguage = language.code">{{ language.name }}</a>
+			</li>
+		</ul>
+	</details>
 </template>
+<script lang="ts" setup>
+import { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables';
+const { setLocale, locales, locale, localeProperties } = useI18n();
+const listbox: Ref<any> = ref('');
 
-<style lang="sass" scoped>
-.picker
-  display: flex
-  place-items: center
-  gap: .4em
-
-.language-flag
-  &.active
-    width: 35px
-    height: 35px
-    transition: all .3s ease-out
-    border: 2px solid var(--contrast)
-    border-radius: 100%
-  
-  &.inactive
-    filter: saturate(70%)
-    width: 25px
-    height: 25px
-    transition: all .2s ease-out
-
-.flag-container
-  display: grid
-  place-items: center
-  width: 35px
-  height: 35px
-</style>
+let selectedLanguage = ref(locale);
+watch(selectedLanguage, (newLang: string) => {
+	setLocale(newLang);
+	listbox.value.open = false;
+});
+</script>
+<style lang="sass" scoped></style>

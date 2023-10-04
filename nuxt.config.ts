@@ -27,7 +27,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	css: ['@/assets/global.sass', '@/assets/theme.scss'],
+	css: ['@/assets/global.sass'],
 	ssr: true,
 	app: {
 		head: {

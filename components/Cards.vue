@@ -41,8 +41,8 @@ img, video
 	article:nth-of-type(2n)
 		grid-template-columns: 3fr 4fr
 
-	#image
-		order: 2
+		#image
+			order: 2
 
 @media (max-width: 991px)
 	img, video

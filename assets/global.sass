@@ -1,4 +1,6 @@
 // The full css is here: https://unpkg.com/@picocss/pico@latest/css/pico.min.css
+@import url('./backlight.sass')
+@import url('./theme.scss')
 
 img, video
 	width: 100%
@@ -7,7 +9,7 @@ img, video
 
 article
 	box-shadow: unset
-	background-color: color-mix(in srgb, var(--background-color) 50%, transparent)
+	background-color: color-mix(in srgb, var(--background-color) 30%, transparent)
 	&:not(:first-of-type)
 		border-top-left-radius: 0
 		border-top-right-radius: 0
@@ -19,7 +21,6 @@ html, body
 	overflow-x: hidden
 
 body
-	position: relative
 	overflow-y: hidden
 
 @media (max-width: 575px)

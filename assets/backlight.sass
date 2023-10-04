@@ -1,0 +1,40 @@
+body::before
+	content: ""
+	background-attachment: fixed
+	height: 35vmax
+	aspect-ratio: 1
+	position: fixed
+	top: calc(50vh - 17vmax)
+	left: calc(50vw - 17vmax)
+	border-radius: 50%
+	background: linear-gradient(to right, #5e35b1, var(--primary))
+	animation: rotate 20s alternate infinite
+	z-index: -3
+	opacity: 0.5
+
+body::after
+	content: ""
+	background-attachment: fixed
+	height: 100vh
+	width: 100vw
+	position: fixed
+	top: 0
+	left: 0
+	z-index: -2
+	backdrop-filter: blur(16vmax)
+
+@keyframes rotate
+	0%, 100%
+		transform: rotate(0deg) translateX(0) translateY(0)
+		opacity: .8
+		height: 35vmax
+
+	50%
+		transform: rotate(360deg) translateX(35vmax) translateY(35vmax)
+		opacity: .8
+		height: 25vmax
+		background: linear-gradient(to right, #341d62, var(--primary))
+
+	75%
+		height: 75vmax
+		opacity: .3

@@ -1,5 +1,5 @@
 <template>
-	<details role="list" ref="listbox" open="false">
+	<details role="list" ref="listbox">
 		<summary aria-haspopup="listbox">
 			{{ localeProperties.name }}
 		</summary>
@@ -18,7 +18,7 @@ const listbox: Ref<any> = ref('');
 let selectedLanguage = ref(locale);
 watch(selectedLanguage, (newLang: string) => {
 	setLocale(newLang);
-	listbox.value.open = false;
+	listbox.value.open = null;
 });
 </script>
 <style lang="sass" scoped></style>

@@ -35,7 +35,6 @@ img, video
 
 @media (min-width: 992px)
   article
-    padding-inline: 7em
     gap: 2em
     grid-template-columns: 4fr 3fr
 

@@ -50,6 +50,10 @@ h1
 	section
 		margin-top: 2em
 
+span
+	overflow: hidden
+	white-space: nowrap
+
 .colored-text
 	background: -webkit-linear-gradient(45deg, #8e24aa, var(--primary))
 	-webkit-background-clip: text

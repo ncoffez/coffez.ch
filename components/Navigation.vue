@@ -20,10 +20,10 @@ import { scrollTo } from '~~/methods/scrollTo';
 header
 	margin-top: 1em
 
-
 nav
 	display: grid
-	grid-template-columns: 1fr 2fr 1fr
+	grid-template-columns: 2fr 4fr 1fr
+	gap: 2em
 
 #logo
 	font-size: 1.5em
@@ -39,13 +39,23 @@ nav
 		padding: .5em 1em
 		border-radius: .5em
 		cursor: pointer
+		white-space: nowrap
 
 	li:hover
 		// background-color: var(--muted-color)
 		transition: all .25s ease-in
 		color: var(--primary-hover)
 
-@media (max-width: 767px)
-	#menu, #contact-link
+@media (max-width: 850px)
+	#menu
+		gap: 0em
+
+@media (max-width: 720px)
+	#menu
 		display: none
+
+
+@media (min-width: 1200px)
+	nav
+		grid-template-columns: 1fr 2fr 1fr
 </style>

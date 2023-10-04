@@ -142,11 +142,11 @@ export default {
     title: "Nous contacter",
     name: "Nom",
     mail: "E-mail",
-    phone: "téléphone",
+    phone: "Téléphone",
     message: "Message",
     send: "Envoyer",
     sent: "Envoyé",
-    error: "The message could not be sent.",
+    error: "Erreur, le message n'a pas pu être envoyé.",
     success: {
       title: "Message envoyé",
       subtitle: "Merci pour ton message. Nous te contacterons dans les plus brefs délais.",

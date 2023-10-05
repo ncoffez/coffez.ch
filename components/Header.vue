@@ -33,10 +33,14 @@ h1
 	letter-spacing: -1px
 
 .img-box
-	padding: 5em
+	padding: 5em 2em 5em 2em
 	img
 		aspect-ratio: 1
 		border-radius: 40% 10%
+
+@media (min-width: 992px)
+	.grid
+		grid-template-columns: 4fr 3fr
 
 @media (max-width: 991px)
 	.img-box
@@ -53,6 +57,12 @@ h1
 span
 	overflow: hidden
 	white-space: nowrap
+	line-break: strict
+
+@media (min-width: 1200px)
+	.grid
+		gap: .5em
+		width: 100%
 
 .colored-text
 	background: -webkit-linear-gradient(45deg, #8e24aa, var(--primary))

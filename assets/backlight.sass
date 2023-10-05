@@ -21,8 +21,8 @@ body::after
 	top: 0
 	left: 0
 	z-index: -2
-	backdrop-filter: blur(16vmax)
-	
+	backdrop-filter: blur(30vmax)
+
 main::before
 	content: ""
 	background-attachment: fixed
@@ -42,6 +42,7 @@ main::before
 		transform: rotate(0deg) translateX(0) translateY(0)
 		opacity: .8
 		height: 35vmax
+		background: linear-gradient(to right, #5e35b1, var(--secondary))
 
 	50%
 		transform: rotate(360deg) translateX(35vmax) translateY(35vmax)

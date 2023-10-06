@@ -1,23 +1,23 @@
 <template>
-	<section>
-		<div class="grid">
-			<div>
-				<h1>
-					{{ $t('header.title.text') }} <span class="colored-text" v-for="letter of $t('header.title.special')">{{ letter }}</span>
-				</h1>
-				<p>{{ $t('header.subtitle') }}</p>
-				<button @click="scrollTo('contact')">{{ $t('header.button') }}</button>
-			</div>
-			<div class="img-box">
-				<picture>
-					<source srcset="/img/PascalCoffez.webp" type="image/webp" />
-					<source srcset="/img/PascalCoffez.jpg" type="image/jpeg" />
-					<img src="/img/PascalCoffez.jpg" alt="" />
-				</picture>
-			</div>
+<section>
+	<div class="grid">
+		<div>
+			<h1>
+				{{ $t('header.title.text') }} <span class="colored-text">{{ $t('header.title.special') }}</span>
+			</h1>
+			<p>{{ $t('header.subtitle') }}</p>
+			<button @click="scrollTo('contact')">{{ $t('header.button') }}</button>
 		</div>
-		<Brands />
-	</section>
+		<div class="img-box">
+			<picture>
+				<source srcset="/img/PascalCoffez.webp" type="image/webp" />
+				<source srcset="/img/PascalCoffez.jpg" type="image/jpeg" />
+				<img src="/img/PascalCoffez.jpg" alt="" />
+			</picture>
+		</div>
+	</div>
+	<Brands />
+</section>
 </template>
 
 <script setup>
@@ -33,14 +33,10 @@ h1
 	letter-spacing: -1px
 
 .img-box
-	padding: 5em 2em 5em 2em
+	padding: 5em
 	img
 		aspect-ratio: 1
 		border-radius: 40% 10%
-
-@media (min-width: 992px)
-	.grid
-		grid-template-columns: 4fr 3fr
 
 @media (max-width: 991px)
 	.img-box
@@ -57,50 +53,11 @@ h1
 span
 	overflow: hidden
 	white-space: nowrap
-	line-break: strict
-
-@media (min-width: 1200px)
-	.grid
-		gap: .5em
-		width: 100%
 
 .colored-text
 	background: -webkit-linear-gradient(45deg, #8e24aa, var(--primary))
 	-webkit-background-clip: text
 	-webkit-text-fill-color: transparent
-
-span
-	$delay: .08s
-	$base-delay: .4s
-	&:nth-of-type(1)
-		animation: display  0 * $delay + $base-delay step-end forwards
-	&:nth-of-type(2)
-		animation: display  1 * $delay + $base-delay step-end forwards
-	&:nth-of-type(3)
-		animation: display  2 * $delay + $base-delay step-end forwards
-	&:nth-of-type(4)
-		animation: display  3 * $delay + $base-delay step-end forwards
-	&:nth-of-type(5)
-		animation: display 4 * $delay + $base-delay step-end forwards
-	&:nth-of-type(6)
-		animation: display  5 * $delay + $base-delay step-end forwards
-	&:nth-of-type(7)
-		animation: display  6 * $delay + $base-delay step-end forwards
-	&:nth-of-type(8)
-		animation: display  7 * $delay + $base-delay step-end forwards
-	&:nth-of-type(9)
-		animation: display  8 * $delay + $base-delay step-end forwards
-	&:nth-of-type(10)
-		animation: display  9 * $delay + $base-delay step-end forwards
-	&:nth-of-type(11)
-		animation: display  10 * $delay + $base-delay step-end forwards
-
-@keyframes display
-	0%
-		opacity: 0
-	100%
-		opacity: 1
-
 
 @media (prefers-color-scheme: light)
 	.colored-text

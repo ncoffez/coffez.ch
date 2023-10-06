@@ -1,21 +1,21 @@
 <template>
-	<section id="cards">
-		<article v-for="card in ($tm('sections') as any)" :key="card.id" class="grid">
-			<div id="image">
-				<video v-if="card?.media?.type === 'video'" :src="card.media?.modern" autoplay preload="auto" muted loop />
-				<picture v-else>
-					<source :srcset="card.media?.modern" type="image/webp" />
-					<source :srcset="card.media?.legacy" type="image/jpeg" />
-					<img :src="card.media?.legacy" :alt="card.header" />
-				</picture>
-			</div>
-			<div id="text">
-				<h1>{{ card.header }}</h1>
-				<p>{{ card.lead }}</p>
-				<button class="" @click="scrollTo('contact')" v-if="card.action">{{ card.action }}</button>
-			</div>
-		</article>
-	</section>
+<section id="cards">
+	<article v-for="card in ($tm('sections') as any)" :key="card.id" class="grid">
+		<div id="image">
+			<video v-if="card?.media?.type === 'video'" :src="card.media?.modern" autoplay preload="auto" muted loop />
+			<picture v-else>
+				<source :srcset="card.media?.modern" type="image/webp" />
+				<source :srcset="card.media?.legacy" type="image/jpeg" />
+				<img :src="card.media?.legacy" :alt="card.header" />
+			</picture>
+		</div>
+		<div id="text">
+			<h1>{{ card.header }}</h1>
+			<p>{{ card.lead }}</p>
+			<button class="" @click="scrollTo('contact')" v-if="card.action">{{ card.action }}</button>
+		</div>
+	</article>
+</section>
 </template>
 
 <script setup lang="ts">
@@ -33,21 +33,25 @@ img, video
 	height: clamp(200px, 100%, 100%)
 
 
-@media (min-width: 992px)
-	article
+article
+	@media (min-width: 1200px)
+		padding-inline: 7em
+	@media (min-width: 992px)
 		gap: 2em
 		grid-template-columns: 4fr 3fr
+		&:nth-of-type(2n)
+			grid-template-columns: 3fr 4fr
+			#image
+				order: 2
+	@media (max-width: 991px)
+		padding-inline: .5em
+	
+	
+@media (min-width: 992px)
 
-	article:nth-of-type(2n)
-		grid-template-columns: 3fr 4fr
-
-		#image
-			order: 2
 
 @media (max-width: 991px)
 	img, video
 		max-height: 70vh
-
-	article
-		padding-inline: .5em
+		
 </style>

@@ -3,7 +3,6 @@
 		<nav class="container">
 			<div id="logo">Coffez.ch</div>
 			<ul id="menu">
-				<li @click="scrollTo('header')">{{ $t('navigation.home') }}</li>
 				<li @click="scrollTo('cards')">{{ $t('navigation.about') }}</li>
 				<li @click="scrollTo('portfolio')">{{ $t('navigation.portfolio') }}</li>
 				<li @click="scrollTo('contact')">{{ $t('navigation.contact') }}</li>
@@ -36,7 +35,7 @@ nav
 	gap: 1em
 
 	li
-		padding: .5em 1em
+		padding: .5em .8em
 		border-radius: .5em
 		cursor: pointer
 		white-space: nowrap
@@ -46,7 +45,7 @@ nav
 		transition: all .25s ease-in
 		color: var(--primary-hover)
 
-@media (max-width: 850px)
+@media (max-width: 900px)
 	#menu
 		gap: 0em
 

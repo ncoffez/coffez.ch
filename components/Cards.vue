@@ -2,7 +2,10 @@
 <section id="cards">
 	<article v-for="card in ($tm('sections') as any)" :key="card.id" class="grid">
 		<div id="image">
-			<video v-if="card?.media?.type === 'video'" :src="card.media?.legacy" autoplay="true" muted="true" loop="true" playsinline="true" />
+			<video v-if="card?.media?.type === 'video'" autoplay="true" muted="true" loop="true" playsinline="true">
+				<source :src="card.media?.modern" type="video/webm"/>
+				<source :src="card.media?.legacy" type="video/mp4"/>
+			</video>	
 			<picture v-else>
 				<source :srcset="card.media?.modern" type="image/webp" />
 				<source :srcset="card.media?.legacy" type="image/jpeg" />

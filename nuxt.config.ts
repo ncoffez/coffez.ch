@@ -53,12 +53,12 @@ export default defineNuxtConfig({
 					hid: 'description',
 					name: 'description',
 					content:
-						'Coffez.ch bietet einzigartige und personalisierte Karikaturen für Veranstaltungen. Ob digital oder auf Papier, wir haben für alle Ihre Veranstaltungen die passende Lösung.',
+						'Coffez.ch - einzigartige Karikaturen für Ihre Veranstaltung. Ob digital oder auf Papier, wir verewigen Ihre Gäste mit einem Lächeln. #Karikaturen #Veranstaltungen #Hochzeit #Zeichnungen',
 				},
 				{
 					name: 'keywords',
 					content:
-						'Karikaturen, Veranstaltungen, Digitale Karikaturen, Papier-Karikaturen, Personalisierte Karikaturen, Unterhaltung für Veranstaltungen, Portraits, Zeichnungen, Caricatures, Hochzeitsfeier, Hochzeitsfest, Event Animation',
+						'Karikaturen, Veranstaltungen, Digitale Karikaturen, Hochzeitskarikaturen, Personalisierte Karikaturen, Unterhaltung für Veranstaltungen, Portraits, Zeichnungen, Caricatures',
 				},
 				{
 					property: 'og:title',

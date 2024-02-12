@@ -1,4 +1,4 @@
-import admin, { ServiceAccount } from "firebase-admin";
+import admin, { type ServiceAccount } from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
 import rawServiceAccount from "./serviceAccount.env.json";
 

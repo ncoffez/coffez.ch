@@ -1,5 +1,5 @@
 <template>
-	<article id="contact" class="grid">
+	<section id="contact" class="grid">
 		<form v-show="message.state !== 'sent'" @submit.prevent="submit()">
 			<h1>{{ $t('contact.title') }}</h1>
 			<label for="name">{{ $t('contact.name') }}</label>
@@ -21,7 +21,7 @@
 			<p>{{ $t('contact.success.subtitle') }}</p>
 		</div>
 		<div class="form-image" alt="Foto des Matterhorns von Fabrice Villard"></div>
-	</article>
+	</section>
 </template>
 
 <script setup lang="ts">
@@ -54,7 +54,6 @@ const submit = async () => {
   padding: 0
   overflow: hidden
   border-radius: .5em
-  margin-block: 1em
 
 form
   padding: 1em

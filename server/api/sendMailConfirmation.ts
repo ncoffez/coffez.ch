@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { type AxiosResponse } from "axios";
 
 export default defineEventHandler(async (event) => {
   const data = await readBody(event);

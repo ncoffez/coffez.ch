@@ -1,5 +1,5 @@
 // The full css is here: https://unpkg.com/@picocss/pico@latest/css/pico.min.css
-@import url('./backlight.sass')
+// @import url('./backlight.sass')
 @import url('./theme.scss')
 
 img, video
@@ -22,6 +22,9 @@ html, body
 
 body
 	overflow-y: hidden
+
+section:not(:first-of-type)
+	margin-block: 5em 1em
 
 @media (max-width: 575px)
 :root

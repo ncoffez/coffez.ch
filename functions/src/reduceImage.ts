@@ -9,13 +9,17 @@ import { logger } from "firebase-functions/v2";
 const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
 
 export async function reduceImage(snap: DocumentSnapshot, context: any) {
+  logger.debug("Function reduceImage launched.");
   const data = snap.data();
-
+  logger.debug({data});
+  
   // Get the URL of the image
   const url = data?.imageUrl;
+  logger.debug({url});
 
   // Download the image
   const imageBuffer = await downloadImage(url);
+  logger.debug("After downloadImage.")
 
   // Reduce the size of the image for print and add qrcode
   const qrCodeBuffer = await createQrCode(`https://coffez.ch/sales/${context.params.id}`);

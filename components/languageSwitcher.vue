@@ -1,22 +1,20 @@
 <template>
-	<details role="list" ref="listbox">
-		<summary aria-haspopup="listbox">
-			{{ localeProperties.name }}
-		</summary>
-		<ul role="listbox">
-			<li v-for="language in (locales as LocaleObject[])">
-				<a @click="selectedLanguage = language.code">{{ language.name }}</a>
-			</li>
-		</ul>
-	</details>
+<details class="dropdown" ref="listbox">
+	<summary>{{ localeProperties.name }}</summary>
+	<ul>
+		<li v-for="language in locales">
+			<a @click="selectedLanguage = language.code">{{ language.name }}</a>
+		</li>
+	</ul>
+</details>
 </template>
+
 <script lang="ts" setup>
-import { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables';
 const { setLocale, locales, locale, localeProperties } = useI18n();
 const listbox: Ref<any> = ref('');
 
-let selectedLanguage = ref(locale);
-watch(selectedLanguage, (newLang: string) => {
+let selectedLanguage: Ref<any> = ref(locale);
+watch(selectedLanguage, (newLang: any) => {
 	setLocale(newLang);
 	listbox.value.open = null;
 });

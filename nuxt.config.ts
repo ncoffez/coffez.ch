@@ -35,7 +35,7 @@ export default defineNuxtConfig({
 			link: [
 				{
 					rel: 'stylesheet',
-					href: 'https://unpkg.com/@picocss/pico@latest/css/pico.min.css',
+					href: 'https://unpkg.com/@picocss/pico@latest/css/pico.pink.min.css',
 				},
 				{ rel: 'icon', type: 'image/png', href: '/favicon.png' },
 			],

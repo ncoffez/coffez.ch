@@ -4,7 +4,8 @@
 			<div id="logo">Coffez.ch</div>
 			<ul id="menu">
 				<li @click="scrollTo('cards')">{{ $t('navigation.about') }}</li>
-				<li @click="scrollTo('portfolio')">{{ $t('navigation.portfolio') }}</li>
+				<!-- <li @click="scrollTo('portfolio')">{{ $t('navigation.portfolio') }}</li> -->
+				<li><a href="/live">{{ $t('navigation.portfolio') }}</a></li>
 				<li @click="scrollTo('contact')">{{ $t('navigation.contact') }}</li>
 			</ul>
 		</nav>

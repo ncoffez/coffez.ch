@@ -1,14 +1,4 @@
 {
-  "indexes": [
-    {
-      "collectionId": "portraits", 
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "createdDate", "order": "DESCENDING" },
-        { "fieldPath": "urlFirebaseWebp", "order": "ASCENDING" },
-        { "fieldPath": "__name__", "order": "ASCENDING" } 
-      ]
-    }
-  ],
+  "indexes": [],
   "fieldOverrides": []
 }

@@ -24,6 +24,7 @@ logs
 *.env.*
 !.env.example
 !.env.sample
+!*.env.sample.json*
 
 node_modules
 *.log*

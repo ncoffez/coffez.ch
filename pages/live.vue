@@ -1,6 +1,6 @@
 <template>
 <section>
-  <h1>Live Caricatures</h1>
+  <h4>Coffez.ch - Live</h4>
   <div class="grid">
     <div v-for="image in images" class="image-box">
       <img :src="image.urlFirebaseWebp" :alt="image.name">
@@ -11,7 +11,7 @@
 </template>
 <script lang='ts' setup>
 import { useNuxtApp } from '#app';
-import { collection, query, onSnapshot, limit, CollectionReference, Firestore, orderBy, deleteDoc } from "firebase/firestore";
+import { collection, query, onSnapshot, limit, CollectionReference, Firestore, orderBy } from "firebase/firestore";
 
 const nuxtApp = useNuxtApp();
 const db = nuxtApp.$db as Firestore;
@@ -50,7 +50,6 @@ section
 
   img
     aspect-ratio: 21/29.7
-    width: 100%
     object-position: center
 
 small

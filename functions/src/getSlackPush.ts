@@ -23,16 +23,18 @@ export async function getSlackPush(req: any, res: any) {
     return;
   }
 
-  if (event.user_id === "U04LY5A392R") {
+  if (["U04LY5A392R"].includes(event.user_id)) {
     logger.debug("Automated message: Will not treat requests from Coffez Bot.");
     res.status(400).send("Automated message: Will not treat requests from App Coffez Bot.");
     return;
   }
 
-  if (!["C05JJB9DRDY","C05LK82ALGL"].includes(event.channel_id)) {
+  if (!["C05JJB9DRDY", "C05LK82ALGL"].includes(event.channel_id)) {
     logger.debug("No action performed, Will only handle media in channels #imprimantes and #imprimantes_debug.");
-    res.status(400).send("No action performed, Will only handle media in channels #imprimantes and #imprimantes_debug.");
-    return
+    res
+      .status(400)
+      .send("No action performed, Will only handle media in channels #imprimantes and #imprimantes_debug.");
+    return;
   }
 
   // respond early to prevent multiple Push triggers.

@@ -2,20 +2,16 @@
 <section id="portfolio">
   <h1>
     Portfolio
-    <span @click="mask.scrollBy({ behavior: 'smooth', left: -800 })">&lt; </span>
-    <span @click="mask.scrollBy({ behavior: 'smooth', left: 800 })">&gt;</span>
   </h1>
-  <figure ref="mask">
-    <div class="custom-grid">
-      <div class="image" v-for="(image, index) of images">
-        <picture>
-          <source :srcset="image.urlFirebaseWebp" type="image/webp" />
-          <source :srcset="image.urlFirebaseJpg" type="image/jpeg" />
-          <img :src="image.urlFirebaseJpg" :alt="`Portrait${index + 1}`" srcset="" />
-        </picture>
-      </div>
+  <div class="grid">
+    <div class="image" v-for="(image, index) of images">
+      <picture>
+        <source :srcset="image.urlFirebaseWebp" type="image/webp" />
+        <source :srcset="image.urlFirebaseJpg" type="image/jpeg" />
+        <img :src="image.urlFirebaseJpg" :alt="`Portrait${index + 1}`" srcset="" />
+      </picture>
     </div>
-  </figure>
+  </div>
 </section>
 </template>
 
@@ -46,10 +42,7 @@ onUnmounted(unsubscribe);
 <style lang="sass" scoped>
 img
   aspect-ratio: calc(21/29.7)
-  min-width: 250px
 
-figure .custom-grid
-  display: flex
-  width: fit-content
-  gap: 1em
+.grid
+  gap: 2em
 </style>

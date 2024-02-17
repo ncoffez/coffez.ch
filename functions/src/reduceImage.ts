@@ -3,26 +3,27 @@ import slack from "./slack";
 import sharp from "sharp";
 import axios from "axios";
 import { createQrCode } from "./createQrCode";
-import { DocumentSnapshot } from "firebase-functions/v2/firestore";
+import { DocumentSnapshot, FirestoreEvent } from "firebase-functions/v2/firestore";
 import { logger } from "firebase-functions/v2";
 
 const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
 
-export async function reduceImage(snap: DocumentSnapshot, context: any) {
+// export async function reduceImage(snap: DocumentSnapshot, context: any) {
+export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>) {
   logger.debug("Function reduceImage launched.");
-  const data = snap.data();
-  logger.debug({data});
-  
+  const data = event.data.data();
+  logger.debug({ event });
+
   // Get the URL of the image
   const url = data?.imageUrl;
-  logger.debug({url});
+  logger.debug({ url });
 
   // Download the image
   const imageBuffer = await downloadImage(url);
-  logger.debug("After downloadImage.")
+  logger.debug("After downloadImage.");
 
   // Reduce the size of the image for print and add qrcode
-  const qrCodeBuffer = await createQrCode(`https://coffez.ch/sales/${context.params.id}`);
+  const qrCodeBuffer = await createQrCode(`https://coffez.ch/sales/${event.params.id}`);
 
   const [reducedImageBuffer, webpBuffer, jpgBuffer] = await Promise.all([
     sharp(imageBuffer)
@@ -40,10 +41,10 @@ export async function reduceImage(snap: DocumentSnapshot, context: any) {
   ]);
 
   // Define paths for firebase storage
-  const originalPath = `images/portraits/${context.params.id}/${context.params.id}.${data?.sourceType}`;
-  const reducedPath = `images/portraits/${context.params.id}/${context.params.id}_reduced.jpg`;
-  const webpPath = `images/portraits/webfeed/${context.params.id}.webp`;
-  const jpgPath = `images/portraits/webfeed/${context.params.id}.jpg`;
+  const originalPath = `images/portraits/${event.params.id}/${event.params.id}.${data?.sourceType}`;
+  const reducedPath = `images/portraits/${event.params.id}/${event.params.id}_reduced.jpg`;
+  const webpPath = `images/portraits/webfeed/${event.params.id}.webp`;
+  const jpgPath = `images/portraits/webfeed/${event.params.id}.jpg`;
 
   // Upload original and reduced images to Firebase storage
   const bucket = admin.storage().bucket("coffez-ch.appspot.com");
@@ -78,12 +79,12 @@ export async function reduceImage(snap: DocumentSnapshot, context: any) {
   };
 
   await Promise.all([
-    admin.firestore().collection("portraits").doc(context.params.id).update(newUrls),
+    admin.firestore().collection("portraits").doc(event.params.id).update(newUrls),
     slack.files.upload({
       file: reducedImageBuffer,
-      filename: `${context.params.id}.jpeg`,
+      filename: `${event.params.id}.jpeg`,
       channels: data?.channel || CHANNEL_IMPRIMANTES,
-      initial_comment: `Lien client: https://coffez.ch/sales/${context.params.id}`,
+      initial_comment: `Lien client: https://coffez.ch/sales/${event.params.id}`,
       thread_ts: data?.thread,
     }),
     admin
@@ -91,6 +92,7 @@ export async function reduceImage(snap: DocumentSnapshot, context: any) {
       .collection("printQueue")
       .add({ ...data, ...newUrls, status: "ready" }),
   ]);
+  return "success";
 }
 
 async function downloadImage(url: string) {

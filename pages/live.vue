@@ -38,11 +38,11 @@ const q = query(portraitsRef, where('createdDate', '>=', settings.value.startDat
 const images: Ref<any[]> = ref([]);
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
-  const newImages: any[] = [];
-  querySnapshot.forEach((doc) => {
-    newImages.push({ id: doc.id, ...doc.data() });
+  querySnapshot.docChanges().forEach((change) => {
+    const data = { id: change.doc.id, ...change.doc.data() }
+    if (change.newIndex === 0) images.value.unshift(data);
+    else { images.value.push(data) }
   });
-  images.value = [...newImages]
 });
 
 onUnmounted(unsubscribe);
@@ -125,5 +125,4 @@ small
   opacity: .5
   width: 100%
   text-align: center
-
 </style>

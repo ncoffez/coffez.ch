@@ -3,9 +3,9 @@
 	<article v-for="card in ($tm('sections') as any)" :key="card.id" class="grid">
 		<div id="image">
 			<video v-if="card?.media?.type === 'video'" autoplay="true" muted="true" loop="true" playsinline="true">
-				<source :src="card.media?.modern" type="video/webm"/>
-				<source :src="card.media?.legacy" type="video/mp4"/>
-			</video>	
+				<source :src="card.media?.modern" type="video/webm" />
+				<source :src="card.media?.legacy" type="video/mp4" />
+			</video>
 			<picture v-else>
 				<source :srcset="card.media?.modern" type="image/webp" />
 				<source :srcset="card.media?.legacy" type="image/jpeg" />
@@ -15,7 +15,7 @@
 		<div id="text">
 			<h1>{{ card.header }}</h1>
 			<p>{{ card.lead }}</p>
-			<button class="" @click="scrollTo('contact')" v-if="card.action">{{ card.action }}</button>
+			<button class="" @click="handleAction(card.url)" v-if="card.action">{{ card.action }}</button>
 		</div>
 	</article>
 </section>
@@ -23,6 +23,11 @@
 
 <script setup lang="ts">
 import { scrollTo } from '~~/methods/scrollTo';
+
+async function handleAction(action: string) {
+	if (['/live'].includes(action)) { await navigateTo(action) }
+	else { scrollTo('contact') }
+}
 </script>
 
 <style lang="sass" scoped>

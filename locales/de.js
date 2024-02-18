@@ -112,8 +112,8 @@ export default {
       id: 10,
       header: "👨🏽‍💻 digitale Zeichnung",
       lead: "Es lebe der Fortschritt! Unsere digitale Installation ermöglicht es unserem Künstler, digitale Porträts auf dem IPad Pro zu erstellen. Ein HDMI-Kabel, ein Wifi-Drucker, und Sie können Ihre Porträts sofort auf Papier erhalten, mit der Option eines A5-Formats und der Verfügbarkeit aller Werke auf Dropbox, damit Ihre Gäste (und Sie selbst) nichts von dem Service verpassen!",
-      action: "",
-      url: "",
+      action: "Live-Event ansehen",
+      url: "/live",
       media: {
         type: "video",
         legacy: "/img/digitale_zeichnung.mp4",

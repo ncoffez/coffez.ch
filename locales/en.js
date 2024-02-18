@@ -112,8 +112,8 @@ export default {
       id: 10,
       header: "👨🏽‍💻 Digital Drawing",
       lead: "Long live progress! Our digital setup allows our artist to create digital portraits on the iPad Pro. An HDMI cable, a Wi-Fi printer, and you can immediately get your portraits on paper, with the option of an A5 format and the availability of all works on Dropbox, so that your guests (and you yourself) miss nothing of the service!",
-      action: "",
-      url: "",
+      action: "View live event",
+      url: "/live",
       media: {
         type: "video",
         legacy: "/img/digitale_zeichnung.mp4",

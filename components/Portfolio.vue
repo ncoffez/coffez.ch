@@ -1,8 +1,9 @@
 <template>
 <section id="portfolio">
-  <h1>
-    Portfolio
-  </h1>
+  <div id="title">
+    <h1>Portfolio</h1>
+    <nuxtLink to="/live"><span class="material-icons">open_in_full</span></nuxtLink>
+  </div>
   <div class="grid">
     <div class="image" v-for="(image, index) of images">
       <picture>
@@ -45,4 +46,12 @@ img
 
 .grid
   gap: 2em
+
+#title
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  a
+    color: unset
 </style>

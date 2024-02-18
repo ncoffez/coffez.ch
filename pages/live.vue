@@ -1,5 +1,5 @@
 <template>
-<section v-if="images.length > 0">
+<section>
   <h4>{{ settings.title }}</h4>
   <div class="custom-grid">
     <div v-for="image in images" class="image-box">
@@ -11,10 +11,9 @@
   </div>
 </section>
 
-<section v-else>
-  <h1>Okay you got me</h1>
-  <p>Please tell me where I can find Mr. Chocolate.</p>
-</section>
+<!-- <section v-else>
+<h1>Placeholder</h1>
+</section> -->
 </template>
 <script lang='ts' setup>
 import { useNuxtApp } from '#app';

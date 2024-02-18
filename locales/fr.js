@@ -112,8 +112,8 @@ export default {
       id: 10,
       header: "👨🏽‍💻 Dessin numérique",
       lead: "Vive le progrès ! Notre installation numérique permet à notre artiste de créer des portraits numériques sur l'iPad Pro. Un câble HDMI, une imprimante Wi-Fi, et tu peux obtenir tes portraits sur papier immédiatement, avec l'option d'un format A5 et la disponibilité de toutes les œuvres sur Dropbox, pour que tes invités (et toi-même) ne manquent rien du service !",
-      action: "",
-      url: "",
+      action: "Voir l'événement en direct",
+      url: "/live",
       media: {
         type: "video",
         legacy: "/img/digitale_zeichnung.mp4",

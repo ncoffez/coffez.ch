@@ -1,24 +1,36 @@
 <template>
 <section>
-  <h4>Coffez.ch - Live</h4>
+  <h4>{{ settings.title }}</h4>
   <div class="grid">
-    <div v-for="image in images" class="image-box">
-      <img :src="image.urlFirebaseWebp" :alt="image.name">
-      <small>{{ image.createdDate.toDate().toLocaleDateString() }}</small>
+    <div v-for="image in  images" class="image-box">
+      <nuxtLink :to="'/sales/' + image.id">
+        <img :src="image.urlFirebaseWebp" :alt="image.name">
+      </nuxtLink>
+      <small>{{ intlFormatDistance(image.createdDate.toDate(), now) }}</small>
     </div>
   </div>
 </section>
 </template>
 <script lang='ts' setup>
 import { useNuxtApp } from '#app';
-import { collection, query, onSnapshot, limit, CollectionReference, Firestore, orderBy } from "firebase/firestore";
+import { intlFormatDistance, subDays } from 'date-fns';
+import { collection, query, onSnapshot, CollectionReference, Firestore, orderBy, getDoc, doc, Timestamp, where } from "firebase/firestore";
 
 const nuxtApp = useNuxtApp();
 const db = nuxtApp.$db as Firestore;
 
+let settings = ref({ title: 'Coffez.ch - Live', startDate: subDays(new Date(), 1.2) })
+let now = ref(new Date());
+
+onMounted(() => setInterval(() => {
+  now.value = new Date();
+}, 1000))
+
+const settingsData = (await getDoc(doc(db, 'settings/gallery'))).data();
+if (settingsData) settings.value = { ...settingsData } as any
 
 const portraitsRef: CollectionReference = collection(db, "portraits");
-const q = query(portraitsRef, limit(12), orderBy('createdDate', 'desc'), orderBy('urlFirebaseWebp'));
+const q = query(portraitsRef, where('createdDate', '>=', settings.value.startDate), orderBy('createdDate', 'desc'), orderBy('urlFirebaseWebp'));
 const images: Ref<any[]> = ref([]);
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -37,23 +49,22 @@ section
   padding: 3em
   display: flex
   flex-direction: column
-  overflow-y: hidden
+  overflow-y: scroll
 .grid
   grid-template: 1fr 1fr / repeat(auto-fit, minmax(230px, 1fr))
-  overflow-y: scroll
 
 .image-box
   display: flex
   flex-direction: column
   justify-content: space-around
 
-
-  img
-    aspect-ratio: 21/29.7
-    object-position: center
+img
+  aspect-ratio: 21/29.7
+  object-position: center
 
 small
-  font-size: .5em
+  font-size: .9em
+  opacity: .5
   width: 100%
   text-align: center
 </style>

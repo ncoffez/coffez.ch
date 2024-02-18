@@ -1,19 +1,16 @@
 <template>
-  <main class="container">
-    <div class="grid">
-      <div id="image">
-        <img :src="data?.urlFirebaseReduced" alt="" srcset="" />
-      </div>
-      <div id="actions">
-        <hgroup>
-          <h1>{{ data?.originalName }}</h1>
-          <p>{{ toDate(data?.createdDate) }}</p>
-        </hgroup>
-        <a :href="data?.urlFirebaseReduced" role="button" class="outline secondary" download="Coffez-portrait.jpg">Download</a>
-        <button>Buy</button>
-      </div>
-    </div>
-  </main>
+<div class="grid">
+  <div id="image">
+    <img :src="data?.urlFirebaseReduced" alt="" srcset="" />
+  </div>
+  <div id="text">
+    <hgroup>
+      <h1>{{ data?.originalName }}</h1>
+      <p>{{ toDate(data?.createdDate) }}</p>
+      <i>{{ data?.size }}</i>
+    </hgroup>
+  </div>
+</div>
 </template>
 
 <script setup lang="ts">
@@ -31,6 +28,7 @@ watch(
   (newRoute, oldRoute) => {
     if (newRoute?.params.id !== oldRoute?.params.id) {
       fetchDocument();
+      console.log(data)
     }
   },
   { immediate: true }
@@ -42,26 +40,24 @@ const toDate = (date: { _seconds: any; _nanoseconds: any }) => {
 </script>
 
 <style lang="sass" scoped>
-.grid > *
-  height: 100%
-  padding-block: 5%
-  place-content: center
-  display: grid
-
 .grid
-  gap: 0 3em
+  padding: 2em
+  height: 100vh
+  grid-template-columns: 1fr
 
-a[role="button"]
-  margin: 1em 0
+#image
+  height: 100%
+  width: fit-content
+  overflow: hidden
 
-h1
-  max-width: calc(100vw - 1em)
-  overflow-wrap: break-word
-  word-wrap: break-word
+  img
+    height: 100%
+    width: auto
+    object-fit: scale-down
 
-@media (min-width: 992px)
-  .grid
-    height: 100vh
-
-
+#text
+  place-items: center
+  width: 100%
+  height: 100%
+  align-content: center
 </style>

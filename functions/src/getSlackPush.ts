@@ -45,7 +45,7 @@ export async function getSlackPush(req: any, res: any) {
     res.status(415).send("Unsupported Media Type: Expecting an image file");
     return;
   }
-  logger.debug({ file_id: file.id, file: { file }, event: { event } });
+  logger.debug({ "file.id": file.id, file, event });
 
   const document = {
     originalName: file.name,
@@ -58,7 +58,7 @@ export async function getSlackPush(req: any, res: any) {
     imageUrl: file.url_private || "",
     urlSlack: file.permalink || "",
     size: sizeToSizes(file?.size || 0),
-    thread: event.event_ts ? event.event_ts : "event.thread_ts",
+    thread: file.shares?.public?.C05JJB9DRDY[0].ts || file.shares?.private?.C05LK82ALGL[0].ts,
   };
 
   function sizeToSizes(size: number): string {

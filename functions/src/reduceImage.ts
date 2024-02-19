@@ -6,7 +6,7 @@ import { createQrCode } from "./createQrCode";
 import { DocumentSnapshot, FirestoreEvent } from "firebase-functions/v2/firestore";
 import { logger } from "firebase-functions/v2";
 
-const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
+// const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
 
 // export async function reduceImage(snap: DocumentSnapshot, context: any) {
 export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>) {
@@ -80,11 +80,9 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
 
   await Promise.all([
     admin.firestore().collection("portraits").doc(event.params.id).update(newUrls),
-    slack.files.upload({
-      file: reducedImageBuffer,
-      filename: `${event.params.id}.jpeg`,
-      channels: data?.channel || CHANNEL_IMPRIMANTES,
-      initial_comment: `Lien client: https://coffez.ch/sales/${event.params.id}`,
+    slack.chat.postMessage({
+      text: `Lien client: https://coffez.ch/sales/${event.params.id}`,
+      channel: data?.channel,
       thread_ts: data?.thread,
     }),
     admin
@@ -100,7 +98,7 @@ async function downloadImage(url: string) {
   const response = await axios.get(url, {
     responseType: "arraybuffer",
     headers: {
-      Authorization: `Bearer ${process.env.SLACK_TOKEN}`, // replace with your Slack token
+      Authorization: `Bearer ${process.env.SLACK_TOKEN}`,
     },
   });
   return response.data;

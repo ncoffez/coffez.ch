@@ -1,17 +1,21 @@
 <template>
 <section>
-  <hgroup>
-    <h2>Coffez.ch/live</h2>
-    <h1>{{ settings.title }}</h1>
+  <hgroup id="title-large-screens">
+    <h2 id="url-title">coffez.ch/live</h2>
+    <h4>{{ settings.title }}</h4>
   </hgroup>
-  <div class="custom-grid">
-    <div v-for="image in images" class="image-box">
+  <hgroup id="title-small-screens">
+    <h2>{{ settings.title }}</h2>
+  </hgroup>
+  <TransitionGroup name="grid" tag="div" class="custom-grid">
+    <div v-for="(image, index) in images" :class="{ 'image-box': true, 'large-first-image': index === 0 }"
+      :key="image.id">
       <nuxtLink :to="'/sales/' + image.id">
         <img :src="image.urlFirebaseWebp" :alt="image.name">
       </nuxtLink>
       <small>{{ intlFormatDistance(image.createdDate.toDate(), now) }}</small>
     </div>
-  </div>
+  </TransitionGroup>
 </section>
 
 <!-- <section v-else>
@@ -52,7 +56,7 @@ onUnmounted(unsubscribe);
 </script>
 <style lang='sass' scoped>
 section
-  padding: 2.5rem 2rem
+  padding: 1.7rem 2rem
   display: flex
   flex-direction: column
   overflow: hidden
@@ -73,13 +77,17 @@ h4
 
 .custom-grid
   display: grid
-  grid-template: 1fr 1fr / repeat(5, 1fr)
+  grid-template: 1fr 1fr / repeat(4, 1fr)
   gap: 1em 2em
   width: 100%
   overflow-y: scroll
 
-  @media screen and (min-width: 1400px)
-    grid-template: 1fr 1fr 1fr / repeat(7, 1fr)
+  @media screen and (min-width: 2000px)
+    grid-template: 1fr 1fr 1fr / repeat(8, 1fr)
+    gap: 1em 3em
+
+  @media screen and (min-width: 1400px) and (max-width: 1999px)
+    grid-template: 1fr 1fr 1fr / repeat(6, 1fr)
     gap: 1em 3em
 
   @media screen and (max-width: 850px) and (min-width: 701px)
@@ -99,18 +107,21 @@ h4
   display: flex
   flex-direction: column
 
-  @media screen and (min-width: 701px)
-    &:first-child
-      grid-area: 1 / 1 / 3 / 3
-      height: 100%
+@media screen and (min-width: 851px)
+  .large-first-image
+    grid-area: 1 / 1 / 3 / 3
+    z-index: 2
+    height: 100%
+    width: 100%
+    transition: all 1s ease-in-out
+    
+    img
+      aspect-ratio: 21/30.3
+      overflow: hidden
+      object-fit: cover
+      height: calc((100vh - 10.65em))
       width: 100%
-      
-      img
-        aspect-ratio: 21/30.3
-        overflow: hidden
-        object-fit: cover
-        height: calc((100vh - 10.65em))
-        width: 100%
+      transition: all 1s ease-in-out
 
 img
   aspect-ratio: 21/29.7
@@ -124,8 +135,28 @@ img
     object-fit: cover
 
 small
-  font-size: .9em
-  opacity: .5
+  font-size: .8em
+  font-weight: 300
+  opacity: 1
   width: 100%
   text-align: center
+
+@media screen and (min-width: 1000px)
+  #title-large-screens
+    display: block
+
+  #title-small-screens
+    display: none
+
+@media screen and (max-width: 999px)
+  #title-large-screens
+    display: none
+
+  #title-small-screens
+    display: block
+
+.grid-move, .grid-leave-active, .grid-enter-active
+  transition: all 1s ease-in-out
+    
+
 </style>

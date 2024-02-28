@@ -113,7 +113,7 @@ h4
     z-index: 2
     height: 100%
     width: 100%
-    transition: all 1s ease-in-out
+    transition: all .25s ease-in-out
     
     img
       aspect-ratio: 21/30.3
@@ -121,7 +121,7 @@ h4
       object-fit: cover
       height: calc((100vh - 10.65em))
       width: 100%
-      transition: all 1s ease-in-out
+      transition: all .25s ease-in-out
 
 img
   aspect-ratio: 21/29.7
@@ -156,7 +156,7 @@ small
     display: block
 
 .grid-move, .grid-leave-active, .grid-enter-active
-  transition: all 1s ease-in-out
+  transition: all .25s ease-in-out
     
 
 </style>

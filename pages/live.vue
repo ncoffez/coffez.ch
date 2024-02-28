@@ -1,6 +1,9 @@
 <template>
 <section>
-  <h4>{{ settings.title }}</h4>
+  <hgroup>
+    <h2>Coffez.ch/live</h2>
+    <h1>{{ settings.title }}</h1>
+  </hgroup>
   <div class="custom-grid">
     <div v-for="image in images" class="image-box">
       <nuxtLink :to="'/sales/' + image.id">

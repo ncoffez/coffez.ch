@@ -8,7 +8,6 @@ import { logger } from "firebase-functions/v2";
 
 // const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
 
-// export async function reduceImage(snap: DocumentSnapshot, context: any) {
 export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>) {
   logger.debug("Function reduceImage launched.");
   const data = event.data.data();

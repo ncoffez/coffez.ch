@@ -1,7 +1,8 @@
 <template>
 <div class="grid">
   <div id="image">
-    <img :src="data?.urlFirebaseReduced" alt="" srcset="" />
+    <img v-if="data?.urlFirebaseOriginalWithQR" :src="data?.urlFirebaseOriginalWithQR" alt="" srcset="" />
+    <img v-else :src="data?.urlFirebaseReduced" alt="" srcset="" />
   </div>
   <div id="text">
     <hgroup>

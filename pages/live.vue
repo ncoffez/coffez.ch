@@ -11,7 +11,8 @@
     <div v-for="(image, index) in images" :class="{ 'image-box': true, 'large-first-image': index === 0 }"
       :key="image.id">
       <nuxtLink :to="'/sales/' + image.id">
-        <img :src="image.urlFirebaseWebp" :alt="image.name">
+        <img v-if="index === 0" :src="image.urlFirebaseReduced" :alt="image.name">
+        <img v-else :src="image.urlFirebaseWebp" :alt="image.name">
       </nuxtLink>
       <small>{{ intlFormatDistance(image.createdDate.toDate(), now) }}</small>
     </div>

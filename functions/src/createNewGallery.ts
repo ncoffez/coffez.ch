@@ -24,8 +24,8 @@ export async function createNewGallery(req: any, res: any) {
     logger.debug(`Updated startDate,`, resultDate);
   }
 
-  res.status(200).send("Updated values in database successfully.");
-  return;
+  const response = res.status(200).send("Updated values in database successfully.");
+  return response;
 }
 
 // body: {

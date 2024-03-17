@@ -25,9 +25,18 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
   // Reduce the size of the image for print and add qrcode
   const qrCodeBuffer = await createQrCode(`https://coffez.ch/sales/${event.params.id}`);
 
-  const [reducedImageBuffer, webpBuffer, jpgBuffer] = await Promise.all([
+  const [reducedImageBuffer, originalWithQRBuffer, webpBuffer, jpgBuffer] = await Promise.all([
     sharp(imageBuffer)
       .resize(1025, 1450)
+      .jpeg()
+      .composite([
+        {
+          input: qrCodeBuffer,
+          gravity: "northeast",
+        },
+      ])
+      .toBuffer(),
+    sharp(imageBuffer)
       .jpeg()
       .composite([
         {
@@ -43,6 +52,7 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
   // Define paths for firebase storage
   const originalPath = `images/portraits/${event.params.id}/${event.params.id}.${data?.sourceType}`;
   const reducedPath = `images/portraits/${event.params.id}/${event.params.id}_reduced.jpg`;
+  const originalWithQRPath = `images/portraits/${event.params.id}/${event.params.id}_originalWithQR.jpg`;
   const webpPath = `images/portraits/webfeed/${event.params.id}.webp`;
   const jpgPath = `images/portraits/webfeed/${event.params.id}.jpg`;
 
@@ -52,6 +62,7 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
   await Promise.all([
     bucket.file(originalPath).save(imageBuffer, { contentType: "image/png" }),
     bucket.file(reducedPath).save(reducedImageBuffer, { contentType: "image/png" }),
+    bucket.file(originalWithQRPath).save(originalWithQRBuffer, { contentType: "image/png" }),
     bucket.file(webpPath).save(webpBuffer, { contentType: "image/webp" }),
     bucket.file(jpgPath).save(jpgBuffer, { contentType: "image/jpeg" }),
   ]);
@@ -59,12 +70,14 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
   await Promise.all([
     bucket.file(originalPath).makePublic(),
     bucket.file(reducedPath).makePublic(),
+    bucket.file(originalWithQRPath).makePublic(),
     bucket.file(webpPath).makePublic(),
     bucket.file(jpgPath).makePublic(),
   ]);
 
-  const [originalUrl, reducedUrl, webpUrl, jpgUrl] = [
+  const [originalUrl, originalWithQRUrl, reducedUrl, webpUrl, jpgUrl] = [
     bucket.file(originalPath).publicUrl(),
+    bucket.file(originalWithQRPath).publicUrl(),
     bucket.file(reducedPath).publicUrl(),
     bucket.file(webpPath).publicUrl(),
     bucket.file(jpgPath).publicUrl(),
@@ -74,6 +87,7 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
   const newUrls = {
     urlFirebaseOriginal: originalUrl,
     urlFirebaseReduced: reducedUrl,
+    urlFirebaseOriginalWithQR: originalWithQRUrl,
     urlFirebaseWebp: webpUrl,
     urlFirebaseJpg: jpgUrl,
   };

@@ -18,7 +18,7 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
   logger.debug({ url });
 
   // Download the image
-  const imageBuffer = await downloadImage(url);
+  const imageBuffer = await downloadImage(url, data?.sourceApplication);
   logger.debug("After downloadImage.");
 
   // Reduce the size of the image for print and add qrcode
@@ -106,13 +106,23 @@ export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>)
   return "success";
 }
 
-async function downloadImage(url: string) {
+async function downloadImage(url: string, sourceApplication: string) {
   logger.debug(`Function downloadImage launched with URL ${url}.`);
-  const response = await axios.get(url, {
-    responseType: "arraybuffer",
-    headers: {
-      Authorization: `Bearer ${process.env.SLACK_TOKEN}`,
-    },
-  });
-  return response.data;
+  let response;
+
+  if (sourceApplication === "slack") {
+    response = await axios.get(url, {
+      responseType: "arraybuffer",
+      headers: {
+        Authorization: `Bearer ${process.env.SLACK_TOKEN}`,
+      },
+    });
+  } else if (sourceApplication === "Apple Shortcuts") {
+    response = await axios.get(url, {
+      responseType: "arraybuffer",
+    });
+  } else {
+    throw `Source application ${sourceApplication} is not recognized.`;
+  }
+  return response?.data;
 }

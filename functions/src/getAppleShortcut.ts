@@ -40,9 +40,9 @@ export async function getAppleShortcut(req: Request, res: Response): Promise<any
   // Upload to Firestore Database
   try {
     await admin.firestore().collection("portraits").doc().create(portrait);
-    return res.status(200).send(`${portrait.originalName} was uploaded to database successfully.`);
+    return res.status(200).send(`${portrait.originalName} a été publié sur coffez.ch/live`);
   } catch (error) {
     logger.error(`Upload to database failed.`, error);
-    return res.status(500).send(`Upload to database failed. ${error}`);
+    return res.status(500).send(`Erreur lors de la publication de ${portrait.originalName}: ${error}`);
   }
 }

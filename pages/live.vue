@@ -176,6 +176,6 @@ small
     font-size: 1.125rem
     background-color: var(--pico-primary-background)
     padding: 1rem .875rem
-    color: var(--pico-contrast)
+    color: var(--pico-primary-inverse)
 
 </style>

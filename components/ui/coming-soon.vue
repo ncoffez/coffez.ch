@@ -1,5 +1,6 @@
 <template>
   <div id="coming-soon">
+    <div id="background"></div>
     <img id="text" src="/live_coming-soon_text.svg" alt="">
   </div>
 </template>
@@ -11,7 +12,7 @@
 #text
   width: 66%
   height: 66%
-  animation: pulsate 25s infinite reverse linear
+  animation: pulsate 65s infinite ease
   
 
 #coming-soon
@@ -20,8 +21,17 @@
   width: min(70vw, 70vh)
   height: min(70vw, 70vh)
   border-radius: 50%
+  position: relative
+  overflow: hidden
+
+#background
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
   background-image: linear-gradient(225deg, #2b3140, #14171e, #14171e )
-  animation: rotate 25s infinite linear
+  animation: rotate 25s infinite ease
 
 @keyframes rotate
   from
@@ -32,16 +42,12 @@
 
 @keyframes pulsate
   from
-    rotate: 0deg
-    scale: 1
-
-  25%
     scale: .95
-  75%
+
+  50%
     scale: 1.05
   
   to
-    rotate: 360deg
-    scale: 1
+    scale: .95
 
 </style>

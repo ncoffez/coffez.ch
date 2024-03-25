@@ -1,5 +1,5 @@
 <template>
-  <section id="gallery" v-if="false">
+  <section id="gallery" v-if="images.length > 0">
     <hgroup id="title-large-screens">
       <h2 id="url-title">coffez.ch/live</h2>
       <h4>{{ settings.title }}</h4>

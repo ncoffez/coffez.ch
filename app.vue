@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<NuxtPage />
-	</div>
+	<NuxtPage />
 </template>
 
 <style lang="sass" scoped></style>

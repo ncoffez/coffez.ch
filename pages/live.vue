@@ -1,27 +1,28 @@
 <template>
-<section>
-  <hgroup id="title-large-screens">
-    <h2 id="url-title">coffez.ch/live</h2>
-    <h4>{{ settings.title }}</h4>
-  </hgroup>
-  <hgroup id="title-small-screens">
-    <h2>{{ settings.title }}</h2>
-  </hgroup>
-  <TransitionGroup name="grid" tag="div" class="custom-grid">
-    <div v-for="(image, index) in images" :class="{ 'image-box': true, 'large-first-image': index === 0 }"
-      :key="image.id">
-      <nuxtLink :to="'/sales/' + image.id">
-        <img v-if="index === 0" :src="image.urlFirebaseReduced" :alt="image.name">
-        <img v-else :src="image.urlFirebaseWebp" :alt="image.name">
-      </nuxtLink>
-      <small>{{ intlFormatDistance(image.createdDate.toDate(), now) }}</small>
-    </div>
-  </TransitionGroup>
-</section>
+  <section id="gallery" v-if="false">
+    <hgroup id="title-large-screens">
+      <h2 id="url-title">coffez.ch/live</h2>
+      <h4>{{ settings.title }}</h4>
+    </hgroup>
+    <hgroup id="title-small-screens">
+      <h2>{{ settings.title }}</h2>
+    </hgroup>
+    <TransitionGroup name="grid" tag="div" class="custom-grid">
+      <div v-for="(image, index) in images" :class="{ 'image-box': true, 'large-first-image': index === 0 }"
+        :key="image.id">
+        <nuxtLink :to="'/sales/' + image.id">
+          <img v-if="index === 0" :src="image.urlFirebaseReduced" :alt="image.name">
+          <img v-else :src="image.urlFirebaseWebp" :alt="image.name">
+        </nuxtLink>
+        <small>{{ intlFormatDistance(image.createdDate.toDate(), now) }}</small>
+      </div>
+    </TransitionGroup>
+  </section>
 
-<!-- <section v-else>
-<h1>Placeholder</h1>
-</section> -->
+  <section id="placeholder" v-else>
+    <div id="up-next">{{ settings.title }}</div>
+    <UiComingSoon />
+  </section>
 </template>
 <script lang='ts' setup>
 import { useNuxtApp } from '#app';
@@ -56,7 +57,9 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 onUnmounted(unsubscribe);
 </script>
 <style lang='sass' scoped>
-section
+
+
+#gallery
   padding: 1.7rem 2rem
   display: flex
   flex-direction: column
@@ -158,6 +161,21 @@ small
 
 .grid-move, .grid-leave-active, .grid-enter-active
   transition: all .25s ease-in-out
-    
+
+#placeholder
+  width: 100vw
+  height: 100vh
+  display: grid
+  place-items: center
+  position: relative
+
+  #up-next
+    position: absolute
+    right: 0em
+    top: 1rem
+    font-size: 1.125rem
+    background-color: var(--pico-primary-background)
+    padding: 1rem .875rem
+    color: var(--pico-contrast)
 
 </style>

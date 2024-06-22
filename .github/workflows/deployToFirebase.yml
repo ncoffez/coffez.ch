@@ -52,10 +52,7 @@ jobs:
       - name: Build functions
         run: bun run functions
 
-  deploy_to_firebase:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+      - name: Deploy to firebase
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

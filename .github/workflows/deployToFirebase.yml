@@ -63,4 +63,4 @@ jobs:
           projectId: coffez-ch
 
       - name: Deploy functions
-        run: bun run firebase-deploy --only-functions
+        run: bun run firebase-deploy --only functions

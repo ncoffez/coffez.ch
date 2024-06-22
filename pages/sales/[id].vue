@@ -29,7 +29,6 @@ watch(
   (newRoute, oldRoute) => {
     if (newRoute?.params.id !== oldRoute?.params.id) {
       fetchDocument();
-      console.log(data)
     }
   },
   { immediate: true }

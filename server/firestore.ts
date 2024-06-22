@@ -1,11 +1,10 @@
-import admin, { type ServiceAccount } from "firebase-admin";
+import admin from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
-import rawServiceAccount from "./serviceAccount.env.json";
 
-const serviceAccount = rawServiceAccount as ServiceAccount;
+const config = useRuntimeConfig();
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(JSON.parse(config.FIREBASE_ADMIN_KEY)),
 });
 
-export const db = getFirestore();
+export const adminDB = getFirestore();

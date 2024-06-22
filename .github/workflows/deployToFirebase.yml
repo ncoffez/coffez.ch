@@ -23,6 +23,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Install Firebase CLI
+        run: bun install -g firebase-tools
+
       - name: Install frontend dependencies
         run: bun install
 
@@ -34,25 +37,17 @@ jobs:
 
       - name: Create serviceAccount.env.json & .env files
         run: |
-          echo '${{ secrets.FIREBASE_FRONTEND_APIKEY }}' > ./plugins/serviceAccount.env.json
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./server/serviceAccount.env.json
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./functions/serviceAccount.env.json
-          echo 'NUXT_API_KEY=${{ secrets.NUXT_API_KEY }}' > ./.env
-          echo 'NUXT_AUTH_DOMAIN=${{ secrets.NUXT_AUTH_DOMAIN }}' > ./.env
-          echo 'NUXT_DATABASE_URL=${{ secrets.NUXT_DATABASE_URL }}' > ./.env
-          echo 'NUXT_PROJECT_ID=${{ secrets.NUXT_PROJECT_ID }}' > ./.env
-          echo 'NUXT_STORAGE_BUCKET=${{ secrets.NUXT_STORAGE_BUCKET }}' > ./.env
-          echo 'NUXT_MESSAGING_SENDER_ID=${{ secrets.NUXT_MESSAGING_SENDER_ID }}' > ./.env
-          echo 'NUXT_APP_ID=${{ secrets.NUXT_APP_ID }}' > ./.env
-          echo 'NUXT_MEASUREMENT_ID=${{ secrets.NUXT_MEASUREMENT_ID }}' > ./.env
+          echo 'FIREBASE_ADMIN_KEY=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./.env
+          echo 'FIREBASE_FRONTEND_KEY=${{ secrets.FIREBASE_FRONTEND_APIKEY }}' > ./.env
 
       - name: Create .env file in functions
         run: |
           echo "SLACK_TOKEN=${{ secrets.SLACK_TOKEN }}" > ./functions/.env
           echo "POSTMARK_TOKEN=${{ secrets.POSTMARK_TOKEN }}" >> ./functions/.env
-          echo "SLACK_COMMANDES=${{ secrets.SLACK_COMMANDES }}" >> ./functions/.env
-          echo "COMPANY_ADDRESS=${{ secrets.COMPANY_ADDRESS }}" >> ./functions/.env
-          echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> ./functions/.env
+          echo "SLACK_COMMANDES=${{ variables.SLACK_COMMANDES }}" >> ./functions/.env
+          echo "COMPANY_ADDRESS=${{ variables.COMPANY_ADDRESS }}" >> ./functions/.env
+          echo "EMAIL_FROM=${{ variables.EMAIL_FROM }}" >> ./functions/.env
 
       - name: Build frontend
         run: bun run build
@@ -69,4 +64,7 @@ jobs:
           projectId: coffez-ch
 
       - name: Deploy functions
-        run: bun run firebase-deploy --only-functions
+        uses: dheshalj/deploy-firebase-functions@v0.0.2
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
+          FIREBASE_PROJECT: ${{ variables.FIREBASE_PROJECT_ID }}

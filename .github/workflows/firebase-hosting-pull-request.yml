@@ -27,18 +27,10 @@ jobs:
       - name: Install frontend dependencies
         run: bun install
 
-      - name: Create serviceAccount.env.json & .env files
+      - name: Populate .env file with Github secrets
         run: |
-          echo '${{ secrets.FIREBASE_FRONTEND_APIKEY }}' > ./plugins/serviceAccount.env.json
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./server/serviceAccount.env.json
-          echo 'NUXT_API_KEY=${{ secrets.NUXT_API_KEY }}' > ./.env
-          echo 'NUXT_AUTH_DOMAIN=${{ secrets.NUXT_AUTH_DOMAIN }}' > ./.env
-          echo 'NUXT_DATABASE_URL=${{ secrets.NUXT_DATABASE_URL }}' > ./.env
-          echo 'NUXT_PROJECT_ID=${{ secrets.NUXT_PROJECT_ID }}' > ./.env
-          echo 'NUXT_STORAGE_BUCKET=${{ secrets.NUXT_STORAGE_BUCKET }}' > ./.env
-          echo 'NUXT_MESSAGING_SENDER_ID=${{ secrets.NUXT_MESSAGING_SENDER_ID }}' > ./.env
-          echo 'NUXT_APP_ID=${{ secrets.NUXT_APP_ID }}' > ./.env
-          echo 'NUXT_MEASUREMENT_ID=${{ secrets.NUXT_MEASUREMENT_ID }}' > ./.env
+          echo 'FIREBASE_ADMIN_KEY=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./.env
+          echo 'FIREBASE_FRONTEND_KEY=${{ secrets.FIREBASE_FRONTEND_APIKEY }}' > ./.env
 
       - name: Build frontend
         run: bun run build

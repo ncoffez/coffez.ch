@@ -9,23 +9,31 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install Bun
-        run: curl -fsSL https://bun.sh/install | bash
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
+          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
+          source $GITHUB_ENV
 
       - name: Install frontend dependencies
         run: bun install
 
       - name: Install functions dependencies
-        run: cd functions && npm install & cd ..
+        run: |
+          cd functions
+          npm install
+          cd ..
 
       - name: Create serviceAccount.env.json files
         run: |
@@ -47,5 +55,5 @@ jobs:
       - name: Build functions
         run: bun run functions
 
-      - name: Deploy to firebase
-        run: bun exec firebase deploy
+      - name: Deploy to Firebase
+        run: bun run firebase-deploy

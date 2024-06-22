@@ -3,7 +3,7 @@ name: Deploy to Firebase
 on:
   push:
     branches:
-      - feature/enable-github-ci
+      - master
 
 jobs:
   deploy:

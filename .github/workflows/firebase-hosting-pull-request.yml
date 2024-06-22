@@ -13,9 +13,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: bun run build && bun run functions
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install frontend dependencies
+        run: bun install
+
+      - name: Create serviceAccount.env.json & .env files
+        run: |
+          echo '${{ secrets.FIREBASE_FRONTEND_APIKEY }}' > ./plugins/serviceAccount.env.json
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./server/serviceAccount.env.json
+          echo 'NUXT_API_KEY=${{ secrets.NUXT_API_KEY }}' > ./.env
+          echo 'NUXT_AUTH_DOMAIN=${{ secrets.NUXT_AUTH_DOMAIN }}' > ./.env
+          echo 'NUXT_DATABASE_URL=${{ secrets.NUXT_DATABASE_URL }}' > ./.env
+          echo 'NUXT_PROJECT_ID=${{ secrets.NUXT_PROJECT_ID }}' > ./.env
+          echo 'NUXT_STORAGE_BUCKET=${{ secrets.NUXT_STORAGE_BUCKET }}' > ./.env
+          echo 'NUXT_MESSAGING_SENDER_ID=${{ secrets.NUXT_MESSAGING_SENDER_ID }}' > ./.env
+          echo 'NUXT_APP_ID=${{ secrets.NUXT_APP_ID }}' > ./.env
+          echo 'NUXT_MEASUREMENT_ID=${{ secrets.NUXT_MEASUREMENT_ID }}' > ./.env
+
+      - name: Build frontend
+        run: bun run build
+
+      - name: Deploy to firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}
           projectId: coffez-ch
+          channelId: preview

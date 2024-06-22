@@ -52,5 +52,11 @@ jobs:
       - name: Build functions
         run: bun run functions
 
-      - name: Deploy to Firebase
-        run: bun run firebase-deploy
+      - name: Deploy to firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}
+          channelId: live
+          projectId: coffez-ch
+

@@ -31,11 +31,12 @@ jobs:
           npm install
           cd ..
 
-      - name: Create serviceAccount.env.json files
+      - name: Create serviceAccount.env.json & .env files
         run: |
           echo '${{ secrets.FIREBASE_FRONTEND_APIKEY }}' > ./plugins/serviceAccount.env.json
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > ./server/serviceAccount.env.json
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > ./functions/serviceAccount.env.json
+          echo '${{ secrets.NUXT_ENV }}' > ./.env
 
       - name: Create .env file in functions
         run: |

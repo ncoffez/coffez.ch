@@ -62,5 +62,7 @@ jobs:
           channelId: live
           projectId: coffez-ch
 
-      - name: Deploy functions
-        run: bun run firebase-deploy --only functions
+      - name: Deploy to Firebase Hosting Preview Channel
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting

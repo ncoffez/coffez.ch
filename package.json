@@ -1,5 +1,5 @@
 {
-  "name": "coffez-ch-rebuild",
+  "name": "coffez-ch",
   "private": true,
   "scripts": {
     "build": "nuxt build",

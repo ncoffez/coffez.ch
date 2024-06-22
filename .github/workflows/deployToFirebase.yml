@@ -25,6 +25,7 @@ jobs:
           echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
           echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
           source $GITHUB_ENV
+          source /home/runner/.bashrc
 
       - name: Install frontend dependencies
         run: bun install

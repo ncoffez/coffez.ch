@@ -9,7 +9,6 @@
     "postinstall": "nuxt prepare",
     "functions": "cd functions && npm run build && cd ..",
     "deploy": "bun run build && bun run functions && firebase deploy",
-    "firebase-deploy": "firebase deploy",
     "echo-resource-dir": "echo $RESOURCE_DIR"
   },
   "devDependencies": {

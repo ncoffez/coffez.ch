@@ -25,6 +25,7 @@ jobs:
       - name: Install Firebase CLI
         run: bun install -g firebase-tools
 
+
       - name: Install frontend dependencies
         run: bun install
 

@@ -1,3 +1,4 @@
+
 name: Deploy to Firebase
 
 on:
@@ -8,7 +9,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,6 +26,7 @@ jobs:
       - name: Install Firebase CLI
         run: bun install -g firebase-tools
 
+
       - name: Install frontend dependencies
         run: bun install
 
@@ -34,21 +35,18 @@ jobs:
           cd functions
           npm install
           cd ..
-
       - name: Create serviceAccount.env.json & .env files
         run: |
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./functions/serviceAccount.env.json
           echo 'FIREBASE_ADMIN_KEY=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}' > ./.env
           echo 'FIREBASE_FRONTEND_KEY=${{ secrets.FIREBASE_FRONTEND_APIKEY }}' > ./.env
-
       - name: Create .env file in functions
         run: |
           echo "SLACK_TOKEN=${{ secrets.SLACK_TOKEN }}" > ./functions/.env
           echo "POSTMARK_TOKEN=${{ secrets.POSTMARK_TOKEN }}" >> ./functions/.env
-          echo "SLACK_COMMANDES=${{ variables.SLACK_COMMANDES }}" >> ./functions/.env
-          echo "COMPANY_ADDRESS=${{ variables.COMPANY_ADDRESS }}" >> ./functions/.env
-          echo "EMAIL_FROM=${{ variables.EMAIL_FROM }}" >> ./functions/.env
-
+          echo "SLACK_COMMANDES=${{ vars.SLACK_COMMANDES }}" >> ./functions/.env
+          echo "COMPANY_ADDRESS=${{ vars.COMPANY_ADDRESS }}" >> ./functions/.env
+          echo "EMAIL_FROM=${{ vars.EMAIL_FROM }}" >> ./functions/.env
       - name: Build frontend
         run: bun run build
 
@@ -63,8 +61,8 @@ jobs:
           channelId: live
           projectId: coffez-ch
 
-      - name: Deploy functions
-        uses: dheshalj/deploy-firebase-functions@v0.0.2
+      - name: Deploy to Firebase
+        uses: lowply/deploy-firebase@v0.0.5
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
-          FIREBASE_PROJECT: ${{ variables.FIREBASE_PROJECT_ID }}
+          FIREBASE_PROJECT: ${{ vars.FIREBASE_PROJECT_ID }}

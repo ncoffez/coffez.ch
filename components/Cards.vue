@@ -37,7 +37,8 @@ video
 h1
 	margin-block: .5em .8em
 
-img, video
+img, video, picture
+	aspect-ratio: 1
 	height: clamp(200px, 100%, 100%)
 
 

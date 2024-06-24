@@ -3,7 +3,7 @@ export default {
     {
       id: 1,
       header: "😎 Wer sind wir?",
-      lead: "Ein Informatiker, eine HR-Mitarbeiterin, ein Karikaturist und eine Lehrerin, die gerne schreibt: eine magische Kombination! Unsere mehrsprachige Schweizer Familie stellt sich der Herausforderung, die Erde vor Lachen zum Beben zu bringen, indem sie Kunst und Lebensfreude miteinander verbindet.",
+      lead: "Zwei Köpfe, zwei Welten – ein Informatiker und ein Künstler. Entdecken Sie, wie unsere Schweizer Familie Technologie und Kreativität verbindet, um einzigartige Kunstwerke voller Lebensfreude zu schaffen.",
       action: "Mehr Infos",
       url: "/About",
       media: {

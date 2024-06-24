@@ -3,7 +3,7 @@ export default {
     {
       id: 1,
       header: "😎 Who Are We?",
-      lead: "A computer scientist, an HR employee, a caricaturist, and a teacher who loves to write: a magical combination! Our multilingual Swiss family takes on the challenge of shaking the Earth with laughter by blending art and joie de vivre.",
+      lead: "Two minds, two worlds – a computer scientist and an artist. Discover how our Swiss family merges technology and creativity to create unique works of art brimming with the joy of living.",
       action: "More Info",
       url: "/About",
       media: {
@@ -92,8 +92,8 @@ export default {
       url: "/Order",
       media: {
         type: "image",
-        legacy: "/img/800x800_business.jpg",
-        modern: "/img/800x800_business.webp",
+        legacy: "/img/800x800_woman_looks_at_tablet.jpg",
+        modern: "/img/800x800_woman_looks_at_tablet.webp",
       },
     },
     {

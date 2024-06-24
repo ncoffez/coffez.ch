@@ -3,7 +3,7 @@ export default {
     {
       id: 1,
       header: "😎 Qui sommes-nous?",
-      lead: "Un informaticien, une employée des ressources humaines, un caricaturiste et une enseignante qui aime écrire : une combinaison magique ! Notre famille multilingue suisse relève le défi de faire trembler la Terre de rire en combinant l'art et la joie de vivre.",
+      lead: "Deux esprits, deux univers – un informaticien et un artiste. Découvrez comment notre famille suisse fusionne technologie et créativité pour donner vie à des œuvres d'art vibrantes de joie de vivre.",
       action: "Plus d'infos",
       url: "/About",
       media: {

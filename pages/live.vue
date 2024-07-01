@@ -14,7 +14,7 @@
           <img v-if="index === 0" :src="image.urlFirebaseReduced" :alt="image.name">
           <img v-else :src="image.urlFirebaseWebp" :alt="image.name">
         </nuxtLink>
-        <small>{{ intlFormatDistance(image.createdDate.toDate(), now) }}</small>
+        <small>{{ relativeDate(image.createdDate.toDate()) }}</small>
       </div>
     </TransitionGroup>
   </section>
@@ -26,7 +26,7 @@
 </template>
 <script lang='ts' setup>
 import { useNuxtApp } from '#app';
-import { intlFormatDistance, subDays } from 'date-fns';
+import { intlFormatDistance, subDays, differenceInDays, formatRelative } from 'date-fns';
 import { collection, query, onSnapshot, CollectionReference, Firestore, orderBy, getDoc, doc, Timestamp, where } from "firebase/firestore";
 
 const nuxtApp = useNuxtApp();
@@ -38,6 +38,14 @@ let now = ref(new Date());
 onMounted(() => setInterval(() => {
   now.value = new Date();
 }, 1000))
+
+const relativeDate = (date: Date): string => {
+  console.log(differenceInDays(date, new Date()) >= -2)
+  if (differenceInDays(date, new Date()) >= -2) return intlFormatDistance(date, new Date())
+  else {
+    return formatRelative(date, now.value);
+  }
+}
 
 const settingsData: { title: string, startDate: Timestamp | Date } = (await getDoc(doc(db, 'settings/gallery'))).data() as any;
 if (settingsData) settings.value = { ...settingsData }

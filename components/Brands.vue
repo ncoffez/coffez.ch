@@ -2,7 +2,7 @@
 <section id="brands">
   <div class="grid">
     <div class="logo" v-for="logo of logos">
-      <img :src="`/img/Logos/${logo}`" :alt="logo" srcset="">
+      <NuxtPicture preset="logos" :imgAttrs="{style: { borderRadius: 'unset' }}" :src="`/img/Logos/${logo}`" :alt="logo" />
     </div>
   </div>
   <footer aria-hidden="true">* {{$t('theseBrandsTrustUs')}}</footer>

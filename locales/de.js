@@ -92,8 +92,8 @@ export default {
       url: "/Order",
       media: {
         type: "image",
-        legacy: "/img/800x800_business.jpg",
-        modern: "/img/800x800_business.webp",
+        legacy: "/img/800x800_woman_looks_at_tablet.jpg",
+        modern: "/img/800x800_woman_looks_at_tablet.webp",
       },
     },
     {

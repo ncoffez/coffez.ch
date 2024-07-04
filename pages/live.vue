@@ -39,13 +39,7 @@ onMounted(() => setInterval(() => {
   now.value = new Date();
 }, 1000))
 
-const relativeDate = (date: Date): string => {
-  console.log(differenceInDays(date, new Date()) >= -2)
-  if (differenceInDays(date, new Date()) >= -2) return intlFormatDistance(date, new Date())
-  else {
-    return formatRelative(date, now.value);
-  }
-}
+
 
 const settingsData: { title: string, startDate: Timestamp | Date } = (await getDoc(doc(db, 'settings/gallery'))).data() as any;
 if (settingsData) settings.value = { ...settingsData }

@@ -1,31 +1,38 @@
-import { logger } from "firebase-functions/v2";
 import admin from "./firestore";
 import { FieldValue } from "firebase-admin/firestore";
 
 export async function createNewGallery(req: any, res: any) {
-  const { command, text, response_url, user_name } = req.body;
+  const { command, text } = req.body;
 
-  logger.debug(
-    `User ${user_name} triggered the command ${command} ${
-      text ? "with the attribute '" + text + "'" : "Without attributes"
-    }.`
-  );
-
-  logger.log({ response_url });
-  const docRef = admin.firestore().collection("settings").doc("gallery");
-
-  if (text) {
-    const resultTitle = await docRef.update({ title: text });
-    logger.debug(`Updated title: ${text},`, resultTitle);
-  }
+  const currentEvent = await useCurrentEvent();
 
   if (command === "/new") {
-    const resultDate = await docRef.update({ startDate: FieldValue.serverTimestamp() });
-    logger.debug(`Updated startDate,`, resultDate);
-  }
+    if (currentEvent.ref) await currentEvent.ref.update({ endDate: FieldValue.serverTimestamp() });
+    const newEvent = await admin.firestore().collection("events").add({
+      startDate: FieldValue.serverTimestamp(),
+      title: text || "",
+    });
+    return res.status(200).send(`Created new event ${newEvent.id} with title ${text}.`);
 
-  const response = res.status(200).send("Updated values in database successfully.");
-  return response;
+  } else if (command === "/title") {
+    if (!text) throw new Error(`Need title to update current event with method ${command}.`);
+    if (!currentEvent.id || !currentEvent.ref || !currentEvent.data) throw new Error(`No current event found.`);
+
+    await currentEvent.ref.update({ title: text });
+    return res.status(200).send(`Updated title of event ${currentEvent.id}, ${currentEvent.data.title} => ${text}`);
+  } else {
+    return res.status(400).send("Invalid command. Command must be either '/new' or '/title'.");
+  }
+}
+
+
+const useCurrentEvent = async () => {
+  const currentEvent = await admin.firestore().collection('events').orderBy('startDate', 'desc').limit(1).get();
+  const exists = currentEvent.docs[0]?.exists;
+  if (!exists) return { id: null, ref: null, data: null };
+  const id = currentEvent.docs[0].id;
+  const ref = admin.firestore().collection("events").doc(id);
+  return { id, ref, exists, data: currentEvent.docs[0].data() };
 }
 
 // body: {

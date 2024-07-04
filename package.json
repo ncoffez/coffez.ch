@@ -6,6 +6,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxtpreview",
+    "test": "bun test --watch",
     "postinstall": "nuxt prepare",
     "functions": "cd functions && npm run build && cd ..",
     "deploy": "bun run build && bun run functions && firebase deploy",
@@ -13,6 +14,7 @@
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.1.1",
+    "@types/bun": "^1.1.6",
     "firebase-admin": "^12.0.0",
     "firebase-functions": "^4.7.0",
     "nuxt": "^3.10.2",

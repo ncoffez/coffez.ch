@@ -1,19 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  image: {
-    presets: {
-      cards: {
-        modifiers: {
-          fit: 'cover',
-        },
-      },
-      logos: {
-        modifiers: {
-          quality: 40,
-        }
-      }
-    },
-  },
   devtools: { enabled: false },
   runtimeConfig: {
     public: {
@@ -95,7 +81,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@nuxtjs/i18n", "@nuxt/image"],
+  modules: ["@nuxtjs/i18n"],
   i18n: {
     vueI18n: "./i18.config.js",
     strategy: "no_prefix",
@@ -121,4 +107,5 @@ export default defineNuxtConfig({
       fallbackLocale: "de",
     },
   },
+  compatibilityDate: '2024-07-04',
 });

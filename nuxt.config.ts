@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: { enabled: true },
+  icon: {
+    mode: "svg"
+  },
   runtimeConfig: {
     public: {
       FIREBASE_FRONTEND_KEY: process.env.FIREBASE_FRONTEND_KEY,
@@ -81,7 +84,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@nuxtjs/i18n"],
+  modules: ["@nuxtjs/i18n", "@nuxt/icon"],
   i18n: {
     vueI18n: "./i18.config.js",
     strategy: "no_prefix",

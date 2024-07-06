@@ -1,11 +1,13 @@
 <template>
   <section id="gallery" v-if="images.length > 0">
     <hgroup id="title-large-screens">
-      <h2 id="url-title">coffez.ch/live</h2>
-      <h4>{{ settings.title }}</h4>
+      <h2 id="url-title">
+        <NuxtLink to="/">coffez.ch</NuxtLink>/live
+      </h2>
+      <h4 @click="">{{ settings?.title }}</h4>
     </hgroup>
     <hgroup id="title-small-screens">
-      <h2>{{ settings.title }}</h2>
+      <h2>{{ settings?.title }}</h2>
     </hgroup>
     <TransitionGroup name="grid" tag="div" class="custom-grid">
       <div v-for="(image, index) in images" :class="{ 'image-box': true, 'large-first-image': index === 0 }"
@@ -20,32 +22,24 @@
   </section>
 
   <section id="placeholder" v-else>
-    <div id="up-next">{{ settings.title }}</div>
+    <div id="up-next">{{ settings?.title }}</div>
     <UiComingSoon />
   </section>
 </template>
 <script lang='ts' setup>
-import { useNuxtApp } from '#app';
-import { intlFormatDistance, subDays, differenceInDays, formatRelative } from 'date-fns';
-import { collection, query, onSnapshot, CollectionReference, Firestore, orderBy, getDoc, doc, Timestamp, where } from "firebase/firestore";
+import { addDays, subDays } from "date-fns";
+import { collection, query, onSnapshot, CollectionReference, orderBy, where } from "firebase/firestore";
 
-const nuxtApp = useNuxtApp();
-const db = nuxtApp.$db as Firestore;
-
-let settings: Ref<{ title: string, startDate: Timestamp | Date }> = ref({ title: 'Coffez.ch - Live', startDate: Timestamp.fromDate(subDays(new Date(), 1.2)) })
-let now = ref(new Date());
-
-onMounted(() => setInterval(() => {
-  now.value = new Date();
-}, 1000))
-
-
-
-const settingsData: { title: string, startDate: Timestamp | Date } = (await getDoc(doc(db, 'settings/gallery'))).data() as any;
-if (settingsData) settings.value = { ...settingsData }
+const { $db: db } = useNuxtApp();
+const { event } = useRoute().params;
+const { data: settings } = await useFetch(`/api/getEvent/${event}`);
 
 const portraitsRef: CollectionReference = collection(db, "portraits");
-const q = query(portraitsRef, where('createdDate', '>=', settings.value.startDate), orderBy('createdDate', 'desc'), orderBy('urlFirebaseWebp'));
+const q = query(portraitsRef,
+  where('createdDate', '>=', new Date(settings.value?.startDate || subDays(new Date(), 1))),
+  where('createdDate', '<=', new Date(settings.value?.endDate || addDays(new Date(), 5))),
+  orderBy('createdDate', 'desc'),
+  orderBy('urlFirebaseWebp'));
 const images: Ref<any[]> = ref([]);
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -57,8 +51,58 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 });
 
 onUnmounted(unsubscribe);
+
+let meta = {
+  title: settings.value?.title,
+  description: ``,
+  image: `https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg`,
+  url: `https://coffez.ch/live/${event}`,
+  start: {
+    date: new Date(settings.value?.startDate).toLocaleDateString(),
+    valid: !isNaN(new Date(settings.value?.startDate).getTime())
+  },
+  end: {
+    date: new Date(settings.value?.endDate).toLocaleDateString(),
+    valid: !isNaN(new Date(settings.value?.endDate).getTime())
+  },
+}
+
+if (meta.start.valid && meta.end.valid) meta.description += ` Gallery of caricatures drawn from ${meta.start.date} to ${meta.end.date}.`;
+if (meta.start.valid && !meta.end.valid) meta.description += ` Join the live event that started on ${meta.start.date}.`;
+
+useSeoMeta({
+  description: meta.description,
+  ogTitle: meta.title,
+  ogDescription: meta.description,
+  ogImage: meta.image,
+  ogUrl: `https://coffez.ch/live/${event}`,
+  twitterTitle: meta.title,
+  twitterDescription: meta.description,
+  twitterImage: meta.image,
+  twitterCard: 'summary'
+})
+
+useHead({
+  htmlAttrs: {
+    lang: 'en'
+  },
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon.png'
+    }
+  ],
+  title: meta.title,
+})
+
 </script>
 <style lang='sass' scoped>
+a
+  text-decoration: none
+  display: inline-block
+  margin-right: .1rem
+  cursor: pointer
 
 
 #gallery

@@ -1,23 +1,19 @@
 <template>
-<section>
-	<div class="grid">
-		<div>
-			<h1>
-				{{ $t('header.title.text') }} <span class="colored-text">{{ $t('header.title.special') }}</span>
-			</h1>
-			<p>{{ $t('header.subtitle') }}</p>
-			<button @click="scrollTo('contact')">{{ $t('header.button') }}</button>
+	<section class="max-w-screen-2xl">
+		<div class="grid px-12 md:grid-cols-2 sm:my-16 md:mb-24 md:px-8 lg:px-40 xl:px-64 items-center">
+			<div class="px-2 md:px-0 mx-auto">
+				<h1 class="text-5xl font-black pb-6">
+					{{ $t('header.title.text') }} <span
+						class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">{{
+							$t('header.title.special') }}</span>
+				</h1>
+				<p class="text-lg max-w-prose">{{ $t('header.subtitle') }}</p>
+				<button class="" @click="scrollTo('contact')">{{ $t('header.button') }}</button>
+			</div>
+			<img src="/img/PascalCoffez.jpg" alt=""
+				class="rounded-full aspect-square object-cover w-[300px] h-[300px] hidden md:block mx-auto" />
 		</div>
-		<div class="img-box">
-			<picture>
-				<source srcset="/img/PascalCoffez.webp" type="image/webp" />
-				<source srcset="/img/PascalCoffez.jpg" type="image/jpeg" />
-				<img src="/img/PascalCoffez.jpg" alt="" />
-			</picture>
-		</div>
-	</div>
-	<Brands />
-</section>
+	</section>
 </template>
 
 <script setup>
@@ -25,43 +21,4 @@ import { scrollTo } from '~~/methods/scrollTo';
 </script>
 
 <style lang="sass" scoped>
-h1
-	font-size: 4em
-	line-height: 1em
-	margin-block: 1em .5em
-	font-weight: 900
-	letter-spacing: -1px
-
-.img-box
-	padding: 5em
-	img
-		aspect-ratio: 1
-		border-radius: 40% 10%
-
-@media (max-width: 991px)
-	.img-box
-		display: none
-
-@media (max-width: 500px)
-	h1
-		margin-top: 1rem
-		font-size: 2.7em
-
-	section
-		margin-top: 2em
-
-span
-	overflow: hidden
-	white-space: nowrap
-
-.colored-text
-	background: -webkit-linear-gradient(45deg, #8e24aa, var(--primary))
-	-webkit-background-clip: text
-	-webkit-text-fill-color: transparent
-
-@media (prefers-color-scheme: light)
-	.colored-text
-		background: -webkit-linear-gradient(45deg, #5e35b1, var(--primary))
-		-webkit-background-clip: text
-		-webkit-text-fill-color: transparent
 </style>

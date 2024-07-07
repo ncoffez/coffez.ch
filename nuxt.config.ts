@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: { enabled: true },
+  icon: {
+    mode: "svg"
+  },
   runtimeConfig: {
     public: {
       FIREBASE_FRONTEND_KEY: process.env.FIREBASE_FRONTEND_KEY,
@@ -26,26 +29,16 @@ export default defineNuxtConfig({
     head: {
       title: "Coffez.ch",
       link: [
-        {
-          rel: "stylesheet",
-          href: "https://unpkg.com/@picocss/pico@latest/css/pico.pink.min.css",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/icon?family=Material+Icons",
-        },
         { rel: "icon", type: "image/png", href: "/favicon.png" },
       ],
       htmlAttrs: {
         lang: "de-CH",
         "data-theme": "dark",
+        class: "bg-zinc-900 text-stone-300"
       },
       meta: [
         { charset: "utf-8" },
-        {
-          name: "viewport",
-          content: "width=device-width, initial-scale=1",
-        },
+        { name: "viewport", content: "width=device-width, initial-scale=1.0" },
         {
           hid: "description",
           name: "description",
@@ -57,23 +50,14 @@ export default defineNuxtConfig({
           content:
             "Karikaturen, Veranstaltungen, Digitale Karikaturen, Hochzeitskarikaturen, Personalisierte Karikaturen, Unterhaltung für Veranstaltungen, Portraits, Zeichnungen, Caricatures",
         },
-        {
-          property: "og:title",
-          content: "Coffez.ch - Karikaturen für Veranstaltungen",
-        },
+        { property: "og:title", content: "Coffez.ch - Karikaturen für Veranstaltungen" },
         {
           property: "og:description",
           content:
             "Coffez.ch bietet einzigartige und personalisierte Karikaturen für Veranstaltungen. Ob digital oder auf Papier, wir haben für alle Ihre Veranstaltungen die passende Lösung.",
         },
-        {
-          property: "og:type",
-          content: "website",
-        },
-        {
-          property: "og:url",
-          content: "https://coffez.ch",
-        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "https://coffez.ch" },
         {
           property: "og:image",
           content: "https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg",
@@ -81,7 +65,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@nuxtjs/i18n"],
+  modules: ["@nuxtjs/i18n", "@nuxt/icon"],
   i18n: {
     vueI18n: "./i18.config.js",
     strategy: "no_prefix",
@@ -108,4 +92,10 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-07-04',
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 });

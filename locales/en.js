@@ -20,8 +20,8 @@ export default {
       url: "/Artists/PascalCoffez",
       media: {
         type: "image",
-        legacy: "/img/800x800_PascalCoffez_Rheinfall2.jpg",
-        modern: "/img/800x800_PascalCoffez_Rheinfall2.webp",
+        legacy: "/img/800x800_PascalCoffez_drawing_on_iPad.jpg",
+        modern: "/img/800x800_PascalCoffez_drawing_on_iPad.webp",
       },
     },
     {
@@ -127,7 +127,7 @@ export default {
       special: "Masterpiece",
     },
     subtitle:
-      "Experience an event that will be remembered. Art and entertainment in perfect harmony, presented by the talented caricaturist Pascal Coffez. Your guests will be delighted, and the atmosphere will be relaxed and pleasant—exactly what makes an event successful.",
+      "Experience an event that will be remembered. Art and entertainment in perfect harmony, presented by the talented caricaturist Pascal Coffez. Your guests will be delighted, and the atmosphere will be relaxed and pleasant — exactly what makes an event successful.",
     button: "Contact Us",
     link: "contact",
   },

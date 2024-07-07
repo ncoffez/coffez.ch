@@ -1,67 +1,37 @@
 <template>
-	<section id="cards">
-		<article v-for="card in ($tm('sections') as any)" :key="card.id" class="grid">
-			<div id="image">
-				<video v-if="card?.media?.type === 'video'" autoplay="true" muted="true" loop="true" playsinline="true">
+	<section id="cards" class="gap-16 grid w-full sm:px-12 md:px-0 lg:px-12 xl:max-w-screen-lg">
+		<article v-for="(card, index) in ($tm('sections') as any)" :key="card.id" class="grid gap-8"
+			:class="index % 2 === 0 ? 'md:grid-cols-[4fr,3fr]' : 'md:grid-cols-[3fr,4fr]'">
+			<div id="image" :class="index % 2 === 0 ? 'md:order-1' : 'md:order-2'">
+				<video class="block w-full aspect-square object-cover rounded-xl md:rounded-3xl"
+					v-if="card?.media?.type === 'video'" autoplay="true" muted="true" loop="true" playsinline="true">
 					<source :src="card.media?.modern" type="video/webm" />
 					<source :src="card.media?.legacy" type="video/mp4" />
 				</video>
-				<picture v-else>
+				<picture v-else class="aspect-square object-cover rounded-xl md:rounded-3xl">
 					<source :srcset="card.media?.modern" type="image/webp" />
 					<source :srcset="card.media?.legacy" type="image/jpeg" />
-					<img :src="card.media?.legacy" :alt="card.header" />
+					<img :src="card.media?.legacy" :alt="card.header"
+						class="aspect-square object-cover rounded-xl md:rounded-3xl" />
 				</picture>
 			</div>
-			<div id="text">
-				<h1>{{ card.header }}</h1>
-				<p>{{ card.lead }}</p>
-				<button class="" @click="handleAction(card.url)" v-if="card.action">{{ card.action }}</button>
+			<div id="text" :class="index % 2 === 0 ? 'md:order-2' : 'md:order-1'">
+				<h1 class="text-3xl font-bold my-4 text-slate-100">{{ card.header }}</h1>
+				<p class="text-slate-400 text-md pb-2 max-w-prose md:text-lg leading-relaxed">{{ card.lead }}</p>
+				<button @click="handleAction(card.url)" v-if="card.action">{{ card.action }}</button>
 			</div>
 		</article>
 	</section>
-	</template>
-	
-	<script setup lang="ts">
-	import { scrollTo } from '~~/methods/scrollTo';
-	
-	async function handleAction(action: string) {
-		if (['/live'].includes(action)) { await navigateTo(action) }
-		else { scrollTo('contact') }
-	}
-	</script>
-	
-	<style lang="sass" scoped>
-	video
-		aspect-ratio: 1
-	
-	h1
-		margin-block: .5em .8em
-	
-	img, video, picture
-		aspect-ratio: 1
-		height: clamp(200px, 100%, 100%)
-	
-	
-	article
-		@media (min-width: 1200px)
-			padding-inline: 7em
-		@media (min-width: 992px)
-			gap: 2em
-			grid-template-columns: 4fr 3fr
-			&:nth-of-type(2n)
-				grid-template-columns: 3fr 4fr
-				#image
-					order: 2
-		@media (max-width: 991px)
-			padding-inline: .5em
-		
-		
-	@media (min-width: 992px)
-	
-	
-	@media (max-width: 991px)
-		img, video
-			max-height: 70vh
-			
+</template>
+
+<script setup lang="ts">
+import { scrollTo } from '~~/methods/scrollTo';
+
+async function handleAction(action: string) {
+	if (['/live'].includes(action)) { await navigateTo(action) }
+	else { scrollTo('contact') }
+}
+</script>
+
+<style lang="sass" scoped>
 	</style>
-	

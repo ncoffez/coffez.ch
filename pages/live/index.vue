@@ -1,11 +1,13 @@
 <template>
   <section id="gallery" v-if="images.length > 0">
     <hgroup id="title-large-screens">
-      <h2 id="url-title">coffez.ch/live</h2>
-      <h4>{{ settings.title }}</h4>
+      <h2 id="url-title">
+        <NuxtLink to="/">coffez.ch</NuxtLink>/live
+      </h2>
+      <h4 @click="">{{ settings?.title }}</h4>
     </hgroup>
     <hgroup id="title-small-screens">
-      <h2>{{ settings.title }}</h2>
+      <h2>{{ settings?.title }}</h2>
     </hgroup>
     <TransitionGroup name="grid" tag="div" class="custom-grid">
       <div v-for="(image, index) in images" :class="{ 'image-box': true, 'large-first-image': index === 0 }"
@@ -20,32 +22,25 @@
   </section>
 
   <section id="placeholder" v-else>
-    <div id="up-next">{{ settings.title }}</div>
+    <div id="up-next">{{ settings?.title }}</div>
     <UiComingSoon />
   </section>
 </template>
 <script lang='ts' setup>
-import { useNuxtApp } from '#app';
+
 import { intlFormatDistance, subDays, differenceInDays, formatRelative } from 'date-fns';
 import { collection, query, onSnapshot, CollectionReference, Firestore, orderBy, getDoc, doc, Timestamp, where } from "firebase/firestore";
 
-const nuxtApp = useNuxtApp();
-const db = nuxtApp.$db as Firestore;
+definePageMeta({ middleware: 'live-event' })
+const { $db: db } = useNuxtApp();
 
-let settings: Ref<{ title: string, startDate: Timestamp | Date }> = ref({ title: 'Coffez.ch - Live', startDate: Timestamp.fromDate(subDays(new Date(), 1.2)) })
-let now = ref(new Date());
-
-onMounted(() => setInterval(() => {
-  now.value = new Date();
-}, 1000))
-
-
-
-const settingsData: { title: string, startDate: Timestamp | Date } = (await getDoc(doc(db, 'settings/gallery'))).data() as any;
-if (settingsData) settings.value = { ...settingsData }
+const settings = ref({ title: 'Coffez.ch - Live', startDate: new Date(subDays(new Date(), 60)) })
 
 const portraitsRef: CollectionReference = collection(db, "portraits");
-const q = query(portraitsRef, where('createdDate', '>=', settings.value.startDate), orderBy('createdDate', 'desc'), orderBy('urlFirebaseWebp'));
+const q = query(portraitsRef,
+  where('createdDate', '>=', settings.value?.startDate || Timestamp.fromDate(subDays(new Date(), 1.2))),
+  orderBy('createdDate', 'desc'),
+  orderBy('urlFirebaseWebp'));
 const images: Ref<any[]> = ref([]);
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -59,6 +54,11 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 onUnmounted(unsubscribe);
 </script>
 <style lang='sass' scoped>
+a
+  text-decoration: none
+  display: inline-block
+  margin-right: .1rem
+  cursor: pointer
 
 
 #gallery

@@ -1,0 +1,97 @@
+<template>
+  <div id="gallery" class="md:overflow-y-clip sm:h-vh px-8 overscroll-none" v-if="images.length > 0">
+    <section id="title" class="w-full p-4 sticky top-0 z-2 bg-zinc-900">
+      <h2 class="hidden md:block text-4xl font-bold" id="url-title">
+        <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
+      </h2>
+      <h4 class="text-2xl font-medium md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
+    </section>
+    <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
+      <nuxtLink :to="'/sales/' + image.id" :key="image.id" :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
+        v-for="(image, index) in images">
+        <img :alt="image.name" :src="index === 0 ? image.urlFirebaseReduced : image.urlFirebaseWebp"
+          class="object-cover rounded-md w-full flex-grow">
+        <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{ relativeDate(image.createdDate.toDate()) }}</p>
+      </nuxtLink>
+    </section>
+  </div>
+
+  <section id="placeholder" v-else>
+    <div id="up-next">{{ settings?.title }}</div>
+    <UiComingSoon />
+  </section>
+</template>
+<script lang='ts' setup>
+import { addDays, subDays } from "date-fns";
+import { collection, query, onSnapshot, CollectionReference, orderBy, where } from "firebase/firestore";
+
+const { $db: db } = useNuxtApp();
+const { event } = useRoute().params;
+const { data: settings } = await useFetch(`/api/getEvent/${event}`);
+
+const portraitsRef: CollectionReference = collection(db, "portraits");
+const q = query(portraitsRef,
+  where('createdDate', '>=', new Date(settings.value?.startDate || subDays(new Date(), 1))),
+  where('createdDate', '<=', new Date(settings.value?.endDate || addDays(new Date(), 5))),
+  orderBy('createdDate', 'desc'),
+  orderBy('urlFirebaseWebp'));
+const images: Ref<any[]> = ref([]);
+
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  querySnapshot.docChanges().forEach((change) => {
+    const data = { id: change.doc.id, ...change.doc.data() }
+    if (change.newIndex === 0) images.value.unshift(data);
+    else { images.value.push(data) }
+  });
+});
+
+onUnmounted(unsubscribe);
+
+let meta = {
+  title: settings.value?.title,
+  description: ``,
+  image: `https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg`,
+  url: `https://coffez.ch/live/${event}`,
+  start: {
+    date: new Date(settings.value?.startDate).toLocaleDateString(),
+    valid: !isNaN(new Date(settings.value?.startDate).getTime())
+  },
+  end: {
+    date: new Date(settings.value?.endDate).toLocaleDateString(),
+    valid: !isNaN(new Date(settings.value?.endDate).getTime())
+  },
+}
+
+if (meta.start.valid && meta.end.valid) meta.description += ` Gallery of caricatures drawn from ${meta.start.date} to ${meta.end.date}.`;
+if (meta.start.valid && !meta.end.valid) meta.description += ` Join the live event that started on ${meta.start.date}.`;
+
+useSeoMeta({
+  description: meta.description,
+  ogTitle: meta.title,
+  ogDescription: meta.description,
+  ogImage: meta.image,
+  ogUrl: `https://coffez.ch/live/${event}`,
+  twitterTitle: meta.title,
+  twitterDescription: meta.description,
+  twitterImage: meta.image,
+  twitterCard: 'summary'
+})
+
+useHead({
+  htmlAttrs: {
+    lang: 'en'
+  },
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon.png'
+    }
+  ],
+  title: meta.title,
+})
+
+</script>
+
+<style lang="sass" scoped>
+</style>

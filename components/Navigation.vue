@@ -1,61 +1,10 @@
 <template>
-	<header id="desktop-top-nav">
-		<nav class="container">
-			<div id="logo">Coffez.ch</div>
-			<ul id="menu">
-				<li @click="scrollTo('cards')">{{ $t('navigation.about') }}</li>
-				<!-- <li @click="scrollTo('portfolio')">{{ $t('navigation.portfolio') }}</li> -->
-				<li><a href="/live">{{ $t('navigation.portfolio') }}</a></li>
-				<li @click="scrollTo('contact')">{{ $t('navigation.contact') }}</li>
-			</ul>
-		</nav>
-	</header>
+	<div id="logo"
+		class="leading-snug pt-4 pb-1 font-light text-2xl text-white uppercase 
+		mx-auto underline decoration-pink-300 tracking-tight decoration-4 
+		underline-offset-8 w-fit px-2">
+		Coffez.ch</div>
 </template>
 
-<script setup lang="ts">
-import { scrollTo } from '~~/methods/scrollTo';
-</script>
-
 <style lang="sass" scoped>
-header
-	margin-top: 1em
-
-nav
-	display: grid
-	grid-template-columns: 2fr 4fr 1fr
-	gap: 2em
-
-#logo
-	font-size: 1.5em
-	font-weight: 700
-	display: grid
-	place-items: center start
-
-#menu
-	justify-self: center
-	gap: 1em
-
-	li
-		padding: .5em .8em
-		border-radius: .5em
-		cursor: pointer
-		white-space: nowrap
-
-	li:hover
-		// background-color: var(--muted-color)
-		transition: all .25s ease-in
-		color: var(--primary-hover)
-
-@media (max-width: 900px)
-	#menu
-		gap: 0em
-
-@media (max-width: 720px)
-	#menu
-		display: none
-
-
-@media (min-width: 1200px)
-	nav
-		grid-template-columns: 1fr 2fr 1fr
 </style>

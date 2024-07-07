@@ -1,14 +1,14 @@
 <template>
-<div class="grid">
-  <div id="image">
+<div class="w-fit flex flex-col lg:grid lg:grid-cols-2 gap-6 p-8 max-w-screen-lg mx-auto">
+  <div id="image" class="max-w-[500px]">
     <img v-if="data?.urlFirebaseOriginalWithQR" :src="data?.urlFirebaseOriginalWithQR" alt="" srcset="" />
     <img v-else :src="data?.urlFirebaseReduced" alt="" srcset="" />
   </div>
   <div id="text">
     <hgroup>
-      <h1>{{ data?.originalName }}</h1>
-      <p>{{ toDate(data?.createdDate) }}</p>
-      <i>{{ data?.size }}</i>
+      <h1 class="text-3xl font-bold">{{ data?.originalName }}</h1>
+      <p class="text-lg leading-loose text-slate-500">{{ toDate(data?.createdDate) }}</p>
+      <div class="inline-block text-base font-light px-2 py-1 bg-zinc-700 text-stone-400 rounded-full my-2">{{ data?.size }}</div>
     </hgroup>
   </div>
 </div>
@@ -40,24 +40,4 @@ const toDate = (date: { _seconds: any; _nanoseconds: any }) => {
 </script>
 
 <style lang="sass" scoped>
-.grid
-  padding: 2em
-  height: 100vh
-  grid-template-columns: 1fr
-
-#image
-  height: 100%
-  width: fit-content
-  overflow: hidden
-
-  img
-    height: 100%
-    width: auto
-    object-fit: scale-down
-
-#text
-  place-items: center
-  width: 100%
-  height: 100%
-  align-content: center
 </style>

@@ -20,8 +20,8 @@ export default {
       url: "/Artists/PascalCoffez",
       media: {
         type: "image",
-        legacy: "/img/800x800_PascalCoffez_Rheinfall2.jpg",
-        modern: "/img/800x800_PascalCoffez_Rheinfall2.webp",
+        legacy: "/img/800x800_PascalCoffez_drawing_on_iPad.jpg",
+        modern: "/img/800x800_PascalCoffez_drawing_on_iPad.webp",
       },
     },
     {

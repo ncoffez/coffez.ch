@@ -1,44 +1,10 @@
-// The full css is here: https://unpkg.com/@picocss/pico@latest/css/pico.min.css
-// @import url('./backlight.sass')
-@import url('./theme.scss')
+@tailwind base
+@tailwind components
+@tailwind utilities
 
-img, video
-	width: 100%
-	object-fit: cover
-	object-position: center
-	border-radius: .5em
+button
+	@apply  px-4 py-3 my-4 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded-md  focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-offset-2 active:scale-95
+	@apply bg-pink-800 hover:bg-pink-700 focus-visible:ring-pink-700
 
-article
-	box-shadow: unset
-	background-color: color-mix(in srgb, var(--background-color) 30%, transparent)
-	&:not(:first-of-type)
-		border-top-left-radius: 0
-		border-top-right-radius: 0
-	&:not(:last-of-type)
-		border-bottom-left-radius: 0
-		border-bottom-right-radius: 0
-
-html, body
-	overflow-x: hidden
-	min-height: 100vh
-
-body
-	overflow-y: hidden
-
-#__nuxt
-	display: contents
-
-section:not(:first-of-type)
-	margin-block: 5em 1em
-
-@media (max-width: 575px)
-:root
-	--font-size: 18px
-
-@media (min-width: 576px)
-:root
-	--font-size: 19px
-
-@media (min-width: 1200px)
-:root
-	--font-size: 20px
+__nuxt
+		display: contents

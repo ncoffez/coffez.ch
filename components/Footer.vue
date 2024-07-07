@@ -18,36 +18,3 @@
 </template>
 
 <script setup lang="ts"></script>
-
-<style lang="sass" scoped>
-footer
-	margin-block: 2em 3em
-
-.grid
-	place-items: center
-	padding-block: 1em
-	&> *
-		place-self: center end
-
-#legal-mentions
-	text-align: end
-
-#copyright
-	text-align: center
-
-#language-switcher
-	place-self: center start
-	min-width: 60%
-	margin-block: auto
-
-@media screen and (max-width: 900px)
-	.grid
-		place-items: center
-		gap: 1em
-
-	#legal-mentions, #copyright, #language-switcher
-		place-self: unset
-		width: 100%
-		text-align: center
-
-</style>

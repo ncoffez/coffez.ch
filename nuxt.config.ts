@@ -34,7 +34,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "de-CH",
         "data-theme": "dark",
-        class: "bg-zinc-900 text-stone-300"
+        class: "bg-zinc-900 text-stone-300 overscroll-x-none overflow-x-hidden"
       },
       meta: [
         { charset: "utf-8" },

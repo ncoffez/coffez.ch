@@ -1,6 +1,6 @@
 <template>
-  <div class="my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out">
-    <div class="w-72">
+  <div class="w-64 h-fit my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out">
+    <div class="w-64">
       <div class="md:shrink-0">
         <img class="h-48 w-full object-cover" :src="coverImage || '/img/analoge_zeichnung.webp'"
           alt="Pascal Coffez drawing at the Rhine Falls">

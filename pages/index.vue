@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 md:px-12">
+  <div class="px-4 md:px-12 text-stone-300">
     <header class="px-2 pt-2 pb-4">
       <Navigation />
     </header>

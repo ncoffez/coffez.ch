@@ -9,7 +9,7 @@
     <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
       <nuxtLink :to="'/sales/' + image.id" :key="image.id"
         :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''" v-for="(image, index) in images">
-        <img :alt="image.name" :src="index === 0 ? image.urlFirebaseReduced : image.urlFirebaseWebp"
+        <img :alt="image.name" :src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
           class="object-cover rounded-md w-full flex-grow">
         <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
           relativeDate(image.createdDate.toDate()) }}</p>
@@ -17,9 +17,9 @@
     </section>
   </div>
 
-  <section id="placeholder" v-else>
-    <div id="up-next">{{ settings?.title }}</div>
-    <UiComingSoon />
+  <section id="placeholder" class="h-full justify-between flex flex-col" v-else>
+    <div id="up-next" class="ml-auto block bg-pink-600 text-white text-2xl font-light p-4">{{ settings?.title }}</div>
+    <UiComingSoon class="place-self-center h-full my-auto" />
   </section>
 </template>
 <script lang='ts' setup>
@@ -95,5 +95,11 @@ useHead({
 
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
+html, body
+  @apply h-svh
+
+#__nuxt
+  display: contents
+  @apply h-full
 </style>

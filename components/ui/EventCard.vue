@@ -1,5 +1,5 @@
 <template>
-  <div class="w-64 h-fit my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out">
+  <div @click="router.push(`/live/${id}`)" class="w-64 h-fit my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
     <div class="w-64">
       <div class="md:shrink-0">
         <img class="h-48 w-full object-cover" :src="coverImage || '/img/analoge_zeichnung.webp'"
@@ -14,8 +14,8 @@
             class="inline-block py-.5 text-xs bg-red-700 mr-2 text-white rounded-full px-2 hover:bg-red-600">Live</span>
           {{ new Date(startDate).toLocaleDateString('de-CH') }}
         </div>
-        <NuxtLink :to="'/live/' + id" class="block mt-1 text-lg leading-tight font-semibold text-white hover:underline">
-          {{ title }}</NuxtLink>
+        <div class="block mt-1 text-lg leading-tight font-semibold text-white hover:underline">
+          {{ title }}</div>
         <p class="mt-2 text-slate-300 text-sm">{{ description || defaultDescription }}</p>
       </div>
     </div>
@@ -24,6 +24,7 @@
 <script lang='ts' setup>
 import { differenceInCalendarDays } from 'date-fns';
 const props = defineProps(['title', 'startDate', 'endDate', 'coverImage', 'description', 'id'])
+const router = useRouter();
 const duration = computed(() => {
   if (!props.endDate) return 0;
   return differenceInCalendarDays(props.endDate, props.startDate) + 1

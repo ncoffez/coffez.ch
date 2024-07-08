@@ -7,11 +7,12 @@
       <h4 class="text-2xl font-medium md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
     </section>
     <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
-      <nuxtLink :to="'/sales/' + image.id" :key="image.id" :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
-        v-for="(image, index) in images">
+      <nuxtLink :to="'/sales/' + image.id" :key="image.id"
+        :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''" v-for="(image, index) in images">
         <img :alt="image.name" :src="index === 0 ? image.urlFirebaseReduced : image.urlFirebaseWebp"
           class="object-cover rounded-md w-full flex-grow">
-        <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{ relativeDate(image.createdDate.toDate()) }}</p>
+        <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
+          relativeDate(image.createdDate.toDate()) }}</p>
       </nuxtLink>
     </section>
   </div>
@@ -50,7 +51,8 @@ onUnmounted(unsubscribe);
 let meta = {
   title: settings.value?.title,
   description: ``,
-  image: `https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg`,
+  coverImage: settings.value?.coverImage,
+  defaultImage: `https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg`,
   url: `https://coffez.ch/live/${event}`,
   start: {
     date: new Date(settings.value?.startDate).toLocaleDateString(),
@@ -69,11 +71,11 @@ useSeoMeta({
   description: meta.description,
   ogTitle: meta.title,
   ogDescription: meta.description,
-  ogImage: meta.image,
+  ogImage: meta.coverImage || meta.defaultImage,
   ogUrl: `https://coffez.ch/live/${event}`,
   twitterTitle: meta.title,
   twitterDescription: meta.description,
-  twitterImage: meta.image,
+  twitterImage: meta.coverImage || meta.defaultImage,
   twitterCard: 'summary'
 })
 

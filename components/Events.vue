@@ -1,11 +1,11 @@
 <template>
-    <section id="events" class="w-full max-w-screen-xl overflow-x-scroll ">
-      <div class="flex gap-6 w-fit">
-        <UiEventCard v-for="event of events" :key="event.id" :id="event.id" :title="event.title"
-          :startDate="event.startDate" :coverImage="event.coverImage" :endDate="event.endDate"
-          :description="event.description" />
-      </div>
-    </section>
+  <section id="events" class="w-full max-w-screen-xl overflow-x-scroll ">
+    <div class="flex gap-6 w-fit">
+      <UiEventCard v-for="event of events" :key="event.id" :id="event.id" :title="event.title"
+        :startDate="event.startDate" :coverImage="event.coverImage" :endDate="event.endDate"
+        :description="event.description" />
+    </div>
+  </section>
 </template>
 <script lang='ts' setup>
 
@@ -18,7 +18,10 @@ interface Event {
   description?: string;
 }
 
-const { data: events } = await useFetch<Event[]>('/api/getEvent/list', { method: 'post', body: "5" });
+const { data: events } = await useAsyncData('events', async () => {
+  const events = await $fetch<Event[]>('/api/getEvent/list', { method: 'post', body: "8" });
+  return events;
+});
 
 </script>
 <style lang='sass' scoped></style>

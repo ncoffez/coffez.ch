@@ -1,5 +1,5 @@
 <template>
-  <section id="events" class="w-full max-w-screen-xl overflow-x-scroll ">
+  <section id="events" class="w-full max-w-screen-xl overflow-x-scroll " v-if="events">
     <div class="flex gap-6 w-fit">
       <UiEventCard v-for="event of events" :key="event.id" :id="event.id" :title="event.title"
         :startDate="event.startDate" :coverImage="event.coverImage" :endDate="event.endDate"
@@ -18,7 +18,7 @@ interface Event {
   description?: string;
 }
 
-const { data: events } = await useAsyncData('events', async () => {
+const { data: events } = await useLazyAsyncData('events', async () => {
   const events = await $fetch<Event[]>('/api/getEvent/list', { method: 'post', body: "8" });
   return events;
 });

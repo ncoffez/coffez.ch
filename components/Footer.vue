@@ -1,23 +1,34 @@
 <template>
-<footer class="text-center flex w-full">
-	<div class="grid w-full">
-		<LanguageSwitcher id="language-switcher" />
-		<div id="copyright" class="my-4">Copyright © Coffez.ch {{ new Date().getFullYear() }}</div>
-		<div id="legal-mentions">
-			<div>
-				<a href="https://github.com/ncoffez/coffez.ch/blob/master/impressum.MD" target="_blank">{{ $t('footer.legal')
-				}}</a>
-			</div>
-			<div>
-				<a href="https://github.com/ncoffez/coffez.ch/blob/master/privacy.MD" target="_blank">{{ $t('footer.privacy')
-				}}</a>
+	<footer class="text-center flex w-full">
+		<div class="grid w-full">
+			<LanguageSwitcher id="language-switcher" />
+			<div id="copyright" class="my-4">Copyright © Coffez.ch {{ new Date().getFullYear() }}</div>
+			<div id="legal-mentions">
+				<div>
+					<a href="https://github.com/ncoffez/coffez.ch/blob/master/impressum.MD" target="_blank">{{ $t('footer.legal')
+						}}</a>
+				</div>
+				<div>
+					<a href="https://github.com/ncoffez/coffez.ch/blob/master/privacy.MD" target="_blank">{{ $t('footer.privacy')
+						}}</a>
+				</div>
+				<div v-if="user" class="pt-6">Logged in as {{ user?.displayName }}</div>
+				<div>
+					<a href="#" @click="logoutFromFirebase()" v-if="user">Log out</a>
+					<a href="#" @click="loginToFirebase()" v-else>Login</a>
+				</div>
+				<div v-if="user">
+					<NuxtLink to="/admin/events">Manage events</NuxtLink>
+				</div>
 			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const user = await useCurrentUser();
+
+</script>
 <style lang="sass" scoped>
 	a
 		@apply text-rose-400 hover:text-rose-300 underline underline-offset-2

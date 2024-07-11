@@ -1,5 +1,7 @@
+import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 export default defineNuxtPlugin((nuxtApp) => {
   // Import the functions you need from the SDKs you need
@@ -11,5 +13,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  return { provide: { db } }
+  const auth = getAuth();
+  return { provide: { db, auth } }
 });

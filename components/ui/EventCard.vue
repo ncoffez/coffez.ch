@@ -1,5 +1,6 @@
 <template>
-  <div @click="router.push(`/live/${id}`)" class="w-64 h-fit my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
+  <div @click="router.push(admin ? `/admin/event/${id}` : `/live/${id}`)"
+    class="w-64 h-full my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
     <div class="w-64">
       <div class="md:shrink-0">
         <img class="h-48 w-full object-cover" :src="coverImage || '/img/analoge_zeichnung.webp'"
@@ -16,23 +17,29 @@
         </div>
         <div class="block mt-1 text-lg leading-tight font-semibold text-white hover:underline">
           {{ title }}</div>
-        <p class="mt-2 text-slate-300 text-sm">{{ description || defaultDescription }}</p>
+        <p class="mt-2 text-slate-300 text-sm">{{ description }}</p>
       </div>
     </div>
   </div>
 </template>
 <script lang='ts' setup>
 import { differenceInCalendarDays } from 'date-fns';
-const props = defineProps(['title', 'startDate', 'endDate', 'coverImage', 'description', 'id'])
+const props = defineProps(['title', 'startDate', 'endDate', 'coverImage', 'description', 'id', 'admin'])
 const router = useRouter();
 const duration = computed(() => {
   if (!props.endDate) return 0;
   return differenceInCalendarDays(props.endDate, props.startDate) + 1
 })
 
-const defaultDescription = computed(() => {
-  return `
-Digital caricatures were drawn over ${duration.value} ${duration.value === 1 ? 'day' : 'days'}, capturing the unique personalities and spirit of the occasion. This artistic touch added a memorable element to this special event.`
+const description = computed(() => {
+  if (!props.description) return `Pascal Coffez captures the unique personalities and spirit of the occasion. This artistic touch added a memorable element to this event.`;
+  if (props.description?.length > 150) return props.description.substring(0, 150) + '...';
+  return props.description;
+})
+
+const title = computed(() => {
+  if (props.title?.length > 40) return props.title.substring(0, 40) + '...';
+  return props.title;
 })
 
 </script>

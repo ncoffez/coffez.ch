@@ -50,10 +50,6 @@ const submit = async () => {
 </script>
 
 <style lang="sass" scoped>
-input, textarea
-	@apply bg-zinc-900 w-full px-4 py-4 rounded-md font-light text-base border-solid border-2 border-zinc-700  mt-2 focus:ring-1 ring-slate-500 focus:outline-none  focus:bg-zinc-900 leading-tight
-	@apply lg:bg-zinc-900 lg:border-zinc-700 lg:focus:bg-zinc-900 
-	color-scheme: dark
 
 label
 	@apply block tracking-wide text-gray-300 text-sm font-medium

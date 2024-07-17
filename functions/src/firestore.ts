@@ -1,6 +1,5 @@
 import admin from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
-import { getStorage } from "firebase-admin/storage";
 
 admin.initializeApp({
   credential: admin.credential.cert('./serviceAccount.env.json'),
@@ -8,5 +7,5 @@ admin.initializeApp({
 });
 
 export const db = getFirestore();
-export const storage = getStorage();
+export const bucket = admin.storage().bucket("coffez-ch.appspot.com")
 export default admin;

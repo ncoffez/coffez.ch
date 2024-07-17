@@ -1,6 +1,6 @@
 <template>
 	<section class="max-w-screen-2xl">
-		<div class="grid px-12 md:grid-cols-2 sm:my-16 md:mb-24 md:px-8 lg:px-40 xl:px-64 items-center">
+		<div class="grid px-12 md:grid-cols-2 sm:my-16 md:mb-12 md:px-8 lg:px-40 xl:px-64 items-center">
 			<div class="px-2 md:px-0 mx-auto">
 				<h1 class="text-5xl font-black pb-6">
 					{{ $t('header.title.text') }} <span

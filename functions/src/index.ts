@@ -1,6 +1,6 @@
-import { executeSystemCommand } from "./executeSystemCommand";
 import { onRequest } from "firebase-functions/v2/https";
 import { onDocumentCreated, onDocumentUpdated } from "firebase-functions/v2/firestore";
+import { } from "firebase-functions/v2/storage";
 import sendpostmark from "./sendpostmark";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { getSlackPush } from "./getSlackPush";
@@ -15,6 +15,5 @@ exports.sendmail = onRequest(sendpostmark);
 exports.reduceImage = onDocumentCreated("/portraits/{id}", reduceImage);
 exports.getSlackPush = onRequest(getSlackPush);
 exports.newGallery = onRequest(createNewGallery);
-exports.executeSystemCommand = onRequest(executeSystemCommand);
 exports.getAppleShortcut = onRequest(getAppleShortcut);
 exports.addEventCover = onDocumentUpdated("/portraits/{id}", addEventCover);

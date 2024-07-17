@@ -1,6 +1,6 @@
 <template>
 	<footer class="text-center flex w-full">
-		<div class="grid w-full">
+		<div class="grid w-full ">
 			<LanguageSwitcher id="language-switcher" />
 			<div id="copyright" class="my-4">Copyright © Coffez.ch {{ new Date().getFullYear() }}</div>
 			<div id="legal-mentions">

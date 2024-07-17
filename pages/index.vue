@@ -3,7 +3,7 @@
     <header class="px-2 pt-2 pb-4">
       <Navigation />
     </header>
-    <main class=" py-8 gap-12 flex flex-col items-center">
+    <main class=" py-8 gap-24 flex flex-col items-center">
       <Header></Header>
       <Events />
       <Brands />

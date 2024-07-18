@@ -24,11 +24,11 @@
 </template>
 <script lang='ts' setup>
 import { differenceInCalendarDays } from 'date-fns';
-const props = defineProps(['title', 'startDate', 'endDate', 'coverImage', 'description', 'id', 'admin'])
+const props = defineProps(['title', 'startDate', 'endDate', 'coverImage', 'description', 'id', 'admin', 'url'])
 const router = useRouter();
 const duration = computed(() => {
   if (!props.endDate) return 0;
-  return differenceInCalendarDays(props.endDate, props.startDate) + 1
+  return differenceInCalendarDays(new Date(props.endDate), new Date(props.startDate)) + 1
 })
 
 const description = computed(() => {

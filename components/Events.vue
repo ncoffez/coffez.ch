@@ -8,19 +8,14 @@
   </section>
 </template>
 <script lang='ts' setup>
+import type { Event } from '#imports';
+import { httpsCallable } from 'firebase/functions';
+const { $functions } = useNuxtApp();
 
-interface Event {
-  id: string;
-  title: string;
-  startDate: Date;
-  endDate: Date;
-  coverImage?: string;
-  description?: string;
-}
-
-const { data: events } = await useLazyAsyncData('events', async () => {
-  const events = await $fetch<Event[]>('/api/getEvent/list', { method: 'post', body: "8" });
-  return events;
+const { data: events } = await useLazyAsyncData<Event[]>('events', async () => {
+  const eventList = httpsCallable($functions, "getEventList");
+  let { data } = await eventList({ limit: 8 });
+  return data as Event[];
 });
 
 </script>

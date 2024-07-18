@@ -8,23 +8,19 @@
   </div>
 </template>
 <script lang='ts' setup>
+import type { Event } from '#imports';
+import { httpsCallable } from 'firebase/functions';
+const { $functions } = useNuxtApp();
+
 const router = useRouter();
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
-const { data: events } = await useAsyncData('events', async () => {
-  const events = await $fetch<any[]>('/api/getEvent/list', { method: 'post', body: "20" });
-  return events;
+const { data: events } = await useLazyAsyncData<Event[]>('events', async () => {
+  const eventList = httpsCallable($functions, "getEventList");
+  let { data } = await eventList({ limit: 8 });
+  return data as Event[];
 });
 </script>
 <style lang='sass' scoped>
 a
-  @apply text-rose-400 hover:text-rose-300 underline underline-offset-2
-
-td
-  @apply p-2 border-y-2  border-zinc-600 border-solid
-
-tr:has(td)
-  @apply hover:bg-zinc-800 cursor-pointer
-
-th
-  @apply p-2 border-b-4 border-zinc-600 border-solid
+  @apply text-rose-400 hover:text-rose-300 underline underline-offset-2 cursor-pointer
 </style>

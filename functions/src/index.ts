@@ -1,5 +1,5 @@
 import { onCall, onRequest } from "firebase-functions/v2/https";
-import { onDocumentCreated, onDocumentUpdated } from "firebase-functions/v2/firestore";
+import { onDocumentCreated } from "firebase-functions/v2/firestore";
 import { getEventList } from "./getEventList";
 import sendpostmark from "./sendpostmark";
 import { setGlobalOptions } from "firebase-functions/v2";
@@ -7,7 +7,7 @@ import { getSlackPush } from "./getSlackPush";
 import { reduceImage } from "./reduceImage";
 import { createNewGallery } from "./createNewGallery";
 import { getAppleShortcut } from "./getAppleShortcut";
-import { addEventCover } from "./addEventCover";
+import { uploadEventCover } from "./uploadEventCover";
 
 setGlobalOptions({ maxInstances: 3, region: "europe-west6" });
 
@@ -17,4 +17,4 @@ exports.getSlackPush = onRequest(getSlackPush);
 exports.getEventList = onCall(getEventList);
 exports.newGallery = onRequest(createNewGallery);
 exports.getAppleShortcut = onRequest(getAppleShortcut);
-exports.addEventCover = onDocumentUpdated("/portraits/{id}", addEventCover);
+exports.uploadEventCover = onCall(uploadEventCover);

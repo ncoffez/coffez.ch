@@ -42,8 +42,9 @@
 </template>
 <script lang='ts' setup>
 import { doc, updateDoc } from 'firebase/firestore';
+import { httpsCallable } from 'firebase/functions';
 
-const { $db } = useNuxtApp();
+const { $db, $functions } = useNuxtApp();
 
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
 const { id } = useRoute().params;
@@ -73,10 +74,14 @@ async function updateEvent() {
 }
 
 async function onImageChange(event: any) {
-  const formData = new FormData();
-  formData.append('file', event.target.files[0]);
-  selectedImage.value = await $fetch('/api/uploadImageToStorage', { method: 'post', body: formData });
-  console.log(selectedImage.value);
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const base64Image = reader.result?.toString().split(',')[1]; // Extract Base64 data after comma
+    selectedImage.value = (await httpsCallable($functions, "uploadEventCover")({
+      imageBase64: base64Image, name: event.target.files[0].name
+    })).data;
+  }
+  reader.readAsDataURL(event.target.files[0]);
 }
 
 const event = ref({

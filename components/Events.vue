@@ -1,6 +1,6 @@
 <template>
   <section id="events" class="w-full max-w-screen-xl overflow-x-scroll " v-if="events">
-    <div class="flex gap-6 w-fit">
+    <div class="flex gap-6 px-2 w-fit">
       <UiEventCard v-for="event of events" :key="event.id" :id="event.id" :title="event.title"
         :startDate="event.startDate" :coverImage="event.coverImage" :endDate="event.endDate"
         :description="event.description" />

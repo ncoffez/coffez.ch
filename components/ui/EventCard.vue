@@ -1,5 +1,5 @@
 <template>
-  <div @click="router.push(admin ? `/admin/event/${id}` : `/live/${id}`)"
+  <NuxtLink :to="admin ? `/admin/event/${id}` : `/live/${id}`"
     class="w-64 h-full my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
     <div class="w-64">
       <div class="md:shrink-0">
@@ -20,7 +20,7 @@
         <p class="mt-2 text-slate-300 text-sm">{{ description }}</p>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 <script lang='ts' setup>
 import { differenceInCalendarDays } from 'date-fns';

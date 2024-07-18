@@ -1,6 +1,6 @@
 <template>
   <div class="container w-full overflow-x-scroll mx-auto">
-    <div class="flex flex-row gap-4 w-fit h-full">
+    <div class="flex flex-row gap-4 px-2 w-fit h-full">
       <UiEventCard v-for="event of events" :key="event.id" :id="event.id" :title="event.title"
         :startDate="event.startDate" :coverImage="event.coverImage" :endDate="event.endDate"
         :description="event.description" admin="true" class="h-full" />
@@ -21,6 +21,4 @@ const { data: events } = await useLazyAsyncData<Event[]>('events', async () => {
 });
 </script>
 <style lang='sass' scoped>
-a
-  @apply text-rose-400 hover:text-rose-300 underline underline-offset-2 cursor-pointer
 </style>

@@ -4,10 +4,6 @@ import { getFirestore } from "firebase/firestore";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  // Import the functions you need from the SDKs you need
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
   const config = useRuntimeConfig();
   const firebaseConfig: {} = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
 

@@ -1,26 +1,29 @@
 <template>
-  <div id="gallery" class="md:overflow-y-clip sm:h-vh px-8 overscroll-none" v-if="images.length > 0">
-    <section id="title" class="w-full p-4 sticky top-0 z-2 bg-zinc-900">
-      <h2 class="hidden md:block text-4xl font-bold" id="url-title">
-        <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
-      </h2>
-      <h4 class="text-2xl font-medium md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
-    </section>
-    <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
-      <nuxtLink :to="'/sales/' + image.id" :key="image.id"
-        :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''" v-for="(image, index) in images">
-        <img :alt="image.name" :src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
-          class="object-cover rounded-md w-full flex-grow">
-        <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
-          relativeDate(image.createdDate.toDate()) }}</p>
-      </nuxtLink>
+  <div>
+    <div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images.length > 0">
+      <section id="title" class="w-full p-4 sticky top-0 z-2 bg-zinc-900">
+        <h2 class="hidden md:block text-4xl font-extrabold" id="url-title">
+          <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
+        </h2>
+        <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
+      </section>
+      <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
+        <nuxtLink :to="'/sales/' + image.id" :key="image.id"
+          :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
+          v-for="(image, index) in images">
+          <img :alt="image.name" :src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
+            class="object-cover rounded-md w-full flex-grow">
+          <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
+            relativeDate(image.createdDate.toDate()) }}</p>
+        </nuxtLink>
+      </section>
+    </div>
+
+    <section id="placeholder" class="h-full justify-between flex flex-col" v-else>
+      <div id="up-next" class="ml-auto block bg-pink-600 text-white text-2xl font-light p-4">{{ settings?.title }}</div>
+      <UiComingSoon class="place-self-center h-full my-auto" />
     </section>
   </div>
-
-  <section id="placeholder" class="h-full justify-between flex flex-col" v-else>
-    <div id="up-next" class="ml-auto block bg-pink-600 text-white text-2xl font-light p-4">{{ settings?.title }}</div>
-    <UiComingSoon class="place-self-center h-full my-auto" />
-  </section>
 </template>
 <script lang='ts' setup>
 import { addDays, subDays } from "date-fns";
@@ -94,12 +97,3 @@ useHead({
 })
 
 </script>
-
-<style lang="sass">
-html, body
-  @apply h-svh
-
-#__nuxt
-  display: contents
-  @apply h-full
-</style>

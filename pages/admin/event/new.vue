@@ -1,8 +1,9 @@
 <template>
   <div class=" px-16 pb-12 mx-auto w-full h-full">
+    <h1 class="text-3xl font-bold my-4 text-slate-100">Create new event</h1>
     <div class="md:flex-row flex flex-col gap-8 md:gap-16 place-items-center">
       <UiEventCard :title="event.title" :startDate="event.startDate" :coverImage="selectedImage || event.coverImage"
-        :endDate="event.endDate" :description="event.description" :loading="loading" class="my-auto"></UiEventCard>
+        :endDate="event.endDate" :description="event.description" :disabled=true class="my-auto"></UiEventCard>
       <div class="flex flex-col w-full max-w-lg gap-4">
         <div class="flex flex-col w-full max-w-lg">
           <p class="leading-relaxed py-6 text-zinc-400 font-bold">{{ event.id }}</p>
@@ -26,92 +27,61 @@
           <textarea id="description" class="h-32" v-model="event.description" />
         </div>
         <UiImageDropZone @imageChanged="onImageChange" />
-        <div class="flex gap-4 grid-cols(1fr,2fr)">
+        <div id="actions" class="flex gap-4 grid-cols(1fr,2fr)">
           <div class="flex flex-col w-full max-w-lg flex-grow">
-            <button @click="updateEvent()" class="cursor-pointer" v-if="!updated">Save</button>
-            <button disabled class="bg-green-500 hover:bg-green-500 text-white" v-else>Event saved successfully</button>
+            <button @click="createEvent()" class="cursor-pointer">Save</button>
           </div>
           <div class="flex flex-col w-32 flex-shrink">
-            <button @click="deleteEvent()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">Delete</button>
+            <button @click="resetEvent()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">Reset</button>
           </div>
         </div>
       </div>
     </div>
+    <pre>{{ event }}</pre>
   </div>
 
 </template>
 <script lang='ts' setup>
-import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 
-const { $db, $functions } = useNuxtApp();
-
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
-const { id } = useRoute().params;
-const { data: serverEvent } = await useAsyncData('event', async () => {
-  const event = await $fetch<any>(`/api/getEvent/${id}`);
-  return event;
-});
 
-const updated = ref(false);
-const loading = ref(false);
-watch(updated, () => {
-  setTimeout(() => {
-    updated.value = false
-  }, 3000)
-})
-
+const { $db, $functions } = useNuxtApp();
+const event = ref(new DrawingEvent());
+const selectedImage: Ref<string | null> = ref(null);
 const start = computed({
   get: () => event.value.startDate.slice(0, 10),
   set: (value) => event.value.startDate = value
 })
 const end = computed({
-  get: () => event.value.endDate.slice(0, 10),
+  get: () => event.value.endDate?.slice(0, 10),
   set: (value) => event.value.endDate = value
 })
 
-const selectedImage = ref(serverEvent.value?.coverImage);
-
-async function updateEvent() {
-  const eventRef = doc($db, 'events', id as string);
+const resetEvent = () => Object.assign(event.value, new DrawingEvent());
+async function createEvent() {
   let data: any = {};
   data.title = event.value.title;
   data.description = event.value.description;
   data.startDate = new Date(event.value.startDate);
-  data.endDate = new Date(event.value.endDate);
+  if (event.value.endDate) data.endDate = new Date(event.value.endDate);
   if (selectedImage.value) data.coverImage = selectedImage.value;
 
-  await updateDoc(eventRef, data)
-  updated.value = true
-}
-
-async function deleteEvent() {
-  await deleteDoc(doc($db, 'events', id as string));
-  await navigateTo('/admin');
+  const { id } = await addDoc(collection($db, 'events'), data);
+  await navigateTo(`/admin/event/${id}`);
 }
 
 async function onImageChange(event: any) {
   const reader = new FileReader();
   reader.onload = async () => {
-    loading.value = true;
     const base64Image = reader.result?.toString().split(',')[1]; // Extract Base64 data after comma
     selectedImage.value = (await httpsCallable($functions, "uploadEventCover")({
       imageBase64: base64Image, name: event.target.files[0].name
-    })).data;
-    loading.value = false;
+    })).data as string;
   }
   reader.readAsDataURL(event.target.files[0]);
-
 }
-
-const event = ref({
-  title: serverEvent.value?.title,
-  id: serverEvent.value?.id,
-  startDate: serverEvent.value?.startDate,
-  endDate: serverEvent.value?.endDate,
-  coverImage: serverEvent.value?.coverImage,
-  description: serverEvent.value?.description
-});
 
 </script>
 <style lang='sass' scoped>

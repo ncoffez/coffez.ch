@@ -17,4 +17,4 @@ exports.getSlackPush = onRequest(getSlackPush);
 exports.getEventList = onCall(getEventList);
 exports.newGallery = onRequest(createNewGallery);
 exports.getAppleShortcut = onRequest(getAppleShortcut);
-exports.uploadEventCover = onCall(uploadEventCover);
+exports.uploadEventCover = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadEventCover);

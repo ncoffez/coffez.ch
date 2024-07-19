@@ -18,7 +18,7 @@
 					<a href="#" @click="loginToFirebase()" v-else>Login</a>
 				</div>
 				<div v-if="user">
-					<NuxtLink to="/admin/events">Manage events</NuxtLink>
+					<NuxtLink to="/admin">Settings</NuxtLink>
 				</div>
 			</div>
 		</div>

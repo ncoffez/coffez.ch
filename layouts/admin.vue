@@ -5,7 +5,7 @@
         <NuxtLink to="/">Home</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/admin/events">Events</NuxtLink>
+        <NuxtLink to="/admin">Admin</NuxtLink>
       </li>
     </ul>
   </div>

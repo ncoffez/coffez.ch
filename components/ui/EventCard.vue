@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="admin ? `/admin/event/${id}` : `/live/${id}`"
+  <NuxtLink :to="link"
     class="w-64 h-full my-4 bg-zinc-800 overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
     <div class="w-64">
       <div class="md:shrink-0">
@@ -8,8 +8,8 @@
       </div>
       <div class="p-6">
         <div class="uppercase tracking-wide text-sm text-indigo-300 font-semibold">
-          <span v-if="duration"
-            class="inline-block py-.5 bg-indigo-400 text-xs mr-2 text-white rounded-full px-2 hover:bg-red-500">{{
+          <span v-if="duration && !isWithinInterval(new Date(), { start: new Date(startDate), end: new Date(endDate) })"
+            class="inline-block py-.5 bg-indigo-400 text-xs mr-2 text-white rounded-full px-2 hover:bg-indigo-500">{{
               duration }} {{ duration > 1 ? 'days' : 'day' }}</span>
           <span v-else
             class="inline-block py-.5 text-xs bg-red-700 mr-2 text-white rounded-full px-2 hover:bg-red-600">Live</span>
@@ -24,8 +24,15 @@
 </template>
 <script lang='ts' setup>
 import { differenceInCalendarDays } from 'date-fns';
-const props = defineProps(['title', 'startDate', 'endDate', 'coverImage', 'description', 'id', 'admin', 'url'])
-const router = useRouter();
+import { isWithinInterval } from 'date-fns';
+const props = defineProps(['title', 'startDate', 'endDate', 'coverImage', 'description', 'id', 'admin', 'disabled'])
+
+const link = computed(() => {
+  if (props.disabled) return '';
+  if (props.admin) return `/admin/event/${props.id}`;
+  return `/live/${props.id}`;
+})
+
 const duration = computed(() => {
   if (!props.endDate) return 0;
   return differenceInCalendarDays(new Date(props.endDate), new Date(props.startDate)) + 1

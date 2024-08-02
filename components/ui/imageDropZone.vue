@@ -1,6 +1,5 @@
 <template>
-  <div id="file-dropzone" class="flex flex-col w-full max-w-lg">
-    <label for="file">File</label>
+  <div id="file-dropzone" class="flex flex-col w-64 max-w-lg py-2">
     <label for="dropzone-file"
       class="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center border-2 border-dashed cursor-pointer bg-zinc-900 border-zinc-700 rounded-xl">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -10,7 +9,7 @@
       </svg>
       <h2 class="mt-1 font-medium tracking-wide text-zinc-200">Event image</h2>
       <p class="mt-2 text-xs tracking-wide text-zinc-400">Upload or drag & drop your file as PNG or JPG </p>
-      <input id="dropzone-file" type="file" accept="image/png, image/jpeg" class="hidden"
+      <input id="dropzone-file" type="file" accept="image/png, image/jpeg" class="hidden" multiple="true"
         @change="$emit('imageChanged', $event)" />
     </label>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <section id="portfolio" class="w-full max-w-screen-2xl" v-if="images">
+  <section id="portfolio" class="w-full max-w-screen-xl" v-if="images">
     <div id="title" class="flex justify-between items-center pb-6">
       <h1 class="text-4xl text-slate-100 font-bold">Portfolio</h1>
       <nuxtLink to="/live">

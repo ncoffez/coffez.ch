@@ -18,6 +18,10 @@
         <div class="block mt-1 text-lg leading-tight font-semibold text-white hover:underline">
           {{ title }}</div>
         <p class="mt-2 text-slate-300 text-sm">{{ description }}</p>
+        <div class="flex gap-2">
+          <slot name="actions">
+          </slot>
+        </div>
       </div>
     </div>
   </NuxtLink>

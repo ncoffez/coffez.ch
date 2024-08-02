@@ -25,7 +25,10 @@
           <label for="description">Description</label>
           <textarea id="description" class="h-32" v-model="event.description" />
         </div>
-        <UiImageDropZone @imageChanged="onImageChange" />
+        <div class="flex flex-col w-full max-w-lg">
+          <label for="upload-images">Upload</label>
+          <UiImageDropZone id="upload-images" @imageChanged="onImageChange" />
+        </div>
         <div class="flex gap-4 grid-cols(1fr,2fr)">
           <div class="flex flex-col w-full max-w-lg flex-grow">
             <button @click="updateEvent()" class="cursor-pointer" v-if="!updated">Save</button>
@@ -96,12 +99,11 @@ async function onImageChange(event: any) {
     loading.value = true;
     const base64Image = reader.result?.toString().split(',')[1]; // Extract Base64 data after comma
     selectedImage.value = (await httpsCallable($functions, "uploadEventCover")({
-      imageBase64: base64Image, name: event.target.files[0].name
+      imageBase64: base64Image, name: event.target.files[0].name,
     })).data;
     loading.value = false;
   }
   reader.readAsDataURL(event.target.files[0]);
-
 }
 
 const event = ref({

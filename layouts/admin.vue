@@ -1,6 +1,6 @@
 <template>
-  <div class="nav pb-8 mx-8">
-    <ul class="flex flex-row gap-4 p-4">
+  <div class="nav pb-2 mx-8">
+    <ul class="flex flex-row gap-4 p-4 max-w-screen-xl mx-auto">
       <li>
         <NuxtLink to="/">Home</NuxtLink>
       </li>

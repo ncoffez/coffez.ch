@@ -1,10 +1,14 @@
 <template>
   <section id="events" class="w-full max-w-screen-xl overflow-x-scroll  mx-auto" v-if="events">
     <div class="flex gap-6 px-2 w-fit">
-      <slot></slot>
+      <slot name="first-card"></slot>
       <UiEventCard v-for="event of events" :key="event.id" :id="event.id" :title="event.title"
         :startDate="event.startDate" :coverImage="event.coverImage" :endDate="event.endDate"
-        :description="event.description" :admin="admin" />
+        :description="event.description" :admin="admin">
+        <template v-slot:actions>
+          <slot name="actions"></slot>
+        </template>
+      </UiEventCard>
     </div>
   </section>
 </template>

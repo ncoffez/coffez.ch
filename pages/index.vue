@@ -3,7 +3,7 @@
   <Events />
   <Brands />
   <Cards />
-  <Gallery />
+  <!-- <Gallery /> -->
   <Portfolio />
   <Contact />
   <Footer class="mb-16" />

@@ -1,14 +1,11 @@
 <template>
   <header class="py-8 flex justify-between max-w-screen-xl place-content-center mx-auto">
-    <img src="/img/Coffez.ch.png" alt="Coffez.ch" class="w-64 mx-4 h-fit invert">
-    <div class="flex flex-row gap-4 p-4">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/admin">Admin</NuxtLink>
-    </div>
+    <img src="/img/Coffez.ch.png" alt="Coffez.ch" class="w-64 mx-auto h-fit invert cursor-pointer hover:scale-105 transition-transform duration-100" @click="router.back()">
   </header>
   <NuxtPage></NuxtPage>
 </template>
 <script lang='ts' setup>
+const router = useRouter();
 </script>
 <style lang='sass' scoped>
 a

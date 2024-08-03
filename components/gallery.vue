@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-screen-xl mx-auto">
+  <section class="w-full max-w-screen-lg mx-auto">
     <h1 class="text-3xl font-bold mx-2 my-4 text-slate-100">Gallery</h1>
     <div class="w-full px-4 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-4 ">
       <slot name="first-card"></slot>

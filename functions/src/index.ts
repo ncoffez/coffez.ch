@@ -8,6 +8,8 @@ import { reduceImage } from "./reduceImage";
 import { createNewGallery } from "./createNewGallery";
 import { getAppleShortcut } from "./getAppleShortcut";
 import { uploadEventCover } from "./uploadEventCover";
+import { uploadGalleryImage } from "./uploadGalleryImage";
+import { uploadGalleryVideo } from "./uploadGalleryVideo";
 
 setGlobalOptions({ maxInstances: 3, region: "europe-west6" });
 
@@ -18,3 +20,5 @@ exports.getEventList = onCall(getEventList);
 exports.newGallery = onRequest(createNewGallery);
 exports.getAppleShortcut = onRequest(getAppleShortcut);
 exports.uploadEventCover = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadEventCover);
+exports.uploadGalleryImage = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadGalleryImage);
+exports.uploadGalleryVideo = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadGalleryVideo);

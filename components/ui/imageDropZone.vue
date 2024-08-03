@@ -9,13 +9,13 @@
       </svg>
       <h2 class="mt-1 font-medium tracking-wide text-zinc-200">Event image</h2>
       <p class="mt-2 text-xs tracking-wide text-zinc-400">Upload or drag & drop your file as PNG or JPG </p>
-      <input id="dropzone-file" type="file" accept="image/png, image/jpeg" class="hidden" multiple="true"
-        @change="$emit('imageChanged', $event)" />
+      <input id="dropzone-file" type="file" accept="image/png, image/jpeg, video/mp4" class="hidden" multiple="true"
+        @change="$emit('mediaChanged', $event)" />
     </label>
   </div>
 </template>
 <script lang='ts' setup>
-defineEmits(['imageChanged'])
+defineEmits(['mediaChanged'])
 
 </script>
 <style lang='sass' scoped></style>

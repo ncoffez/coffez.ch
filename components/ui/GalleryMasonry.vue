@@ -1,9 +1,19 @@
 <template>
   <ClientOnly>
     <div class="masonry-container relative" ref="masonryContainer">
-      <div class="image-item absolute" v-for="(image, index) in images" :key="image">
-        <img :src="image" :alt="String(index)" class="object-cover w-full h-full" :id="String(index)"
-          @load="onImageLoad(index)" @error="onImageError(index)" />
+      <div class="image-item absolute rounded-md overflow-clip" v-for="(image, index) in images" :key="image">
+        <div id="actions" v-if="admin"
+          class="w-full h-full inset-0 absolute bg-slate-700 bg-opacity-50 flex-row gap-4 items-center justify-center hidden p-4">
+          <Icon class="icon" :class="image === favorite ? 'favorite' : ''" name="ic:sharp-favorite" size="3rem"
+            @click="$emit('imageFavorited', image)"></Icon>
+          <Icon class="icon" name="ic:round-delete" size="3rem" @click="$emit('imageDeleted', image)"></Icon>
+        </div>
+        <img :class="image.split('.').pop() === 'mp4' ? 'hidden' : ''" :src="image" :alt="String(index)"
+          class="object-cover w-full h-full" :id="image.split('.').pop() + String(index)" @load="onImageLoad(index)"
+          @error="onImageError(index)" />
+        <video :class="image.split('.').pop() === 'mp4' ? '' : 'hidden'" :src="image" :alt="String(index)"
+          autoplay="true" muted="true" loop="true" playsinline="true" class="object-cover w-full h-full events-none"
+          :id="image.split('.').pop() + String(index)" @load="onImageLoad(index)" @error="onImageError(index)" />
       </div>
     </div>
   </ClientOnly>
@@ -16,8 +26,20 @@ const props = defineProps({
   images: {
     type: Array as PropType<string[]>,
     required: true,
+  },
+  favorite: {
+    type: String,
+    required: false,
+    default: null
+  },
+  admin: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
+
+defineEmits(['imageDeleted', 'imageFavorited'])
 
 const masonryContainer = ref(null)
 const masonry: any = ref(null)
@@ -38,7 +60,7 @@ onUnmounted(() => {
   }
 })
 
-watch(() => props.images, async (newImages, oldImages) => {
+watch(() => props.images, async (_newImages, _oldImages) => {
   loadedImages.value.clear()
   if (masonry.value) {
     masonry.value.destroy()
@@ -112,11 +134,18 @@ function debounce(func: any, wait: number) {
 }
 </script>
 
-<style scoped>
-.image-item {
-  width: 270px;
-  /* Match baseWidth from MiniMasonry options */
-  margin-bottom: 20px;
-  /* Match gutter from MiniMasonry options */
-}
+<style scoped lang="sass">
+.image-item
+  width: 270px
+  margin-bottom: 20px
+
+.image-item:hover #actions
+  @apply flex
+
+.icon
+  @apply hover:text-rose-500 hover:scale-105 transition-all duration-200 ease-in-out
+
+.favorite
+  @apply text-rose-500
+
 </style>

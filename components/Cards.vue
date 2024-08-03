@@ -1,5 +1,5 @@
 <template>
-	<section id="cards" class="gap-16 grid w-full sm:px-12 md:px-0 lg:px-12 xl:max-w-screen-xl xl:gap-28"> 
+	<section id="cards" class="gap-16 grid w-full sm:px-12 md:px-0 lg:px-12 xl:max-w-screen-lg xl:gap-28"> 
 		<article v-for="(card, index) in ($tm('sections') as any)" :key="card.id" class="grid gap-2 md:gap-8"
 			:class="index % 2 === 0 ? 'md:grid-cols-[3fr,2fr] xl:grid-cols-[5fr,3fr]' : 'md:grid-cols-[2fr,3fr] xl:grid-cols-[3fr,5fr]'">
 			<div id="image" :class="index % 2 === 0 ? 'md:order-1' : 'md:order-2'">
@@ -34,5 +34,5 @@ async function handleAction(action: string) {
 
 <style lang="sass" scoped>
 picture, img, video
-	@apply aspect-square object-cover rounded-xl md:rounded-3xl xl:aspect-[1.5] w-full
+	@apply aspect-square object-cover rounded-xl md:rounded-3xl xl:aspect-[1.3] w-full
 	</style>

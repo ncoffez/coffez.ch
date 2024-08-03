@@ -1,10 +1,10 @@
 <template>
-  <NuxtLink to="/admin/gallery/new"
-    class="w-64 h-64 my-4 bg-zinc-800 hover:scale-105 cursor-pointer overflow-clip rounded-full mx-auto transition duration-300 ease-in-out"
+  <div @click="createNewGallery()"
+    class="w-48 h-48 my-4 bg-zinc-800 hover:scale-105 cursor-pointer overflow-clip rounded-full mx-auto transition duration-300 ease-in-out"
     id="create-new-gallery">
-    <div class="basis-full w-64 h-64">
+    <div class="basis-full w-48 h-48">
       <div class="md:shrink-0 relative">
-        <div class="h-64 w-64 object-center bg-zinc-400 font-2xl text-white place-items-center grid">
+        <div class="h-48 w-48 object-center bg-zinc-400 font-2xl text-white place-items-center grid">
           <Icon id="add-icon" name="ic:outline-add" class="w-1/2 h-1/2 text-zinc-300" />
         </div>
         <div id="title"
@@ -16,9 +16,22 @@
         </div>
       </div>
     </div>
-  </NuxtLink>
+  </div>
 </template>
 <script lang='ts' setup>
+import { addDoc, collection } from 'firebase/firestore';
+
+const { $db } = useNuxtApp();
+
+async function createNewGallery() {
+  const data = {
+    title: 'New Gallery',
+    description: 'This text should be fancier.'
+  }
+  const newGallery = await addDoc(collection($db, 'gallery'), data);
+  await navigateTo(`/admin/gallery/${newGallery.id}`);
+}
+
 
 </script>
 <style lang='sass' scoped>

@@ -5,13 +5,21 @@
         <NuxtLink to="/">Home</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/admin">Admin</NuxtLink>
+        <NuxtLink @click="router.back()">Admin</NuxtLink>
+      </li>
+      <li v-if="route.path.includes('gallery')">
+        <NuxtLink :to="`/gallery/${route.params.id}`">Gallery</NuxtLink>
+      </li>
+      <li v-if="route.path.includes('event')">
+        <NuxtLink :to="`/live/${route.params.id}`">Event</NuxtLink>
       </li>
     </ul>
   </div>
   <NuxtPage></NuxtPage>
 </template>
 <script lang='ts' setup>
+const route = useRoute();
+const router = useRouter();
 </script>
 <style lang='sass' scoped>
 a

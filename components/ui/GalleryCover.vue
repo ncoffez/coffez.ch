@@ -1,10 +1,10 @@
 <template>
   <NuxtLink :to="link"
-    class="w-48 h-48 my-4 bg-zinc-800 hover:scale-105 duration-300 ease-in-out cursor-pointer overflow-clip rounded-full mx-auto"
+    class="w-52 h-52 my-4 bg-zinc-800 hover:scale-105 duration-300 ease-in-out cursor-pointer overflow-clip rounded-full mx-auto"
     id="gallery-cover">
     <div class="basis-full scale-105">
       <div class="md:shrink-0 relative">
-        <img class="h-48 w-48 object-cover object-center" :src="coverImage">
+        <img class="h-52 w-52 object-cover object-center" :src="coverImage">
         <div id="title"
           class="absolute bottom-0 z-2 w-full h-16 place-items-center flex flex-col content-around place-content-center bg-zinc-900 bg-opacity-60 transition-all duration-300 ease-in-out">
           <div class="text-white text-md font-bold uppercase tracking-wide block text-sm">{{ title }}</div>

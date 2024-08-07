@@ -1,8 +1,12 @@
 <template>
-  <header class="py-8 flex justify-between max-w-screen-xl place-content-center mx-auto">
-    <img src="/img/Coffez.ch.png" alt="Coffez.ch" class="w-64 mx-auto h-fit invert cursor-pointer hover:scale-105 transition-transform duration-100" @click="router.back()">
-  </header>
-  <NuxtPage></NuxtPage>
+  <div id="full-screen" class="inset-0 z-0"> 
+    <header class="py-8 flex justify-between max-w-screen-xl place-content-center mx-auto">
+      <img src="/img/Coffez.ch.png" alt="Coffez.ch"
+        class="w-64 mx-auto h-fit invert cursor-pointer hover:scale-105 transition-transform duration-100"
+        @click="router.back()">
+    </header>
+    <NuxtPage></NuxtPage>
+  </div>
 </template>
 <script lang='ts' setup>
 const router = useRouter();

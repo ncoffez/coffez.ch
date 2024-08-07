@@ -1,10 +1,10 @@
 <template>
   <Header></Header>
-  <Events />
+  <Gallery />
   <Brands />
   <Cards />
-  <!-- <Gallery /> -->
-  <Portfolio />
+  <Events />
+  <!-- <Portfolio /> -->
   <Contact />
   <Footer class="mb-16" />
 </template>

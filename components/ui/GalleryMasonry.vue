@@ -1,7 +1,8 @@
 <template>
   <ClientOnly>
     <div class="masonry-container relative" ref="masonryContainer">
-      <div class="image-item absolute rounded-md overflow-clip" v-for="(image, index) in images" :key="image">
+      <div class="image-item absolute rounded-md overflow-clip" v-for="(image, index) in images" :key="image"
+        @click="admin ? '' : openLightBox(index)">
         <div id="actions" v-if="admin"
           class="w-full h-full inset-0 absolute bg-slate-700 bg-opacity-50 flex-row gap-4 items-center justify-center hidden p-4">
           <Icon class="icon" :class="image === favorite ? 'favorite' : ''" name="ic:sharp-favorite" size="3rem"
@@ -15,6 +16,10 @@
           autoplay="true" muted="true" loop="true" playsinline="true" class="object-cover w-full h-full events-none"
           :id="image.split('.').pop() + String(index)" @load="onImageLoad(index)" @error="onImageError(index)" />
       </div>
+      <ClientOnly>
+        <UiLightBox v-if="lightboxIsOpen" :media="lightbox.media" :index="lightbox.index"
+          @close="lightboxIsOpen = false" description="Currently a standard description, will change." type="jpeg" />
+      </ClientOnly>
     </div>
   </ClientOnly>
 </template>
@@ -45,6 +50,13 @@ const masonryContainer = ref(null)
 const masonry: any = ref(null)
 const loadedImages = ref(new Set())
 const resizeObserver: any = ref(null)
+const lightboxIsOpen = ref(false)
+const lightbox = ref({ media: props.images, index: 0 })
+
+function openLightBox(index: number) {
+  lightbox.value.index = index
+  lightboxIsOpen.value = true
+}
 
 onMounted(async () => {
   await initMasonry()

@@ -10,8 +10,11 @@
 				<p class="text-lg max-w-prose">{{ $t('header.subtitle') }}</p>
 				<button class="" @click="scrollTo('contact')">{{ $t('header.button') }}</button>
 			</div>
-			<img src="/img/PascalCoffez.jpg" alt=""
-				class="rounded-full aspect-square object-cover w-[300px] h-[300px] hidden md:block mx-auto" />
+			<picture>
+				<source srcset="/img/PascalCoffez@0.5x.webp" type="image/webp" />
+				<img src="/img/PascalCoffez@0.5x.jpg" alt=""
+					class="rounded-full aspect-square object-cover w-[300px] h-[300px] hidden md:block mx-auto" />
+			</picture>
 		</div>
 	</section>
 </template>

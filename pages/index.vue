@@ -1,10 +1,10 @@
 <template>
   <Header></Header>
-  <Gallery />
+  <!-- <Gallery /> -->
   <Brands />
-  <Cards />
-  <Events />
-  <!-- <Portfolio /> -->
+  <LazyCards />
+  <LazyEvents />
+  <!-- <LazyPortfolio /> -->
   <Contact />
   <Footer class="mb-16" />
 </template>

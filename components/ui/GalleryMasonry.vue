@@ -4,21 +4,23 @@
       <div class="image-item absolute rounded-md overflow-clip" v-for="(image, index) in images" :key="image"
         @click="admin ? '' : openLightBox(index)">
         <div id="actions" v-if="admin"
-          class="w-full h-full inset-0 absolute bg-slate-700 bg-opacity-50 flex-row gap-4 items-center justify-center hidden p-4">
+          class="w-full h-full inset-0 absolute bg-slate-700 bg-opacity-50 flex-row gap-4 items-center justify-center hidden p-4 z-10">
           <Icon class="icon" :class="image === favorite ? 'favorite' : ''" name="ic:sharp-favorite" size="3rem"
             @click="$emit('imageFavorited', image)"></Icon>
           <Icon class="icon" name="ic:round-delete" size="3rem" @click="$emit('imageDeleted', image)"></Icon>
         </div>
-        <img :class="image.split('.').pop() === 'mp4' ? 'hidden' : ''" :src="image" :alt="String(index)"
-          class="object-cover w-full h-full" :id="image.split('.').pop() + String(index)" @load="onImageLoad(index)"
-          @error="onImageError(index)" />
-        <video :class="image.split('.').pop() === 'mp4' ? '' : 'hidden'" :src="image" :alt="String(index)"
-          autoplay="true" muted="true" loop="true" playsinline="true" class="object-cover w-full h-full events-none"
-          :id="image.split('.').pop() + String(index)" @load="onImageLoad(index)" @error="onImageError(index)" />
+        <img :class="getMediaType(image).split('/').shift() === 'video' ? 'hidden' : ''" :src="image"
+          :alt="String(index)" class="object-cover w-full h-full" :id="image.split('.').pop() + String(index)"
+          @load="onImageLoad(index)" @error="onImageError(index)" />
+        <video :class="getMediaType(image).split('/').shift() === 'video' ? '' : 'hidden'" :src="image"
+          :alt="String(index)" autoplay="true" muted="true" loop="true" playsinline="true"
+          class="object-cover w-full h-full events-none" :id="image.split('.').pop() + String(index)"
+          @load="onImageLoad(index)" @error="onImageError(index)" />
       </div>
       <ClientOnly>
         <UiLightBox v-if="lightboxIsOpen" :media="lightbox.media" :index="lightbox.index"
-          @close="lightboxIsOpen = false" description="Currently a standard description, will change." type="jpeg" />
+          @close="lightboxIsOpen = false" @open="lightboxIsOpen = true"
+          description="Currently a standard description, will change." type="jpeg" />
       </ClientOnly>
     </div>
   </ClientOnly>

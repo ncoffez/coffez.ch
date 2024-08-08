@@ -65,7 +65,7 @@ a
   padding: 1.7rem 2rem
   display: flex
   flex-direction: column
-  overflow: hidden
+  // overflow: hidden
   height: 100vh
 
   @media screen and (max-width: 850px)

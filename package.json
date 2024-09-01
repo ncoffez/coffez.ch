@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --clear",
+    "dev": "nuxt dev --clear --public",
     "generate": "nuxt generate",
     "preview": "nuxtpreview",
     "test": "bun test --watch",

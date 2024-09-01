@@ -85,7 +85,7 @@ onUnmounted(() => {
 </script>
 <style lang="sass" scoped>
 #current
-  @apply max-w-full w-fit max-h-full h-fit object-contain rounded-lg bg-slate-50
+  @apply max-w-full w-fit max-h-full h-fit object-contain rounded-lg
 
 #next, #previous
   @apply grayscale hidden sm:block h-full w-full object-cover brightness-[.2] rounded-sm

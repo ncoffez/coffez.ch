@@ -14,8 +14,8 @@
 				</div>
 				<div v-if="user" class="pt-6">Logged in as {{ user?.displayName }}</div>
 				<div>
-					<a href="#" @click="logoutFromFirebase()" v-if="user">Log out</a>
-					<a href="#" @click="loginToFirebase()" v-else>Login</a>
+					<div class="link" @click.prevent="logoutFromFirebase()" v-if="user">Log out</div>
+					<div class="link" @click.prevent="loginToFirebase()" v-else>Login</div>
 				</div>
 				<div v-if="user">
 					<NuxtLink to="/admin">Settings</NuxtLink>
@@ -30,6 +30,6 @@ const user = await useCurrentUser();
 
 </script>
 <style lang="sass" scoped>
-	a
+	a, .link
 		@apply text-rose-400 hover:text-rose-300 underline underline-offset-2
 </style>

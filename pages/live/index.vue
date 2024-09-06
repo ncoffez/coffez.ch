@@ -16,7 +16,7 @@
           <img v-if="index === 0" :src="image.urlFirebaseReduced" :alt="image.name">
           <img v-else :src="image.urlFirebaseWebp" :alt="image.name">
         </nuxtLink>
-        <small>{{ relativeDate(image.createdDate.toDate()) }}</small>
+        <small>{{ toRelativeDate(image.createdDate.toDate()) }}</small>
       </div>
     </TransitionGroup>
   </section>

@@ -40,11 +40,26 @@
         </div>
       </div>
     </div>
+    <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6 pt-16">
+      <div id="image" :key="image.id" v-for="(image, index) in images" class="relative">
+        <Icon v-if="!image.hidden" id="hide"
+          class="absolute top-2 left-2 text-2xl text-white bg-slate-500 rounded-full p-1 z-10 hidden"
+          name="ic:outline-visibility-off" @click="hideImage(image.id)"></Icon>
+        <Icon v-else id="show"
+          class="absolute top-2 left-2 text-2xl text-white bg-slate-500 rounded-full p-1 z-10 hidden"
+          name="ic:outline-visibility" @click="showImage(image.id)"></Icon>
+        <img :alt="image.name" :src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
+          :class="image.hidden ? 'opacity-20' : ''" class="object-cover rounded-md w-full flex-grow">
+        <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
+          toRelativeDate(image.createdDate) }}</p>
+      </div>
+    </section>
   </div>
 
 </template>
 <script lang='ts' setup>
-import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { addDays, subDays } from 'date-fns';
+import { collection, CollectionReference, deleteDoc, deleteField, doc, getDocs, onSnapshot, orderBy, query, Timestamp, updateDoc, where } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 
 const { $db, $functions } = useNuxtApp();
@@ -63,6 +78,39 @@ watch(updated, () => {
     updated.value = false
   }, 3000)
 })
+
+async function hideImage(id: string) {
+  const docRef = doc($db, 'portraits', id);
+  await updateDoc(docRef, { hidden: true });
+  refreshImages();
+}
+
+async function showImage(id: string) {
+  const docRef = doc($db, 'portraits', id);
+  await updateDoc(docRef, { hidden: deleteField() });
+  refreshImages();
+}
+
+const { data: images, refresh: refreshImages } = await useAsyncData('images', async () => {
+  const portraitsRef: CollectionReference = collection($db, "portraits");
+  const q = query(portraitsRef,
+    where('createdDate', '>=', new Date(serverEvent.value?.startDate || subDays(new Date(), 1))),
+    where('createdDate', '<=', new Date(serverEvent.value?.endDate || addDays(new Date(), 5))),
+    orderBy('createdDate', 'desc'),
+    orderBy('urlFirebaseWebp'));
+  const images = await getDocs(q);
+  const result: any[] = [];
+  return images.docs.map((doc) => {
+    return {
+      id: doc.id,
+      name: doc.data().name,
+      urlFirebaseOriginal: doc.data().urlFirebaseOriginal,
+      urlFirebaseWebp: doc.data().urlFirebaseWebp,
+      hidden: doc.data().hidden,
+      createdDate: dateFromTimestamp(doc.data().createdDate)
+    }
+  });
+});
 
 const start = computed({
   get: () => event.value.startDate.slice(0, 10),
@@ -121,4 +169,7 @@ const event = ref({
 <style lang='sass' scoped>
 input[type="text"]
   @apply w-full p-4 rounded-md border-solid border-2 border-zinc-700 mt-2 focus:ring-1 ring-slate-500 focus:outline-none focus:bg-zinc-900 leading-tight
+
+#image:hover #hide, #image:hover #show
+  @apply block hover:scale-110 transition-transform duration-200 ease-in-out
 </style>

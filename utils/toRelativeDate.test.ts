@@ -1,5 +1,5 @@
 import { expect, test, describe, it } from 'bun:test'
-import { relativeDate } from './relativeDate'
+import { toRelativeDate } from './toRelativeDate'
 
 const now = new Date('2024-07-05T10:00:00.000Z')
 

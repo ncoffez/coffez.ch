@@ -10,11 +10,12 @@
       <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
         <nuxtLink :to="'/sales/' + image.id" :key="image.id"
           :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
-          v-for="(image, index) in images">
-          <img :alt="image.name" :src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
+          v-for="(image, index) in filteredImages">
+          <img :alt="image.name" :src="image.index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
             class="object-cover rounded-md w-full flex-grow">
           <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
-            relativeDate(image.createdDate.toDate()) }}</p>
+            toRelativeDate(image.createdDate.toDate())
+            }}</p>
         </nuxtLink>
       </section>
     </div>
@@ -43,13 +44,25 @@ const images: Ref<any[]> = ref([]);
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
   querySnapshot.docChanges().forEach((change) => {
-    const data = { id: change.doc.id, ...change.doc.data() }
-    if (change.newIndex === 0) images.value.unshift(data);
-    else { images.value.push(data) }
+    const data = { id: change.doc.id, ...change.doc.data(), index: change.newIndex }
+    if (change.type === 'modified') {
+      console.log(change.doc.data());
+      const index = images.value.findIndex((image) => image.id === data.id)
+      console.log(`Index ${index} was modified.`);
+      if (index !== -1) {
+        images.value.splice(index, 1, data)
+      } else images.value.splice(change.newIndex, 0, data);
+    }
+    if (change.type === 'added') { images.value.splice(data.index, 0, data) }
   });
 });
 
 onUnmounted(unsubscribe);
+
+const filteredImages = computed(() => images.value.filter(image => !image.hidden));
+watch(images, (newImages) => {
+  console.log(newImages.map(image => image.index).join(','));
+}, { deep: true });
 
 let meta = {
   title: settings.value?.title,

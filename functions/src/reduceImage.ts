@@ -1,62 +1,128 @@
-import admin, { bucket } from "./firestore";
+import admin from "./firestore";
 import slack from "./slack";
-import { downloadImage } from "./util/downloadImage";
+import sharp from "sharp";
+import axios from "axios";
 import { createQrCode } from "./createQrCode";
 import { DocumentSnapshot, FirestoreEvent } from "firebase-functions/v2/firestore";
-import createResizedImageCopy from "./util/createResizedImageCopy";
-import { Resize, ResizeWithImage } from "./classes/Resize";
-import { ChatPostMessageArguments } from "@slack/web-api";
+import { logger } from "firebase-functions/v2";
+
+// const CHANNEL_IMPRIMANTES = "C05JJB9DRDY";
 
 export async function reduceImage(event: FirestoreEvent<DocumentSnapshot | any>) {
-  const data = event.data.data() as any;
-  const { imageUrl: url, sourceApplication, channel, thread } = data;
-  const { id } = event.params;
+  logger.debug("Function reduceImage launched.");
+  const data = event.data.data();
+  logger.debug({ event });
+
+  // Get the URL of the image
+  const url = data?.imageUrl;
+  logger.debug({ url });
 
   // Download the image
-  const { imageBuffer, contentType } = await downloadImage(url, sourceApplication);
+  const imageBuffer = await downloadImage(url, data?.sourceApplication);
+  logger.debug("After downloadImage.");
 
-  // Generate a QR code for the image
-  const qrCodeBuffer = await createQrCode(`https://coffez.ch/sales/${id}`);
-  const rootPath = `images/portraits/${id}/${id}`;
+  // Reduce the size of the image for print and add qrcode
+  const qrCodeBuffer = await createQrCode(`https://coffez.ch/sales/${event.params.id}`);
 
-  [{ url }, { sourceApplication }, { contentType }, { channel }, { thread }, { id }, { rootPath }, { qrCodeBuffer: qrCodeBuffer ? true : false }, { imageBuffer: imageBuffer ? true : false }].forEach((value: Object) => {
-    console.log(value ? `${Object.keys(value)[0]}: ${Object.values(value)[0]}` : `${Object.keys(value)[0]}: undefined`);
-  })
+  const [reducedImageBuffer, originalWithQRBuffer, webpBuffer, jpgBuffer] = await Promise.all([
+    sharp(imageBuffer)
+      .resize(1025, 1450)
+      .jpeg()
+      .composite([
+        {
+          input: qrCodeBuffer,
+          gravity: "northeast",
+        },
+      ])
+      .toBuffer(),
+    sharp(imageBuffer)
+      .jpeg()
+      .composite([
+        {
+          input: qrCodeBuffer,
+          gravity: "northeast",
+        },
+      ])
+      .toBuffer(),
+    sharp(imageBuffer).resize(350).toFormat("webp").toBuffer(),
+    sharp(imageBuffer).resize(350).jpeg().toBuffer(),
+  ]);
 
-  let resizes: Resize[] = [
-    { name: "original", format: "original", resize: false, hasQRCode: false, path: `${rootPath}.${contentType.split("/")[1]}`, contentType },
-    { name: "reduced", format: "jpg", resize: { x: 1025, y: 1450 }, hasQRCode: true, path: `${rootPath}_reduced.jpg`, contentType: "image/jpeg" },
-    { name: "originalWithQR", format: "original", resize: false, hasQRCode: true, path: `${rootPath}_originalWithQR.${contentType.split("/")[1]}`, contentType },
-    { name: "webp", format: "webp", resize: 350, hasQRCode: false, path: `${rootPath}.webp`, contentType: "image/webp" },
-    { name: "jpg", format: "jpg", resize: 350, hasQRCode: false, path: `${rootPath}.jpg`, contentType: "image/jpeg" },
-  ]
+  // Define paths for firebase storage
+  const originalPath = `images/portraits/${event.params.id}/${event.params.id}.${data?.sourceType}`;
+  const reducedPath = `images/portraits/${event.params.id}/${event.params.id}_reduced.jpg`;
+  const originalWithQRPath = `images/portraits/${event.params.id}/${event.params.id}_originalWithQR.jpg`;
+  const webpPath = `images/portraits/webfeed/${event.params.id}.webp`;
+  const jpgPath = `images/portraits/webfeed/${event.params.id}.jpg`;
 
-  resizes = await Promise.all(resizes.map(async (resize: any) => {
-    console.log(`Creating ${resize.name} image copy.`);
-    return { ...resize, image: await createResizedImageCopy(imageBuffer, resize.format, resize.resize, qrCodeBuffer) } as ResizeWithImage
-  }))
-  console.log(`Created image copies.`);
+  // Upload original and reduced images to Firebase storage
+  const bucket = admin.storage().bucket("coffez-ch.appspot.com");
 
-  await Promise.all((resizes as ResizeWithImage[]).map(async (resize) => {
-    console.log(`bucket.file(${resize.path}).save(${resize.image ? true : false}, { contentType: ${resize.contentType}})`)
-    bucket.file(resize.path).save(resize.image, { contentType: resize.contentType })
-  }))
+  await Promise.all([
+    bucket.file(originalPath).save(imageBuffer, { contentType: "image/png" }),
+    bucket.file(reducedPath).save(reducedImageBuffer, { contentType: "image/png" }),
+    bucket.file(originalWithQRPath).save(originalWithQRBuffer, { contentType: "image/png" }),
+    bucket.file(webpPath).save(webpBuffer, { contentType: "image/webp" }),
+    bucket.file(jpgPath).save(jpgBuffer, { contentType: "image/jpeg" }),
+  ]);
 
-  await Promise.all(resizes.map(async (resize: any) => {
-    bucket.file(resize.path).makePublic();
-  }))
+  await Promise.all([
+    bucket.file(originalPath).makePublic(),
+    bucket.file(reducedPath).makePublic(),
+    bucket.file(originalWithQRPath).makePublic(),
+    bucket.file(webpPath).makePublic(),
+    bucket.file(jpgPath).makePublic(),
+  ]);
 
-  resizes = resizes.map((resize: any) => {
-    return { ...resize, url: bucket.file(resize.path).publicUrl() }
-  })
+  const [originalUrl, originalWithQRUrl, reducedUrl, webpUrl, jpgUrl] = [
+    bucket.file(originalPath).publicUrl(),
+    bucket.file(originalWithQRPath).publicUrl(),
+    bucket.file(reducedPath).publicUrl(),
+    bucket.file(webpPath).publicUrl(),
+    bucket.file(jpgPath).publicUrl(),
+  ];
 
-  await admin.firestore().collection("portraits").doc(event.params.id).update(resizes.reduce((acc, current) => { return { ...acc, [current.name]: current.url } }));
-  let message: ChatPostMessageArguments = {
-    text: `Lien client: https://coffez.ch/sales/${id}`,
-    channel: channel || process.env.SLACK_IMPRIMANTES,
-  }
-  if (thread) message.thread_ts = thread;
-  await slack.chat.postMessage(message)
+  // Update Firestore document with URLs of the stored images
+  const newUrls = {
+    urlFirebaseOriginal: originalUrl,
+    urlFirebaseReduced: reducedUrl,
+    urlFirebaseOriginalWithQR: originalWithQRUrl,
+    urlFirebaseWebp: webpUrl,
+    urlFirebaseJpg: jpgUrl,
+  };
+
+  await Promise.all([
+    admin.firestore().collection("portraits").doc(event.params.id).update(newUrls),
+    slack.chat.postMessage({
+      text: `Lien client: https://coffez.ch/sales/${event.params.id}`,
+      channel: data?.channel,
+      thread_ts: data?.thread,
+    }),
+    admin
+      .firestore()
+      .collection("printQueue")
+      .add({ ...data, ...newUrls, status: "ready" }),
+  ]);
   return "success";
 }
 
+async function downloadImage(url: string, sourceApplication: string) {
+  logger.debug(`Function downloadImage launched with URL ${url}.`);
+  let response;
+
+  if (sourceApplication === "slack") {
+    response = await axios.get(url, {
+      responseType: "arraybuffer",
+      headers: {
+        Authorization: `Bearer ${process.env.SLACK_TOKEN}`,
+      },
+    });
+  } else if (sourceApplication === "Apple Shortcuts") {
+    response = await axios.get(url, {
+      responseType: "arraybuffer",
+    });
+  } else {
+    throw `Source application ${sourceApplication} is not recognized.`;
+  }
+  return response?.data;
+}

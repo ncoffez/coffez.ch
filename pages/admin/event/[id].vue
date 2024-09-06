@@ -27,7 +27,7 @@
         </div>
         <div class="flex flex-col w-full max-w-lg">
           <label for="upload-images">Upload</label>
-          <UiImageDropZone id="upload-images" @imageChanged="onImageChange" />
+          <UiImageDropZone id="upload-images" @mediaChanged="onImageChange" />
         </div>
         <div class="flex gap-4 grid-cols(1fr,2fr)">
           <div class="flex flex-col w-full max-w-lg flex-grow">
@@ -80,8 +80,8 @@ async function updateEvent() {
   let data: any = {};
   data.title = event.value.title;
   data.description = event.value.description;
-  data.startDate = new Date(event.value.startDate);
-  data.endDate = new Date(event.value.endDate);
+  data.startDate = startOfDay(event.value.startDate);
+  data.endDate = endOfDay(event.value.endDate);
   if (selectedImage.value) data.coverImage = selectedImage.value;
 
   await updateDoc(eventRef, data)
@@ -94,6 +94,7 @@ async function deleteEvent() {
 }
 
 async function onImageChange(event: any) {
+  console.log(`Uploading ${event.target.files[0].name}.`);
   const reader = new FileReader();
   reader.onload = async () => {
     loading.value = true;
@@ -102,6 +103,7 @@ async function onImageChange(event: any) {
       imageBase64: base64Image, name: event.target.files[0].name,
     })).data;
     loading.value = false;
+    console.log(`Uploaded ${event.target.files[0].name}.`);
   }
   reader.readAsDataURL(event.target.files[0]);
 }

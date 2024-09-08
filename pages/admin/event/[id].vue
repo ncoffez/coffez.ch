@@ -5,7 +5,9 @@
         :endDate="event.endDate" :description="event.description" :loading="loading" class="my-auto"></UiEventCard>
       <div class="flex flex-col w-full max-w-lg gap-4">
         <div class="flex flex-col w-full max-w-lg">
-          <p class="leading-relaxed py-6 text-zinc-400 font-bold">{{ event.id }}</p>
+          <p class="leading-relaxed py-6 text-zinc-400 font-bold">{{ event.id }}
+            <UiCopyLink :url="`/live/${event.id}?download=true`"></UiCopyLink>
+          </p>
         </div>
         <div class="flex flex-col w-full max-w-lg">
           <label for="title">Title</label>
@@ -63,6 +65,7 @@ import { collection, CollectionReference, deleteDoc, deleteField, doc, getDocs, 
 import { httpsCallable } from 'firebase/functions';
 
 const { $db, $functions } = useNuxtApp();
+const router = useRouter();
 
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
 const { id } = useRoute().params;
@@ -78,6 +81,7 @@ watch(updated, () => {
     updated.value = false
   }, 3000)
 })
+
 
 async function hideImage(id: string) {
   const docRef = doc($db, 'portraits', id);

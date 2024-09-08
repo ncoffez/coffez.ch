@@ -24,6 +24,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  routeRules: {
+    '/live/:id/download': { redirect: '/live/:id' },
+  },
   css: ["@/assets/global.sass"],
   ssr: true,
   app: {
@@ -65,6 +68,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   modules: ["@nuxtjs/i18n", "@nuxt/icon"],
   i18n: {
     vueI18n: "./i18.config.js",

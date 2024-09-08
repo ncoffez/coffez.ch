@@ -1,12 +1,18 @@
 <template>
   <div>
     <div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images.length > 0">
-      <section id="title" class="w-full p-4 sticky top-0 z-2 bg-zinc-900">
-        <h2 class="hidden md:block text-4xl font-extrabold" id="url-title">
-          <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
-        </h2>
-        <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
-      </section>
+      <div class="grid grid-cols-[1fr,auto]">
+        <section id="title" class="w-full p-4 sticky top-0 z-2 bg-zinc-900 stretch-1">
+          <h2 class="hidden md:block text-4xl font-extrabold" id="url-title">
+            <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
+          </h2>
+          <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
+        </section>
+        <div class="grid items-center">
+          <UiDownloadAllImages :images="filteredImages" :title="settings?.title" v-if="route.query.download">Download
+            all images</UiDownloadAllImages>
+        </div>
+      </div>
       <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
         <nuxtLink :to="'/sales/' + image.id" :key="image.id"
           :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
@@ -33,6 +39,7 @@ import { collection, query, onSnapshot, CollectionReference, orderBy, where } fr
 const { $db: db } = useNuxtApp();
 const { event } = useRoute().params;
 const { data: settings } = await useFetch(`/api/getEvent/${event}`);
+const route = useRoute();
 
 const portraitsRef: CollectionReference = collection(db, "portraits");
 const q = query(portraitsRef,
@@ -46,9 +53,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
   querySnapshot.docChanges().forEach((change) => {
     const data = { id: change.doc.id, ...change.doc.data(), index: change.newIndex }
     if (change.type === 'modified') {
-      console.log(change.doc.data());
       const index = images.value.findIndex((image) => image.id === data.id)
-      console.log(`Index ${index} was modified.`);
       if (index !== -1) {
         images.value.splice(index, 1, data)
       } else images.value.splice(change.newIndex, 0, data);
@@ -60,13 +65,10 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 onUnmounted(unsubscribe);
 
 const filteredImages = computed(() => images.value.filter(image => !image.hidden));
-watch(images, (newImages) => {
-  console.log(newImages.map(image => image.index).join(','));
-}, { deep: true });
 
 let meta = {
   title: settings.value?.title,
-  description: ``,
+  description: settings.value?.description,
   coverImage: settings.value?.coverImage,
   defaultImage: `https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg`,
   url: `https://coffez.ch/live/${event}`,
@@ -80,8 +82,8 @@ let meta = {
   },
 }
 
-if (meta.start.valid && meta.end.valid) meta.description += ` Gallery of caricatures drawn from ${meta.start.date} to ${meta.end.date}.`;
-if (meta.start.valid && !meta.end.valid) meta.description += ` Join the live event that started on ${meta.start.date}.`;
+if (meta.start.valid && meta.end.valid && !meta.description) meta.description += ` Gallery of caricatures drawn from ${meta.start.date} to ${meta.end.date}.`;
+if (meta.start.valid && !meta.end.valid && !meta.description) meta.description += ` Join the live event that started on ${meta.start.date}.`;
 
 useSeoMeta({
   description: meta.description,

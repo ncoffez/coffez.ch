@@ -1,9 +1,9 @@
 <template>
   <Header></Header>
-  <!-- <Gallery /> -->
   <Brands />
-  <LazyCards />
   <LazyEvents />
+  <!-- <Gallery /> -->
+  <LazyCards />
   <!-- <LazyPortfolio /> -->
   <Contact />
   <Footer class="mb-16" />

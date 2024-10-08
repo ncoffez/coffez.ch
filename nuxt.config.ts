@@ -68,7 +68,6 @@ export default defineNuxtConfig({
       ],
     },
   },
-
   modules: ["@nuxtjs/i18n", "@nuxt/icon"],
   i18n: {
     vueI18n: "./i18.config.js",
@@ -102,4 +101,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        sass: {
+          api: 'modern-compiler',
+        },
+      },
+    },
+  }
 });

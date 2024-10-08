@@ -9,8 +9,9 @@
           <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
         </section>
         <div class="grid items-center">
-          <UiDownloadAllImages :images="filteredImages" :title="settings?.title" v-if="route.query.download">Download
-            all images</UiDownloadAllImages>
+          <UiDownloadAllImages :images="filteredImages" :title="settings?.title" v-if="route.query.download">
+            <Icon name='ic:outline-save-alt' class="text-lg"></Icon>
+          </UiDownloadAllImages>
         </div>
       </div>
       <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
@@ -33,6 +34,7 @@
   </div>
 </template>
 <script lang='ts' setup>
+import { toRelativeDate } from "#imports";
 import { addDays, subDays } from "date-fns";
 import { collection, query, onSnapshot, CollectionReference, orderBy, where } from "firebase/firestore";
 

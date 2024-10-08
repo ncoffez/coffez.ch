@@ -21,5 +21,4 @@
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
 
 </script>
-<style lang='sass' scoped>
-</style>
+<style scoped></style>

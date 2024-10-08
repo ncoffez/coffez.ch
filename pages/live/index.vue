@@ -27,7 +27,7 @@
   </section>
 </template>
 <script lang='ts' setup>
-
+import { toRelativeDate } from '#imports';
 import { intlFormatDistance, subDays, differenceInDays, formatRelative } from 'date-fns';
 import { collection, query, onSnapshot, CollectionReference, Firestore, orderBy, getDoc, doc, Timestamp, where } from "firebase/firestore";
 

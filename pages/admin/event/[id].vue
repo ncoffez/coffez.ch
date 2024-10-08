@@ -5,8 +5,9 @@
         :endDate="event.endDate" :description="event.description" :loading="loading" class="my-auto"></UiEventCard>
       <div class="flex flex-col w-full max-w-lg gap-4">
         <div class="flex flex-col w-full max-w-lg">
-          <p class="leading-relaxed py-6 text-zinc-400 font-bold">{{ event.id }}
-            <UiCopyLink :url="`/live/${event.id}?download=true`"></UiCopyLink>
+          <p class="leading-relaxed py-6 text-zinc-400 font-bold flex flex-col sm:flex-row gap-2">{{ event.id }}
+            <UiCopyLink :url="`/live/${event.id}?download=true`" :title="event.title" :text="event.description">
+            </UiCopyLink>
           </p>
         </div>
         <div class="flex flex-col w-full max-w-lg">
@@ -60,6 +61,7 @@
 
 </template>
 <script lang='ts' setup>
+import { toRelativeDate } from '#imports';
 import { addDays, subDays } from 'date-fns';
 import { collection, CollectionReference, deleteDoc, deleteField, doc, getDocs, onSnapshot, orderBy, query, Timestamp, updateDoc, where } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';

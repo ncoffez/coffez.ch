@@ -62,7 +62,7 @@ const testCases = [
 
 test('Date is formatted relative to now', () => {
   for (const testCase of testCases) {
-    expect(relativeDate(testCase.input, now), 
+    expect(toRelativeDate(testCase.input, now), 
     `expect(${testCase.input.toLocaleString()})
     .toBe(${testCase.expected})`).toBe(testCase.expected);
   }

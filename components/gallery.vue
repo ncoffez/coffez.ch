@@ -34,4 +34,4 @@ const { data: galleries } = await useAsyncData('galleries', async () => {
 
 
 </script>
-<style lang='sass' scoped></style>
+<style scoped></style>

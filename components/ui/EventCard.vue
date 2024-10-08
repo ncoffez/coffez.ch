@@ -54,5 +54,4 @@ const title = computed(() => {
 })
 
 </script>
-<style lang='sass' scoped>
-</style>
+<style scoped></style>

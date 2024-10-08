@@ -31,4 +31,4 @@ const { data: events } = await useLazyAsyncData<DrawingEvent[]>('events', async 
 });
 
 </script>
-<style lang='sass' scoped></style>
+<style scoped></style>

@@ -120,4 +120,4 @@ function readFile(file: any): Promise<string> {
 }
 
 </script>
-<style lang='sass' scoped></style>
+<style scoped></style>

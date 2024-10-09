@@ -13,6 +13,6 @@ const { setLocale, locales, locale } = useI18n();
 const selectedLanguage = ref(locale.value);
 </script>
 
-<style lang="sass" scoped>
+<style scoped>
 
 </style>

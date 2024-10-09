@@ -21,10 +21,12 @@
 const route = useRoute();
 const router = useRouter();
 </script>
-<style lang='sass' scoped>
-a
+<style scoped>
+a {
   @apply text-rose-400 hover:text-rose-300 underline-offset-2
+}
 
-.router-link-active
+.router-link-active {
   @apply underline
+}
 </style>

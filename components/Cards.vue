@@ -1,6 +1,6 @@
 <template>
-	<section id="cards" class="gap-16 grid w-full sm:px-12 md:px-0 lg:px-12 xl:max-w-screen-lg xl:gap-28"> 
-		<article v-for="(card, index) in ($tm('sections') as any)" :key="card.id" class="grid gap-2 md:gap-8"
+	<section id="cards" class="gap-16 grid w-full sm:px-12 md:px-0 lg:px-12 xl:max-w-screen-lg xl:gap-28">
+		<article v-for="(card, index) in allCards" :key="card.id" class="grid gap-2 md:gap-8"
 			:class="index % 2 === 0 ? 'md:grid-cols-[3fr,2fr] xl:grid-cols-[5fr,3fr]' : 'md:grid-cols-[2fr,3fr] xl:grid-cols-[3fr,5fr]'">
 			<div id="image" :class="index % 2 === 0 ? 'md:order-1' : 'md:order-2'">
 				<video class="block w-full" v-if="card?.media?.type === 'video'" autoplay="true" muted="true" loop="true"
@@ -25,6 +25,9 @@
 
 <script setup lang="ts">
 import { scrollTo } from '~~/methods/scrollTo';
+const { $i18n } = useNuxtApp();
+
+const allCards = ref<any[]>(($i18n.tm('sections') as any[]))
 
 async function handleAction(action: string) {
 	if (['/live'].includes(action)) { await navigateTo(action) }
@@ -32,7 +35,10 @@ async function handleAction(action: string) {
 }
 </script>
 
-<style lang="sass" scoped>
-picture, img, video
+<style scoped>
+picture,
+img,
+video {
 	@apply aspect-square object-cover rounded-xl md:rounded-3xl xl:aspect-[1.3] w-full
-	</style>
+}
+</style>

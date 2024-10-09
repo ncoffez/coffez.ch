@@ -39,5 +39,5 @@ const toDate = (date: { _seconds: any; _nanoseconds: any }) => {
 };
 </script>
 
-<style lang="sass" scoped>
+<style scoped>
 </style>

@@ -29,11 +29,14 @@ const { data: gallery } = await useAsyncData('gallery', async () => {
 })
 
 </script>
-<style lang='sass' scoped>
-img
+<style scoped>
+img {
   @apply h-auto max-w-full rounded-lg
+}
 
-.masonry-container > img::before
-  content: '1'
+.masonry-container > img::before {
+
+  content: '1';
   @apply absolute top-0 left-0 w-full h-full bg-black text-white text-xl font-bold text-center flex justify-center items-center z-10
+}
 </style>

@@ -49,8 +49,9 @@ const submit = async () => {
 };
 </script>
 
-<style lang="sass" scoped>
+<style scoped>
 
-label
+label {
 	@apply block tracking-wide text-gray-300 text-sm font-medium
+}
 </style>

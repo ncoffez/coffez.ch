@@ -23,5 +23,5 @@
 import { scrollTo } from '~~/methods/scrollTo';
 </script>
 
-<style lang="sass" scoped>
+<style scoped>
 </style>

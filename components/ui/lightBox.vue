@@ -83,10 +83,12 @@ onUnmounted(() => {
   document.removeEventListener("touchend", handleTouchEnd);
 });
 </script>
-<style lang="sass" scoped>
-#current
+<style scoped>
+#current {
   @apply max-w-full w-fit max-h-full h-fit object-contain rounded-lg
+}
 
-#next, #previous
+#next, #previous {
   @apply grayscale hidden sm:block h-full w-full object-cover brightness-[.2] rounded-sm
+}
 </style>

@@ -20,10 +20,12 @@
 const router = useRouter();
 
 </script>
-<style lang='sass' scoped>
-#create-new-event:hover #add-icon
-  @apply rotate-90 text-white
+<style scoped>
+#create-new-event:hover #add-icon {
+  @apply rotate-90 text-white;
+}
 
-#add-icon
-  @apply transition-transform duration-100 ease-out
+#add-icon {
+  @apply transition-transform duration-100 ease-out;
+}
 </style>

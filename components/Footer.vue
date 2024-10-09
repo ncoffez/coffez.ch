@@ -29,7 +29,8 @@
 const user = await useCurrentUser();
 
 </script>
-<style lang="sass" scoped>
-	a, .link
+<style scoped>
+	a, .link {
 		@apply text-rose-400 hover:text-rose-300 underline underline-offset-2
+	}
 </style>

@@ -5,7 +5,8 @@
         :endDate="event.endDate" :description="event.description" :loading="loading" class="my-auto"></UiEventCard>
       <div class="flex flex-col w-full max-w-lg gap-4">
         <div class="flex flex-col w-full max-w-lg">
-          <p class="leading-relaxed py-6 text-zinc-400 font-bold flex flex-col sm:flex-row gap-2">{{ event.id }}
+          <p v-if="event.id" class="leading-relaxed py-6 text-zinc-400 font-bold flex flex-col sm:flex-row gap-2">
+            {{ event.id }}
             <UiCopyLink :url="`/live/${event.id}?download=true`" :title="event.title" :text="event.description">
             </UiCopyLink>
           </p>
@@ -58,7 +59,6 @@
       </div>
     </section>
   </div>
-
 </template>
 <script lang='ts' setup>
 import { toRelativeDate } from '#imports';
@@ -71,10 +71,7 @@ const router = useRouter();
 
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
 const { id } = useRoute().params;
-const { data: serverEvent } = await useAsyncData('event', async () => {
-  const event = await $fetch<any>(`/api/getEvent/${id}`);
-  return event;
-});
+const { data: serverEvent } = await useFetch(`/api/getEvent/${id}`);
 
 const updated = ref(false);
 const loading = ref(false);
@@ -172,10 +169,31 @@ const event = ref({
 });
 
 </script>
-<style lang='sass' scoped>
-input[type="text"]
-  @apply w-full p-4 rounded-md border-solid border-2 border-zinc-700 mt-2 focus:ring-1 ring-slate-500 focus:outline-none focus:bg-zinc-900 leading-tight
+<style scoped>
+input[type="text"] {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  border: 2px solid #3f3f46;
+  margin-top: 0.5rem;
+}
 
-#image:hover #hide, #image:hover #show
-  @apply block hover:scale-110 transition-transform duration-200 ease-in-out
+input[type="text"]:focus {
+  outline: 1px solid #64748b;
+}
+
+input[type="text"] {
+  line-height: 1.25;
+}
+
+#image:hover #hide,
+#image:hover #show {
+  display: block;
+}
+
+#image:hover #hide:hover,
+#image:hover #show:hover {
+  transform: scale(1.1);
+  transition: transform 200ms ease-in-out;
+}
 </style>

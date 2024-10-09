@@ -11,10 +11,12 @@
 <script lang='ts' setup>
 const router = useRouter();
 </script>
-<style lang='sass' scoped>
-a
+<style scoped>
+a {
   @apply hover:text-rose-300 hover:font-normal underline-offset-2 text-xl font-light
+}
 
-.router-link-active
+.router-link-active {
   @apply underline
+}
 </style>

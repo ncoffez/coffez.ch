@@ -83,7 +83,8 @@ async function onImageChange(event: any) {
 }
 
 </script>
-<style lang='sass' scoped>
-input[type="text"]
+<style scoped>
+input[type="text"] {
   @apply w-full p-4 rounded-md border-solid border-2 border-zinc-700 mt-2 focus:ring-1 ring-slate-500 focus:outline-none focus:bg-zinc-900 leading-tight
+}
 </style>

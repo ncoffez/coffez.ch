@@ -148,18 +148,22 @@ function debounce(func: any, wait: number) {
 }
 </script>
 
-<style scoped lang="sass">
-.image-item
-  width: 270px
-  margin-bottom: 20px
+<style scoped>
+.image-item {
+  width: 270px;
+  margin-bottom: 20px;
+}
 
-.image-item:hover #actions
+.image-item:hover #actions {
   @apply flex
+}
 
-.icon
+.icon {
   @apply hover:text-rose-500 hover:scale-105 transition-all duration-200 ease-in-out
+}
 
-.favorite
+.favorite {
   @apply text-rose-500
+}
 
 </style>

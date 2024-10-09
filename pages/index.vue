@@ -3,7 +3,9 @@
   <Brands />
   <LazyEvents />
   <!-- <Gallery /> -->
-  <LazyCards />
+  <div id="parent" ref="cards">
+    <LazyCards />
+  </div>
   <!-- <LazyPortfolio /> -->
   <Contact />
   <Footer class="mb-16" />

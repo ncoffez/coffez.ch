@@ -34,16 +34,20 @@ async function createNewGallery() {
 
 
 </script>
-<style lang='sass' scoped>
-#create-new-gallery:hover #title
-  @apply h-full bg-opacity-90
+<style scoped>
+#create-new-gallery:hover #title {
+  @apply h-full bg-opacity-90;
+}
 
-#create-new-gallery:hover #description
-  @apply grid
+#create-new-gallery:hover #description {
+  @apply grid;
+}
 
-#create-new-gallery:hover #add-icon
-  @apply rotate-90 text-white
+#create-new-gallery:hover #add-icon {
+  @apply rotate-90 text-white;
+}
 
-#add-icon
-  @apply transition-transform duration-100 ease-out
+#add-icon {
+  @apply transition-transform duration-100 ease-out;
+}
 </style>

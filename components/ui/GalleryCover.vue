@@ -30,11 +30,12 @@ const link = computed(() => {
 })
 
 </script>
-<style lang='sass' scoped>
-#gallery-cover:hover #title
-  @apply h-full bg-opacity-90
+<style scoped>
+#gallery-cover:hover #title {
+  @apply h-full bg-opacity-90;
+}
 
-#gallery-cover:hover #description
-  @apply grid
-
+#gallery-cover:hover #description {
+  @apply grid;
+}
 </style>

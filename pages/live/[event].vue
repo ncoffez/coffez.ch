@@ -6,7 +6,12 @@
           <h2 class="hidden md:block text-4xl font-extrabold" id="url-title">
             <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
           </h2>
-          <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
+          <div id="subtitle" class="flex text-center items-center gap-2">
+            <Icon name="ic:round-chevron-left"
+              class="w-10 h-10 text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors duration-200 md:hidden"
+              @click="router.push('/')" />
+            <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
+          </div>
         </section>
         <div class="grid items-center">
           <UiDownloadAllImages :images="filteredImages" :title="settings?.title" v-if="route.query.download">
@@ -14,7 +19,8 @@
           </UiDownloadAllImages>
         </div>
       </div>
-      <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6" ref="container">
+      <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6"
+        ref="container">
         <nuxtLink :to="'/sales/' + image.id" :key="image.id"
           :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
           v-for="(image, index) in filteredImages">
@@ -22,7 +28,7 @@
             class="object-cover rounded-md w-full flex-grow">
           <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
             toRelativeDate(image.createdDate.toDate())
-            }}</p>
+          }}</p>
         </nuxtLink>
       </section>
     </div>
@@ -42,6 +48,7 @@ const { $db: db } = useNuxtApp();
 const { event } = useRoute().params;
 const { data: settings } = await useFetch(`/api/getEvent/${event}`);
 const route = useRoute();
+const router = useRouter();
 
 const portraitsRef: CollectionReference = collection(db, "portraits");
 const q = query(portraitsRef,

@@ -1,4 +1,4 @@
-import { expect, test } from 'bun:test'
+import { expect, test } from 'vitest'
 
 const testCases = [
   { input: 'hello', expected: 'hello' },

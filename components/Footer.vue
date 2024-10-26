@@ -26,11 +26,13 @@
 </template>
 
 <script setup lang="ts">
+import { logoutFromFirebase, loginToFirebase } from '#imports';
 const user = await useCurrentUser();
 
 </script>
 <style scoped>
-	a, .link {
-		@apply text-rose-400 hover:text-rose-300 underline underline-offset-2
-	}
+a,
+.link {
+	@apply text-rose-400 hover:text-rose-300 underline underline-offset-2
+}
 </style>

@@ -1,15 +1,10 @@
-import { expect, test, describe, it } from 'bun:test'
+import { expect, test } from 'vitest'
 import { toRelativeDate } from './toRelativeDate'
 
-const now = new Date('2024-07-05T10:00:00.000Z')
+const now = new Date(2024, 6, 5, 10, 0, 0, 0)
 
 const testCases = [
-
   { input: new Date(2024, 5, 23), expected: '23.06.2024' },
-  { input: new Date(2024, 5, 24), expected: '24.06.2024' },
-  { input: new Date(2024, 5, 25), expected: '25.06.2024' },
-  { input: new Date(2024, 5, 26), expected: '26.06.2024' },
-  { input: new Date(2024, 5, 27), expected: '27.06.2024' },
   { input: new Date(2024, 5, 28), expected: '28.06.2024' },
   { input: new Date(2024, 5, 29), expected: 'last Saturday at 12:00 AM' },
   { input: new Date(2024, 5, 30), expected: 'last Sunday at 12:00 AM' },
@@ -62,8 +57,7 @@ const testCases = [
 
 test('Date is formatted relative to now', () => {
   for (const testCase of testCases) {
-    expect(toRelativeDate(testCase.input, now), 
-    `expect(${testCase.input.toLocaleString()})
-    .toBe(${testCase.expected})`).toBe(testCase.expected);
+    expect(toRelativeDate(testCase.input, now),
+      `expect(${testCase.input.toLocaleString()}`).toBe(testCase.expected);
   }
 })

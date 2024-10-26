@@ -63,11 +63,10 @@
 <script lang='ts' setup>
 import { toRelativeDate } from '#imports';
 import { addDays, subDays } from 'date-fns';
-import { collection, CollectionReference, deleteDoc, deleteField, doc, getDocs, onSnapshot, orderBy, query, Timestamp, updateDoc, where } from 'firebase/firestore';
+import { collection, CollectionReference, deleteDoc, deleteField, doc, getDocs, orderBy, query, updateDoc, where } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 
 const { $db, $functions } = useNuxtApp();
-const router = useRouter();
 
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
 const { id } = useRoute().params;

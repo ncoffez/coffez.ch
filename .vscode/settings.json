@@ -1,4 +1,6 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "autoHide.autoHideSideBar": true
+  "autoHide.autoHideSideBar": false,
+  "autoHide.autoHidePanel": false,
+  "autoHide.autoHideAuxiliaryBar": false
 }

@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   icon: {
     mode: "svg"
   },
+  imports: {
+    dirs: ['utils'] // Specify the 'utils' directory for auto-imports
+  },
   runtimeConfig: {
     public: {
       FIREBASE_FRONTEND_KEY: process.env.FIREBASE_FRONTEND_KEY,

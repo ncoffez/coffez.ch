@@ -14,7 +14,7 @@
           </UiDownloadAllImages>
         </div>
       </div>
-      <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6">
+      <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6" ref="container">
         <nuxtLink :to="'/sales/' + image.id" :key="image.id"
           :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
           v-for="(image, index) in filteredImages">

@@ -4,7 +4,7 @@
     <div id="text">
       <div id="toGallery"
         class="grid grid-cols-[auto,1fr] items-center w-fit text-zinc-500 mb-4 hover:text-zinc-300 cursor-pointer transition-colors duration-200"
-        @click="router.push(!event ? '/live' : `/live/${event.id}`)">
+        @click="router.replace(!event ? '/live' : `/live/${event.id}`)">
         <Icon name="ic:round-chevron-left" class="w-8 h-8" />
         <div>Back to gallery</div>
       </div>
@@ -29,6 +29,7 @@
 import { Timestamp } from 'firebase/firestore';
 const route = useRoute();
 const router = useRouter();
+console.log(router.getRoutes())
 const baseURL = useRequestURL();
 const currentURL = `${baseURL}${route.fullPath}`
 

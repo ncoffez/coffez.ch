@@ -7,8 +7,8 @@
             <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
           </h2>
           <div id="subtitle" class="flex text-center items-center gap-2">
-            <Icon name="ic:round-chevron-left"
-              class="w-10 h-10 text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors duration-200 md:hidden"
+            <Icon name="ic:round-home"
+              class="md:hidden w-10 h-10 text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors duration-200"
               @click="router.push('/')" />
             <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
           </div>
@@ -28,7 +28,7 @@
             class="object-cover rounded-md w-full flex-grow">
           <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
             toRelativeDate(image.createdDate.toDate())
-          }}</p>
+            }}</p>
         </nuxtLink>
       </section>
     </div>

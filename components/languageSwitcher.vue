@@ -1,8 +1,8 @@
 <template>
 	<div
 		class="w-96 items-center rounded-md pe-4 bg-zinc-900 border-solid border-2 border-zinc-800 max-w-screen-sm mx-auto">
-		<select class="bg-inherit ps-6 py-4 w-full text-center focus:outline-none leading-tight"name="select" aria-label="Select language" required v-model="selectedLanguage"
-			@change="setLocale(selectedLanguage)">
+		<select class="bg-inherit ps-6 py-4 w-full text-center focus:outline-none leading-tight" name="select"
+			aria-label="Select language" required v-model="selectedLanguage" @change="setLocale(selectedLanguage)">
 			<option v-for="language in locales" :value="language.code">{{ language.name }}</option>
 		</select>
 	</div>
@@ -13,6 +13,4 @@ const { setLocale, locales, locale } = useI18n();
 const selectedLanguage = ref(locale.value);
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,7 +1,6 @@
-import { Request } from "firebase-functions/v2/https";
 import admin from "./firestore";
 import { logger } from "firebase-functions/v2";
-import { Response } from "firebase-functions";
+import { Request, Response } from "express";
 import { FieldValue } from "firebase-admin/firestore";
 
 export async function getAppleShortcut(req: Request, res: Response): Promise<any> {

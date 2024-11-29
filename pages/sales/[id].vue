@@ -29,7 +29,6 @@
 import { Timestamp } from 'firebase/firestore';
 const route = useRoute();
 const router = useRouter();
-console.log(router.getRoutes())
 const baseURL = useRequestURL();
 const currentURL = `${baseURL}${route.fullPath}`
 

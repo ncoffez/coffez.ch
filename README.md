@@ -9,7 +9,7 @@ This site was developed by Nicolas Coffez and uses the following tools:
 - [Google Firebase](https://firebase.google.com/)
 - [Vue 3](https://vuejs.org/)
 - [Nuxt](https://nuxt.com/)
-- [Pico CSS](https://picocss.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ## Contact
 

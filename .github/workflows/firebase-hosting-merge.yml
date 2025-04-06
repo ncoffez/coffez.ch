@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: bun run build
+      - name: Install Bun
+        run: curl -fsSL https://bun.sh/install | bash
+      - run: ~/.bun/bin/bun run build
+      - run: ~/.bun/bin/bun run functions
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

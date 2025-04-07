@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     '/live/:id/download': { redirect: '/live/:id' },
   },
   css: ["@/assets/global.css"],
-  ssr: true,
+  ssr: false,
   app: {
     head: {
       title: "Coffez.ch",
@@ -46,7 +46,6 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1.0" },
         {
-          hid: "description",
           name: "description",
           content:
             "Coffez.ch - einzigartige Karikaturen für Ihre Veranstaltung. Ob digital oder auf Papier, wir verewigen Ihre Gäste mit einem Lächeln. #Karikaturen #Veranstaltungen #Hochzeit #Zeichnungen",
@@ -71,25 +70,26 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@nuxtjs/i18n", "@nuxt/icon"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxt/icon"],
   i18n: {
-    vueI18n: "./i18.config.js",
+    vueI18n: "~/i18.config.js",
     strategy: "no_prefix",
+    bundle:
+    {
+      optimizeTranslationDirective: false,
+    },
     locales: [
       {
         code: "de",
         name: "Deutsch",
-        flag: "https://hatscripts.github.io/circle-flags/flags/de.svg",
       },
       {
         code: "fr",
         name: "Français",
-        flag: "https://hatscripts.github.io/circle-flags/flags/fr.svg",
       },
       {
         code: "en",
         name: "English",
-        flag: "https://hatscripts.github.io/circle-flags/flags/gb.svg",
       },
     ],
     detectBrowserLanguage: {
@@ -98,12 +98,6 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-07-04',
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
   vite: {
     css: {
       preprocessorOptions: {

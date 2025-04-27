@@ -35,7 +35,7 @@ jobs:
           SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
           COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STRING }}
+          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -45,11 +45,16 @@ jobs:
           projectId: coffez-ch
           channelId: live
 
+      - name: Create Service Account Key File
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > serviceAccountKey.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
       - name: Deploy Firebase Functions
         run: npx firebase-tools deploy --only functions --project coffez-ch
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
-          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STRING }}
+          GOOGLE_APPLICATION_CREDENTIALS: serviceAccountKey.json
+          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
           SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}

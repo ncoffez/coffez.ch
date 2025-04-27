@@ -27,7 +27,7 @@ jobs:
           TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
 
       - name: Create Service Account Key File
-        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/src/serviceAccount.env.json
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
@@ -52,7 +52,7 @@ jobs:
       - name: Deploy Firebase Functions
         run: npx firebase-tools deploy --only functions --project coffez-ch
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: functions/src/serviceAccount.env.json
+          GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
           SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}

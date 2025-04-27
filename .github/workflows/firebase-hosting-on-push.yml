@@ -15,19 +15,20 @@ jobs:
       # Install dependencies and build the project for Hosting
       - run: npm ci && npm run build
         env:
-            FIREBASE_FRONTEND_KEY: ${{ secrets.FIREBASE_FRONTEND_KEY }}
-            FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY}}
-            TEST_SECRET: ${{ secrets.TEST_SECRET}}
-            TEST_VARIABLE: ${{ secrets.TEST_VARIABLE}}
+          FIREBASE_FRONTEND_KEY: ${{ secrets.FIREBASE_FRONTEND_KEY }}
+          FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY}}
+          TEST_SECRET: ${{ secrets.TEST_SECRET}}
+          TEST_VARIABLE: ${{ secrets.TEST_VARIABLE}}
       # Install dependencies and build for Functions
       - run: cd functions && npm ci && npm run build && cd ..
         env:
-            SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
-            POSTMARK_TOKEN: ${{secrets.POSTMARK_TOKEN}}
-            SLACK_COMMANDES: ${{secrets.SLACK_COMMANDES}}
-            SLACK_IMPRIMANTES: ${{secrets.SLACK_IMPRIMANTES}}
-            COMPANY_ADDRESS: ${{secrets.COMPANY_ADDRESS}}
-            EMAIL_FROM: ${{secrets.EMAIL_FROM}}
+          SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
+          POSTMARK_TOKEN: ${{secrets.POSTMARK_TOKEN}}
+          SLACK_COMMANDES: ${{secrets.SLACK_COMMANDES}}
+          SLACK_IMPRIMANTES: ${{secrets.SLACK_IMPRIMANTES}}
+          COMPANY_ADDRESS: ${{secrets.COMPANY_ADDRESS}}
+          EMAIL_FROM: ${{secrets.EMAIL_FROM}}
+          FIREBASE_SERVICE_ACCOUNT: ${{secrets.FIREBASE_SERVICE_ACCOUNT}}
       # Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:

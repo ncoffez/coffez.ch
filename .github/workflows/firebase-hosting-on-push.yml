@@ -38,6 +38,7 @@ jobs:
           channelId: live # Deploy to live channel; change to 'preview' or another channel if needed
       # Deploy Firebase Functions
       - name: Deploy Firebase Functions
-        run: npx firebase-tools deploy --only functions --project giens-ch
+        run: npx firebase-tools deploy --only functions --project coffez-ch
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
+          FIREBASE_SERVICE_ACCOUNT: ${{secrets.FIREBASE_SERVICE_ACCOUNT}}

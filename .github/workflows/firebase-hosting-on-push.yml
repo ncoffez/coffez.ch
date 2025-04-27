@@ -34,7 +34,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}
           projectId: coffez-ch
-          channelId: preview # Deploy to live channel; change to 'preview' or another channel if needed
+          channelId: live # Deploy to live channel; change to 'preview' or another channel if needed
       # Deploy Firebase Functions
       - name: Deploy Firebase Functions
         run: npx firebase-tools deploy --only functions --project giens-ch

@@ -45,10 +45,15 @@ jobs:
           projectId: coffez-ch
           channelId: live
 
+      - name: Create Service Account Key File
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > serviceAccountKey.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
       - name: Deploy Firebase Functions
         run: npx firebase-tools deploy --only functions --project coffez-ch
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          GOOGLE_APPLICATION_CREDENTIALS: serviceAccountKey.json
           FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STRING }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}

@@ -32,7 +32,7 @@ jobs:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
       - name: Install Functions Dependencies and Build
-        run: cd functions && npm ci && npm run build
+        run: cd functions && npm ci && npm run build && cd ..
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
@@ -50,9 +50,9 @@ jobs:
           channelId: live
 
       - name: Deploy Firebase Functions
-        run: npm run deploy
+        run: npx firebase-tools deploy --only functions --project coffez-ch
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ./src/serviceAccount.env.json
+          GOOGLE_APPLICATION_CREDENTIALS: functions/src/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
           SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}

@@ -35,8 +35,34 @@ jobs:
           COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
 
+      - name: Detect Changed Functions
+        id: detect-changed
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- functions/)
+          CHANGED_FUNCTIONS=""
+          if echo "$CHANGED_FILES" | grep -q "functions/package.json"; then
+            CHANGED_FUNCTIONS="functions:sendmail,functions:reduceImage,functions:getSlackPush,functions:getEventList,functions:newGallery,functions:getAppleShortcut,functions:uploadEventCover,functions:uploadGalleryImage,functions:uploadGalleryVideo"
+          else
+            for file in $CHANGED_FILES; do
+              case $file in
+                *sendmail*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:sendmail" ;;
+                *reduceImage*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:reduceImage" ;;
+                *getSlackPush*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:getSlackPush" ;;
+                *getEventList*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:getEventList" ;;
+                *newGallery*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:newGallery" ;;
+                *getAppleShortcut*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:getAppleShortcut" ;;
+                *uploadEventCover*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:uploadEventCover" ;;
+                *uploadGalleryImage*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:uploadGalleryImage" ;;
+                *uploadGalleryVideo*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:uploadGalleryVideo" ;;
+              esac
+            done
+            CHANGED_FUNCTIONS=${CHANGED_FUNCTIONS#,}
+          fi
+          echo "changed_functions=$CHANGED_FUNCTIONS" >> $GITHUB_OUTPUT
+
       - name: Deploy Firebase Functions
-        run: npx firebase-tools deploy --only functions:sendmail,functions:reduceImage,functions:getSlackPush,functions:getEventList,functions:newGallery,functions:getAppleShortcut,functions:uploadEventCover,functions:uploadGalleryImage,functions:uploadGalleryVideo --project coffez-ch
+        if: steps.detect-changed.outputs.changed_functions != ''
+        run: npx firebase-tools deploy --only ${{ steps.detect-changed.outputs.changed_functions }} --project coffez-ch
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}

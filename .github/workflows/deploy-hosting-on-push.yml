@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools@14.2.1
+
       - name: Install Root Dependencies and Build for Hosting
         run: npm ci && npm run build
         env:

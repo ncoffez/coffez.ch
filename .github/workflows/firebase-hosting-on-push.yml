@@ -1,0 +1,42 @@
+name: Deploy to Firebase Hosting and Functions on Push
+on:
+  push:
+    branches:
+      - main
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Install dependencies and build the project for Hosting
+      - run: npm ci && npm run build
+        env:
+            FIREBASE_FRONTEND_KEY: ${{ secrets.FIREBASE_FRONTEND_KEY }}
+            FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY}}
+            TEST_SECRET: ${{ secrets.TEST_SECRET}}
+            TEST_VARIABLE: ${{ secrets.TEST_VARIABLE}}
+      # Install dependencies and build for Functions
+      - run: cd functions && npm ci && npm run build && cd ..
+        env:
+            SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
+            POSTMARK_TOKEN: ${{secrets.POSTMARK_TOKEN}}
+            SLACK_COMMANDES: ${{secrets.SLACK_COMMANDES}}
+            SLACK_IMPRIMANTES: ${{secrets.SLACK_IMPRIMANTES}}
+            COMPANY_ADDRESS: ${{secrets.COMPANY_ADDRESS}}
+            EMAIL_FROM: ${{secrets.EMAIL_FROM}}
+      # Deploy to Firebase Hosting
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}
+          projectId: coffez-ch
+          channelId: preview # Deploy to live channel; change to 'preview' or another channel if needed
+      # Deploy Firebase Functions
+      - name: Deploy Firebase Functions
+        run: npx firebase-tools deploy --only functions --project giens-ch
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}

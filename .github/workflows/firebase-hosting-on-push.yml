@@ -28,7 +28,7 @@ jobs:
           SLACK_IMPRIMANTES: ${{secrets.SLACK_IMPRIMANTES}}
           COMPANY_ADDRESS: ${{secrets.COMPANY_ADDRESS}}
           EMAIL_FROM: ${{secrets.EMAIL_FROM}}
-          FIREBASE_SERVICE_ACCOUNT: ${{secrets.FIREBASE_SERVICE_ACCOUNT}}
+          FIREBASE_SERVICE_ACCOUNT_STRING: ${{secrets.FIREBASE_SERVICE_ACCOUNT_STRING}}
       # Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:

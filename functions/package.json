@@ -1,5 +1,8 @@
 {
   "name": "functions",
+  "engines": {
+    "node": "22"
+  },
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",

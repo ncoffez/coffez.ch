@@ -12,33 +12,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Install dependencies and build the project for Hosting
-      - run: npm ci && npm run build
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Root Dependencies and Build for Hosting
+        run: npm ci && npm run build
         env:
           FIREBASE_FRONTEND_KEY: ${{ secrets.FIREBASE_FRONTEND_KEY }}
-          FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY}}
-          TEST_SECRET: ${{ secrets.TEST_SECRET}}
-          TEST_VARIABLE: ${{ secrets.TEST_VARIABLE}}
-      # Install dependencies and build for Functions
-      - run: cd functions && npm ci && npm run build && cd ..
+          FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY }}
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
+
+      - name: Install Functions Dependencies and Build
+        run: cd functions && npm ci && npm run build && cd ..
         env:
-          SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
-          POSTMARK_TOKEN: ${{secrets.POSTMARK_TOKEN}}
-          SLACK_COMMANDES: ${{secrets.SLACK_COMMANDES}}
-          SLACK_IMPRIMANTES: ${{secrets.SLACK_IMPRIMANTES}}
-          COMPANY_ADDRESS: ${{secrets.COMPANY_ADDRESS}}
-          EMAIL_FROM: ${{secrets.EMAIL_FROM}}
-          FIREBASE_SERVICE_ACCOUNT_STRING: ${{secrets.FIREBASE_SERVICE_ACCOUNT_STRING}}
-      # Deploy to Firebase Hosting
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
+          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
+          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
+          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STRING }}
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: coffez-ch
-          channelId: live # Deploy to live channel; change to 'preview' or another channel if needed
-      # Deploy Firebase Functions
+          channelId: live
+
       - name: Deploy Firebase Functions
         run: npx firebase-tools deploy --only functions --project coffez-ch
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
-          FIREBASE_SERVICE_ACCOUNT_STRING: ${{secrets.FIREBASE_SERVICE_ACCOUNT_STRING}}
+          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STRING }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
+          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
+          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
+          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}

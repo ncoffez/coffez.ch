@@ -32,7 +32,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEZ_CH }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: coffez-ch
           channelId: live # Deploy to live channel; change to 'preview' or another channel if needed
       # Deploy Firebase Functions

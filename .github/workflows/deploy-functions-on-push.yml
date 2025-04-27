@@ -36,7 +36,7 @@ jobs:
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
 
       - name: Deploy Firebase Functions
-        run: npx firebase-tools deploy --only functions --except functions:server --project coffez-ch
+        run: npx firebase-tools deploy --only functions:sendmail,functions:reduceImage,functions:getSlackPush,functions:getEventList,functions:newGallery,functions:getAppleShortcut,functions:uploadEventCover,functions:uploadGalleryImage,functions:uploadGalleryVideo --project coffez-ch
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}

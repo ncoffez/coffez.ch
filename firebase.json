@@ -1,54 +1,54 @@
 {
-    "functions": [
-        {
-            "source": ".output/server",
-            "codebase": "nuxt",
-            "runtime": "nodejs18"
-        },
-        {
-            "source": "functions",
-            "codebase": "default",
-            "runtime": "nodejs18",
-            "ignore": [
-                "node_modules",
-                ".git",
-                "firebase-debug.log",
-                "firebase-debug.*.log",
-                ".env"
-            ]
-        }
+  "functions": [
+    {
+      "source": ".output/server",
+      "codebase": "nuxt",
+      "runtime": "nodejs18"
+    },
+    {
+      "source": "functions",
+      "codebase": "default",
+      "runtime": "nodejs18",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        ".env"
+      ]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": ".output/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
     ],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "server"
+      }
+    ]
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true,
     "firestore": {
-        "rules": "firestore.rules",
-        "indexes": "firestore.indexes.json"
+      "port": 8080
     },
     "hosting": {
-        "public": ".output/public",
-        "ignore": [
-            "firebase.json",
-            "**/.*",
-            "**/node_modules/**"
-        ],
-        "rewrites": [
-            {
-                "source": "**",
-                "function": "server"
-            }
-        ]
-    },
-    "emulators": {
-        "functions": {
-            "port": 5001
-        },
-        "ui": {
-            "enabled": true
-        },
-        "singleProjectMode": true,
-        "firestore": {
-            "port": 8080
-        },
-        "hosting": {
-            "port": 5002
-        }
+      "port": 5002
     }
+  }
 }

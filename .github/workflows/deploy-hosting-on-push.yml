@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'functions/**'
+      - "functions/**"
 permissions:
   checks: write
   contents: read
@@ -33,6 +33,16 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
+      - name: Install Root Dependencies and Build Functions
+        run: npm run functions
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
+          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
+          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
+          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

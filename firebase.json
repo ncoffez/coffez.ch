@@ -3,12 +3,12 @@
     {
       "source": ".output/server",
       "codebase": "nuxt",
-      "runtime": "nodejs18"
+      "runtime": "nodejs20"
     },
     {
       "source": "functions",
       "codebase": "default",
-      "runtime": "nodejs18",
+      "runtime": "nodejs20",
       "ignore": [
         "node_modules",
         ".git",

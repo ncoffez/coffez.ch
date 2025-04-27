@@ -1,4 +1,4 @@
-# functions
+# fun-ctions
 This folder includes the code for the Firebase functions.
 To install dependencies:
 

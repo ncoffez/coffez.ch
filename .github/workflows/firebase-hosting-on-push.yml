@@ -16,7 +16,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install Root Dependencies and Build for Hosting
         run: npm ci && npm run build
@@ -26,8 +26,13 @@ jobs:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
           TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
 
+      - name: Create Service Account Key File
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/src/serviceAccount.env.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
       - name: Install Functions Dependencies and Build
-        run: cd functions && npm ci && npm run build && cd ..
+        run: cd functions && npm ci && npm run build
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
@@ -35,7 +40,6 @@ jobs:
           SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
           COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STRING }}
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
@@ -45,16 +49,10 @@ jobs:
           projectId: coffez-ch
           channelId: live
 
-      - name: Create Service Account Key File
-        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > serviceAccountKey.json
-        env:
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-
       - name: Deploy Firebase Functions
-        run: npx firebase-tools deploy --only functions --project coffez-ch
+        run: npm run deploy
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: serviceAccountKey.json
-          FIREBASE_SERVICE_ACCOUNT_STRING: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STRING }}
+          GOOGLE_APPLICATION_CREDENTIALS: ./src/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
           SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}

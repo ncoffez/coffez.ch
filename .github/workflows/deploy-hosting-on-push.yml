@@ -5,6 +5,7 @@ on:
       - main
     paths-ignore:
       - "functions/**"
+      - ".github/**"
 permissions:
   checks: write
   contents: read

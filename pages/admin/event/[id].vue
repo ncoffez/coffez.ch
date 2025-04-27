@@ -1,8 +1,14 @@
 <template>
-  <div class=" px-16 pb-12 mx-auto w-full h-full">
+  <div class="px-16 pb-12 mx-auto w-full h-full">
     <div class="md:flex-row flex flex-col gap-8 md:gap-16 place-items-center">
-      <UiEventCard :title="event.title" :startDate="event.startDate" :coverImage="selectedImage || event.coverImage"
-        :endDate="event.endDate" :description="event.description" :loading="loading" class="my-auto"></UiEventCard>
+      <UiEventCard
+        :title="event.title"
+        :startDate="event.startDate"
+        :coverImage="selectedImage || event.coverImage"
+        :endDate="event.endDate"
+        :description="event.description"
+        :loading="loading"
+        class="my-auto"></UiEventCard>
       <div class="flex flex-col w-full max-w-lg gap-4">
         <div class="flex flex-col w-full max-w-lg">
           <p v-if="event.id" class="leading-relaxed py-6 text-zinc-400 font-bold flex flex-col sm:flex-row gap-2">
@@ -13,16 +19,16 @@
         </div>
         <div class="flex flex-col w-full max-w-lg">
           <label for="title">Title</label>
-          <input type="text" id="title" v-model="event.title">
+          <input type="text" id="title" v-model="event.title" />
         </div>
         <div class="flex flex-row gap-2">
           <div class="flex flex-col w-full max-w-lg">
             <label for="start">Start Date</label>
-            <input type="date" id="start" v-model="start">
+            <input type="date" id="start" v-model="start" />
           </div>
           <div class="flex flex-col w-full max-w-lg">
             <label for="end">End Date</label>
-            <input type="date" id="end" v-model="end">
+            <input type="date" id="end" v-model="end" />
           </div>
         </div>
         <div class="flex flex-col w-full max-w-lg">
@@ -46,27 +52,39 @@
     </div>
     <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6 pt-16">
       <div id="image" :key="image.id" v-for="(image, index) in images" class="relative">
-        <Icon v-if="!image.hidden" id="hide"
+        <Icon
+          v-if="!image.hidden"
+          id="hide"
           class="absolute top-2 left-2 text-2xl text-white bg-slate-500 rounded-full p-1 z-10 hidden"
-          name="ic:outline-visibility-off" @click="hideImage(image.id)"></Icon>
-        <Icon v-else id="show"
+          name="ic:outline-visibility-off"
+          @click="hideImage(image.id)"></Icon>
+        <Icon
+          v-else
+          id="show"
           class="absolute top-2 left-2 text-2xl text-white bg-slate-500 rounded-full p-1 z-10 hidden"
-          name="ic:outline-visibility" @click="showImage(image.id)"></Icon>
-        <img :alt="image.name" :src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
-          :class="image.hidden ? 'opacity-20' : ''" class="object-cover rounded-md w-full flex-grow">
-        <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
-          toRelativeDate(image.createdDate) }}</p>
+          name="ic:outline-visibility"
+          @click="showImage(image.id)"></Icon>
+        <img
+          :alt="image.name"
+          :src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
+          :class="image.hidden ? 'opacity-20' : ''"
+          class="object-cover rounded-md w-full flex-grow" />
+        <p class="text-sm text-slate-400 font-base text-center leading-relaxed">
+          {{ toRelativeDate(image.createdDate) }}
+        </p>
       </div>
     </section>
   </div>
 </template>
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { toRelativeDate } from '#imports';
 import { addDays, subDays } from 'date-fns';
 import { collection, CollectionReference, deleteDoc, deleteField, doc, getDocs, orderBy, query, updateDoc, where } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 
 const { $db, $functions } = useNuxtApp();
+const db = await $db();
+const functions = await $functions();
 
 definePageMeta({ middleware: 'user-is-admin', layout: 'admin' })
 const { id } = useRoute().params;
@@ -82,19 +100,19 @@ watch(updated, () => {
 
 
 async function hideImage(id: string) {
-  const docRef = doc($db, 'portraits', id);
+  const docRef = doc(db, 'portraits', id);
   await updateDoc(docRef, { hidden: true });
   refreshImages();
 }
 
 async function showImage(id: string) {
-  const docRef = doc($db, 'portraits', id);
+  const docRef = doc(db, 'portraits', id);
   await updateDoc(docRef, { hidden: deleteField() });
   refreshImages();
 }
 
 const { data: images, refresh: refreshImages } = await useAsyncData('images', async () => {
-  const portraitsRef: CollectionReference = collection($db, "portraits");
+  const portraitsRef: CollectionReference = collection(db, "portraits");
   const q = query(portraitsRef,
     where('createdDate', '>=', new Date(serverEvent.value?.startDate || subDays(new Date(), 1))),
     where('createdDate', '<=', new Date(serverEvent.value?.endDate || addDays(new Date(), 5))),
@@ -126,7 +144,7 @@ const end = computed({
 const selectedImage = ref(serverEvent.value?.coverImage);
 
 async function updateEvent() {
-  const eventRef = doc($db, 'events', id as string);
+  const eventRef = doc(db, 'events', id as string);
   let data: any = {};
   data.title = event.value.title;
   data.description = event.value.description;
@@ -139,7 +157,7 @@ async function updateEvent() {
 }
 
 async function deleteEvent() {
-  await deleteDoc(doc($db, 'events', id as string));
+  await deleteDoc(doc(db, 'events', id as string));
   await navigateTo('/admin');
 }
 
@@ -166,7 +184,6 @@ const event = ref({
   coverImage: serverEvent.value?.coverImage,
   description: serverEvent.value?.description
 });
-
 </script>
 <style scoped>
 input[type="text"] {

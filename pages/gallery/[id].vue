@@ -19,11 +19,12 @@ defineProps({
 })
 
 const { $db } = useNuxtApp();
+const db = await $db();
 const { id } = useRoute().params;
 const router = useRouter();
 
 const { data: gallery } = await useAsyncData('gallery', async () => {
-  const galleryRef = await getDoc(doc($db, 'gallery', id as string));
+  const galleryRef = await getDoc(doc(db, 'gallery', id as string));
   if (!galleryRef.exists()) router.push('/');
   return galleryRef.data();
 })

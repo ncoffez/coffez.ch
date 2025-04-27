@@ -2,7 +2,7 @@
   <Header></Header>
   <Brands />
   <LazyEvents />
-  <!-- <Gallery /> -->
+  <!-- <LazyGallery /> -->
   <div id="parent" ref="cards">
     <LazyCards />
   </div>
@@ -12,5 +12,5 @@
 </template>
 
 <script setup>
-definePageMeta({ layout: 'home' })
+definePageMeta({ layout: "home" });
 </script>

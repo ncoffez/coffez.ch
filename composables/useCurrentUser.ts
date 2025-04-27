@@ -1,23 +1,24 @@
 import type { Unsubscribe, User } from "firebase/auth";
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 
-export async function useCurrentUser() {
+export function useCurrentUser() {
   const { $auth } = useNuxtApp();
-  const user = useState('user')
+  const user = useState<User | null>('user', () => null);
+  let unsubscribe: Unsubscribe | undefined;
 
   onMounted(async () => {
-    await waitForAuthInit();
-    user.value = $auth.currentUser;
-  })
-  let unsubscribe: Unsubscribe;
-
-  async function waitForAuthInit() {
-    await new Promise<void>((resolve) => {
-      unsubscribe = $auth.onAuthStateChanged((_) => resolve());
-    })
-  }
+    const auth = await $auth();
+    await waitForAuthInit(auth);
+    user.value = auth.currentUser;
+  });
 
   onUnmounted(() => unsubscribe?.());
 
-  return useState('user') as Ref<User | null>;
+  async function waitForAuthInit(auth: any) {
+    await new Promise<void>((resolve) => {
+      unsubscribe = auth.onAuthStateChanged(() => resolve());
+    });
+  }
+
+  return user;
 }

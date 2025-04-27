@@ -10,8 +10,7 @@ dist
 node_modules
 
 # Logs
-logs
-*.log
+*.log*
 
 # Misc
 .DS_Store
@@ -24,9 +23,11 @@ logs
 *.env.*
 !.env.example
 !.env.sample
-!*.env.sample.json*
+!*.env.sample.json
 
-node_modules
-*.log*
+# Firebase
 .firebase
 adminServiceAccountKey.json
+
+# Testing
+coverage

@@ -18,9 +18,10 @@ defineProps({
   }
 })
 const { $db } = useNuxtApp();
+const db = await $db();
 
 const { data: galleries } = await useAsyncData('galleries', async () => {
-  const galleryRef = collection($db, 'gallery');
+  const galleryRef = collection(db, 'gallery');
   const galleries = await getDocs(galleryRef);
   return galleries.docs.map((doc) => {
     return {

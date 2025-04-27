@@ -1,20 +1,20 @@
 <template>
   <section id="gallery" v-if="images.length > 0">
     <hgroup id="title-large-screens">
-      <h2 id="url-title">
-        <NuxtLink to="/">coffez.ch</NuxtLink>/live
-      </h2>
+      <h2 id="url-title"><NuxtLink to="/">coffez.ch</NuxtLink>/live</h2>
       <h4 @click="">{{ settings?.title }}</h4>
     </hgroup>
     <hgroup id="title-small-screens">
       <h2>{{ settings?.title }}</h2>
     </hgroup>
     <TransitionGroup name="grid" tag="div" class="custom-grid">
-      <div v-for="(image, index) in images" :class="{ 'image-box': true, 'large-first-image': index === 0 }"
+      <div
+        v-for="(image, index) in images"
+        :class="{ 'image-box': true, 'large-first-image': index === 0 }"
         :key="image.id">
         <nuxtLink :to="'/sales/' + image.id">
-          <img v-if="index === 0" :src="image.urlFirebaseReduced" :alt="image.name">
-          <img v-else :src="image.urlFirebaseWebp" :alt="image.name">
+          <img v-if="index === 0" :src="image.urlFirebaseReduced" :alt="image.name" />
+          <img v-else :src="image.urlFirebaseWebp" :alt="image.name" />
         </nuxtLink>
         <small>{{ toRelativeDate(image.createdDate.toDate()) }}</small>
       </div>
@@ -26,28 +26,44 @@
     <UiComingSoon />
   </section>
 </template>
-<script lang='ts' setup>
-import { toRelativeDate } from '#imports';
-import { intlFormatDistance, subDays, differenceInDays, formatRelative } from 'date-fns';
-import { collection, query, onSnapshot, CollectionReference, Firestore, orderBy, getDoc, doc, Timestamp, where } from "firebase/firestore";
+<script lang="ts" setup>
+import { toRelativeDate } from "#imports";
+import { intlFormatDistance, subDays, differenceInDays, formatRelative } from "date-fns";
+import {
+  collection,
+  query,
+  onSnapshot,
+  CollectionReference,
+  Firestore,
+  orderBy,
+  getDoc,
+  doc,
+  Timestamp,
+  where,
+} from "firebase/firestore";
 
-definePageMeta({ middleware: 'live-event' })
-const { $db: db } = useNuxtApp();
+definePageMeta({ middleware: "live-event" });
+const { $db } = useNuxtApp();
+const db = await $db();
 
-const settings = ref({ title: 'Coffez.ch - Live', startDate: new Date(subDays(new Date(), 60)) })
+const settings = ref({ title: "Coffez.ch - Live", startDate: new Date(subDays(new Date(), 60)) });
 
 const portraitsRef: CollectionReference = collection(db, "portraits");
-const q = query(portraitsRef,
-  where('createdDate', '>=', settings.value?.startDate || Timestamp.fromDate(subDays(new Date(), 1.2))),
-  orderBy('createdDate', 'desc'),
-  orderBy('urlFirebaseWebp'));
+const q = query(
+  portraitsRef,
+  where("createdDate", ">=", settings.value?.startDate || Timestamp.fromDate(subDays(new Date(), 1.2))),
+  orderBy("createdDate", "desc"),
+  orderBy("urlFirebaseWebp")
+);
 const images: Ref<any[]> = ref([]);
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
   querySnapshot.docChanges().forEach((change) => {
-    const data = { id: change.doc.id, ...change.doc.data() }
+    const data = { id: change.doc.id, ...change.doc.data() };
     if (change.newIndex === 0) images.value.unshift(data);
-    else { images.value.push(data) }
+    else {
+      images.value.push(data);
+    }
   });
 });
 

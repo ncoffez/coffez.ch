@@ -7,7 +7,8 @@
             <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
           </h2>
           <div id="subtitle" class="flex text-center items-center gap-2">
-            <Icon name="ic:round-home"
+            <Icon
+              name="ic:round-home"
               class="md:hidden w-10 h-10 text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors duration-200"
               @click="router.push('/')" />
             <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
@@ -15,20 +16,26 @@
         </section>
         <div class="grid items-center">
           <UiDownloadAllImages :images="filteredImages" :title="settings?.title" v-if="route.query.download">
-            <Icon name='ic:outline-save-alt' class="text-lg"></Icon>
+            <Icon name="ic:outline-save-alt" class="text-lg"></Icon>
           </UiDownloadAllImages>
         </div>
       </div>
-      <section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6"
+      <section
+        id="images"
+        class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6"
         ref="container">
-        <nuxtLink :to="'/sales/' + image.id" :key="image.id"
+        <nuxtLink
+          :to="'/sales/' + image.id"
+          :key="image.id"
           :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
           v-for="(image, index) in filteredImages">
-          <img :alt="image.name" :src="image.index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
-            class="object-cover rounded-md w-full flex-grow">
-          <p class="text-sm text-slate-400 font-base text-center leading-relaxed">{{
-            toRelativeDate(image.createdDate.toDate())
-            }}</p>
+          <img
+            :alt="image.name"
+            :src="image.index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
+            class="object-cover rounded-md w-full flex-grow" />
+          <p class="text-sm text-slate-400 font-base text-center leading-relaxed">
+            {{ toRelativeDate(image.createdDate.toDate()) }}
+          </p>
         </nuxtLink>
       </section>
     </div>
@@ -39,41 +46,47 @@
     </section>
   </div>
 </template>
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { toRelativeDate } from "#imports";
 import { addDays, subDays } from "date-fns";
 import { collection, query, onSnapshot, CollectionReference, orderBy, where } from "firebase/firestore";
 
-const { $db: db } = useNuxtApp();
+const { $db } = useNuxtApp();
+const db = await $db();
+
 const { event } = useRoute().params;
 const { data: settings } = await useFetch(`/api/getEvent/${event}`);
 const route = useRoute();
 const router = useRouter();
 
 const portraitsRef: CollectionReference = collection(db, "portraits");
-const q = query(portraitsRef,
-  where('createdDate', '>=', new Date(settings.value?.startDate || subDays(new Date(), 1))),
-  where('createdDate', '<=', new Date(settings.value?.endDate || addDays(new Date(), 5))),
-  orderBy('createdDate', 'desc'),
-  orderBy('urlFirebaseWebp'));
+const q = query(
+  portraitsRef,
+  where("createdDate", ">=", new Date(settings.value?.startDate || subDays(new Date(), 1))),
+  where("createdDate", "<=", new Date(settings.value?.endDate || addDays(new Date(), 5))),
+  orderBy("createdDate", "desc"),
+  orderBy("urlFirebaseWebp")
+);
 const images: Ref<any[]> = ref([]);
 
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
   querySnapshot.docChanges().forEach((change) => {
-    const data = { id: change.doc.id, ...change.doc.data(), index: change.newIndex }
-    if (change.type === 'modified') {
-      const index = images.value.findIndex((image) => image.id === data.id)
+    const data = { id: change.doc.id, ...change.doc.data(), index: change.newIndex };
+    if (change.type === "modified") {
+      const index = images.value.findIndex((image) => image.id === data.id);
       if (index !== -1) {
-        images.value.splice(index, 1, data)
+        images.value.splice(index, 1, data);
       } else images.value.splice(change.newIndex, 0, data);
     }
-    if (change.type === 'added') { images.value.splice(data.index, 0, data) }
+    if (change.type === "added") {
+      images.value.splice(data.index, 0, data);
+    }
   });
 });
 
 onUnmounted(unsubscribe);
 
-const filteredImages = computed(() => images.value.filter(image => !image.hidden));
+const filteredImages = computed(() => images.value.filter((image) => !image.hidden));
 
 let meta = {
   title: settings.value?.title,
@@ -83,16 +96,18 @@ let meta = {
   url: `https://coffez.ch/live/${event}`,
   start: {
     date: new Date(settings.value?.startDate).toLocaleDateString(),
-    valid: !isNaN(new Date(settings.value?.startDate).getTime())
+    valid: !isNaN(new Date(settings.value?.startDate).getTime()),
   },
   end: {
     date: new Date(settings.value?.endDate).toLocaleDateString(),
-    valid: !isNaN(new Date(settings.value?.endDate).getTime())
+    valid: !isNaN(new Date(settings.value?.endDate).getTime()),
   },
-}
+};
 
-if (meta.start.valid && meta.end.valid && !meta.description) meta.description += ` Gallery of caricatures drawn from ${meta.start.date} to ${meta.end.date}.`;
-if (meta.start.valid && !meta.end.valid && !meta.description) meta.description += ` Join the live event that started on ${meta.start.date}.`;
+if (meta.start.valid && meta.end.valid && !meta.description)
+  meta.description += ` Gallery of caricatures drawn from ${meta.start.date} to ${meta.end.date}.`;
+if (meta.start.valid && !meta.end.valid && !meta.description)
+  meta.description += ` Join the live event that started on ${meta.start.date}.`;
 
 useSeoMeta({
   description: meta.description,
@@ -103,21 +118,20 @@ useSeoMeta({
   twitterTitle: meta.title,
   twitterDescription: meta.description,
   twitterImage: meta.coverImage || meta.defaultImage,
-  twitterCard: 'summary'
-})
+  twitterCard: "summary",
+});
 
 useHead({
   htmlAttrs: {
-    lang: 'en'
+    lang: "en",
   },
   link: [
     {
-      rel: 'icon',
-      type: 'image/png',
-      href: '/favicon.png'
-    }
+      rel: "icon",
+      type: "image/png",
+      href: "/favicon.png",
+    },
   ],
   title: meta.title,
-})
-
+});
 </script>

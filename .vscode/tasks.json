@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Reload dependencies",
+        "type": "shell",
+        "command": "bash",
+        "args": [
+          "-c",
+          "rm package-lock.json && rm -rf node_modules && rm functions/package-lock.json && rm -rf functions/node_modules && npm install && cd functions && npm install && cd .."
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        },
+        "problemMatcher": [],
+        "detail": "Reload node_modules and package-lock.json in root and functions/ directories"
+      }
+    ]
+  }

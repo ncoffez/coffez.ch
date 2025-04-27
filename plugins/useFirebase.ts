@@ -1,25 +1,32 @@
-import { getAuth } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getFunctions } from "firebase/functions";
-// import { connectFunctionsEmulator } from "firebase/functions";
+import { type FirebaseOptions } from "firebase/app";
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
   const config = useRuntimeConfig();
-  const firebaseConfig: {} = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
+  const firebaseConfig: FirebaseOptions = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
 
+  const { initializeApp } = await import("firebase/app");
   const app = initializeApp(firebaseConfig);
 
-  const db = getFirestore(app);
-  const auth = getAuth();
-  const functions = getFunctions(app, "europe-west6");
+  const getDb = async () => {
+    const { getFirestore } = await import("firebase/firestore");
+    return getFirestore(app);
+  };
 
-  // if (config.public.CUSTOM_ENV === 'emulators') {
-  //   console.log('Using functions emulator.');
-  //   connectFunctionsEmulator(functions, "127.0.0.1", 5001);
-  // }
-  
+  const getAuthInstance = async () => {
+    const { getAuth } = await import("firebase/auth");
+    return getAuth(app);
+  };
+
+  const getFunctionsInstance = async () => {
+    const { getFunctions } = await import("firebase/functions");
+    return getFunctions(app, "europe-west6");
+  };
+
   return {
-    provide: { db, auth, functions }
-  }
+    provide: {
+      db: getDb,
+      auth: getAuthInstance,
+      functions: getFunctionsInstance
+    }
+  };
 });

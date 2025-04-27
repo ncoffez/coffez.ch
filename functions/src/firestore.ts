@@ -1,9 +1,9 @@
 import admin, { ServiceAccount } from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
-const FIREBASE_SERVICE_ACCOUNT: ServiceAccount = process.env.FIREBASE_SERVICE_ACCOUNT
-  ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
+const FIREBASE_SERVICE_ACCOUNT: ServiceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_STRING
+  ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_STRING)
   : (() => {
-      throw new Error("FIREBASE_SERVICE_ACCOUNT is not defined in environment variables");
+      throw new Error("FIREBASE_SERVICE_ACCOUNT_STRING is not defined in environment variables");
     })();
 
 admin.initializeApp({

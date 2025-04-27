@@ -1,0 +1,47 @@
+name: Deploy to Firebase Functions on push
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "functions/**"
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Create Service Account Key File
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
+      - name: Install Functions Dependencies and Build
+        run: cd functions && npm ci && npm run build && cd ..
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
+          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
+          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
+          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+
+      - name: Deploy Firebase Functions
+        run: npx firebase-tools deploy --only functions --except functions:server --project coffez-ch
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
+          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
+          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
+          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}

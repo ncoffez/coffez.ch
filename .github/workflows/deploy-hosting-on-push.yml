@@ -1,8 +1,10 @@
-name: Deploy to Firebase Hosting and Functions on Push
+name: Deploy to Firebase Hosting on push
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'functions/**'
 permissions:
   checks: write
   contents: read
@@ -31,16 +33,6 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
-      - name: Install Functions Dependencies and Build
-        run: cd functions && npm ci && npm run build && cd ..
-        env:
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
-          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
-          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
-          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -50,12 +42,6 @@ jobs:
           channelId: live
 
       - name: Deploy Firebase Functions
-        run: npx firebase-tools deploy --only functions --project coffez-ch
+        run: npx firebase-tools deploy --only functions:server --project coffez-ch
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
-          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
-          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
-          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}

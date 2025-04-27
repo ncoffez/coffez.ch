@@ -1,6 +1,9 @@
 {
     "name": "coffez-ch",
     "private": true,
+    "engines": {
+        "node": "20"
+    },
     "scripts": {
         "dev": "nuxt dev --clear",
         "build": "nuxt build",

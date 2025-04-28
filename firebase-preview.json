@@ -37,6 +37,15 @@
                         "value": "text/css"
                     }
                 ]
+            },
+            {
+                "source": "**/*.js",
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/javascript"
+                    }
+                ]
             }
         ]
     }

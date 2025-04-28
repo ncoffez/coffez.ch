@@ -19,6 +19,17 @@
                 "source": "**",
                 "function": "server-preview"
             }
+        ],
+        "headers": [
+            {
+                "source": "**/*.css",
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/css"
+                    }
+                ]
+            }
         ]
     }
 }

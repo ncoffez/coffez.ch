@@ -3,8 +3,11 @@ on:
   push:
     branches-ignore:
       - main
-    paths-ignore:
-      - "functions/**"
+    paths:
+      - "**"
+      - "!functions/**"
+      - ".github/workflows/preview-hosting-on-branch-push.yml"
+      - "!**/.github/**"
 permissions:
   checks: write
   contents: read

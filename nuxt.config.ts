@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   routeRules: {
     "/live/:id/download": { redirect: "/live/:id" },
   },
-  css: ["@/assets/global.css"],
+  css: ["@/assets/global.css", "@/assets/theme.css"],
   ssr: false,
   app: {
     head: {

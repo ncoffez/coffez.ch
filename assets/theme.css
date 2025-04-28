@@ -109,3 +109,20 @@
     --text: oklch(0.25 0.03 240); /* Dark blue text */
   }
 }
+
+button {
+  @apply px-4 py-3 my-4 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95;
+}
+
+.button-1 {
+  @apply bg-primary-700 hover:bg-primary-800 focus-visible:ring-primary-700 text-white;
+}
+.button-2 {
+  @apply bg-secondary-700 hover:bg-secondary-800 focus-visible:ring-secondary-700 text-white;
+}
+.button-3 {
+  @apply bg-tertiary-700 hover:bg-tertiary-800 focus-visible:ring-tertiary-700 text-white;
+}
+.button-4 {
+  @apply bg-quaternary-700 hover:bg-quaternary-800 focus-visible:ring-quaternary-700 text-white;
+}

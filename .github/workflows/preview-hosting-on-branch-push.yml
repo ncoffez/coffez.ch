@@ -44,3 +44,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: coffez-ch
           channelId: preview
+          expires: 3d

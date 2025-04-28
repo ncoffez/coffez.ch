@@ -1,0 +1,46 @@
+name: Preview Hosting on push (not main)
+on:
+  push:
+    branches-ignore:
+      - main
+    paths-ignore:
+      - "functions/**"
+      - ".github/**"
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools@14.2.1
+
+      - name: Install Root Dependencies and Build for Hosting
+        run: npm ci && npm run build
+        env:
+          FIREBASE_FRONTEND_KEY: ${{ secrets.FIREBASE_FRONTEND_KEY }}
+          FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY }}
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
+
+      - name: Create Service Account Key File
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: coffez-ch
+          channelId: preview

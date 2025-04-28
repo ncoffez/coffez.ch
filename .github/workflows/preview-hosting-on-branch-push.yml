@@ -47,7 +47,7 @@ jobs:
           expires: 3d
 
       - name: Deploy Firebase Functions
-        run: npx firebase-tools deploy --only functions:nuxt:server --project coffez-ch --config firebase-preview.json
+        run: npx firebase-tools deploy --only functions:nuxt:server-preview --project coffez-ch --config firebase-preview.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}

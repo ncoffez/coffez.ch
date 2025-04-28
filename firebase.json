@@ -30,6 +30,7 @@
         "public": ".output/public",
         "ignore": [
             "firebase.json",
+            "firebase-preview.json",
             "**/.*",
             "**/node_modules/**"
         ],

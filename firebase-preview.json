@@ -16,6 +16,10 @@
         ],
         "rewrites": [
             {
+                "source": "/_nuxt/**",
+                "destination": "/_nuxt/"
+            },
+            {
                 "source": "**",
                 "function": "server-preview"
             }

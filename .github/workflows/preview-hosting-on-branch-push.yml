@@ -30,6 +30,7 @@ jobs:
           FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY }}
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
           TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
+          ENV: "preview"
 
       - name: Create Service Account Key File
         run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json

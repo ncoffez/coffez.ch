@@ -1,8 +1,8 @@
 <template>
 	<section id="contact"
-		class="w-full lg:grid lg:grid-cols-2 lg:gap-x-4 max-w-screen-lg overflow-clip rounded-3xl  lg:bg-zinc-900 lg:border-zinc-800 lg:border-2 lg:shadow-xl">
+		class="w-full lg:grid lg:grid-cols-2 lg:gap-x-4 max-w-screen-lg overflow-clip rounded-3xl  dark:lg:bg-zinc-900 dark:lg:border-zinc-800 lg:border-2 lg:shadow-xl">
 		<form class="flex flex-col gap-y-4 lg:p-8" v-show="message.state !== 'sent'" @submit.prevent="submit()">
-			<h1 class="text-3xl font-bold my-4 text-slate-100">{{ $t('contact.title') }}</h1>
+			<h1 class="text-3xl font-bold my-4 dark:text-slate-100">{{ $t('contact.title') }}</h1>
 			<label for="name">{{ $t('contact.name') }}
 				<input type="name" name="name" id="name" v-model="message.name" autocomplete="name" />
 			</label>
@@ -52,6 +52,6 @@ const submit = async () => {
 <style scoped>
 
 label {
-	@apply block tracking-wide text-gray-300 text-sm font-medium
+	@apply block tracking-wide dark:text-gray-300 text-sm font-medium
 }
 </style>

@@ -1,10 +1,11 @@
 <template>
-  <section id="events" class="w-full max-w-screen-xl overflow-x-scroll mx-auto" v-if="events">
+  <section id="events" class="w-full max-w-screen-xl overflow-x-scroll mx-auto dark:bg-background" v-if="events">
     <div class="flex gap-6 px-2 w-fit">
       <slot name="first-card"></slot>
       <UiEventCard
-        v-for="event of events"
+        v-for="(event, index) of events"
         :key="event.id"
+        :index="index"
         :id="event.id"
         :title="event.title"
         :startDate="event.startDate"

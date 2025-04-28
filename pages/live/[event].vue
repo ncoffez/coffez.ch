@@ -2,14 +2,14 @@
   <div>
     <div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images.length > 0">
       <div class="grid grid-cols-[1fr,auto]">
-        <section id="title" class="w-full p-4 sticky top-0 z-2 bg-zinc-900 stretch-1">
+        <section id="title" class="w-full p-4 sticky top-0 z-2 stretch-1">
           <h2 class="hidden md:block text-4xl font-extrabold" id="url-title">
-            <NuxtLink class="text-rose-400 hover:text-rose-300 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
+            <NuxtLink class="dark:text-primary-600 text-primary-800 hover:text-primary-900 dark:hover:text-primary-700 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
           </h2>
           <div id="subtitle" class="flex text-center items-center gap-2">
             <Icon
               name="ic:round-home"
-              class="md:hidden w-10 h-10 text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors duration-200"
+              class="md:hidden w-10 h-10 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer transition-colors duration-200"
               @click="router.push('/')" />
             <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
           </div>
@@ -33,7 +33,7 @@
             :alt="image.name"
             :src="image.index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
             class="object-cover rounded-md w-full flex-grow" />
-          <p class="text-sm text-slate-400 font-base text-center leading-relaxed">
+          <p class="text-sm dark:text-slate-400 font-base text-center leading-relaxed">
             {{ toRelativeDate(image.createdDate.toDate()) }}
           </p>
         </nuxtLink>
@@ -41,7 +41,7 @@
     </div>
 
     <section id="placeholder" class="h-full justify-between flex flex-col" v-else>
-      <div id="up-next" class="ml-auto block bg-pink-600 text-white text-2xl font-light p-4">{{ settings?.title }}</div>
+      <div id="up-next" class="ml-auto block dark:bg-pink-600 text-white text-2xl font-light p-4">{{ settings?.title }}</div>
       <UiComingSoon class="place-self-center h-full my-auto" />
     </section>
   </div>

@@ -20,6 +20,10 @@
                 "destination": "/_nuxt/"
             },
             {
+                "source": "/assets/**",
+                "destination": "/assets/"
+            },
+            {
                 "source": "**",
                 "function": "server-preview"
             }
@@ -31,6 +35,15 @@
                     {
                         "key": "Content-Type",
                         "value": "text/css"
+                    }
+                ]
+            },
+            {
+                "source": "**/*.js",
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/javascript"
                     }
                 ]
             }

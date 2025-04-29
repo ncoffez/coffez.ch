@@ -13,6 +13,7 @@ export default defineNuxtConfig({
       TEST_VARIABLE: process.env.TEST_VARIABLE,
       CUSTOM_ENV: process.env.CUSTOM_ENV,
       ENV: process.env.ENV,
+      FUNCTION_NAME: process.env.FUNCTION_NAME,
     },
     FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
     TEST_SECRET: process.env.TEST_SECRET,
@@ -20,7 +21,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: "firebase",
     firebase: {
-      serverFunctionName: process.env.ENV === "preview" ? "previewServer" : "server",
+      serverFunctionName: process.env.FUNCTION_NAME,
       gen: 2,
       httpsOptions: {
         region: "europe-west6",

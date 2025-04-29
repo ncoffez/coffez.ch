@@ -7,12 +7,6 @@
 </template>
 
 <script setup>
-onMounted(() => {
-  document.querySelectorAll("button").forEach((button, index) => {
-    const classIndex = (index % 4) + 1; // Cycle through 1, 2, 3, 4
-    button.classList.add(`button-${classIndex}`);
-  });
-});
 </script>
 
 <style scoped></style>

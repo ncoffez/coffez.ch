@@ -5,7 +5,7 @@
 @layer base {
   :root,
   .light {
-    --color-primary-50: theme("colors.rose.50"); /* Light sky blue */
+    --color-primary-50: theme("colors.rose.50");
     --color-primary-100: theme("colors.rose.100");
     --color-primary-200: theme("colors.rose.200");
     --color-primary-300: theme("colors.rose.300");
@@ -105,8 +105,6 @@
     --color-quaternary-700: theme("colors.emerald.700");
     --color-quaternary-800: theme("colors.emerald.800");
     --color-quaternary-900: theme("colors.emerald.900");
-    --background: oklch(0.97 0.02 0); /* Subtle off-white */
-    --text: oklch(0.25 0.03 240); /* Dark blue text */
   }
 }
 
@@ -114,17 +112,24 @@ button {
   @apply px-4 py-3 my-4 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95;
 }
 
-.button-1 {
-  @apply bg-primary-700 hover:bg-primary-800 focus-visible:ring-primary-700 text-white;
+.colorful .button-1 {
+  @apply bg-primary-500 hover:bg-primary-600 focus-visible:ring-primary-500;
 }
-.button-2 {
-  @apply bg-secondary-700 hover:bg-secondary-800 focus-visible:ring-secondary-700 text-white;
+.colorful .button-2 {
+  @apply bg-secondary-500 hover:bg-secondary-600 focus-visible:ring-secondary-500;
 }
-.button-3 {
-  @apply bg-tertiary-700 hover:bg-tertiary-800 focus-visible:ring-tertiary-700 text-white;
+.colorful .button-3 {
+  @apply bg-tertiary-500 hover:bg-tertiary-600 focus-visible:ring-tertiary-500;
 }
+.colorful .button-4 {
+  @apply bg-quaternary-500 hover:bg-quaternary-600 focus-visible:ring-quaternary-500;
+}
+
+.button-1,
+.button-2,
+.button-3,
 .button-4 {
-  @apply bg-quaternary-700 hover:bg-quaternary-800 focus-visible:ring-quaternary-700 text-white;
+  @apply bg-primary-800 hover:bg-primary-900 focus-visible:ring-primary-800;
 }
 
 .colorful #card-1 img,

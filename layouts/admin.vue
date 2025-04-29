@@ -17,16 +17,17 @@
   </div>
   <NuxtPage></NuxtPage>
 </template>
-<script lang='ts' setup>
+<script lang="ts" setup>
 const route = useRoute();
 const router = useRouter();
 </script>
 <style scoped>
-a {
-  @apply text-rose-400 hover:text-rose-300 underline-offset-2
+a,
+.link {
+  @apply dark:text-primary-400 text-primary-600 hover:text-primary-700 dark:hover:text-primary-500  underline underline-offset-2;
 }
 
 .router-link-active {
-  @apply underline
+  @apply underline;
 }
 </style>

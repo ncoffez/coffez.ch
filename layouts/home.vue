@@ -23,5 +23,18 @@ provide("container", useParentElement());
 const setColorScheme = (color) => {
   $colorScheme.setTheme(color);
 };
+
+const route = useRoute();
+onMounted(async () => await applyButtonClasses());
+const applyButtonClasses = async () => {
+  await nextTick();
+  document.querySelectorAll("button").forEach((button, index) => {
+    const classIndex = (index % 4) + 1;
+    button.classList.add(`button-${classIndex}`);
+  });
+};
+
+// Watch route changes (initial load and navigation)
+watch(() => route.path, applyButtonClasses, { immediate: true });
 </script>
 <style scoped></style>

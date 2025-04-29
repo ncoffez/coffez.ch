@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <div class="bg-neutral-50">
     <div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images.length > 0">
       <div class="grid grid-cols-[1fr,auto]">
         <section id="title" class="w-full p-4 sticky top-0 z-2 stretch-1">
           <h2 class="hidden md:block text-4xl font-extrabold" id="url-title">
-            <NuxtLink class="dark:text-primary-600 text-primary-800 hover:text-primary-900 dark:hover:text-primary-700 pe-1 leading-normal" to="/">coffez.ch</NuxtLink>/live
+            <NuxtLink
+              class="dark:text-primary-600 text-primary-800 hover:text-primary-900 dark:hover:text-primary-700 pe-1 leading-normal"
+              to="/"
+              >coffez.ch</NuxtLink
+            >/live
           </h2>
           <div id="subtitle" class="flex text-center items-center gap-2">
             <Icon
@@ -24,24 +28,27 @@
         id="images"
         class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6"
         ref="container">
-        <nuxtLink
-          :to="'/sales/' + image.id"
+        <div
           :key="image.id"
           :class="index === 0 ? 'sm:col-span-2 sm:row-span-2 h-full flex flex-col' : ''"
           v-for="(image, index) in filteredImages">
-          <img
-            :alt="image.name"
-            :src="image.index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
-            class="object-cover rounded-md w-full flex-grow" />
-          <p class="text-sm dark:text-slate-400 font-base text-center leading-relaxed">
-            {{ toRelativeDate(image.createdDate.toDate()) }}
-          </p>
-        </nuxtLink>
+          <nuxtLink :to="'/sales/' + image.id">
+            <img
+              :alt="image.name"
+              :src="image.index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
+              class="object-cover rounded-lg w-full flex-grow shadow-md dark:shadow-none" />
+            </nuxtLink>
+            <p class="text-sm dark:text-slate-400 font-base text-center leading-relaxed pt-1">
+              {{ toRelativeDate(image.createdDate.toDate()) }}
+            </p>
+        </div>
       </section>
     </div>
 
     <section id="placeholder" class="h-full justify-between flex flex-col" v-else>
-      <div id="up-next" class="ml-auto block dark:bg-pink-600 text-white text-2xl font-light p-4">{{ settings?.title }}</div>
+      <div id="up-next" class="ml-auto block dark:bg-pink-600 text-white text-2xl font-light p-4">
+        {{ settings?.title }}
+      </div>
       <UiComingSoon class="place-self-center h-full my-auto" />
     </section>
   </div>

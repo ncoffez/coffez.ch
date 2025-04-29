@@ -30,7 +30,7 @@
       <div id="text" :class="index % 2 === 0 ? 'md:order-2' : 'md:order-1'">
         <h1 class="text-3xl font-bold my-4 dark:text-slate-100 text-stone-900">{{ card.header }}</h1>
         <p class="dark:text-slate-400 text-md pb-2 max-w-prose md:text-lg leading-relaxed">{{ card.lead }}</p>
-        <button @click="handleAction(card.url)" v-if="card.action">{{ card.action }}</button>
+        <button :class="`button-${(index%4) + 1}`" @click="handleAction(card.url)" v-if="card.action">{{ card.action }}</button>
       </div>
     </article>
   </section>
@@ -56,18 +56,5 @@ picture,
 img,
 video {
   @apply aspect-square object-cover rounded-xl md:rounded-3xl xl:aspect-[1.3] w-full;
-}
-
-#card-1 button {
-  @apply bg-primary-500;
-}
-#card-2 button {
-  @apply bg-secondary-500;
-}
-#card-3 button {
-  @apply bg-tertiary-500;
-}
-#card-4 button {
-  @apply bg-quaternary-500;
 }
 </style>

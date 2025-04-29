@@ -2,7 +2,7 @@
   <NuxtLink
     :to="link"
     :id="`event-card-${(index % 4) + 1}`"
-    class="w-64 h-full my-4 dark:bg-zinc-800 bg-white shadow-lg overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
+    class="w-64 h-full my-4 dark:bg-zinc-800 bg-white shadow-lg overflow-clip rounded-xl hover:scale-105  active:scale-100 transition duration-300 ease-in-out cursor-pointer">
     <div class="w-64" :class="`color-${(index % 4) + 1}`">
       <div class="md:shrink-0">
         <img
@@ -24,7 +24,7 @@
         <div class="block mt-1 text-lg leading-tight font-semibold dark:text-white hover:underline">
           {{ title }}
         </div>
-        <p class="mt-2 dark:text-slate-300 text-sm">{{ description }}</p>
+        <p class="mt-2 text-sm">{{ description }}</p>
         <div class="flex gap-2">
           <slot name="actions"> </slot>
         </div>

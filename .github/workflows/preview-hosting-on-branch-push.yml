@@ -6,8 +6,9 @@ on:
     paths:
       - "**"
       - "!functions/**"
-      - ".github/workflows/preview-hosting-on-branch-push.yml"
-      - "!**/.github/**"
+      - "!.github/workflows/deploy-functions-on-push.yml"
+      - "!.github/workflows/deploy-hosting-on-push.yml"
+      - "!.github/dependabot.yml"
 permissions:
   checks: write
   contents: read

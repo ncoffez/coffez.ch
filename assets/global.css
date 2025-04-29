@@ -1,34 +1,3 @@
 @import "./theme.css";
 
-:root {
-  @apply bg-zinc-50 text-stone-700;
-}
-
-.dark {
-  @apply bg-zinc-900 text-stone-300;
-}
-
-
-input,
-textarea {
-  @apply dark:bg-zinc-900 w-full px-4 py-4 rounded-md font-light text-base border-solid border-2 dark:border-zinc-700 mt-2 focus:ring-1 dark:ring-slate-500 focus:outline-none dark:focus:bg-zinc-900 leading-tight;
-  @apply dark:lg:bg-zinc-900 dark:lg:border-zinc-700 dark:lg:focus:bg-zinc-900;
-}
-
-#__nuxt {
-  display: contents;
-}
-
-body {
-  width: 100vw;
-  min-height: 100vh;
-  position: relative;
-}
-
-#teleports {
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
 

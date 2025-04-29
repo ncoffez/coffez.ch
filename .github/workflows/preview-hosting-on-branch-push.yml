@@ -34,7 +34,7 @@ jobs:
           echo "FUNCTION_NAME=$CAMEL_CASE + 'Server" >> $GITHUB_ENV
 
       - name: Apply function name to firebase-preview.json
-        run: sed -i 's/previewServer/${{env.FUNCTION_NAME}}/g' firebase-preview.json
+        run: "sed -i 's/previewServer/${{ env.FUNCTION_NAME }}/g' firebase-preview.json"
         env:
           FUNCTION_NAME: ${{env.FUNCTION_NAME}}
 

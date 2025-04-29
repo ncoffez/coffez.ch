@@ -48,6 +48,7 @@ jobs:
           projectId: coffez-ch
           channelId: preview
           expires: 3d
+          args: --config firebase-preview.json
 
       - name: Deploy Firebase Functions
         run: npx firebase-tools deploy --only functions:nuxt:previewServer --project coffez-ch --config firebase-preview.json

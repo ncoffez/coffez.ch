@@ -45,12 +45,12 @@ jobs:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
       - name: Deploy to Firebase Hosting
-        run: "firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d  --config firebase-preview.json"
+        run: firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d  --config firebase-preview.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
 
       - name: Deploy Firebase Functions
-        run: npx firebase-tools deploy --only functions:nuxt:previewServer --project coffez-ch --config firebase-preview.json
+        run: firebase deploy --only functions:nuxt:previewServer --config firebase-preview.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}

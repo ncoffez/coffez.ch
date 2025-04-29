@@ -126,3 +126,41 @@ button {
 .button-4 {
   @apply bg-quaternary-700 hover:bg-quaternary-800 focus-visible:ring-quaternary-700 text-white;
 }
+
+.colorful #card-1 img,
+.colorful #card-1 video {
+  box-shadow: 0 0 8px var(--color-primary-500);
+  @apply dark:shadow-none;
+}
+.colorful #card-2 img,
+.colorful #card-2 video {
+  box-shadow: 0 0 8px var(--color-secondary-500);
+  @apply dark:shadow-none;
+}
+.colorful #card-3 img,
+.colorful #card-3 video {
+  box-shadow: 0 0 8px var(--color-tertiary-500);
+  @apply dark:shadow-none;
+}
+.colorful #card-4 img,
+.colorful #card-4 video {
+  box-shadow: 0 0 8px var(--color-quaternary-500);
+  @apply dark:shadow-none;
+}
+
+.colorful #event-card-1 {
+  box-shadow: 0 0 8px var(--color-primary-500);
+  @apply dark:shadow-none;
+}
+.colorful #event-card-2 {
+  box-shadow: 0 0 8px var(--color-secondary-500);
+  @apply dark:shadow-none;
+}
+.colorful #event-card-3 {
+  box-shadow: 0 0 8px var(--color-tertiary-500);
+  @apply dark:shadow-none;
+}
+.colorful #event-card-4 {
+  box-shadow: 0 0 8px var(--color-quaternary-500);
+  @apply dark:shadow-none;
+}

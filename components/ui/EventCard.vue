@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="link"
-    :id="`card-${(index % 4) + 1}`"
+    :id="`event-card-${(index % 4) + 1}`"
     class="w-64 h-full my-4 dark:bg-zinc-800 bg-white shadow-lg overflow-clip rounded-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
     <div class="w-64" :class="`color-${(index % 4) + 1}`">
       <div class="md:shrink-0">
@@ -95,22 +95,5 @@ const title = computed(() => {
 }
 .color-4 #date {
   @apply text-quaternary-800 dark:text-quaternary-300 hover:text-quaternary-900 dark:hover:text-quaternary-400;
-}
-
-#card-1 {
-  box-shadow: 0 0 8px var(--color-primary-500);
-  @apply dark:shadow-none;
-}
-#card-2 {
-  box-shadow: 0 0 8px var(--color-secondary-500);
-  @apply dark:shadow-none;
-}
-#card-3 {
-  box-shadow: 0 0 8px var(--color-tertiary-500);
-  @apply dark:shadow-none;
-}
-#card-4 {
-  box-shadow: 0 0 8px var(--color-quaternary-500);
-  @apply dark:shadow-none;
 }
 </style>

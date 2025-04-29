@@ -58,27 +58,6 @@ video {
   @apply aspect-square object-cover rounded-xl md:rounded-3xl xl:aspect-[1.3] w-full;
 }
 
-#card-1 img,
-#card-1 video {
-  box-shadow: 0 0 8px var(--color-primary-500);
-    @apply dark:shadow-none
-}
-#card-2 img,
-#card-2 video {
-  box-shadow: 0 0 8px var(--color-secondary-500);
-    @apply dark:shadow-none
-}
-#card-3 img,
-#card-3 video {
-  box-shadow: 0 0 8px var(--color-tertiary-500);
-    @apply dark:shadow-none
-}
-#card-4 img,
-#card-4 video {
-  box-shadow: 0 0 8px var(--color-quaternary-500);
-    @apply dark:shadow-none
-}
-
 #card-1 button {
   @apply bg-primary-500;
 }

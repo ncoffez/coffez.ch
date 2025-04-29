@@ -1,8 +1,8 @@
 <template>
   <div class="px-4 md:px-12 overscroll-x-none overflow-x-hidden" ref="container">
     <div class="flex">
-      <img class="mx-auto w-64 m-4 dark:invert px-4 py-2" src="/img/Coffez.ch.png" alt="Coffez.ch" />
-      <div class="flex h-fit gap-2 text-2xs *:py-1 *:px-2">
+      <img class="mx-auto my-auto w-64 h-20 m-4 dark:invert px-4 py-2" src="/img/Coffez.ch.png" alt="Coffez.ch" />
+      <div class="flex flex-col md:flex-row h-fit gap-x-2 gap-y-1 text-2xs *:m-0 my-auto">
         <button @click="setColorScheme('system')">system</button>
         <button @click="setColorScheme('light')">light</button>
         <button @click="setColorScheme('dark')">dark</button>

@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: "firebase",
     firebase: {
-      serverFunctionName: "server",
+      serverFunctionName: process.env.ENV === "preview" ? "previewServer" : "server",
       gen: 2,
       httpsOptions: {
         region: "europe-west6",

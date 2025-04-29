@@ -31,7 +31,7 @@ jobs:
         run: |
           BRANCH_NAME=$(echo ${{ github.ref_name }} | tr '/' '-' | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
           CAMEL_CASE=$(echo $BRANCH_NAME | awk -F- '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' OFS="" | sed 's/^-//')
-          echo "FUNCTION_NAME=$CAMEL_CASE + 'Server" >> $GITHUB_ENV
+          echo "FUNCTION_NAME=${CAMEL_CASE}Server" >> $GITHUB_ENV
 
       - name: Apply function name to firebase-preview.json
         run: "sed -i 's/previewServer/${{ env.FUNCTION_NAME }}/g' firebase-preview.json"

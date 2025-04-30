@@ -3,6 +3,7 @@
     class="flex bg-white dark:bg-stone-500/5 h-15 shadow-md py-2 w-full md:px-12 px-6">
     <CoffezLogo />
     <div id="spacer" class="w-full"></div>
+    <UiMakeAPayment />
     <UiLanguageSwitcher />
     <UiThemePicker />
   </nav>

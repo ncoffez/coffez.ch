@@ -67,7 +67,24 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxt/icon"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxt/icon", "@unlok-co/nuxt-stripe"],
+  stripe: {
+    // Server
+    server: {
+      key: process.env.STRIPE_SECRET_KEY,
+      options: {
+        // your api options override for stripe server side
+        // https://github.com/stripe/stripe-node?tab=readme-ov-file#configuration
+      },
+      // CLIENT
+    },
+    client: {
+      key: process.env.STRIPE_PUBLIC_KEY,
+      // manualClientLoad: true, // if you want to have control where you are going to load the client
+      // your api options override for stripe client side https://stripe.com/docs/js/initializing#init_stripe_js-options
+      options: {},
+    },
+  },
   i18n: {
     vueI18n: "~/i18.config.js",
     strategy: "no_prefix",

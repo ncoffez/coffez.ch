@@ -123,7 +123,7 @@ export default {
   ],
   header: {
     title: {
-      text: "Your event Becomes a",
+      text: "Your event becomes a",
       special: "Masterpiece",
     },
     subtitle:

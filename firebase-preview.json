@@ -1,0 +1,24 @@
+{
+    "functions": [
+        {
+            "source": ".output/server",
+            "codebase": "nuxt",
+            "runtime": "nodejs20"
+        }
+    ],
+    "hosting": {
+        "public": ".output/public",
+        "ignore": [
+            "firebase.json",
+            "firebase-preview.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "rewrites": [
+            {
+                "source": "**",
+                "function": "previewServer"
+            }
+        ]
+    }
+}

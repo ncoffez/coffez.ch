@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-screen-xl overflow-x-scroll mx-auto px-4 pb-16 gap-16 flex flex-col">
     <section class="w-full">
-      <h1 class="text-3xl font-bold mx-2 my-4 text-slate-100">Events</h1>
+      <h1 class="text-3xl font-bold mx-2 my-4 dark:text-slate-100">Events</h1>
       <Events admin>
         <template v-slot:first-card>
           <UiCreateNewEvent />

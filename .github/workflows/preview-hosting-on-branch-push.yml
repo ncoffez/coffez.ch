@@ -1,0 +1,71 @@
+name: Preview Hosting on push (not main)
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "**"
+      - "!functions/**"
+      - "!.github/workflows/deploy-functions-on-push.yml"
+      - "!.github/workflows/deploy-hosting-on-push.yml"
+      - "!.github/dependabot.yml"
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools@14.2.1
+
+      - name: Set Function Name to branch
+        run: |
+          BRANCH_NAME=$(echo ${{ github.ref_name }} | tr '/' '-' | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+          CAMEL_CASE=$(echo $BRANCH_NAME | awk -F- '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' OFS="" | sed 's/^-//')
+          echo "FUNCTION_NAME=${CAMEL_CASE}Server" >> $GITHUB_ENV
+
+      - name: Apply function name to firebase-preview.json
+        run: "sed -i 's/previewServer/${{ env.FUNCTION_NAME }}/g' firebase-preview.json && cat firebase-preview.json"
+        env:
+          FUNCTION_NAME: ${{env.FUNCTION_NAME}}
+
+      - name: Install Root Dependencies and Build for Hosting
+        run: npm ci && npm run build
+        env:
+          FIREBASE_FRONTEND_KEY: ${{ secrets.FIREBASE_FRONTEND_KEY }}
+          FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY }}
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
+          ENV: preview
+          FUNCTION_NAME: ${{ env.FUNCTION_NAME }}
+
+      - name: Create Service Account Key File
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
+      - name: Deploy Firebase Functions
+        run: firebase deploy --only functions:nuxt:${{ env.FUNCTION_NAME }} --config firebase-preview.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}
+          SLACK_COMMANDES: ${{ secrets.SLACK_COMMANDES }}
+          SLACK_IMPRIMANTES: ${{ secrets.SLACK_IMPRIMANTES }}
+          COMPANY_ADDRESS: ${{ secrets.COMPANY_ADDRESS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          FUNCTION_NAME: ${{env.FUNCTION_NAME}}
+
+      - name: Deploy to Firebase Hosting
+        run: firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d  --config firebase-preview.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json

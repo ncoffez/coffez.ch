@@ -1,8 +1,6 @@
-import { type FirebaseOptions } from "firebase/app";
-
 export default defineNuxtPlugin(async (nuxtApp) => {
   const config = useRuntimeConfig();
-  const firebaseConfig: FirebaseOptions = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
+  const firebaseConfig = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
 
   const { initializeApp } = await import("firebase/app");
   const app = initializeApp(firebaseConfig);
@@ -26,7 +24,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     provide: {
       db: getDb,
       auth: getAuthInstance,
-      functions: getFunctionsInstance
-    }
+      functions: getFunctionsInstance,
+    },
   };
 });

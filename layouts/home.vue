@@ -1,15 +1,17 @@
 <template>
-  <div class="px-4 md:px-12 text-stone-300 overscroll-x-none overflow-x-hidden" ref="container">
-    <img class="px-2 pt-2 pb-4 mx-auto w-64 m-4 invert" src="/img/Coffez.ch.png" alt="Coffez.ch">
-    <main class=" py-4 gap-24 flex flex-col items-center">
+  <nav
+    class="flex bg-white dark:bg-stone-500/5 h-15 shadow-md py-2 w-full md:px-12 px-6">
+    <CoffezLogo />
+    <div id="spacer" class="w-full"></div>
+    <UiLanguageSwitcher />
+    <UiThemePicker />
+  </nav>
+  <div class="mx-4 py-6 md:mx-12 overscroll-x-none overflow-x-hidden" ref="container">
+    <main class="py-4 gap-24 flex flex-col items-center">
       <NuxtPage></NuxtPage>
     </main>
   </div>
+  <Footer />
 </template>
-<script lang='ts' setup>
-import { useParentElement } from '@vueuse/core';
-
-provide('container', useParentElement())
-
-</script>
+<script lang="ts" setup></script>
 <style scoped></style>

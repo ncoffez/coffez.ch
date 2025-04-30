@@ -1,8 +1,9 @@
 <template>
-  <footer class="text-center flex w-full pt-8 pb-12 mt-8 dark">
-    <div class="grid w-full">
-      <div id="copyright" class="my-4">Copyright © Coffez.ch {{ new Date().getFullYear() }}</div>
-      <div id="legal-mentions">
+  <footer class="text-center flex w-full pt-8 pb-12 mt-12 dark px-12">
+    <div class="w-full flex flex-row justify-between">
+      <div class="w-28"></div>
+      <div>
+        <div id="copyright" class="my-4">Copyright © Coffez.ch {{ new Date().getFullYear() }}</div>
         <div>
           <a href="https://github.com/ncoffez/coffez.ch/blob/master/impressum.MD" target="_blank">{{
             $t("footer.legal")
@@ -13,10 +14,12 @@
             $t("footer.privacy")
           }}</a>
         </div>
-        <div v-if="user" class="pt-6">Logged in as {{ user?.displayName }}</div>
+        <div class="link" @click.prevent="loginToFirebase()" v-if="!user">Login</div>
+      </div>
+      <div class="text-end w-28">
+        <div class="pt-6 break-words" v-if="user">Logged in as {{ user?.displayName }}</div>
         <div>
           <div class="link" @click.prevent="logoutFromFirebase()" v-if="user">Log out</div>
-          <div class="link" @click.prevent="loginToFirebase()" v-else>Login</div>
         </div>
         <div v-if="user">
           <NuxtLink to="/admin">Settings</NuxtLink>
@@ -28,7 +31,7 @@
 
 <script setup lang="ts">
 import { logoutFromFirebase, loginToFirebase } from "#imports";
-const user = await useCurrentUser();
+const user = useCurrentUser();
 </script>
 <style scoped>
 a,

@@ -1,11 +1,11 @@
 <template>
   <div class="my-2 font-semibold" @click="debug = !debug">
-    <span class=" flex items-center gap-1">
-        <IconsLucideChevronDown v-if="debug" class="" /><IconsLucideChevronRight v-else class="" />
-        {{ variable ? name : "Loading..." }}
+    <span class="flex items-center gap-1">
+      <IconsLucideChevronDown v-if="debug" class="" /><IconsLucideChevronRight v-else class="" />
+      {{ variable ? name : "Loading..." }}
     </span>
 
-    <pre :class="`${debug ? 'h-full' : 'hidden'}`" class="py-2 px-6 text-sm font-light italic">
+    <pre :class="`${debug ? 'h-full' : 'hidden'}`" class="pt-2 px-6 pb-12 text-sm font-light italic">
           {{ variable }}
       </pre
     >

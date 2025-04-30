@@ -1,6 +1,6 @@
 <!-- pages/pay.vue -->
 <template>
-  <div class="min-h-screen-without-footer">
+  <div>
     <h1 class="text-3xl font-bold">Make a Payment to Coffez.ch</h1>
     <div id="express-checkout-element" class="h-fit w-fit my-4 p-4"></div>
     <UiDebugVariable name="Stripe" :variable="stripe" />
@@ -10,7 +10,7 @@
 definePageMeta({ layout: "home" });
 const { locale } = useI18n();
 const { stripe } = useClientStripe();
-const { public: $public } = useRuntimeConfig();
+const { data: client_secret } = await useFetch("/api/payment/secret");
 
 watch(stripe, createCheckout);
 watch(locale, createCheckout);
@@ -30,10 +30,10 @@ function createCheckout() {
   expressCheckoutElement.on("confirm", async (event) => {
     const { error } = await stripe.value.confirmPayment({
       elements,
+      clientSecret: client_secret.value!,
       confirmParams: {
         return_url: window.location.origin + "/success", // Redirect URL after payment
       },
-      clientSecret: $public.STRIPE_TEST_PUBLIC_KEY,
     });
     if (error) {
       console.error("Payment confirmation failed:", error.message);

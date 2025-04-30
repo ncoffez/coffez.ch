@@ -8,7 +8,6 @@
   </div>
   <!-- <LazyPortfolio /> -->
   <Contact />
-  <Footer class="mb-16" />
 </template>
 
 <script setup>

@@ -1,7 +1,6 @@
 <template>
-  <footer class="text-center flex w-full">
+  <footer class="text-center flex w-full pt-8 pb-12 mt-8 dark">
     <div class="grid w-full">
-      <LanguageSwitcher id="language-switcher" />
       <div id="copyright" class="my-4">Copyright © Coffez.ch {{ new Date().getFullYear() }}</div>
       <div id="legal-mentions">
         <div>
@@ -34,6 +33,7 @@ const user = await useCurrentUser();
 <style scoped>
 a,
 .link {
-  @apply dark:text-primary-400 text-primary-600 hover:text-primary-700 dark:hover:text-primary-500  underline underline-offset-2;
+  @apply text-primary-600 hover:text-primary-700  underline underline-offset-2;
+  @apply dark:text-primary-500 dark:hover:text-primary-600;
 }
 </style>

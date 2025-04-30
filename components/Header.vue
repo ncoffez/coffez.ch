@@ -1,11 +1,11 @@
 <template>
-  <section class="">
+  <section class="mt-12 ">
     <div class="grid px-6 sm:mt-8 md:mb-6 md:px-8 lg:px-40 items-center">
       <div class="px-2 md:px-0 mx-auto">
         <h1 class="text-5xl tracking-tighter text-balance max-lg:font-medium max-sm:px-4 md:text-8xl mb-6">
           {{ $t("header.title.text") }}
           <span
-            class="bg-gradient-to-r from-primary-400 via-secondary-400 to-quaternary-400 bg-clip-text text-transparent px-1"
+            class="bg-gradient-to-r from-primary-300 via-primary-400 to-primary-500 bg-clip-text text-transparent px-1"
             >{{ $t("header.title.special") }}</span
           >
         </h1>

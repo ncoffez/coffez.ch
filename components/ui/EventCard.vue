@@ -1,9 +1,8 @@
 <template>
   <NuxtLink
     :to="link"
-    :id="`event-card-${(index % 4) + 1}`"
-    class="w-64 h-full my-4 dark:bg-zinc-800 bg-white shadow-lg overflow-clip rounded-xl hover:scale-105  active:scale-100 transition duration-300 ease-in-out cursor-pointer">
-    <div class="w-64" :class="`color-${(index % 4) + 1}`">
+    class="w-64 h-full my-4 dark:bg-zinc-800 bg-white shadow-lg overflow-clip rounded-xl hover:scale-105 active:scale-100 transition duration-300 ease-in-out cursor-pointer">
+    <div class="w-64">
       <div class="md:shrink-0">
         <img
           class="h-48 w-full object-cover"
@@ -44,7 +43,6 @@ const props = defineProps([
   "id",
   "admin",
   "disabled",
-  "index",
 ]);
 
 const link = computed(() => {
@@ -71,29 +69,11 @@ const title = computed(() => {
 });
 </script>
 <style scoped>
-.color-1 #duration {
+#duration {
   @apply bg-primary-700 hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-700;
 }
-.color-2 #duration {
-  @apply bg-secondary-700 hover:bg-secondary-600 dark:bg-primary-600 dark:hover:bg-primary-700;
-}
-.color-3 #duration {
-  @apply bg-tertiary-700 hover:bg-tertiary-600 dark:bg-primary-600 dark:hover:bg-primary-700;
-}
-.color-4 #duration {
-  @apply bg-quaternary-700 hover:bg-quaternary-600 dark:bg-primary-600 dark:hover:bg-primary-700;
-}
 
-.color-1 #date {
+#date {
   @apply text-primary-800 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-400;
-}
-.color-2 #date {
-  @apply text-secondary-800 dark:text-secondary-300 hover:text-secondary-900 dark:hover:text-secondary-400;
-}
-.color-3 #date {
-  @apply text-tertiary-800 dark:text-tertiary-300 hover:text-tertiary-900 dark:hover:text-tertiary-400;
-}
-.color-4 #date {
-  @apply text-quaternary-800 dark:text-quaternary-300 hover:text-quaternary-900 dark:hover:text-quaternary-400;
 }
 </style>

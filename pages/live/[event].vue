@@ -11,10 +11,17 @@
             >/live
           </h2>
           <div id="subtitle" class="flex text-center items-center gap-2">
-            <Icon
-              name="ic:round-home"
-              class="md:hidden w-10 h-10 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer transition-colors duration-200"
-              @click="router.push('/')" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              @click="router.push('/')"
+              class="md:hidden w-6 h-6 fill-slate-600 dark:fill-slate-300 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer transition-colors duration-200">
+              <!-- Icon from Google Material Icons by Material Design Authors - https://github.com/material-icons/material-icons/blob/master/LICENSE -->
+              <path
+                d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1" />
+            </svg>
             <h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
           </div>
         </section>
@@ -37,10 +44,10 @@
               :alt="image.name"
               :src="image.index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
               class="object-cover rounded-lg w-full flex-grow shadow-md dark:shadow-none" />
-            </nuxtLink>
-            <p class="text-sm dark:text-slate-400 font-base text-center leading-relaxed pt-1">
-              {{ toRelativeDate(image.createdDate.toDate()) }}
-            </p>
+          </nuxtLink>
+          <p class="text-sm dark:text-slate-400 font-base text-center leading-relaxed pt-1">
+            {{ toRelativeDate(image.createdDate.toDate()) }}
+          </p>
         </div>
       </section>
     </div>

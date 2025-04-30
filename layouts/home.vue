@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen flex flex-col overscroll-x-none overflow-x-hidden">
     <nav class="flex bg-white dark:bg-stone-500/5 h-15 shadow-md py-2 w-full md:px-12 px-6">
-      <CoffezLogo @click="router.push('/')" />
+      <CoffezLogo @click="router.push('/')" class="cursor-pointer" />
       <div id="spacer" class="w-full"></div>
-      <UiMakeAPayment />
+      <UiPaymentShortcut to="/sales/YOdBUoXf76OZjfwD1NHR" />
       <UiLanguageSwitcher />
       <UiThemePicker />
     </nav>

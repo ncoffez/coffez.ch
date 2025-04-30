@@ -6,13 +6,13 @@ export default defineEventHandler(async (event) => {
   const id = event.context.params?.id || "";
 
   const config = useRuntimeConfig();
-  console.log("secret", config.TEST_SECRET)
+  console.log("secret", config.TEST_SECRET);
 
   const docRef = adminDB.collection("portraits").doc(id);
   const doc = await docRef.get();
 
   if (doc.exists) {
-    return doc.data();
+    return { id: doc.id, ...doc.data() };
   } else {
     console.log(`No portrait found with id: ${id}`);
     return {

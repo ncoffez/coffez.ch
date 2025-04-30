@@ -47,6 +47,10 @@ jobs:
           TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
           ENV: preview
           FUNCTION_NAME: ${{ env.FUNCTION_NAME }}
+          STRIPE_TEST_PUBLIC_KEY: ${{ secrets.STRIPE_TEST_PUBLIC_KEY }}
+          STRIPE_TEST_SECRET_KEY: ${{ secrets.STRIPE_TEST_SECRET_KEY }}
+          STRIPE_PUBLIC_KEY: ${{ secrets.STRIPE_PUBLIC_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
 
       - name: Create Service Account Key File
         run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json

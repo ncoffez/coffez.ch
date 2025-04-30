@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       minHeight: {
-        "screen-7rem": "calc(100vh - 8rem)",
+        "screen-without-footer": "calc(100vh - 29rem)",
       },
     },
     plugins: [], // Add plugins if you need custom utilities

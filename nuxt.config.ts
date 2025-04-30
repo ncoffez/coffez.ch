@@ -14,6 +14,7 @@ export default defineNuxtConfig({
       CUSTOM_ENV: process.env.CUSTOM_ENV,
       ENV: process.env.ENV,
       FUNCTION_NAME: process.env.FUNCTION_NAME,
+      STRIPE_TEST_PUBLIC_KEY: process.env.STRIPE_TEST_PUBLIC_KEY,
     },
     FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
     TEST_SECRET: process.env.TEST_SECRET,

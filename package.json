@@ -5,7 +5,7 @@
         "node": "20"
     },
     "scripts": {
-        "dev": "nuxt dev --clear",
+        "dev": "nuxt dev --clear --tunnel",
         "build": "nuxt build",
         "postinstall": "nuxt prepare",
         "functions": "cd functions && npm ci && npm run build && cd ..",

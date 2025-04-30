@@ -8,38 +8,40 @@
 </template>
 <script lang="ts" setup>
 definePageMeta({ layout: "home" });
-const { locale } = useI18n();
 const { stripe } = useClientStripe();
-const { data: client_secret } = await useFetch("/api/payment/secret");
 
-watch(stripe, createCheckout);
-watch(locale, createCheckout);
-
-function createCheckout() {
-  const appearance = {};
-  const options = {};
-  const elements = stripe.value.elements({
-    locale: locale.value,
-    mode: "payment",
-    amount: 420,
-    currency: "chf",
-    appearance,
-  });
-
-  const expressCheckoutElement = elements.create("expressCheckout", options);
-  expressCheckoutElement.on("confirm", async (event) => {
-    const { error } = await stripe.value.confirmPayment({
-      elements,
-      clientSecret: client_secret.value!,
-      confirmParams: {
-        return_url: window.location.origin + "/success", // Redirect URL after payment
-      },
-    });
+watch(
+  stripe,
+  async () => {
+    if (!stripe.value) return;
+    // https://github.com/stripe-samples/accept-a-payment/blob/main/payment-element/client/vue-cva/src/components/SrCheckoutForm.vue
+    const { clientSecret, error } = await $fetch<{ clientSecret: string; error?: string }>(
+      "/api/payment/create-payment-intent"
+    );
     if (error) {
-      console.error("Payment confirmation failed:", error.message);
+      console.error(error);
+      return;
     }
-  });
-  expressCheckoutElement.mount("#express-checkout-element");
-}
+
+    const elements = stripe.value.elements({
+      clientSecret: clientSecret as string,
+    });
+    const expressCheckoutElement = elements.create("expressCheckout");
+    expressCheckoutElement.on("confirm", async (event) => {
+      // call Stripe function to initiate payment confirmation
+      const { error } = await stripe.value.confirmPayment({
+        elements,
+        clientSecret,
+        confirmParams: {
+          return_url: "https://example.com",
+        },
+      });
+    });
+    expressCheckoutElement.mount("#express-checkout-element");
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 <style scoped></style>

@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "functions/**"
+      - ".github/workflows/deploy-functions-on-push.yml"
 permissions:
   checks: write
   contents: read

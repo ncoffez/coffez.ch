@@ -1,6 +1,9 @@
 import { db } from "./firestore";
 import { FieldValue } from "firebase-admin/firestore";
 
+/**
+ * This function allows to store the current device's location to database for event tracking.
+ */
 export async function updateCurrentLocation(request: any) {
 	if (!request?.data?.location) {
 		return { error: "Invalid or missing location data" };

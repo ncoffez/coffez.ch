@@ -1,6 +1,7 @@
 export function getMediaType(filename: string): string {
   const extension = filename.split('.').pop()?.toLowerCase();
   if (extension === 'mp4') return 'video/mp4';
+  if (extension === 'mov') return 'video/mp4';
   if (extension === 'jpg' || extension === 'jpeg') return 'image/jpeg';
   if (extension === 'webp') return 'image/webp';
   if (extension === 'png') return 'image/png';

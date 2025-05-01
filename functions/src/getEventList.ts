@@ -1,4 +1,4 @@
-import { db } from "./firestore";
+import { db } from "./firestore"; 
 
 export async function getEventList(request: any) { 
   const { limit } = request.data;

@@ -5,7 +5,7 @@
         <NuxtLink to="/">Home</NuxtLink>
       </li>
       <li>
-        <NuxtLink @click="router.back()">Admin</NuxtLink>
+        <NuxtLink to="/admin">Admin</NuxtLink>
       </li>
       <li v-if="route.path.includes('gallery')">
         <NuxtLink :to="`/gallery/${route.params.id}`">Gallery</NuxtLink>
@@ -20,6 +20,7 @@
 <script lang="ts" setup>
 const route = useRoute();
 const router = useRouter();
+
 </script>
 <style scoped>
 a,

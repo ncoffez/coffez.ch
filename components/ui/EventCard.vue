@@ -74,6 +74,6 @@ const title = computed(() => {
 }
 
 #date {
-  @apply text-primary-800 dark:text-primary-300 hover:text-primary-900 dark:hover:text-primary-400;
+  @apply text-primary-800 dark:text-primary-600 hover:text-primary-900 dark:hover:text-primary-700;
 }
 </style>

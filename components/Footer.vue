@@ -33,7 +33,7 @@ const user = await useCurrentUser();
 <style scoped>
 a,
 .link {
-  @apply text-primary-600 hover:text-primary-700  underline underline-offset-2;
+  @apply text-primary-600 hover:text-primary-700  underline underline-offset-2 cursor-pointer;
   @apply dark:text-primary-500 dark:hover:text-primary-600;
 }
 </style>

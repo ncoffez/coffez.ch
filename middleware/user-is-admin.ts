@@ -1,5 +1,5 @@
-export default defineNuxtRouteMiddleware(async (to, from) => {
-  const user = useState('user');
-  if (!user) return navigateTo('/')
-  else return true;
-})
+export default defineNuxtRouteMiddleware(() => {
+	const user = useState("user");
+	if (!user) return navigateTo("/");
+	else return true;
+});

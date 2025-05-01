@@ -1,30 +1,37 @@
 export default defineNuxtPlugin(async (nuxtApp) => {
-  const config = useRuntimeConfig();
-  const firebaseConfig = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
+	const config = useRuntimeConfig();
+	const firebaseConfig = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
 
-  const { initializeApp } = await import("firebase/app");
-  const app = initializeApp(firebaseConfig);
+	const { initializeApp } = await import("firebase/app");
+	const app = initializeApp(firebaseConfig);
 
-  const getDb = async () => {
-    const { getFirestore } = await import("firebase/firestore");
-    return getFirestore(app);
-  };
+	const getDb = async () => {
+		const { getFirestore } = await import("firebase/firestore");
+		return getFirestore(app);
+	};
 
-  const getAuthInstance = async () => {
-    const { getAuth } = await import("firebase/auth");
-    return getAuth(app);
-  };
+	const getAuthInstance = async () => {
+		const { getAuth } = await import("firebase/auth");
+		return getAuth(app);
+	};
 
-  const getFunctionsInstance = async () => {
-    const { getFunctions } = await import("firebase/functions");
-    return getFunctions(app, "europe-west6");
-  };
+	const getFunctionsInstance = async () => {
+		const { getFunctions } = await import("firebase/functions");
+		return getFunctions(app, "europe-west6");
+	};
 
-  return {
-    provide: {
-      db: getDb,
-      auth: getAuthInstance,
-      functions: getFunctionsInstance,
-    },
-  };
+	const logAnalyticsEvent = async (event: string) => {
+		const { getAnalytics, logEvent } = await import("firebase/analytics");
+		const analytics = getAnalytics();
+		return logEvent(analytics, event);
+	};
+
+	return {
+		provide: {
+			db: getDb,
+			auth: getAuthInstance,
+			functions: getFunctionsInstance,
+			analytics: logAnalyticsEvent,
+		},
+	};
 });

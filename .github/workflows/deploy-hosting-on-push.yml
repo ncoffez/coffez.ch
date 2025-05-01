@@ -45,7 +45,7 @@ jobs:
           projectId: coffez-ch
           channelId: live
 
-      - name: Deploy Firebase Functions
+      - name: Deploy Website backend function
         run: npx firebase-tools deploy --only functions:nuxt:server --project coffez-ch
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json

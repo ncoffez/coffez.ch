@@ -1,6 +1,6 @@
 <template>
   <div class="h-fit w-fit my-auto p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-600/30 relative">
-    <IconsLucideGlobe class="text-xl" @click="hidden = !hidden" />
+    <IconsGlobe class="text-xl" @click="hidden = !hidden" />
     <div
       v-if="!hidden"
       class="absolute z-10 top-10 left-0 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-600 rounded-md shadow-lg">

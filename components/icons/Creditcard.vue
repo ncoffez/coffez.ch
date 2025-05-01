@@ -4,7 +4,4 @@
 </template>
 
 <script>
-export default {
-  name: 'LucideCreditCard'
-}
 </script>

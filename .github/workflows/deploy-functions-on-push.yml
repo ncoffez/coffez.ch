@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Fetch at least 2 commits to include HEAD and HEAD^
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -63,9 +65,8 @@ jobs:
 
       - name: Deploy Firebase Functions
         if: steps.detect-changed.outputs.changed_functions != ''
-        run:
-          npx firebase-tools deploy --only firestore,${{ steps.detect-changed.outputs.changed_functions }} --project
-          coffez-ch
+        run: |
+          npx firebase-tools deploy --only firestore,${{ steps.detect-changed.outputs.changed_functions }} --project coffez-ch
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}

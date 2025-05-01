@@ -1,6 +1,6 @@
 <template>
 	<div class="px-4 py-6 gap-16 mx-auto w-full h-full max-w-screen-xl block" v-if="gallery">
-		<div class="grid grid-cols-1 mx-auto sm:grid-cols-3 w-full max-w-screen-xl gap-6 md:gap-8 mb-16">
+		<div class="grid grid-cols-1 mx-auto @sm:grid-cols-3 w-full max-w-screen-xl gap-6 md:gap-8 mb-16">
 			<UiGalleryCover
 				class="mx-auto grow-0"
 				:id="gallery.id"
@@ -147,3 +147,10 @@ function readFile(file: any): Promise<string> {
 	});
 }
 </script>
+<style scoped>
+input,
+textarea {
+	@apply dark:bg-zinc-900 w-full px-4 py-4 rounded-md font-light text-base border-solid border-2 dark:border-zinc-700 mt-2 focus:ring-1 dark:ring-slate-500 focus:outline-none dark:focus:bg-zinc-900 leading-tight;
+	@apply dark:lg:bg-zinc-900 dark:lg:border-zinc-700 dark:lg:focus:bg-zinc-900;
+}
+</style>

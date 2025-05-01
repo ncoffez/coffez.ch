@@ -47,6 +47,7 @@ jobs:
           TEST_VARIABLE: ${{ secrets.TEST_VARIABLE }}
           ENV: preview
           FUNCTION_NAME: ${{ env.FUNCTION_NAME }}
+          GITHUB_BRANCH: ${{ github.ref_name }}
 
       - name: Create Service Account Key File
         run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json

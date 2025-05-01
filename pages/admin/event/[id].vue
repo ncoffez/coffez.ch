@@ -1,6 +1,6 @@
 <template>
-	<div class="px-16 pb-12 mx-auto w-full h-full">
-		<div class="md:flex-row flex flex-col gap-8 md:gap-16 place-items-center">
+	<div class="px-16 py-12 mx-auto w-full h-full">
+		<div class="md:flex-row flex flex-col gap-8 md:gap-16">
 			<UiEventCard
 				:title="event.title"
 				:startDate="event.startDate"
@@ -229,5 +229,11 @@ input[type="text"] {
 #image:hover #show:hover {
 	transform: scale(1.1);
 	transition: transform 200ms ease-in-out;
+}
+
+input,
+textarea {
+	@apply dark:bg-zinc-900 w-full px-4 py-4 rounded-md font-light text-base border-solid border-2 dark:border-zinc-700 mt-2 focus:ring-1 dark:ring-slate-500 focus:outline-none dark:focus:bg-zinc-900 leading-tight;
+	@apply dark:lg:bg-zinc-900 dark:lg:border-zinc-700 dark:lg:focus:bg-zinc-900;
 }
 </style>

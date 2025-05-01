@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-neutral-50">
+	<div class="bg-zinc-50">
 		<div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images.length > 0">
 			<div class="grid grid-cols-[1fr,auto]">
 				<section id="title" class="w-full p-4 sticky top-0 z-2 stretch-1">

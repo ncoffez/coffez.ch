@@ -44,7 +44,7 @@ jobs:
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- functions/)
           CHANGED_FUNCTIONS=""
           if echo "$CHANGED_FILES" | grep -q "functions/package.json"; then
-            CHANGED_FUNCTIONS="functions:sendmail,functions:reduceImage,functions:getSlackPush,functions:getEventList,functions:newGallery,functions:getAppleShortcut,functions:uploadEventCover,functions:uploadGalleryImage,functions:uploadGalleryVideo"
+            CHANGED_FUNCTIONS="functions:sendmail,functions:reduceImage,functions:getSlackPush,functions:getEventList,functions:newGallery,functions:getAppleShortcut,functions:uploadEventCover,functions:uploadGalleryImage,functions:uploadGalleryVideo, functions:updateCurrentLocation"
           else
             for file in $CHANGED_FILES; do
               case $file in
@@ -57,6 +57,7 @@ jobs:
                 *uploadEventCover*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:uploadEventCover" ;;
                 *uploadGalleryImage*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:uploadGalleryImage" ;;
                 *uploadGalleryVideo*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:uploadGalleryVideo" ;;
+                *updateCurrentLocation*) CHANGED_FUNCTIONS="$CHANGED_FUNCTIONS,functions:updateCurrentLocation" ;
               esac
             done
             CHANGED_FUNCTIONS=${CHANGED_FUNCTIONS#,}

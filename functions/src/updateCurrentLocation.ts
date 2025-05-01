@@ -1,24 +1,46 @@
 import { db } from "./firestore";
-import { FieldValue } from "firebase-admin/firestore";
+import { FieldValue, Timestamp } from "firebase-admin/firestore";
+import { Request, Response } from "express";
 
 /**
  * This function allows to store the current device's location to database for event tracking.
  */
-export async function updateCurrentLocation(request: any) {
-	if (!request?.data?.location) {
-		return { error: "Invalid or missing location data" };
+export async function updateCurrentLocation(req: Request, res: Response) {
+	if (req.method !== "POST") {
+		res.status(405).send("Method Not Allowed, need POST");
+		return;
 	}
 
-	const { location } = request.data;
+	interface Location {
+		address: string;
+		longitude: number;
+		latitude: number;
+		street: string;
+		city: string;
+		device: string;
+		date?: Timestamp;
+	}
+	const location: Location = req.body;
 	const settingsRef = db.collection("settings");
+
+	// Validate required fields
+	const requiredFields: (keyof Location)[] = ["address", "longitude", "latitude", "street", "city", "device"];
+	for (const field of requiredFields) {
+		if (!location[field]) {
+			res.status(400).send(`Missing required field: ${field}`);
+			return;
+		}
+	}
 
 	try {
 		await settingsRef.doc("location").set({
 			date: FieldValue.serverTimestamp(),
 			...location,
 		});
-		return { success: true };
+		res.status(200).send("Location was updated successfully.");
+		return;
 	} catch (e: any) {
-		return { error: `Error processing request: ${(e as Error).message}` };
+		res.status(500).send(`Error processing request: ${(e as Error).message}`);
+		return;
 	}
 }

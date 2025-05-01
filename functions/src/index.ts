@@ -10,6 +10,7 @@ import { getAppleShortcut } from "./getAppleShortcut";
 import { uploadEventCover } from "./uploadEventCover";
 import { uploadGalleryImage } from "./uploadGalleryImage";
 import { uploadGalleryVideo } from "./uploadGalleryVideo";
+import { updateCurrentLocation } from "./updateCurrentLocation";
 
 setGlobalOptions({ maxInstances: 3, region: "europe-west6" });
 
@@ -17,6 +18,7 @@ exports.sendmail = onRequest(sendpostmark);
 exports.reduceImage = onDocumentCreated("/portraits/{id}", reduceImage);
 exports.getSlackPush = onRequest(getSlackPush);
 exports.getEventList = onCall(getEventList);
+exports.getEventList = onCall(updateCurrentLocation);
 exports.newGallery = onRequest(createNewGallery);
 exports.getAppleShortcut = onRequest(getAppleShortcut);
 exports.uploadEventCover = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadEventCover);

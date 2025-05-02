@@ -14,7 +14,8 @@ export default defineNuxtConfig({
 			CUSTOM_ENV: process.env.CUSTOM_ENV,
 			ENV: process.env.ENV,
 			FUNCTION_NAME: process.env.FUNCTION_NAME,
-      GITHUB_BRANCH: process.env.GITHUB_BRANCH
+			GITHUB_BRANCH: process.env.GITHUB_BRANCH,
+			GOOGLE_MAPS_EMBED_API_KEY: process.env.GOOGLE_MAPS_EMBED_API_KEY,
 		},
 		FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
 		TEST_SECRET: process.env.TEST_SECRET,

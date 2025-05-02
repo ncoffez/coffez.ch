@@ -132,7 +132,7 @@ async function deleteImage(imageUrl: string) {
 async function deleteGallery() {
 	const galleryRef = doc(db, "gallery", id as string);
 	await deleteDoc(galleryRef);
-	await navigateTo("/admin");
+	await navigateTo("/admin/galleries");
 }
 
 function readFile(file: any): Promise<string> {

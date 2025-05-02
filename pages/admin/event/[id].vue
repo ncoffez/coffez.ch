@@ -96,10 +96,11 @@ import { httpsCallable } from "firebase/functions";
 const { $db, $functions } = useNuxtApp();
 const db = await $db();
 const functions = await $functions();
-
-definePageMeta({ middleware: "user-is-admin", layout: "admin" });
 const { id } = useRoute().params;
 const { data: serverEvent } = await useFetch(`/api/getEvent/${id}`);
+const name = computed(() => serverEvent.value || id);
+
+definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "" });
 
 const updated = ref(false);
 const loading = ref(false);
@@ -181,7 +182,7 @@ async function onImageChange(event: any) {
 		const base64Image = reader.result?.toString().split(",")[1]; // Extract Base64 data after comma
 		selectedImage.value = (
 			await httpsCallable(
-				$functions,
+				functions,
 				"uploadEventCover"
 			)({
 				imageBase64: base64Image,

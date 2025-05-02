@@ -1,6 +1,5 @@
 <template>
 	<div class="px-16 pb-12 mx-auto w-full h-full">
-		<h1 class="text-3xl font-bold my-4 dark:text-slate-100">Create new event</h1>
 		<div class="md:flex-row flex flex-col gap-8 md:gap-16 place-items-center">
 			<UiEventCard
 				:title="event.title"
@@ -49,7 +48,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { httpsCallable } from "firebase/functions";
 
-definePageMeta({ middleware: "user-is-admin", layout: "admin" });
+definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Create new event" });
 
 const { $db, $functions } = useNuxtApp();
 const db = await $db();

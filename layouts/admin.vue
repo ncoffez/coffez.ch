@@ -6,24 +6,45 @@
 				<div class="mr-6 hover:scale-110">
 					<IconsPanelLeft class="text-xl" @click="showSidebar = !showSidebar"></IconsPanelLeft>
 				</div>
-				<div class="hidden md:flex gap-2 items-center" v-for="breadcrumb of breadcrumbs">
-					<span class="text-stone-500 dark:text-stone-400 font-light">{{ breadcrumb }}</span>
-					<IconsChevronRight v-if="breadcrumbs" class="md:inline hidden" />
+				<div class="hidden md:flex items-center" v-for="breadcrumb of breadcrumbs">
+					<div v-if="title !== breadcrumb.name">
+						<NuxtLink :to="breadcrumb.path" class="text-stone-500 dark:text-stone-400 font-light">{{
+							breadcrumb.name
+						}}</NuxtLink>
+						<IconsChevronRight v-if="breadcrumb" class="md:inline hidden mx-2" />
+					</div>
 				</div>
 				<span>{{ title }}</span>
 				<div id="spacer" class="flex-grow"></div>
 				<UiLanguageSwitcher />
 				<UiThemePicker />
 			</nav>
-			<NuxtPage></NuxtPage>
+			<div class="py-8 px-8">
+				<NuxtPage></NuxtPage>
+			</div>
 		</section>
 	</div>
 </template>
 <script lang="ts" setup>
-const showSidebar = ref(true);
+import { useWindowSize } from "@vueuse/core";
+
+const windowSize = useWindowSize();
+const breakpoint = 768;
+
+watch(windowSize.width, (newSize, oldSize) => {
+	if (!showSidebar.value && oldSize < breakpoint && newSize >= breakpoint) showSidebar.value = true;
+	if (showSidebar.value && oldSize >= breakpoint && newSize < breakpoint) showSidebar.value = false;
+});
+const showSidebar = ref(windowSize.width.value > breakpoint);
 const route = useRoute();
-const breadcrumbs = ["Coffez.ch", ...route.path.split("/").slice(2, -1)];
-const title = route.name;
+const breadcrumbs = [
+	{ name: "Coffez.ch", path: "/" },
+	{ name: "Administration", path: "/admin" },
+];
+const title = computed(() => route.name);
 </script>
 <style scoped>
+a {
+	@apply dark:text-primary-500 hover:underline underline-offset-2;
+}
 </style>

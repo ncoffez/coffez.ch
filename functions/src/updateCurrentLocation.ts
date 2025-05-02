@@ -12,19 +12,15 @@ export async function updateCurrentLocation(req: Request, res: Response) {
 	}
 
 	interface Location {
-		address: string;
 		longitude: number;
 		latitude: number;
-		street: string;
-		city: string;
-		device: string;
 		date?: Timestamp;
 	}
 	const location: Location = req.body;
 	const settingsRef = db.collection("settings");
 
 	// Validate required fields
-	const requiredFields: (keyof Location)[] = ["address", "longitude", "latitude", "street", "city", "device"];
+	const requiredFields: (keyof Location)[] = ["longitude", "latitude"];
 	for (const field of requiredFields) {
 		if (!location[field]) {
 			res.status(400).send(`Missing required field: ${field}`);

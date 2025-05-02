@@ -48,6 +48,7 @@ jobs:
           ENV: preview
           FUNCTION_NAME: ${{ env.FUNCTION_NAME }}
           GITHUB_BRANCH: ${{ github.ref_name }}
+          GOOGLE_MAPS_EMBED_API_KEY: ${{secrets.GOOGLE_MAPS_EMBED_API_KEY}}
 
       - name: Create Service Account Key File
         run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > functions/serviceAccount.env.json

@@ -3,14 +3,16 @@
 		<div class="h-full flex flex-col py-2 gap-2">
 			<div class="flex gap-2 items-center hover:dark:bg-zinc-800 p-2 rounded-lg font-xl">
 				<span
-					class="p-2 bg-primary-500 rounded-lg cursor-pointer hover:scale-105"
+					class=" bg-primary-500 overflow-hidden w-9 h-9 items-center text-white rounded-lg cursor-pointer hover:scale-105"
 					@click="router.push('/')"
 					tooltip
 					aria-label="Go back to coffez.ch">
-					<IconsGalleryVerticalEnd class="text-xl bg-primary-500" />
+					<img :src="user?.photoURL" alt="" v-if="user?.photoURL" class="object-cover" />
+					<IconsGalleryVerticalEnd class="text-xl m-2 bg-primary-500" v-else />
 				</span>
 				<div id="title" class="flex flex-col leading-4">
 					<p class="font-semibold">Administration</p>
+					<p class="font-light text-sm">{{ user?.displayName }}</p>
 				</div>
 			</div>
 			<div
@@ -21,13 +23,13 @@
 			<menu class="flex flex-col font-xl px-2">
 				<div class="grid">
 					<h3 class="!mt-0">Events</h3>
-					<NuxtLink to="/admin/event/new"><IconsCalendarDays class="text-primary-500" /> View all events</NuxtLink>
 					<NuxtLink to="/admin/event/new"><IconsCalendarPlus class="text-primary-500" /> Create new event</NuxtLink>
+					<NuxtLink to="/admin/event"><IconsCalendarDays class="text-primary-500" /> View all events</NuxtLink>
 				</div>
 				<div class="grid">
 					<h3>Galleries</h3>
-					<NuxtLink to="/admin/event/new"><IconsGrip class="text-primary-500" />View all galleries</NuxtLink>
-					<NuxtLink to="/admin/event/new"><IconsGrid2x2Plus class="text-primary-500" /> New gallery</NuxtLink>
+					<NuxtLink to="/admin/gallery/new"><IconsGrid2x2Plus class="text-primary-500" /> New gallery</NuxtLink>
+					<NuxtLink to="/admin/gallery"><IconsGrip class="text-primary-500" />View all galleries</NuxtLink>
 				</div>
 			</menu>
 			<footer class="mt-auto px-2">
@@ -40,6 +42,7 @@
 const showSidebar = defineModel();
 const router = useRouter();
 const $config = useRuntimeConfig();
+const user = await useCurrentUser();
 </script>
 <style scoped>
 input {
@@ -51,6 +54,6 @@ menu a {
 }
 
 menu h3 {
-	@apply font-medium text-base tracking-tight dark:text-stone-400 text-stone-500 px-2 mb-0 mt-8;
+	@apply font-normal tracking-tight dark:text-white text-black px-2 mb-1 mt-8;
 }
 </style>

@@ -1,0 +1,56 @@
+<template>
+	<div class="px-4 pb-4 w-full h-full @container">
+		<div class="@sm:flex-row flex flex-col place-items-center">
+			<UiGalleryCover :title="gallery.title" :description="gallery.description" class="flex-grow-0" />
+			<div class="flex flex-col w-full max-w-lg gap-4">
+				<div class="flex flex-col w-full max-w-lg">
+					<p class="leading-relaxed py-6 dark:text-zinc-400 font-bold">{{ gallery.id }}</p>
+				</div>
+				<div class="flex flex-col w-full max-w-lg">
+					<label for="title">Title</label>
+					<input type="text" id="title" v-model="gallery.title" />
+				</div>
+				<div class="flex flex-col w-full max-w-lg">
+					<label for="description">Description</label>
+					<textarea id="description" class="h-32" v-model="gallery.description" />
+				</div>
+				<div id="actions" class="flex gap-4 grid-cols(1fr,2fr)">
+					<div class="flex flex-col w-full max-w-lg flex-grow">
+						<button @click="createNewGallery(gallery)" class="cursor-pointer">Save</button>
+					</div>
+					<div class="flex flex-col w-32 flex-shrink">
+						<button @click="resetGallery()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+<script lang="ts" setup>
+import { addDoc, collection } from "firebase/firestore";
+definePageMeta({ middleware: ["user-is-admin"], layout: "admin", name: "Create a new gallery" });
+
+const { $db } = useNuxtApp();
+const db = await $db();
+
+const selectedImage: Ref<string | null> = ref(null);
+const gallery = ref(new Gallery());
+
+const resetGallery = () => (gallery.value = new Gallery());
+
+async function createNewGallery(data: Object) {
+	const newGallery = await addDoc(collection(db, "gallery"), data);
+	await navigateTo(`/admin/gallery/${newGallery.id}`);
+}
+</script>
+<style scoped>
+input[type="text"] {
+	@apply w-full p-4 rounded-md border-solid border-2 mt-2 focus:ring-1 ring-slate-500 focus:outline-none dark:focus:bg-zinc-900 leading-tight;
+}
+
+input,
+textarea {
+	@apply dark:bg-zinc-900 w-full px-4 py-4 rounded-md font-light text-base border-solid border-2 dark:border-zinc-700 mt-2 focus:ring-1 dark:ring-slate-500 focus:outline-none dark:focus:bg-zinc-900 leading-tight;
+	@apply dark:lg:bg-zinc-900 dark:lg:border-zinc-700 dark:lg:focus:bg-zinc-900;
+}
+</style>

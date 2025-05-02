@@ -1,24 +1,14 @@
 <template>
-	<div class="max-w-screen-xl overflow-x-scroll mx-auto px-4 pb-16 gap-16 flex flex-col">
-		<section class="w-full">
-			<h1 class="text-3xl font-bold mx-2 my-4 dark:text-slate-100">Events</h1>
-			<Events admin>
-				<template v-slot:first-card>
-					<UiCreateNewEvent />
-				</template>
-			</Events>
-		</section>
-		<section class="w-full">
-			<Gallery :admin="true">
-				<template v-slot:first-card>
-					<UiCreateNewGallery />
-				</template>
-			</Gallery>
-		</section>
-	</div>
+	<section class="md:p-6 flex flex-col">
+		<hgroup>
+			<h1 class="text-4xl tracking-tight mb-4">Actions</h1>
+		</hgroup>
+		<div id="actions" class="py-6">
+			<UiGetDeviceLocation />
+		</div>
+	</section>
 </template>
 <script lang="ts" setup>
-definePageMeta({ middleware: "user-is-admin", layout: "admin" });
-
+definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Administration" });
 </script>
 <style scoped></style>

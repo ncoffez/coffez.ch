@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full h-screen flex overflow-hidden">
 		<UiAdminSidebar v-model="showSidebar" />
-		<section class="overflow-y-auto w-full">
+		<section class="overflow-y-auto w-full h-screen">
 			<nav class="py-4 px-6 border-b dark:border-zinc-800 border-zinc-200 flex items-center w-full">
 				<div class="mr-6 hover:scale-110">
 					<IconsPanelLeft class="text-xl" @click="showSidebar = !showSidebar"></IconsPanelLeft>
@@ -19,7 +19,7 @@
 				<UiLanguageSwitcher />
 				<UiThemePicker />
 			</nav>
-			<div class="py-8 px-8">
+			<div class="py-8 px-8 h-full">
 				<NuxtPage></NuxtPage>
 			</div>
 		</section>

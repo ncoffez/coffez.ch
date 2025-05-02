@@ -3,7 +3,7 @@
 		<div class="h-full flex flex-col py-2 gap-2">
 			<div class="flex gap-2 items-center hover:dark:bg-zinc-800 p-2 rounded-lg font-xl">
 				<span
-					class=" bg-primary-500 overflow-hidden w-9 h-9 items-center text-white rounded-lg cursor-pointer hover:scale-105"
+					class="bg-primary-500 overflow-hidden w-9 h-9 items-center text-white rounded-lg cursor-pointer hover:scale-105"
 					@click="router.push('/')"
 					tooltip
 					aria-label="Go back to coffez.ch">
@@ -30,6 +30,11 @@
 					<h3>Galleries</h3>
 					<NuxtLink to="/admin/gallery/new"><IconsGrid2x2Plus class="text-primary-500" /> New gallery</NuxtLink>
 					<NuxtLink to="/admin/gallery"><IconsGrip class="text-primary-500" />View all galleries</NuxtLink>
+				</div>
+				<div class="grid">
+					<h3>Actions</h3>
+					<NuxtLink to="/admin"><IconsMapPin class="text-primary-500" /> Update location</NuxtLink>
+					<NuxtLink to="/admin/location"><IconsMapPinned class="text-primary-500" />View current location</NuxtLink>
 				</div>
 			</menu>
 			<footer class="mt-auto px-2">

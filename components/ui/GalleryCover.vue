@@ -1,10 +1,10 @@
 <template>
 	<NuxtLink
 		:to="link"
-		class="w-52 h-52 my-4 bg-zinc-800 hover:scale-105 duration-300 ease-in-out cursor-pointer overflow-clip rounded-full mx-auto"
+		class="w-52 h-52 flex-grow-0 relative flex-shrink-0 m-6 dark:bg-zinc-800 bg-zinc-200 hover:scale-105 duration-300 ease-in-out cursor-pointer overflow-clip rounded-full"
 		id="gallery-cover">
-		<div class="basis-full scale-105">
-			<div class="md:shrink-0 relative">
+		<div class="scale-105">
+			<div class="relative h-52 w-52">
 				<img
 					:aria-label="id"
 					class="h-52 w-52 object-cover object-center"
@@ -22,11 +22,11 @@
 				</video>
 				<div
 					id="title"
-					class="absolute bottom-0 z-2 w-full h-16 place-items-center flex flex-col content-around place-content-center bg-zinc-900 bg-opacity-60 transition-all duration-300 ease-in-out">
+					class="absolute bottom-0 w-full h-16 place-items-center flex flex-col content-around place-content-center dark:bg-zinc-900/60 bg-zinc-800/60 transition-all duration-300 ease-in-out">
 					<div class="text-white text-md font-bold uppercase tracking-wide block text-sm">{{ title }}</div>
 					<div
 						id="description"
-						class="text-zinc-400 text-xs font-light tracking-wide hidden w-2/3 max-w-prose text-center">
+						class="dark:text-zinc-400 text-zinc-100 text-xs font-light tracking-wide hidden w-2/3 max-w-prose text-center">
 						{{ description.length < 70 ? description : description.substring(0, 80) + "..." }}
 					</div>
 				</div>

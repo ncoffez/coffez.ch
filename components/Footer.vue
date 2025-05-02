@@ -27,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-import { logoutFromFirebase, loginToFirebase } from "#imports";
 const user = await useCurrentUser();
 </script>
 <style scoped>

@@ -1,5 +1,6 @@
 <template>
 	<NuxtLink
+		to="/admin/event/new"
 		id="create-new-event"
 		class="w-64 h-full my-4 dark:bg-zinc-800 overflow-clip bg-white shadow-lg rounded-xl hover:scale-105 transition duration-300 ease-in-out">
 		<div class="w-64">
@@ -14,11 +15,7 @@
 			<div class="p-6">
 				<h3 class="text-lg font-semibold dark:text-white">Create new event</h3>
 				<p>Start a new event and create a gallery of caricatures.</p>
-				<button
-					class="dark:bg-primary-800 dark:hover:bg-primary-700 dark:text-white mb-0"
-					@click="router.push('/admin/event/new')">
-					New
-				</button>
+				<button class="dark:bg-primary-800 dark:hover:bg-primary-700 dark:text-white mb-0">New</button>
 			</div>
 		</div>
 	</NuxtLink>

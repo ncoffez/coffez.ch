@@ -19,7 +19,7 @@
         :controls="false" @click.stop="currentIndex = nextIndex">
         <source :src="media[nextIndex]" :type="getMediaType(media[nextIndex])" @click.stop="currentIndex = nextIndex" />
       </video>
-      <div id="background" class="w-full h-full backdrop-blur-md bg-neutral-900 bg-opacity-90 fixed -z-10 inset-0"
+      <div id="background" class="w-full h-full backdrop-blur-md bg-zinc-900 bg-opacity-90 fixed -z-10 inset-0"
         @click="$emit('close')"></div>
     </div>
   </Teleport>

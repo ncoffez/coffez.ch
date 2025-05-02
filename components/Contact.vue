@@ -67,4 +67,10 @@ const submit = async () => {
 label {
 	@apply block tracking-wide dark:text-gray-300 text-sm font-medium;
 }
+
+input,
+textarea {
+	@apply dark:bg-zinc-900 w-full px-4 py-4 rounded-md font-light text-base border-solid border-2 dark:border-zinc-700 mt-2 focus:ring-1 dark:ring-slate-500 focus:outline-none dark:focus:bg-zinc-900 leading-tight;
+	@apply dark:lg:bg-zinc-900 dark:lg:border-zinc-700 dark:lg:focus:bg-zinc-900;
+}
 </style>

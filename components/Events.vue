@@ -1,5 +1,5 @@
 <template>
-  <section id="events" class="w-full max-w-screen-xl overflow-x-scroll mx-auto" v-if="events">
+  <section id="events" class="px-4 w-full overflow-x-scroll mx-auto" v-if="events">
     <div class="flex gap-6 px-2 w-fit">
       <slot name="first-card"></slot>
       <UiEventCard

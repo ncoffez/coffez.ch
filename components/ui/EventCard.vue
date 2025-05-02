@@ -17,7 +17,7 @@
             class="inline-block py-.5 text-xs mr-2 text-white rounded-full px-2"
             >{{ duration }} {{ duration > 1 ? "days" : "day" }}</span
           >
-          <span v-else class="inline-block py-.5 text-xs mr-2 rounded-full px-2" id="duration">Live</span>
+          <span v-else class="inline-block py-.5 text-xs mr-2 rounded-full px-2 text-white" id="duration">Live</span>
           <span id="date">{{ new Date(startDate).toLocaleDateString("de-CH") }}</span>
         </div>
         <div class="block mt-1 text-lg leading-tight font-semibold dark:text-white hover:underline">

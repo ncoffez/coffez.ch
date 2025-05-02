@@ -1,7 +1,8 @@
 export default async function logoutFromFirebase() {
-  const { $auth } = useNuxtApp();
-  const user = useState('user');
-  user.value = null;
-  await $auth.signOut();
-  reloadNuxtApp();
+	const { $auth } = useNuxtApp();
+	const auth = await $auth();
+	const user = useState("user");
+	user.value = null;
+	auth.signOut();
+	reloadNuxtApp();
 }

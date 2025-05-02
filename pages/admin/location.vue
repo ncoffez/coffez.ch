@@ -24,10 +24,6 @@ const { data: location, error } = await useAsyncData<Location>("location", () =>
 		latitude: data.latitude,
 	}),
 });
-
-watch(location, () => {
-	console.log(location);
-});
 </script>
 <style scoped>
 #map {

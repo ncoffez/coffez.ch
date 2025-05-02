@@ -5,7 +5,7 @@
 			<h2 class="text-2xl leading-relaxed mb-2">Location</h2>
 			<p v-if="!coords?.longitude || !coords?.latitude">Loading...</p>
       <p>Update the current location of your ongoing event. This information will be visible on the homepage if an event is planned for today.</p>
-      <button class="mb-0" @click="uploadLocationToDB(coords)">Upload your location</button>
+      <button class="mb-0 disabled:bg-zinc-300 dark:disabled:bg-zinc-700" @click="uploadLocationToDB(coords)" :disabled="!locatedAt">Upload your location</button>
 			<p class="text-sm italic font-light mt-2">Last update: {{ locatedAt ? new Date(locatedAt).toLocaleString("de-CH", {timeStyle: 'medium'}) : "never" }}</p class="text-sm italic font-light">
 		</div>
 	</div>
@@ -33,4 +33,6 @@ const uploadLocationToDB = async(coords: {longitude: number, latitude: number, [
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

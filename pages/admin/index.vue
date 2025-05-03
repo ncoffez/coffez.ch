@@ -1,14 +1,8 @@
 <template>
-	<section class="md:p-6 flex flex-col">
-		<hgroup>
-			<h1 class="text-4xl tracking-tight mb-4">Actions</h1>
-		</hgroup>
-		<div id="actions" class="py-6">
-			<UiGetDeviceLocation />
-		</div>
-	</section>
+	<h1 class="text-4xl">Welcome {{ user?.displayName?.split(" ").shift() }}!</h1>
 </template>
 <script lang="ts" setup>
 definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Administration" });
+const user = await useCurrentUser();
 </script>
 <style scoped></style>

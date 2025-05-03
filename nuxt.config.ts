@@ -1,5 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	compatibilityDate: "2024-07-04",
+	modules: [
+		"@nuxtjs/tailwindcss",
+		"@nuxtjs/i18n",
+		 "@unlok-co/nuxt-stripe"
+	],
+	imports: { dirs: ["utils"] },
 	devtools: { enabled: true },
 	icon: {
 		mode: "svg",

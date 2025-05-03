@@ -1,9 +1,8 @@
 <template>
-	<div class="px-4 pb-4 w-full h-full @container">
-		<div class="@sm:flex-row flex flex-col place-items-center">
-			<UiGalleryCover :title="gallery.title" :description="gallery.description" class="flex-grow-0" />
+	<div class="px-4 pb-4 w-full h-full">
+		<div class="sm:flex-row flex flex-col gap-16">
 			<div class="flex flex-col w-full max-w-lg gap-4">
-				<div class="flex flex-col w-full max-w-lg">
+				<div class="flex flex-col w-full max-w-xl" v-if="gallery?.id">
 					<p class="leading-relaxed py-6 dark:text-zinc-400 font-bold">{{ gallery.id }}</p>
 				</div>
 				<div class="flex flex-col w-full max-w-lg">
@@ -23,12 +22,17 @@
 					</div>
 				</div>
 			</div>
+			<UiGalleryCover
+				:title="gallery.title"
+				:description="gallery.description"
+				:cover-image="gallery.coverImage"
+				class="flex-grow-0" />
 		</div>
 	</div>
 </template>
 <script lang="ts" setup>
 import { addDoc, collection } from "firebase/firestore";
-definePageMeta({ middleware: ["user-is-admin"], layout: "admin", name: "Create a new gallery" });
+definePageMeta({ layout: "admin", name: "Create a new gallery" });
 
 const { $db } = useNuxtApp();
 const db = await $db();

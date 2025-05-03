@@ -1,39 +1,31 @@
 <template>
-	<div class="px-16 pb-12 mx-auto w-full h-full">
-		<div class="md:flex-row flex flex-col gap-8 md:gap-16 place-items-center">
-			<UiEventCard
-				:title="event.title"
-				:startDate="event.startDate"
-				:coverImage="selectedImage || event.coverImage"
-				:endDate="event.endDate"
-				:description="event.description"
-				:disabled="true"
-				class="my-auto"></UiEventCard>
-			<div class="flex flex-col w-full max-w-lg gap-4">
-				<div class="flex flex-col w-full max-w-lg">
+	<div class="w-full h-full mb-12">
+		<div class="md:flex-row flex flex-col gap-8 md:gap-x-16 items-start">
+			<div class="flex flex-col w-full container max-w-xl gap-4">
+				<div class="flex flex-col w-full" v-if="event?.id">
 					<p class="leading-relaxed py-6 dark:text-zinc-400 font-bold">{{ event.id }}</p>
 				</div>
-				<div class="flex flex-col w-full max-w-lg">
+				<div class="flex flex-col w-full">
 					<label for="title">Title</label>
 					<input type="text" id="title" v-model="event.title" />
 				</div>
-				<div class="flex flex-row gap-2">
-					<div class="flex flex-col w-full max-w-lg">
+				<div class="flex flex-row gap-2 w-full">
+					<div class="flex flex-col w-full">
 						<label for="start">Start Date</label>
 						<input type="date" id="start" v-model="start" />
 					</div>
-					<div class="flex flex-col w-full max-w-lg">
+					<div class="flex flex-col w-full">
 						<label for="end">End Date</label>
 						<input type="date" id="end" v-model="end" />
 					</div>
 				</div>
-				<div class="flex flex-col w-full max-w-lg">
+				<div class="flex flex-col w-full">
 					<label for="description">Description</label>
 					<textarea id="description" class="h-32" v-model="event.description" />
 				</div>
 				<UiImageDropZone @imageChanged="onImageChange" />
 				<div id="actions" class="flex gap-4 grid-cols(1fr,2fr)">
-					<div class="flex flex-col w-full max-w-lg flex-grow">
+					<div class="flex flex-col w-full flex-grow">
 						<button @click="createEvent()" class="cursor-pointer">Save</button>
 					</div>
 					<div class="flex flex-col w-32 flex-shrink">
@@ -41,6 +33,13 @@
 					</div>
 				</div>
 			</div>
+			<UiEventCard
+				:title="event.title"
+				:startDate="event.startDate"
+				:coverImage="selectedImage || event.coverImage"
+				:endDate="event.endDate"
+				:description="event.description"
+				:disabled="true"></UiEventCard>
 		</div>
 	</div>
 </template>

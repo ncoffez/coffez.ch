@@ -1,19 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2024-07-04",
-	modules: [
-		"@nuxtjs/tailwindcss",
-		"@nuxtjs/i18n",
-		 "@unlok-co/nuxt-stripe"
-	],
+	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@unlok-co/nuxt-stripe"],
 	imports: { dirs: ["utils"] },
 	devtools: { enabled: true },
-	icon: {
-		mode: "svg",
-	},
-	imports: {
-		dirs: ["utils"], // Specify the 'utils' directory for auto-imports
-	},
 	runtimeConfig: {
 		public: {
 			FIREBASE_FRONTEND_KEY: process.env.FIREBASE_FRONTEND_KEY,
@@ -76,7 +66,6 @@ export default defineNuxtConfig({
 			],
 		},
 	},
-	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", "@nuxt/icon", "@unlok-co/nuxt-stripe"],
 	stripe: {
 		// Server
 		server: {
@@ -119,5 +108,4 @@ export default defineNuxtConfig({
 			fallbackLocale: "de",
 		},
 	},
-	compatibilityDate: "2024-07-04",
 });

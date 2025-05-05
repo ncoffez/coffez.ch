@@ -1,3 +1,5 @@
+import { useAuth } from "@vueuse/firebase";
+
 export default defineNuxtPlugin(async (nuxtApp) => {
 	const config = useRuntimeConfig();
 	const firebaseConfig = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
@@ -12,7 +14,9 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
 	const getAuthInstance = async () => {
 		const { getAuth } = await import("firebase/auth");
-		return getAuth(app);
+		const auth = getAuth(app);
+		const { isAuthenticated, user } = useAuth(auth);
+		return { isAuthenticated, user, auth };
 	};
 
 	const getFunctionsInstance = async () => {

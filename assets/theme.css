@@ -51,18 +51,6 @@
 		display: contents;
 	}
 
-	body {
-		width: 100vw;
-		min-height: 100vh;
-		position: relative;
-	}
-
-	#teleports {
-		position: fixed;
-		top: 0;
-		left: 0;
-	}
-
 	a {
 		@apply cursor-pointer;
 	}

@@ -3,9 +3,7 @@
 	<Brands />
 	<LazyEvents />
 	<!-- <LazyGallery /> -->
-	<div id="parent" ref="cards">
-		<LazyCards />
-	</div>
+	<LazyCards />
 	<!-- <LazyPortfolio /> -->
 	<Contact />
 </template>

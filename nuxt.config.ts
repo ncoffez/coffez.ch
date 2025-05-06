@@ -33,6 +33,9 @@ export default defineNuxtConfig({
 		},
 	},
 	app: {
+		body: {
+			class: "overflow-x-hidden",
+		},
 		head: {
 			link: [
 				{ rel: "preconnect", href: "https://fonts.googleapis.com" },

@@ -5,10 +5,8 @@
 		<UiLanguageSwitcher />
 		<UiThemePicker />
 	</nav>
-	<div class="mx-4 py-6 md:mx-12 overscroll-x-none overflow-x-hidden" ref="container">
-		<main class="py-4 gap-24 flex flex-col items-center">
-			<NuxtPage></NuxtPage>
-		</main>
-	</div>
+	<main class="gap-24 flex flex-col items-center py-6 w-full overscroll-x-none overflow-x-hidden px-2">
+		<NuxtPage></NuxtPage>
+	</main>
 	<Footer />
 </template>

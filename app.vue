@@ -1,6 +1,5 @@
 <template>
-	<div id="full-screen" class="w-fit h-fit max-h-screen max-w-screen relative"></div>
-	<div class="w-screen">
+	<div class="w-full">
 		<NuxtLoadingIndicator />
 		<NuxtLayout></NuxtLayout>
 	</div>

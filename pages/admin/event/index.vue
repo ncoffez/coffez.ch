@@ -1,5 +1,5 @@
 <template>
-	<Events admin></Events>
+	<Events admin :wrap="true"></Events>
 </template>
 <script lang="ts" setup>
 definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Events" });

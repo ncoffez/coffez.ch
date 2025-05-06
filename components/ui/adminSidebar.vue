@@ -22,12 +22,12 @@
 				<IconsSearch /><input type="text" class="px-1 bg-inherit" placeholder="Search the docs..." />
 			</div> -->
 			<menu class="flex flex-col px-2 gap-6 leading-8 text-gray-600 dark:text-gray-400 h-fit w-fit font-light">
-				<div class="grid">
-					<button @click="router.push('/admin/create')">Create</button>
+        <button @click="router.push('/admin/create')">Create</button>
+        <div class="grid gap-1">
 					<NuxtLink to="/admin/event"><IconsCalendarDays /> View all events</NuxtLink>
 					<NuxtLink to="/admin/gallery"><IconsGrip />View all galleries</NuxtLink>
 				</div>
-				<div class="grid">
+				<div class="grid gap-1">
 					<NuxtLink to="/admin/setlocation"><IconsMapPin /> Update location</NuxtLink>
 					<NuxtLink to="/admin/location"><IconsMapPinned />View current location</NuxtLink>
 				</div>

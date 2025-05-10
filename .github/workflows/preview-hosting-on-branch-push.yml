@@ -9,15 +9,23 @@ on:
       - "!.github/workflows/deploy-functions-on-push.yml"
       - "!.github/workflows/deploy-hosting-on-push.yml"
       - "!.github/dependabot.yml"
+      - "!README.md"
 permissions:
   checks: write
-  contents: read
+  contents: write
   pull-requests: write
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history
+
+      - name: Debug Commit History
+        run: |
+          echo "Commit history before updating README:"
+          git log --oneline -n 5
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -68,6 +76,29 @@ jobs:
           FUNCTION_NAME: ${{env.FUNCTION_NAME}}
 
       - name: Deploy to Firebase Hosting
-        run: firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d  --config firebase-preview.json
+        id: deploy_hosting
+        run: firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d --config firebase-preview.json | tee ${{ github.workspace }}/deploy.log
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
+
+      - name: Extract Hosting URL
+        id: extract_url
+        run: |
+          HOSTING_URL=$(grep "Channel URL" ${{ github.workspace }}/deploy.log | sed -E 's/.*(https:\/\/[-a-zA-Z0-9.]+).*/\1/')
+          echo "HOSTING_URL=$HOSTING_URL" >> $GITHUB_ENV
+        env:
+          DEPLOY_LOG: ${{ github.workspace }}/deploy.log
+        if: steps.deploy_hosting.outcome == 'success'
+
+      - name: Update README.md
+        run: |
+          # Remove existing branch URL if it exists
+          sed -i "/${{ github.ref_name }}: <.*>/d" README.md
+          # Insert new branch URL after ## Preview
+          sed -i "/^## Preview/a ${{ github.ref_name }}: <${{ env.HOSTING_URL }}>" README.md
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add README.md
+          git commit -m "Update README with preview URL for ${{ github.ref_name }}"
+          git push
+        if: env.HOSTING_URL != ''

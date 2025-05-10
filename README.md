@@ -2,6 +2,10 @@
 
 Find this page on <https://www.coffez.ch>
 
+## Preview
+
+[Preview URL]: https://example.com
+
 ## Tools
 
 This site was developed by Nicolas Coffez and uses the following tools:

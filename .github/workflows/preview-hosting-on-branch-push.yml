@@ -9,6 +9,7 @@ on:
       - "!.github/workflows/deploy-functions-on-push.yml"
       - "!.github/workflows/deploy-hosting-on-push.yml"
       - "!.github/dependabot.yml"
+      - "!README.md"
 permissions:
   checks: write
   contents: read
@@ -68,6 +69,26 @@ jobs:
           FUNCTION_NAME: ${{env.FUNCTION_NAME}}
 
       - name: Deploy to Firebase Hosting
-        run: firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d  --config firebase-preview.json
+        id: deploy_hosting
+        run: firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d --config firebase-preview.json | tee ${{ github.workspace }}/deploy.log
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
+
+      - name: Extract Hosting URL
+        id: extract_url
+        run: |
+          HOSTING_URL=$(grep "Channel URL" ${{ github.workspace }}/deploy.log | awk '{print $NF}' | tr -d '[]')
+          echo "HOSTING_URL=$HOSTING_URL" >> $GITHUB_ENV
+        env:
+          DEPLOY_LOG: ${{ github.workspace }}/deploy.log
+        if: steps.deploy_hosting.outcome == 'success'
+
+      - name: Update README.md
+        run: |
+          sed -i "s|\[Preview URL\]: .*|[Preview URL]: ${{ env.HOSTING_URL }}|" README.md
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add README.md
+          git commit -m "Update README with preview URL"
+          git push
+        if: env.HOSTING_URL != ''

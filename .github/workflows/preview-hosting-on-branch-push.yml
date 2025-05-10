@@ -12,7 +12,7 @@ on:
       - "!README.md"
 permissions:
   checks: write
-  contents: read
+  contents: write
   pull-requests: write
 jobs:
   build_and_deploy:
@@ -79,7 +79,7 @@ jobs:
       - name: Extract Hosting URL
         id: extract_url
         run: |
-          HOSTING_URL=$(grep "Channel URL" ${{ github.workspace }}/deploy.log | awk '{print $NF}' | tr -d '[]')
+          HOSTING_URL=$(grep "Channel URL" ${{ github.workspace }}/deploy.log | sed -E 's/.*(https:\/\/[-a-zA-Z0-9.]+).*/\1/')
           echo "HOSTING_URL=$HOSTING_URL" >> $GITHUB_ENV
         env:
           DEPLOY_LOG: ${{ github.workspace }}/deploy.log
@@ -94,6 +94,6 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add README.md
-          git commit -m "Update README with preview URL for ${{ github.ref_name }}"
-          git push
+          git commit --amend --no-edit
+          git push --force
         if: env.HOSTING_URL != ''

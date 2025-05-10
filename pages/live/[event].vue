@@ -10,11 +10,11 @@
 							>coffez.ch</NuxtLink
 						>/live
 					</h2>
-					<div id="subtitle" class="flex text-center items-center gap-2">
-						<IconsHouse
-							@click="router.push('/')"
-							class="md:hidden w-6 h-6 fill-slate-600 dark:fill-slate-300 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer transition-colors duration-200" />
-						<h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
+					<div
+						id="subtitle"
+						class="md:leading-tight tracking-tight gap-4 inline-flex items-center font-semibold text-3xl md:font-light md:text-xl">
+						<IconsHome @click="router.push('/')" class="md:hidden hover:scale-105 cursor-pointer duration-200" />
+						<h4 @click="">{{ settings?.title }}</h4>
 					</div>
 				</section>
 				<div class="grid items-center">

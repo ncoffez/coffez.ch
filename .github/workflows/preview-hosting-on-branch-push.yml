@@ -70,7 +70,9 @@ jobs:
 
       - name: Deploy to Firebase Hosting
         id: deploy_hosting
-        run: firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d --config firebase-preview.json | tee ${{ github.workspace }}/deploy.log
+        run:
+          firebase hosting:channel:deploy ${{ github.ref_name }} --expires 3d --config firebase-preview.json | tee ${{
+          github.workspace }}/deploy.log
         env:
           GOOGLE_APPLICATION_CREDENTIALS: functions/serviceAccount.env.json
 
@@ -85,10 +87,13 @@ jobs:
 
       - name: Update README.md
         run: |
-          sed -i "s|\[Preview URL\]: .*|[Preview URL]: ${{ env.HOSTING_URL }}|" README.md
+          # Remove existing branch URL if it exists
+          sed -i "/${{ github.ref_name }}: <.*>/d" README.md
+          # Insert new branch URL after ## Preview
+          sed -i "/^## Preview/a ${{ github.ref_name }}: <${{ env.HOSTING_URL }}>" README.md
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add README.md
-          git commit -m "Update README with preview URL"
+          git commit -m "Update README with preview URL for ${{ github.ref_name }}"
           git push
         if: env.HOSTING_URL != ''

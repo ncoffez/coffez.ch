@@ -4,8 +4,6 @@ Find this page on <https://www.coffez.ch>
 
 ## Preview
 
-[Preview URL](https://www.coffez.ch)
-
 ## Tools
 
 This site was developed by Nicolas Coffez and uses the following tools:

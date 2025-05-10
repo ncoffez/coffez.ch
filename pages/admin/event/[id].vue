@@ -1,5 +1,5 @@
 <template>
-	<div class="px-16 py-12 mx-auto w-full h-full">
+	<div class="px-16 mx-auto w-full h-full">
 		<div class="md:flex-row flex flex-col gap-8 md:gap-16">
 			<UiEventCard
 				:title="event.title"
@@ -52,18 +52,16 @@
 		</div>
 		<section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6 pt-16">
 			<div id="image" :key="image.id" v-for="(image, index) in images" class="relative">
-				<Icon
+				<IconsEyeOff
 					v-if="!image.hidden"
 					id="hide"
 					class="absolute top-2 left-2 text-2xl text-white bg-slate-500 rounded-full p-1 z-10 hidden"
-					name="ic:outline-visibility-off"
-					@click="hideImage(image.id)"></Icon>
-				<Icon
+					@click="hideImage(image.id)"></IconsEyeOff>
+				<IconsEye
 					v-else
 					id="show"
 					class="absolute top-2 left-2 text-2xl text-white bg-slate-500 rounded-full p-1 z-10 hidden"
-					name="ic:outline-visibility"
-					@click="showImage(image.id)"></Icon>
+					@click="showImage(image.id)"></IconsEye>
 				<img
 					:alt="image.name"
 					:src="index === 0 ? image.urlFirebaseOriginal : image.urlFirebaseWebp"
@@ -94,7 +92,6 @@ import {
 import { httpsCallable } from "firebase/functions";
 
 const { $db, $functions } = useNuxtApp();
-const db = await $db();
 const functions = await $functions();
 const { id } = useRoute().params;
 const { data: serverEvent } = await useFetch(`/api/getEvent/${id}`);
@@ -111,19 +108,19 @@ watch(updated, () => {
 });
 
 async function hideImage(id: string) {
-	const docRef = doc(db, "portraits", id);
+	const docRef = doc($db, "portraits", id);
 	await updateDoc(docRef, { hidden: true });
 	refreshImages();
 }
 
 async function showImage(id: string) {
-	const docRef = doc(db, "portraits", id);
+	const docRef = doc($db, "portraits", id);
 	await updateDoc(docRef, { hidden: deleteField() });
 	refreshImages();
 }
 
 const { data: images, refresh: refreshImages } = await useAsyncData(`images-${id}`, async () => {
-	const portraitsRef: CollectionReference = collection(db, "portraits");
+	const portraitsRef: CollectionReference = collection($db, "portraits");
 	const q = query(
 		portraitsRef,
 		where("createdDate", ">=", new Date(serverEvent.value?.startDate || subDays(new Date(), 1))),
@@ -170,7 +167,7 @@ async function updateEvent() {
 }
 
 async function deleteEvent() {
-	await deleteDoc(doc(db, "events", id as string));
+	await deleteDoc(doc($db, "events", id as string));
 	await navigateTo("/admin");
 }
 

@@ -18,7 +18,6 @@
 import { useGeolocation } from "@vueuse/core";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 const { $db } = useNuxtApp();
-const db = await $db();
 
 const { coords, error, locatedAt, resume, pause } = useGeolocation();
 onUnmounted(pause);
@@ -30,7 +29,7 @@ watch(locatedAt, () => {
 });
 
 const uploadLocationToDB = async(coords: {longitude: number, latitude: number, [key: string]: any}) => {
-  const docRef = doc(db, 'settings', 'location');
+  const docRef = doc($db, 'settings', 'location');
   return await setDoc(docRef, {longitude: coords.longitude, latitude: coords.latitude, date: serverTimestamp()});
 }
 

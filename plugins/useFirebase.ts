@@ -1,3 +1,5 @@
+import { getFirestore } from "firebase/firestore";
+
 export default defineNuxtPlugin(async (nuxtApp) => {
 	const config = useRuntimeConfig();
 	const firebaseConfig = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
@@ -5,10 +7,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 	const { initializeApp } = await import("firebase/app");
 	const app = initializeApp(firebaseConfig);
 
-	const getDb = async () => {
-		const { getFirestore } = await import("firebase/firestore");
-		return getFirestore(app);
-	};
+	const db = getFirestore(app);
 
 	const getAuthInstance = async () => {
 		const { getAuth } = await import("firebase/auth");
@@ -28,7 +27,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
 	return {
 		provide: {
-			db: getDb,
+			db,
 			auth: getAuthInstance,
 			functions: getFunctionsInstance,
 			analytics: logAnalyticsEvent,

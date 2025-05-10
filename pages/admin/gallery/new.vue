@@ -35,7 +35,6 @@ import { addDoc, collection } from "firebase/firestore";
 definePageMeta({ layout: "admin", name: "Create a new gallery" });
 
 const { $db } = useNuxtApp();
-const db = await $db();
 
 const selectedImage: Ref<string | null> = ref(null);
 const gallery = ref(new Gallery());
@@ -43,7 +42,7 @@ const gallery = ref(new Gallery());
 const resetGallery = () => (gallery.value = new Gallery());
 
 async function createNewGallery(data: Object) {
-	const newGallery = await addDoc(collection(db, "gallery"), data);
+	const newGallery = await addDoc(collection($db, "gallery"), data);
 	await navigateTo(`/admin/gallery/${newGallery.id}`);
 }
 </script>

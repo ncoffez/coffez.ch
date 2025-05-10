@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 	imports: { dirs: ["utils"] },
 	devtools: { enabled: true },
 	routeRules: { "/live/:id/download": { redirect: "/live/:id" } },
-	css: ["@/assets/global.css", "@/assets/theme.css"],
+	css: ["@/assets/theme.css"],
 	ssr: true,
 	runtimeConfig: {
 		public: {

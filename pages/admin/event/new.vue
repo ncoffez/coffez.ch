@@ -50,7 +50,6 @@ import { httpsCallable } from "firebase/functions";
 definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Create new event" });
 
 const { $db, $functions } = useNuxtApp();
-const db = await $db();
 const functions = await $functions();
 
 const event = ref(new DrawingEvent());
@@ -73,7 +72,7 @@ async function createEvent() {
 	if (event.value.endDate) data.endDate = new Date(event.value.endDate);
 	if (selectedImage.value) data.coverImage = selectedImage.value;
 
-	const { id } = await addDoc(collection(db, "events"), data);
+	const { id } = await addDoc(collection($db, "events"), data);
 	await navigateTo(`/admin/event/${id}`);
 }
 

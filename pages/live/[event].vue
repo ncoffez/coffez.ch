@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-zinc-50">
+	<div class="bg-stone-50 dark:bg-stone-900">
 		<div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images.length > 0">
 			<div class="grid grid-cols-[1fr,auto]">
 				<section id="title" class="w-full p-4 sticky top-0 z-2 stretch-1">
@@ -11,23 +11,15 @@
 						>/live
 					</h2>
 					<div id="subtitle" class="flex text-center items-center gap-2">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="18"
-							height="18"
-							viewBox="0 0 24 24"
+						<IconsHouse
 							@click="router.push('/')"
-							class="md:hidden w-6 h-6 fill-slate-600 dark:fill-slate-300 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer transition-colors duration-200">
-							<!-- Icon from Google Material Icons by Material Design Authors - https://github.com/material-icons/material-icons/blob/master/LICENSE -->
-							<path
-								d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1" />
-						</svg>
+							class="md:hidden w-6 h-6 fill-slate-600 dark:fill-slate-300 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer transition-colors duration-200" />
 						<h4 class="text-3xl font-light md:text-xl md:leading-tight" @click="">{{ settings?.title }}</h4>
 					</div>
 				</section>
 				<div class="grid items-center">
 					<UiDownloadAllImages :images="filteredImages" :title="settings?.title" v-if="route.query.download">
-						<Icon name="ic:outline-save-alt" class="text-lg"></Icon>
+						<IconsDownload class="text-lg" />
 					</UiDownloadAllImages>
 				</div>
 			</div>
@@ -66,7 +58,6 @@ import { addDays, subDays } from "date-fns";
 import { collection, query, onSnapshot, CollectionReference, orderBy, where } from "firebase/firestore";
 
 const { $db, $analytics } = useNuxtApp();
-const db = await $db();
 
 onMounted(() => {
 	$analytics("Event page was visited.");
@@ -77,7 +68,7 @@ const { data: settings } = await useFetch(`/api/getEvent/${event}`);
 const route = useRoute();
 const router = useRouter();
 
-const portraitsRef: CollectionReference = collection(db, "portraits");
+const portraitsRef: CollectionReference = collection($db, "portraits");
 const q = query(
 	portraitsRef,
 	where("createdDate", ">=", new Date(settings.value?.startDate || subDays(new Date(), 1))),

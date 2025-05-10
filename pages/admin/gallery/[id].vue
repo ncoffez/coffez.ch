@@ -53,12 +53,11 @@ import { httpsCallable } from "firebase/functions";
 definePageMeta({ middleware: "user-is-admin", layout: "admin", keepalive: false });
 
 const { $db, $functions } = useNuxtApp();
-const db = await $db();
 const functions = await $functions();
 
 const route = useRoute();
 const id = route.params.id as string;
-const docRef = doc(db, "gallery", id);
+const docRef = doc($db, "gallery", id);
 
 const { data: gallery, refresh } = await useLazyAsyncData<Gallery>(`gallery-${id}`, async () => {
 	const galleryRef = await getDoc(docRef);
@@ -100,37 +99,37 @@ async function onMediaChange(event: any) {
 }
 
 async function uploadMedia(images: string[]) {
-	const docRef = doc(db, "gallery", id as string);
+	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { images: arrayUnion(...images) });
 	refresh();
 }
 
 async function updateTitle(title: string) {
-	const docRef = doc(db, "gallery", id as string);
+	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { title });
 	refresh();
 }
 
 async function updateDescription(description: string) {
-	const docRef = doc(db, "gallery", id as string);
+	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { description });
 	refresh();
 }
 
 async function setCoverImage(imageUrl: string) {
-	const docRef = doc(db, "gallery", id as string);
+	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { coverImage: imageUrl });
 	refresh();
 }
 
 async function deleteImage(imageUrl: string) {
-	const docRef = doc(db, "gallery", id as string);
+	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { images: arrayRemove(imageUrl) });
 	refresh();
 }
 
 async function deleteGallery() {
-	const galleryRef = doc(db, "gallery", id as string);
+	const galleryRef = doc($db, "gallery", id as string);
 	await deleteDoc(galleryRef);
 	await navigateTo("/admin/galleries");
 }

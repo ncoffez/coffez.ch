@@ -1,6 +1,5 @@
 <template>
-	<div class="w-full h-screen flex overflow-hidden">
-		<UiAdminSidebar v-model="showSidebar" />
+	<div class="w-full h-screen flex overflow-hidden flex-row-reverse">
 		<section class="overflow-y-auto w-full h-screen">
 			<nav class="py-4 px-6 border-b dark:border-zinc-800 border-zinc-200 flex items-center w-full">
 				<div class="mr-6 hover:scale-110">
@@ -23,25 +22,19 @@
 				<NuxtPage></NuxtPage>
 			</div>
 		</section>
+		<UiAdminSidebar v-model="showSidebar" />
 	</div>
 </template>
 <script lang="ts" setup>
-import { useWindowSize } from "@vueuse/core";
-
-const windowSize = useWindowSize();
-const breakpoint = 768;
-
-watch(windowSize.width, (newSize, oldSize) => {
-	if (!showSidebar.value && oldSize < breakpoint && newSize >= breakpoint) showSidebar.value = true;
-	if (showSidebar.value && oldSize >= breakpoint && newSize < breakpoint) showSidebar.value = false;
-});
-const showSidebar = ref(windowSize.width.value > breakpoint);
-const route = useRoute();
+const showSidebar = ref(true);
 const breadcrumbs = [
 	{ name: "Coffez.ch", path: "/" },
 	{ name: "Administration", path: "/admin" },
 ];
-const title = computed(() => route.name);
+const title = computed(() => {
+	const route = useRoute();
+	return route.name?.toString() || "Admin";
+});
 </script>
 <style scoped>
 a {

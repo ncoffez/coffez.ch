@@ -44,11 +44,10 @@ import {
 
 definePageMeta({ middleware: "live-event" });
 const { $db } = useNuxtApp();
-const db = await $db();
 
 const settings = ref({ title: "Coffez.ch - Live", startDate: new Date(subDays(new Date(), 60)) });
 
-const portraitsRef: CollectionReference = collection(db, "portraits");
+const portraitsRef: CollectionReference = collection($db, "portraits");
 const q = query(
   portraitsRef,
   where("createdDate", ">=", settings.value?.startDate || Timestamp.fromDate(subDays(new Date(), 1.2))),

@@ -22,9 +22,9 @@ jobs:
         with:
           fetch-depth: 0  # Fetch full history
 
-      - name: Debug Commit History Before
+      - name: Debug Commit History
         run: |
-          echo "Commit history before amending:"
+          echo "Commit history before updating README:"
           git log --oneline -n 5
 
       - name: Use Node.js
@@ -99,11 +99,6 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add README.md
-          git commit --amend --no-edit
-          git push --force
+          git commit -m "Update README with preview URL for ${{ github.ref_name }}"
+          git push
         if: env.HOSTING_URL != ''
-
-      - name: Debug Commit History After
-        run: |
-          echo "Commit history after amending:"
-          git log --oneline -n 5

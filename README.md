@@ -4,7 +4,7 @@ Find this page on <https://www.coffez.ch>
 
 ## Preview
 
-[Preview URL]: https://example.com
+[Preview URL]: https://www.coffez.ch
 
 ## Tools
 

@@ -33,10 +33,10 @@ const route = useRoute();
 const router = useRouter();
 const baseURL = useRequestURL();
 const currentURL = `${baseURL}${route.fullPath}`;
-const { $analytics } = useNuxtApp();
+const { $logEvent } = useNuxtApp();
 
 onMounted(() => {
-	$analytics("User viewed his picture.");
+	$logEvent("User viewed his picture.");
 });
 
 const { data: image } = await useFetch(`/api/getPortrait/${route.params.id}`, {

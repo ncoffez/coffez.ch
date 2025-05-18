@@ -27,7 +27,7 @@ export default {
     {
       id: 3,
       header: "🇨🇭 Fabriqué en Suisse",
-      lead: "En tant que Suisse par choix résidant à Le Locle, notre artiste national voyage dans toute la Suisse. Ses voyages sont calculés depuis son lieu de résidence et sont exclusivement réservés au public suisse... pour le moment !",
+      lead: "En tant que Suisse par choix résidant à Berne, notre artiste national voyage dans toute la Suisse. Ses voyages sont calculés depuis son lieu de résidence et sont exclusivement réservés au public suisse... pour le moment !",
       action: "",
       url: "",
       media: {
@@ -155,5 +155,71 @@ export default {
   footer: {
     legal: 'Mentions légales',
     privacy: 'Protection des données'
-  }
+  },
+admin: {event: {
+  new: {
+    title: "Titre",
+    startDate: "Date de début",
+    endDate: "Date de fin",
+    description: "Description",
+    reset: "Réinitialiser",
+    save: "Enregistrer",
+  },
+},
+gallery: {
+  new: {
+    title: "Titre",
+    description: "Description",
+    save: "Enregistrer",
+    reset: "Réinitialiser",
+  },
+},
+  sidebar: {
+    create: "Créer",
+    viewEvents: "Voir les événements",
+    viewGalleries: "Voir les galeries",
+    setLocation: "Mettre à jour l'emplacement",
+    currentLocation: "Voir l'emplacement actuel",
+    settings: "Paramètres",
+  },
+  create: {
+    event: {
+      title: "Créer un nouvel événement",
+      description: "Démarrer un nouvel événement et créer une galerie de caricatures.",
+    },
+    gallery: {
+      title: "Créer une nouvelle galerie",
+      description: "Créer une nouvelle galerie pour présenter vos œuvres.",
+    },
+  },
+  setLocation: {
+    title: {
+      loading: "Chargement de l'emplacement...",
+      loaded: "Emplacement",
+    },
+    description:
+      "Mettre à jour l'emplacement actuel de votre événement en cours. Cette information sera visible sur la page d'accueil si un événement est prévu aujourd'hui.",
+    upload: "Télécharger votre emplacement",
+    lastUpdated: "Dernière mise à jour",
+  },
+  location: {
+    title: "Emplacement",
+    longitude: "Longitude",
+    latitude: "Latitude",
+    lastUpdated: "Dernière mise à jour",
+  },
+  settings: {
+    warning: "Ces paramètres s'appliquent à tous les utilisateurs du site. Veuillez modifier avec prudence.",
+    theme: "Thème",
+    primaryColor: "Couleur principale",
+    colorChange: {
+      success: "Thème mis à jour avec succès",
+      error: "Erreur lors de la mise à jour du thème",
+    },
+  },
+},
+cards: {
+  day: "Jour",
+  days: "Jours",
+}
 };

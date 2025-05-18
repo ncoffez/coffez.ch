@@ -1,5 +1,5 @@
 <template>
-	<div class="px-4 py-6 gap-16 mx-auto w-full h-full max-w-screen-xl block" v-if="gallery">
+	<div class="px-4 py-6 gap-16 mx-auto w-full h-fit max-w-screen-xl block" v-if="gallery">
 		<div class="grid grid-cols-1 mx-auto @sm:grid-cols-3 w-full max-w-screen-xl gap-6 md:gap-8 mb-16">
 			<UiGalleryCover
 				class="mx-auto grow-0"
@@ -47,22 +47,14 @@
 	</div>
 </template>
 <script lang="ts" setup>
-import { getDoc, doc, updateDoc, arrayUnion, arrayRemove, deleteDoc } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, arrayRemove, deleteDoc } from "firebase/firestore";
 import { httpsCallable } from "firebase/functions";
-
-definePageMeta({ middleware: "user-is-admin", layout: "admin", keepalive: false });
-
 const { $db, $functions } = useNuxtApp();
-const functions = await $functions();
-
 const route = useRoute();
 const id = route.params.id as string;
-const docRef = doc($db, "gallery", id);
 
-const { data: gallery, refresh } = await useLazyAsyncData<Gallery>(`gallery-${id}`, async () => {
-	const galleryRef = await getDoc(docRef);
-	return galleryRef.data() as Gallery;
-});
+const gallery = useFirestore(`gallery/${id}`);
+definePageMeta({ middleware: "user-is-admin", layout: "admin" });
 
 async function onMediaChange(event: any) {
 	const files: File[] = Array.from(event.target.files);
@@ -84,7 +76,7 @@ async function onMediaChange(event: any) {
 
 			return (
 				await httpsCallable(
-					functions,
+					$functions,
 					uploadFunction
 				)({
 					[isVideo ? "videoBase64" : "imageBase64"]: mediaItems[index],
@@ -101,31 +93,26 @@ async function onMediaChange(event: any) {
 async function uploadMedia(images: string[]) {
 	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { images: arrayUnion(...images) });
-	refresh();
 }
 
 async function updateTitle(title: string) {
 	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { title });
-	refresh();
 }
 
 async function updateDescription(description: string) {
 	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { description });
-	refresh();
 }
 
 async function setCoverImage(imageUrl: string) {
 	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { coverImage: imageUrl });
-	refresh();
 }
 
 async function deleteImage(imageUrl: string) {
 	const docRef = doc($db, "gallery", id as string);
 	await updateDoc(docRef, { images: arrayRemove(imageUrl) });
-	refresh();
 }
 
 async function deleteGallery() {

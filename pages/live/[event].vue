@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-stone-50 dark:bg-stone-900">
-		<div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images.length > 0">
+		<div id="gallery" class="md:overflow-y-clip sm:h-vh px-8" v-if="images?.length > 0">
 			<div class="grid grid-cols-[1fr,auto]">
 				<section id="title" class="w-full p-4 sticky top-0 z-2 stretch-1">
 					<h2 class="hidden md:block text-4xl font-extrabold" id="url-title">
@@ -45,7 +45,7 @@
 		</div>
 
 		<section id="placeholder" class="h-full justify-between flex flex-col" v-else>
-			<div id="up-next" class="ml-auto block dark:bg-pink-600 text-white text-2xl font-light p-4">
+			<div id="up-next" class="ml-auto block dark:bg-primary-600 text-white text-2xl font-light p-4">
 				{{ settings?.title }}
 			</div>
 			<UiComingSoon class="place-self-center h-full my-auto" />
@@ -55,12 +55,12 @@
 <script lang="ts" setup>
 import { toRelativeDate } from "#imports";
 import { addDays, subDays } from "date-fns";
-import { collection, query, onSnapshot, CollectionReference, orderBy, where } from "firebase/firestore";
+import { collection, query, orderBy, where } from "firebase/firestore";
 
-const { $db, $analytics } = useNuxtApp();
+const { $db, $logEvent } = useNuxtApp();
 
 onMounted(() => {
-	$analytics("Event page was visited.");
+	$logEvent("Event page was visited.");
 });
 
 const { event } = useRoute().params;
@@ -68,34 +68,15 @@ const { data: settings } = await useFetch(`/api/getEvent/${event}`);
 const route = useRoute();
 const router = useRouter();
 
-const portraitsRef: CollectionReference = collection($db, "portraits");
 const q = query(
-	portraitsRef,
+	collection($db, "portraits"),
 	where("createdDate", ">=", new Date(settings.value?.startDate || subDays(new Date(), 1))),
 	where("createdDate", "<=", new Date(settings.value?.endDate || addDays(new Date(), 5))),
 	orderBy("createdDate", "desc"),
 	orderBy("urlFirebaseWebp")
 );
-const images: Ref<any[]> = ref([]);
-
-const unsubscribe = onSnapshot(q, (querySnapshot) => {
-	querySnapshot.docChanges().forEach((change) => {
-		const data = { id: change.doc.id, ...change.doc.data(), index: change.newIndex };
-		if (change.type === "modified") {
-			const index = images.value.findIndex((image) => image.id === data.id);
-			if (index !== -1) {
-				images.value.splice(index, 1, data);
-			} else images.value.splice(change.newIndex, 0, data);
-		}
-		if (change.type === "added") {
-			images.value.splice(data.index, 0, data);
-		}
-	});
-});
-
-onUnmounted(unsubscribe);
-
-const filteredImages = computed(() => images.value.filter((image) => !image.hidden));
+const images = useFirestore(q);
+const filteredImages = computed(() => images?.value?.filter((image: any) => !image.hidden));
 
 let meta = {
 	title: settings.value?.title,

@@ -1,12 +1,11 @@
 <template>
 	<div class="" v-if="settings">
 		<span class="inline-flex gap-2 items-center px-4 w-full py-4 bg-yellow-200 dark:bg-yellow-800"
-			><IconsMessageCircleWarning class="inline text-xl" />These settings apply to all users of the site. Please change
-			carefully.</span
+			><IconsMessageCircleWarning class="inline text-xl" />{{ $t("admin.settings.warning") }}</span
 		>
 		<div class="div">
-			<h2>Theme</h2>
-			<UiSettingItem title="Primary color"
+			<h2>{{ $t("admin.settings.theme") }}</h2>
+			<UiSettingItem :title="$t('admin.settings.primaryColor')" class="max-w-lg"
 				><select
 					name="primary"
 					id="primary"
@@ -23,9 +22,10 @@
 <script lang="ts" setup>
 import { doc, updateDoc } from "firebase/firestore";
 import { TAILWIND_COLORS, type TailwindColors } from "~/composables/useTailwindColors";
+const { t } = useI18n();
 
 definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Settings" });
-const settings = useFirestore("settings/settings");
+const settings: any = useFirestore("settings/settings");
 const { $db } = useNuxtApp();
 
 const colors = ref<TailwindColors[]>(TAILWIND_COLORS);
@@ -36,7 +36,8 @@ const changeColor = async (newColor: TailwindColors) => {
 
 	TAILWIND_COLORS.forEach((color) => documentClasses.remove(color.toLowerCase()));
 	documentClasses.add(newColor);
-	return "Updated theme successfully";
+	console.log(t("admin.settings.colorChange.success"));
+	return t("admin.settings.colorChange.success");
 };
 </script>
 <style scoped>

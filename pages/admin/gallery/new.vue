@@ -6,19 +6,19 @@
 					<p class="leading-relaxed py-6 dark:text-zinc-400 font-bold">{{ gallery.id }}</p>
 				</div>
 				<div class="flex flex-col w-full max-w-lg">
-					<label for="title">Title</label>
+					<label for="title">{{ $t("admin.gallery.new.title") }}</label>
 					<input type="text" id="title" v-model="gallery.title" />
 				</div>
 				<div class="flex flex-col w-full max-w-lg">
-					<label for="description">Description</label>
+					<label for="description">{{ $t("admin.gallery.new.description") }}</label>
 					<textarea id="description" class="h-32" v-model="gallery.description" />
 				</div>
-				<div id="actions" class="flex gap-4 grid-cols(1fr,2fr)">
+				<div id="actions" class="flex gap-4 grid-cols(2fr,3fr)">
 					<div class="flex flex-col w-full max-w-lg flex-grow">
-						<button @click="createNewGallery(gallery)" class="cursor-pointer">Save</button>
+						<button @click="createNewGallery(gallery)" class="cursor-pointer">{{ $t("admin.gallery.new.save") }}</button>
 					</div>
-					<div class="flex flex-col w-32 flex-shrink">
-						<button @click="resetGallery()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">Reset</button>
+					<div class="flex flex-col w-fit flex-shrink">
+						<button @click="resetGallery()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">{{ $t("admin.gallery.new.reset") }}</button>
 					</div>
 				</div>
 			</div>

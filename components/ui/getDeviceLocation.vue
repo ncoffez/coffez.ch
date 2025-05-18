@@ -2,13 +2,13 @@
   <div class="flex gap-6">
       <UiGenericCard 
       class="w-80"
-      :title="!coords?.longitude || !coords?.latitude ? 'Location':'Loading location...'" 
-      description="Update the current location of your ongoing event. This information will be visible on the homepage if an event is planned for today."
+      :title="!coords?.longitude || !coords?.latitude ? $t('admin.setLocation.location.title.loaded'):$t('admin.setLocation.title.loading')" 
+      :description="$t('admin.setLocation.description')"
       >
       <template #image><UiEmbeddedMap :coords="coords" class="h-full w-full"/></template>
       <template #action>
-        <button class="m-0 disabled:bg-zinc-300 dark:disabled:bg-zinc-700" @click="uploadLocationToDB(coords)" :disabled="!locatedAt">Upload your location</button>
-        <p class="text-sm italic font-light mt-1">Last update: {{ locatedAt ? new Date(locatedAt).toLocaleString("de-CH", {timeStyle: 'medium'}) : "never" }}</p class="text-sm italic font-light">
+        <button class="m-0 disabled:bg-zinc-300 dark:disabled:bg-zinc-700" @click="uploadLocationToDB(coords)" :disabled="!locatedAt">{{$t('admin.setLocation.upload')}}</button>
+        <p class="text-sm italic font-light mt-1">{{$t('admin.setLocation.lastUpdated')}}: {{ locatedAt ? new Date(locatedAt).toLocaleString("de-CH", {timeStyle: 'medium'}) : "never" }}</p class="text-sm italic font-light">
       </template>
     </UiGenericCard>
   </div>

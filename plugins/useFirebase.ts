@@ -1,4 +1,7 @@
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getFunctions } from "firebase/functions";
+import { getAnalytics, logEvent as logAnalyticsEvent, isSupported } from "firebase/analytics";
 
 export default defineNuxtPlugin(async (nuxtApp) => {
 	const config = useRuntimeConfig();
@@ -8,29 +11,20 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 	const app = initializeApp(firebaseConfig);
 
 	const db = getFirestore(app);
-
-	const getAuthInstance = async () => {
-		const { getAuth } = await import("firebase/auth");
-		return getAuth(app);
-	};
-
-	const getFunctionsInstance = async () => {
-		const { getFunctions } = await import("firebase/functions");
-		return getFunctions(app, "europe-west6");
-	};
-
-	const logAnalyticsEvent = async (event: string) => {
-		const { getAnalytics, logEvent } = await import("firebase/analytics");
-		const analytics = getAnalytics();
-		return logEvent(analytics, event);
-	};
+	const auth = getAuth(app);
+	const functions = getFunctions(app, "europe-west6");
+	let logEvent = (_event: string) => {};
+	if (await isSupported()) {
+		const analytics = getAnalytics(app);
+		logEvent = (event: string) => logAnalyticsEvent(analytics, event);
+	}
 
 	return {
 		provide: {
 			db,
-			auth: getAuthInstance,
-			functions: getFunctionsInstance,
-			analytics: logAnalyticsEvent,
+			auth,
+			functions,
+			logEvent,
 		},
 	};
 });

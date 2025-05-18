@@ -7,8 +7,8 @@
 				<img v-if="image" :src="image" class="object-cover w-full h-full" alt="" />
 				<slot name="image"></slot>
 			</div>
-			<div class="px-6 py-4 flex gap-2 flex-col">
-				<h3 class="text-lg font-semibold dark:text-white">{{ title }}</h3>
+			<div class="px-6 py-4 flex gap-4 flex-col">
+				<h3 class="text-lg font-semibold dark:text-white leading-tight">{{ title }}</h3>
 				<p class="text-sm pb-2">{{ description }}</p>
 				<button v-if="action" class="w-full">{{ action }}</button>
 				<slot name="action"></slot>

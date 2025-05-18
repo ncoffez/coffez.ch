@@ -22,9 +22,7 @@
 </template>
 <script lang="ts" setup>
 import { httpsCallable } from "firebase/functions";
-import { DrawingEvent } from "#imports";
 const { $functions } = useNuxtApp();
-const functions = await $functions();
 defineProps({
 	admin: {
 		type: Boolean,
@@ -39,9 +37,9 @@ defineProps({
 });
 
 const { data: events } = await useLazyAsyncData<DrawingEvent[]>("events", async () => {
-  const eventList = httpsCallable(functions, "getEventList");
-  let { data } = await eventList({ limit: 8 });
-  return data as DrawingEvent[];
+	const eventList = httpsCallable($functions, "getEventList");
+	let { data } = await eventList({ limit: 8 });
+	return data as DrawingEvent[];
 });
 </script>
 <style scoped></style>

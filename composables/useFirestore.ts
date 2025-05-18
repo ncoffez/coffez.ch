@@ -1,8 +1,12 @@
 import { useFirestore as vueUseFirestore } from "@vueuse/firebase";
-import { doc, Firestore } from "firebase/firestore";
+import { doc, Query, type DocumentData } from "firebase/firestore";
 
-export function useFirestore(docPath: string) {
+export function useFirestore(docPath: string | Query<DocumentData, DocumentData>) {
 	const { $db } = useNuxtApp();
-	const document = vueUseFirestore(doc($db as Firestore, docPath));
-	return document;
+	if (typeof docPath === "string") {
+		return vueUseFirestore(doc($db, docPath));
+	}
+	if (typeof docPath === "object") {
+		return vueUseFirestore(docPath);
+	}
 }

@@ -23,16 +23,16 @@
 				:hidden="true">
 				<IconsSearch /><input type="text" class="px-1 bg-inherit" placeholder="Search the docs..." />
 			</div> -->
-			<menu class="flex flex-col px-2 gap-6 leading-8 text-gray-600 dark:text-gray-400 h-fit w-fit font-light">
-        <button @click="router.push('/admin/create')">Create</button>
-        <div class="grid gap-1">
-					<NuxtLink to="/admin/event"><IconsCalendarDays /> View all events</NuxtLink>
-					<NuxtLink to="/admin/gallery"><IconsGrip />View all galleries</NuxtLink>
+			<menu class="flex flex-col px-2 gap-6 leading-tight text-gray-600 dark:text-gray-400 h-fit w-fit font-light">
+				<button @click="router.push('/admin/create')">{{ $t("admin.sidebar.create") }}</button>
+				<div class="grid gap-3 mb-2">
+					<NuxtLink to="/admin/event"><IconsCalendarDays /> {{ $t("admin.sidebar.viewEvents") }}</NuxtLink>
+					<NuxtLink to="/admin/gallery"><IconsGrip />{{ $t("admin.sidebar.viewGalleries") }}</NuxtLink>
 				</div>
-				<div class="grid gap-1">
-					<NuxtLink to="/admin/setlocation"><IconsMapPin /> Update location</NuxtLink>
-					<NuxtLink to="/admin/location"><IconsMapPinned />View current location</NuxtLink>
-					<NuxtLink to="/admin/settings"><IconsSettings />Settings</NuxtLink>
+				<div class="grid gap-3 mb-2">
+					<NuxtLink to="/admin/setlocation"><IconsMapPin /> {{ $t("admin.sidebar.setLocation") }}</NuxtLink>
+					<NuxtLink to="/admin/location"><IconsMapPinned />{{ $t("admin.sidebar.currentLocation") }}</NuxtLink>
+					<NuxtLink to="/admin/settings"><IconsSettings />{{ $t("admin.sidebar.settings") }}</NuxtLink>
 				</div>
 			</menu>
 			<footer class="mt-auto px-2 font-thin text-sm text-zinc-500">

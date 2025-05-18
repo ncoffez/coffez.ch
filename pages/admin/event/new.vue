@@ -6,30 +6,31 @@
 					<p class="leading-relaxed py-6 dark:text-zinc-400 font-bold">{{ event.id }}</p>
 				</div>
 				<div class="flex flex-col w-full">
-					<label for="title">Title</label>
+					<label for="title">{{ $t("admin.event.new.title") }}</label>
 					<input type="text" id="title" v-model="event.title" />
 				</div>
 				<div class="flex flex-row gap-2 w-full">
 					<div class="flex flex-col w-full">
-						<label for="start">Start Date</label>
+						<label for="start">{{ $t("admin.event.new.startDate") }}</label>
 						<input type="date" id="start" v-model="start" />
 					</div>
 					<div class="flex flex-col w-full">
-						<label for="end">End Date</label>
+						<label for="end">{{ $t("admin.event.new.endDate") }}</label>
 						<input type="date" id="end" v-model="end" />
 					</div>
 				</div>
 				<div class="flex flex-col w-full">
-					<label for="description">Description</label>
+					<label for="description">{{ $t("admin.event.new.description") }}</label>
 					<textarea id="description" class="h-32" v-model="event.description" />
 				</div>
+				<UiSettingItem title="Event type" class="w-full"><UiSliderSwitch /></UiSettingItem>
 				<UiImageDropZone @imageChanged="onImageChange" />
 				<div id="actions" class="flex gap-4 grid-cols(1fr,2fr)">
 					<div class="flex flex-col w-full flex-grow">
-						<button @click="createEvent()" class="cursor-pointer">Save</button>
+						<button @click="createEvent()" class="cursor-pointer">{{ $t("admin.event.new.save") }}</button>
 					</div>
-					<div class="flex flex-col w-32 flex-shrink">
-						<button @click="resetEvent()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">Reset</button>
+					<div class="flex flex-col w-fit flex-shrink">
+						<button @click="resetEvent()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">{{ $t("admin.event.new.reset") }}</button>
 					</div>
 				</div>
 			</div>
@@ -50,7 +51,6 @@ import { httpsCallable } from "firebase/functions";
 definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Create new event" });
 
 const { $db, $functions } = useNuxtApp();
-const functions = await $functions();
 
 const event = ref(new DrawingEvent());
 const selectedImage: Ref<string | null> = ref(null);
@@ -82,7 +82,7 @@ async function onImageChange(event: any) {
 		const base64Image = reader.result?.toString().split(",")[1]; // Extract Base64 data after comma
 		selectedImage.value = (
 			await httpsCallable(
-				functions,
+				$functions,
 				"uploadEventCover"
 			)({
 				imageBase64: base64Image,

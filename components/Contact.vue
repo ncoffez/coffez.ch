@@ -39,8 +39,7 @@
 
 <script setup lang="ts">
 import { Message } from "../composables/message";
-const { $analytics } = useNuxtApp();
-const analytics = await $analytics;
+const { $logEvent } = useNuxtApp();
 
 const message = ref(new Message());
 
@@ -53,9 +52,9 @@ const submit = async () => {
 			body: JSON.stringify(message.value),
 		});
 		message.value = new Message("sent");
-		analytics("Contact form used.");
+		$logEvent("Contact form used.");
 	} catch (e) {
-		analytics(`Contact form failed. ${e}`);
+		$logEvent(`Contact form failed. ${e}`);
 		console.log(`Mailversand fehlgeschlagen`, e);
 		message.value.state = "ready";
 		message.value.error = String(e);

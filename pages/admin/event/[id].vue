@@ -50,7 +50,7 @@
 				</div>
 			</div>
 		</div>
-		<section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6 pt-16">
+		<section id="images" class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6 py-16">
 			<div id="image" :key="image.id" v-for="(image, index) in images" class="relative">
 				<IconsEyeOff
 					v-if="!image.hidden"
@@ -68,7 +68,7 @@
 					:class="image.hidden ? 'opacity-20' : ''"
 					class="object-cover rounded-md w-full flex-grow" />
 				<p class="text-sm text-slate-400 font-base text-center leading-relaxed">
-					{{ toRelativeDate(image.createdDate) }}
+					{{ toRelativeDate(image.createdDate as Date) }}
 				</p>
 			</div>
 		</section>
@@ -92,7 +92,6 @@ import {
 import { httpsCallable } from "firebase/functions";
 
 const { $db, $functions } = useNuxtApp();
-const functions = await $functions();
 const { id } = useRoute().params;
 const { data: serverEvent } = await useFetch(`/api/getEvent/${id}`);
 const name = computed(() => serverEvent.value || id);
@@ -154,7 +153,7 @@ const end = computed({
 const selectedImage = ref(serverEvent.value?.coverImage);
 
 async function updateEvent() {
-	const eventRef = doc(db, "events", id as string);
+	const eventRef = doc($db, "events", id as string);
 	let data: any = {};
 	data.title = event.value.title;
 	data.description = event.value.description;
@@ -179,7 +178,7 @@ async function onImageChange(event: any) {
 		const base64Image = reader.result?.toString().split(",")[1]; // Extract Base64 data after comma
 		selectedImage.value = (
 			await httpsCallable(
-				functions,
+				$functions,
 				"uploadEventCover"
 			)({
 				imageBase64: base64Image,

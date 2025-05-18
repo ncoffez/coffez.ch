@@ -5,9 +5,8 @@ export async function useCurrentUser() {
 	const user = ref<User | null>(null);
 	let unsubscribe: Unsubscribe | undefined;
 
-	const auth = await $auth();
 	await new Promise<void>((resolve) => {
-		unsubscribe = auth.onAuthStateChanged((u) => {
+		unsubscribe = $auth.onAuthStateChanged((u: any) => {
 			user.value = u;
 			resolve();
 		});

@@ -155,6 +155,10 @@ export default {
 	footer: {
 		legal: "Legal Notice",
 		privacy: "Privacy Policy",
+		settings: "Settings",
+		login: "Login",
+		logout: "Logout",
+    loggedInAs: "Logged in as"
 	},
 	admin: {
 		event: {
@@ -169,11 +173,11 @@ export default {
 		},
 		gallery: {
 			new: {
-        title: "Title",
-        description: "Description",
-        save: "Save",
-        reset: "Reset"
-      },
+				title: "Title",
+				description: "Description",
+				save: "Save",
+				reset: "Reset",
+			},
 		},
 		sidebar: {
 			create: "Create",

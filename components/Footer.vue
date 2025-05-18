@@ -14,13 +14,13 @@
 					}}</a>
 				</div>
 				<ClientOnly>
-					<div v-if="user" class="pt-6">Logged in as {{ user?.displayName }}</div>
+					<div v-if="user" class="pt-6">{{ $t("footer.loggedInAs") }} {{ user?.displayName }}</div>
 					<div>
-						<div class="link" @click.prevent="logoutFromFirebase()" v-if="user">Log out</div>
-						<div class="link" @click.prevent="loginToFirebase()" v-else>Login</div>
+						<div class="link" @click.prevent="logoutFromFirebase()" v-if="user">{{ $t("footer.logout") }}</div>
+						<div class="link" @click.prevent="loginToFirebase()" v-else>{{ $t("footer.login") }}</div>
 					</div>
 					<div v-if="user">
-						<NuxtLink to="/admin">Settings</NuxtLink>
+						<NuxtLink to="/admin">{{ $t("footer.settings") }}</NuxtLink>
 					</div>
 				</ClientOnly>
 			</div>

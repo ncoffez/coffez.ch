@@ -155,6 +155,10 @@ export default {
 	footer: {
 		legal: "Impressum",
 		privacy: "Datenschutz",
+    settings: "Einstellungen",
+    login: "Einloggen",
+    logout: "Ausloggen",
+    loggedInAs: "Eingeloggt als"
 	},
 	admin: {
 		event: {

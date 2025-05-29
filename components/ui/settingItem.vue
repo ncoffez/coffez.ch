@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="py-2 w-full px-6 items-center bg-zinc-100 dark:bg-zinc-800 first-of-type:rounded-t-xl first-of-type:pt-4 last-of-type:pb-4 last-of-type:rounded-b-xl">
-		<div class="flex w-full justify-between">
+		<div class="flex w-full justify-between items-center">
 			<div class="w-56 text-wrap">{{ title }}</div>
 			<slot />
 		</div>

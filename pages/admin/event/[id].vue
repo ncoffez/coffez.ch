@@ -44,8 +44,8 @@
 						<button @click="updateEvent()" class="cursor-pointer" v-if="!updated">Save</button>
 						<button disabled class="bg-green-500 hover:bg-green-500 text-white" v-else>Event saved successfully</button>
 					</div>
-					<div class="flex flex-col w-32 flex-shrink">
-						<button @click="deleteEvent()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">Delete</button>
+					<div class="flex flex-col w-fit flex-shrink">
+						<button @click="deleteEvent()" class="cursor-pointer bg-zinc-700 dark:bg-zinc-700 hover:dark:bg-zinc-800 hover:bg-zinc-500">Delete</button>
 					</div>
 				</div>
 			</div>

@@ -13,6 +13,13 @@
 			image="/img/gallery-placeholder.jpg"
 			to="/admin/gallery/new">
 		</UiGenericCard>
+		<UiGenericCard
+			class="w-72"
+			title="Street drawing event"
+			description="Draw in the streets, define a price for the images."
+			image="/img/street-event.jpeg"
+			to="/admin/street-event/new">
+		</UiGenericCard>
 	</div>
 </template>
 <script lang="ts" setup>

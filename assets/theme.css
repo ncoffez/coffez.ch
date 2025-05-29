@@ -340,4 +340,9 @@
 		--color-primary-800: theme("colors.stone.800");
 		--color-primary-900: theme("colors.stone.900");
 	}
+
+	input,
+	select {
+		@apply dark:[color-scheme:dark] bg-inherit outline-none;
+	}
 }

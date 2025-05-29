@@ -204,7 +204,7 @@ export default {
 			},
 			description:
 				"Mettre à jour l'emplacement actuel de votre événement en cours. Cette information sera visible sur la page d'accueil si un événement est prévu aujourd'hui.",
-			upload: "Télécharger votre emplacement",
+			upload: "Actualiser l'emplacement",
 			lastUpdated: "Dernière mise à jour",
 		},
 		location: {

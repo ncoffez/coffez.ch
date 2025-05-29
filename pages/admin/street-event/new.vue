@@ -11,12 +11,8 @@
 				</div>
 				<div class="flex flex-row gap-2 w-full">
 					<div class="flex flex-col w-full">
-						<label for="start">{{ $t("admin.event.new.startDate") }}</label>
-						<input type="date" id="start" v-model="start" />
-					</div>
-					<div class="flex flex-col w-full">
-						<label for="end">{{ $t("admin.event.new.endDate") }}</label>
-						<input type="date" id="end" v-model="end" />
+						<label for="date">Date</label>
+						<input type="date" id="date" v-model="date" />
 					</div>
 				</div>
 				<div class="flex flex-col w-full">
@@ -40,16 +36,14 @@
 			</div>
 			<UiEventCard
 				:title="event.title"
-				:startDate="event.startDate"
+				:date="event.date"
 				:coverImage="selectedImage || event.coverImage"
-				:endDate="event.endDate"
 				:description="event.description"
 				:disabled="true"></UiEventCard>
 		</div>
 	</div>
 </template>
 <script lang="ts" setup>
-import { UiSelect } from "#components";
 import { addDoc, collection } from "firebase/firestore";
 import { httpsCallable } from "firebase/functions";
 
@@ -57,24 +51,19 @@ definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Create new
 
 const { $db, $functions } = useNuxtApp();
 
-const event = ref(new DrawingEvent());
+const event = ref(new StreetEvent());
 const selectedImage: Ref<string | null> = ref(null);
-const start = computed({
-	get: () => event.value.startDate.slice(0, 10),
-	set: (value) => (event.value.startDate = value),
-});
-const end = computed({
-	get: () => event.value.endDate?.slice(0, 10),
-	set: (value) => (event.value.endDate = value),
+const date = computed({
+	get: () => event.value.date.slice(0, 10),
+	set: (value) => (event.value.date = value),
 });
 
-const resetEvent = () => Object.assign(event.value, new DrawingEvent());
+const resetEvent = () => Object.assign(event.value, new StreetEvent());
 async function createEvent() {
 	let data: any = {};
 	data.title = event.value.title;
 	data.description = event.value.description;
-	data.startDate = new Date(event.value.startDate);
-	if (event.value.endDate) data.endDate = new Date(event.value.endDate);
+	data.date = new Date(event.value.date);
 	if (selectedImage.value) data.coverImage = selectedImage.value;
 
 	const { id } = await addDoc(collection($db, "events"), data);

@@ -53,7 +53,7 @@ const { $db, $functions } = useNuxtApp();
 const route = useRoute();
 const id = route.params.id as string;
 
-const gallery = useFirestore(`gallery/${id}`);
+const gallery: any = useFirestore(`gallery/${id}`);
 definePageMeta({ middleware: "user-is-admin", layout: "admin" });
 
 async function onMediaChange(event: any) {

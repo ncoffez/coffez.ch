@@ -7,7 +7,7 @@
       >
       <template #image><UiEmbeddedMap :coords="coords" class="h-full w-full"/></template>
       <template #action>
-        <button class="m-0 disabled:bg-zinc-300 dark:disabled:bg-zinc-700" @click="uploadLocationToDB(coords)" :disabled="!locatedAt">{{$t('admin.setLocation.upload')}}</button>
+        <button class="m-0 disabled:bg-zinc-300 dark:disabled:bg-zinc-700 py-2" @click="uploadLocationToDB(coords)" :disabled="!locatedAt">{{$t('admin.setLocation.upload')}}</button>
         <p class="text-sm italic font-light mt-1">{{$t('admin.setLocation.lastUpdated')}}: {{ locatedAt ? new Date(locatedAt).toLocaleString("de-CH", {timeStyle: 'medium'}) : "never" }}</p class="text-sm italic font-light">
       </template>
     </UiGenericCard>

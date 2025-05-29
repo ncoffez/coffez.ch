@@ -204,7 +204,7 @@ export default {
 			},
 			description:
 				"Aktualisieren Sie den aktuellen Standort Ihrer laufenden Veranstaltung. Diese Information wird auf der Homepage angezeigt, wenn eine Veranstaltung für heute geplant ist.",
-			upload: "Ihren Standort hochladen",
+			upload: "Standort hochladen",
 			lastUpdated: "Zuletzt aktualisiert",
 		},
 		location: {

@@ -8,7 +8,7 @@ export default {
 			url: "/About",
 			media: {
 				type: "image",
-				legacy: "/img/800x800_coffezch-team.jpeg",
+				legacy: "/img/800x800_coffezch-team.jpg",
 				modern: "/img/800x800_coffezch-team.webp",
 			},
 		},

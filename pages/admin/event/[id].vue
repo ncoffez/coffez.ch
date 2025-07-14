@@ -37,7 +37,7 @@
 				</div>
 				<div class="flex flex-col w-full max-w-lg">
 					<label for="upload-images">Upload</label>
-					<UiImageDropZone id="upload-images" @mediaChanged="onImageChange" />
+					<UiImageDropZone id="upload-images" @mediaChanged="onImageChange" accept="image/*"  :maximum="1" />
 				</div>
 				<div class="flex gap-4 grid-cols(1fr,2fr)">
 					<div class="flex flex-col w-full max-w-lg flex-grow">
@@ -96,7 +96,7 @@ const { id } = useRoute().params;
 const { data: serverEvent } = await useFetch(`/api/getEvent/${id}`);
 const name = computed(() => serverEvent.value || id);
 
-definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "" });
+definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Event administration" });
 
 const updated = ref(false);
 const loading = ref(false);

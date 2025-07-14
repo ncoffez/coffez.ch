@@ -13,7 +13,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 	// Sync system theme changes
 	watch(systemTheme, (newTheme) => {
-		console.log(`System theme changed. ${newTheme}`);
 		theme.value = newTheme ? "dark" : "light";
 	});
 

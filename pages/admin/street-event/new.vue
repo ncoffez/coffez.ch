@@ -2,25 +2,19 @@
 	<div class="w-full h-full mb-12">
 		<div class="md:flex-row flex flex-col gap-8 md:gap-x-16 items-start">
 			<div class="flex flex-col w-full container max-w-xl gap-4">
-				<div class="flex flex-col w-full" v-if="event?.id">
-					<p class="leading-relaxed py-6 dark:text-zinc-400 font-bold">{{ event.id }}</p>
-				</div>
-				<div class="flex flex-col w-full">
-					<label for="title">{{ $t("admin.event.new.title") }}</label>
+				<label for="title"
+					>{{ $t("admin.event.new.title") }}
 					<input type="text" id="title" v-model="event.title" />
+				</label>
+				<label for="date"
+					>Date
+					<input type="date" id="date" v-model="date" />
+				</label>
+				<div class="flex flex-row gap-2 w-full items-center py-2">
+					<label for="city" class="grow">City</label>
+					<UiSelect v-model="city" :options="['Bern', 'Lausanne', 'Vevey']"></UiSelect>
 				</div>
-				<div class="flex flex-row gap-2 w-full">
-					<div class="flex flex-col w-full">
-						<label for="date">Date</label>
-						<input type="date" id="date" v-model="date" />
-					</div>
-				</div>
-				<div class="flex flex-col w-full">
-					<label for="description">{{ $t("admin.event.new.description") }}</label>
-					<textarea id="description" class="h-32" v-model="event.description"></textarea>
-				</div>
-				<UiSettingItem title="Event type" class="w-full"><UiSelect :options="['apple', 'banana']"  /></UiSettingItem>
-				<UiImageDropZone @imageChanged="onImageChange" />
+				<UiImageDropZone v-model="images" :maximum="1" accept="image/*" />
 				<div id="actions" class="flex gap-4 grid-cols(1fr,2fr)">
 					<div class="flex flex-col w-full flex-grow">
 						<button @click="createEvent()" class="cursor-pointer">{{ $t("admin.event.new.save") }}</button>
@@ -36,8 +30,9 @@
 			</div>
 			<UiEventCard
 				:title="event.title"
-				:date="event.date"
-				:coverImage="selectedImage || event.coverImage"
+				:startDate="event.date"
+				:endDate="event.date"
+				:coverImage="images.at(-1) || event.coverImage"
 				:description="event.description"
 				:disabled="true"></UiEventCard>
 		</div>
@@ -45,46 +40,32 @@
 </template>
 <script lang="ts" setup>
 import { addDoc, collection } from "firebase/firestore";
-import { httpsCallable } from "firebase/functions";
 
-definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "Create new event" });
+definePageMeta({ middleware: "user-is-admin", layout: "admin", name: "New Street event" });
+const images = ref<string[]>([]);
+const city = ref("Lausanne");
 
-const { $db, $functions } = useNuxtApp();
+const { $db } = useNuxtApp();
 
-const event = ref(new StreetEvent());
-const selectedImage: Ref<string | null> = ref(null);
+const event = ref(new StreetEvent(city.value));
 const date = computed({
 	get: () => event.value.date.slice(0, 10),
 	set: (value) => (event.value.date = value),
 });
 
-const resetEvent = () => Object.assign(event.value, new StreetEvent());
+watch(city, (newCity) => (event.value = new StreetEvent(city.value, event.value)));
+
+const resetEvent = () => Object.assign(event.value, new StreetEvent(city.value));
 async function createEvent() {
 	let data: any = {};
 	data.title = event.value.title;
 	data.description = event.value.description;
-	data.date = new Date(event.value.date);
-	if (selectedImage.value) data.coverImage = selectedImage.value;
+	data.startDate = new Date(event.value.date);
+	data.endDate = new Date(event.value.date);
+	data.coverImage = images.value.at(-1) || "/img/street-event.jpeg";
 
 	const { id } = await addDoc(collection($db, "events"), data);
 	await navigateTo(`/admin/event/${id}`);
-}
-
-async function onImageChange(event: any) {
-	const reader = new FileReader();
-	reader.onload = async () => {
-		const base64Image = reader.result?.toString().split(",")[1]; // Extract Base64 data after comma
-		selectedImage.value = (
-			await httpsCallable(
-				$functions,
-				"uploadEventCover"
-			)({
-				imageBase64: base64Image,
-				name: event.target.files[0].name,
-			})
-		).data as string;
-	};
-	reader.readAsDataURL(event.target.files[0]);
 }
 </script>
 <style scoped>

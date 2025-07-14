@@ -5,12 +5,11 @@ export class StreetEvent {
 	coverImage?: string;
 	description?: string;
 	type?: string;
-	constructor(event?: StreetEvent) {
-		this.title = "New Event";
+	constructor(city: String, event?: StreetEvent) {
 		this.date = new Date(new Date().setHours(2, 0, 0, 0)).toISOString();
-		this.description =
-			"Pascal Coffez captures the unique personalities and spirit of the occasion. This artistic touch added a memorable element to this event.";
+    this.coverImage = "/img/street-event.jpeg"
 		if (event) Object.assign(this, event);
-    
+		this.title = `Street event in ${city}`;
+		this.description = `Pascal roams the streets of ${city} on his bike and draws caricatures of the crowds.`;
 	}
 }

@@ -4,7 +4,10 @@ export default defineNuxtConfig({
 	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
 	imports: { dirs: ["utils"] },
 	devtools: { enabled: true },
-	routeRules: { "/live/:id/download": { redirect: "/live/:id" } },
+	routeRules: {
+		"/live/:id/download": { redirect: "/live/:id" },
+		"/admin/**": { ssr: false },
+	},
 	css: ["@/assets/theme.css"],
 	ssr: true,
 	runtimeConfig: {

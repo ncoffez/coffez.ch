@@ -3,6 +3,7 @@
 Find this page on <https://www.coffez.ch>
 
 ## Preview
+street-events: <https://coffez-ch--street-events-jffs58ea.web.app>
 publish-branch-url: <https://coffez-ch--publish-branch-url-iiypp5ko.web.app>
 
 ## Tools

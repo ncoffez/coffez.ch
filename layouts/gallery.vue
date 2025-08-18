@@ -4,7 +4,7 @@
 			<img
 				src="/img/Coffez.ch.png"
 				alt="Coffez.ch"
-				class="w-48 h-12 mx-auto object-contain invert cursor-pointer hover:scale-105 transition-transform duration-100"
+				class="w-48 h-12 mx-auto object-contain dark:invert cursor-pointer hover:scale-105 transition-transform duration-100"
 				@click="router.push('/')" />
 		</header>
 		<NuxtPage></NuxtPage>

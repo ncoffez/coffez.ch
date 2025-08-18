@@ -1,7 +1,7 @@
 <template>
 	<section v-if="gallery" class="w-full max-w-screen-xl mb-8 mx-auto px-4 pb-16">
 		<div id="header" class="mb-8">
-			<h1 class="text-3xl font-bold my-4 text-slate-100">{{ gallery.title }}</h1>
+			<h1 class="text-3xl font-bold my-4 dark:text-slate-100">{{ gallery.title }}</h1>
 			<p class="text-lg max-w-prose">{{ gallery.description }}</p>
 		</div>
 		<UiGalleryMasonry :images="gallery.images" />

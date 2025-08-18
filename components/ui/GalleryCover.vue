@@ -27,7 +27,7 @@
 					<div
 						id="description"
 						class="dark:text-zinc-400 text-zinc-100 text-xs font-light tracking-wide hidden w-2/3 max-w-prose text-center">
-						{{ description.length < 70 ? description : description.substring(0, 80) + "..." }}
+						{{ description?.length < 70 ? description : description?.substring(0, 80) + "..." }}
 					</div>
 				</div>
 			</div>
@@ -39,8 +39,8 @@ const props = defineProps(["id", "title", "description", "coverImage", "admin", 
 
 const link = computed(() => {
 	if (props.disabled) return "";
-	if (props.admin) return `/admin/gallery/${props.id}`;
-	return `/gallery/${props.id}`;
+	if (props.admin) return `/admin/gallery/${props?.id}`;
+	return `/gallery/${props?.id}`;
 });
 </script>
 <style scoped>

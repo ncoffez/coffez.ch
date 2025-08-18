@@ -2,7 +2,7 @@
 	<Header></Header>
 	<Brands />
 	<LazyEvents />
-	<!-- <LazyGallery /> -->
+	<LazyGallery />
 	<LazyCards />
 	<!-- <LazyPortfolio /> -->
 	<Contact />

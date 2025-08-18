@@ -35,6 +35,7 @@
         "file-saver": "^2.0.5",
         "firebase": "^11.6.1",
         "jszip": "^3.10.1",
-        "minimasonry": "^1.3.2"
+        "minimasonry": "^1.3.2",
+        "sharp": "^0.34.3"
     }
 }

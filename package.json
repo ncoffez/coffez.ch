@@ -2,7 +2,7 @@
     "name": "coffez-ch",
     "private": true,
     "engines": {
-        "node": "20"
+        "node": "24"
     },
     "scripts": {
         "dev": "nuxt dev --clear",

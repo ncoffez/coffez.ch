@@ -15,10 +15,14 @@
 				</div>
 				<div id="actions" class="flex gap-4 grid-cols(2fr,3fr)">
 					<div class="flex flex-col w-full max-w-lg flex-grow">
-						<button @click="createNewGallery(gallery)" class="cursor-pointer">{{ $t("admin.gallery.new.save") }}</button>
+						<button @click="createNewGallery(gallery)" class="cursor-pointer">
+							{{ $t("admin.gallery.new.save") }}
+						</button>
 					</div>
 					<div class="flex flex-col w-fit flex-shrink">
-						<button @click="resetGallery()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">{{ $t("admin.gallery.new.reset") }}</button>
+						<button @click="resetGallery()" class="cursor-pointer bg-zinc-700 hover:bg-zinc-500">
+							{{ $t("admin.gallery.new.reset") }}
+						</button>
 					</div>
 				</div>
 			</div>
@@ -41,8 +45,12 @@ const gallery = ref(new Gallery());
 
 const resetGallery = () => (gallery.value = new Gallery());
 
-async function createNewGallery(data: Object) {
-	const newGallery = await addDoc(collection($db, "gallery"), data);
+async function createNewGallery(data: any) {
+	const newGallery = await addDoc(collection($db, "gallery"), {
+		title: data.title,
+		description: data.description,
+		coverImage: data.coverImage,
+	});
 	await navigateTo(`/admin/gallery/${newGallery.id}`);
 }
 </script>

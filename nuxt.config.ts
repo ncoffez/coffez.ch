@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2024-07-04",
 	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
+	tailwindcss: {
+		cssPath: "@/assets/theme.css",
+	},
 	imports: { dirs: ["utils"] },
 	devtools: { enabled: true },
 	routeRules: { "/live/:id/download": { redirect: "/live/:id" } },
@@ -33,13 +36,13 @@ export default defineNuxtConfig({
 		},
 	},
 	app: {
-		body: {
-			class: "overflow-x-hidden",
-		},
 		head: {
+			bodyAttrs: {
+				class: "overflow-x-hidden",
+			},
 			link: [
 				{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-				{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true },
+				{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
 				// { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" },
 				{
 					rel: "stylesheet",

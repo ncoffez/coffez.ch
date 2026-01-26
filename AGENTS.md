@@ -21,9 +21,21 @@ npm run dev
 # Build for production
 npm run build
 
-# Build and deploy
+# Manual Deploy (Manual Trigger)
+# This will build the project, functions and deploy to Firebase
 npm run deploy
 ```
+
+### Rollbacks
+In case of issues, you can roll back the Hosting deployment via the Firebase Console or CLI:
+```bash
+# List recent releases
+firebase hosting:releases:list
+
+# Rollback to a specific version (use version ID from list)
+firebase hosting:clone <site-id>:<version-id> live
+```
+Note: Function rollbacks must be handled by redeploying the previous stable code version.
 
 ### Code Quality
 ```bash

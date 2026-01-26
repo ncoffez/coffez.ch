@@ -8,12 +8,8 @@
         "dev": "nuxt dev --clear",
         "build": "nuxt build",
         "postinstall": "nuxt prepare",
-        "functions": "cd functions && npm ci && npm run build && cd ..",
-        "deploy": "npm run build && npm run functions && firebase deploy",
-        "deploy-preview-hosting": "firebase hosting:channel:deploy preview --expires 3d  --config firebase-preview.json",
-        "deploy-preview-functions": "firebase deploy --only functions:nuxt:previewServer --config firebase-preview.json",
-        "deploy-preview": "npm i && ENV=preview npm run build && npm run deploy-preview-hosting && npm run deploy-preview-functions",
-        "echo-resource-dir": "echo $RESOURCE_DIR"
+        "functions": "cd functions && npm i && npm run build && cd ..",
+        "deploy": "npm run build && npm run functions && firebase deploy"
     },
     "devDependencies": {
         "@nuxtjs/i18n": "^9.5.4",

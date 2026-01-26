@@ -29,7 +29,7 @@ jobs:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
       - name: Install Functions Dependencies and Build
-        run: cd functions && npm ci && npm run build
+        run: cd functions && npm install --legacy-peer-deps && npm run build
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           POSTMARK_TOKEN: ${{ secrets.POSTMARK_TOKEN }}

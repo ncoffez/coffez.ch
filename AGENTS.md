@@ -118,6 +118,176 @@ npx vue-tsc --noEmit
 - Server-side functions return JSON responses via `defineEventHandler`
 - Handle errors gracefully with appropriate HTTP status codes
 
+## GitHub Actions Deployment Workflow
+
+This project uses an unorthodox but efficient multi-branch deployment strategy that agents must understand.
+
+### Overview
+
+**Three main workflows control deployment:**
+
+1. **deploy-hosting-on-push.yml** - Production hosting deployment
+2. **deploy-functions-on-push.yml** - Smart Firebase Functions deployment
+3. **preview-hosting-on-branch-push.yml** - Automatic preview environments
+
+### Workflow 1: Production Hosting
+
+**Triggers:**
+- Push to `main` branch
+- Files changed: any EXCEPT `functions/**` and `.github/**`
+
+**Process:**
+1. Runs on Node.js 20
+2. Installs Firebase Tools v14.2.1
+3. Builds Nuxt app with environment variables
+4. Creates Firebase Service Account file
+5. Deploys to Firebase Hosting (channel: "live")
+6. Deploys server function: `functions:nuxt:server`
+
+**Key characteristics:**
+- ✅ Always deploys hosting on main branch push
+- ✅ Always deploys the server function
+- ❌ Ignores function-only changes (handled by workflow #2)
+- 🔐 Uses production Firebase project: `coffez-ch`
+
+### Workflow 2: Firebase Functions
+
+**Triggers:**
+- Push to `main` branch
+- Files changed: only `functions/**` or `.github/workflows/deploy-functions-on-push.yml`
+
+**Smart Deployment Logic:**
+
+The workflow intelligently detects which functions changed to minimize deployment time.
+
+**Scenario A - package.json changed:**
+- Deploys ALL functions (full redeploy required)
+
+**Scenario B - Specific function files changed:**
+- Only deploys affected functions detected via git diff
+
+**Detection pattern:**
+```bash
+CHANGED_FILES=$(git diff --name-only HEAD^ HEAD -- functions/)
+case $file in
+  *sendmail*) deploys functions:sendmail ;;
+  *reduceImage*) deploys functions:reduceImage ;;
+  # ... pattern matching for each function
+esac
+```
+
+**Critical:** This enables rapid deployments - only changed functions are deployed!
+
+### Workflow 3: Preview Environments
+
+**Triggers:**
+- Push to ANY branch EXCEPT `main`
+- Files changed: any EXCEPT `functions/**` and workflow files
+
+**Dynamic Function Naming:**
+
+Function names are auto-generated from branch names:
+```
+branch: "feature/testing-upgrade"
+→ Function: "FeatureTestingUpgradeServer"
+
+branch: "phase1-security-updates"
+→ Function: "Phase1SecurityUpdatesServer"
+```
+
+**Algorithm:**
+```bash
+BRANCH_NAME=$(echo $REF_NAME | tr '/' '-' | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+CAMEL_CASE=$(echo $BRANCH_NAME | awk -F- '{for(i=1;i<=NF;i++) 
+  $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1' OFS="")
+FUNCTION_NAME="${CAMEL_CASE}Server"
+```
+
+**Process:**
+1. Generates function name from branch
+2. Updates `firebase-preview.json` with dynamic function name
+3. Builds Nuxt app (preview environment variables)
+4. Deploys preview function
+5. Deploy preview hosting (expires in 3 days)
+6. Extracts preview URL
+7. Updates README.md with new preview URL
+
+**Key characteristics:**
+- ✅ Automatic preview creation for all non-main branches
+- ✅ URL tracking in README.md
+- ❌ Prevents infinite loops (ignores workflow/config changes)
+- ⏱️ Preview expires automatically (3 days)
+
+### Firebase Configuration Files
+
+**firebase.json** (main production):
+```json
+{
+  "functions": [{ "source": ".output/server", "codebase": "nuxt", "runtime": "nodejs20" }],
+  "hosting": { "public": ".output/public" }
+}
+```
+
+**firebase-preview.json** (dynamic for previews):
+```json
+{
+  "functions": [{ "source": ".output/server", "codebase": "nuxt", "runtime": "nodejs20" }],
+  "hosting": { "public": ".output/public", "rewrites": [{ "source": "**", "function": "previewServer" }] }
+}
+```
+
+**Key difference:** Preview uses `previewServer` function name (replaced dynamically).
+
+### Deployment Implications
+
+**For agents working on this project:**
+
+1. **Feature branches = automatic preview deployments**
+   - Any non-main branch push creates a preview environment
+   - Function name derived from branch name
+   - URL automatically added to README
+
+2. **Main branch = production deployment**
+   - Hosting always deploys on main
+   - Functions deploy smartly (only changed ones)
+   - Both workflows can fire simultaneously
+
+3. **Testing strategy advantage:**
+   - Perfect for migration work
+   - Preview environment before production
+   - Can test all 10 Firebase functions in preview
+   - No risk to production during experiments
+
+4. **Workflow conflicts to avoid:**
+   - Don't commit README changes during migration (workflow modifies it)
+   - Branch names are camelCased - plan accordingly
+   - Function changes trigger smart redeploy - don't manually deploy
+
+### Critical Functions List
+
+All 10 Firebase functions are critical for production:
+- `functions:sendmail` - Email confirmations
+- `functions:reduceImage` - Image processing
+- `functions:getSlackPush` - Slack notifications
+- `functions:getEventList` - Event queries
+- `functions:newGallery` - Gallery creation
+- `functions:getAppleShortcut` - Apple shortcuts
+- `functions:uploadEventCover` - Event cover uploads
+- `functions:uploadGalleryImage` - Gallery image uploads
+- `functions:uploadGalleryVideo` - Gallery video uploads
+- `functions:updateCurrentLocation` - Location updates
+
+**Important:** Before merging any branch to main, ALL these functions must work correctly in preview!
+
+### Best Practices
+
+1. **Use feature branches for all work** - Automatic preview makes testing easy
+2. **Test thoroughly in preview before merge** - Preview = production replica
+3. **Monitor README.md** - Check preview URLs are added correctly
+4. **Coordinate branch names** - Meaningful names = readable function names
+5. **Function testing** - Test all 10 critical functions in preview
+6. **Production monitoring** - After main merge, watch production closely
+
 ## Testing Guidelines
 
 - Write tests alongside source files with `.test.ts` suffix

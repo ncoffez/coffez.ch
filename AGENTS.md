@@ -4,6 +4,12 @@ This guide helps AI agents work with the Coffez.ch Nuxt 3 + Firebase project.
 
 ## Essential Commands
 
+### Node Version Management
+This project uses **Node 22 (LTS)**. Use the included `.nvmrc` file to switch versions:
+```bash
+nvm use
+```
+
 ### Running Tests
 ```bash
 # Run all tests

@@ -1,6 +1,6 @@
 # Agent Development Guide for Coffez.ch
 
-This guide helps AI agents work with the Coffez.ch Nuxt 3 + Firebase project.
+This guide helps AI agents work with the Coffez.ch Nuxt 4 + Firebase project.
 
 ## Essential Commands
 

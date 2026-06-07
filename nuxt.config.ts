@@ -21,9 +21,11 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
+		FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
 		ENV: process.env.ENV,
 		public: {
 			FIREBASE_FRONTEND_KEY: process.env.FIREBASE_FRONTEND_KEY,
+			FIREBASE_WEBAPP_CONFIG: process.env.FIREBASE_WEBAPP_CONFIG,
 			GOOGLE_MAPS_EMBED_API_KEY: process.env.GOOGLE_MAPS_EMBED_API_KEY,
 		},
 	},

@@ -36,8 +36,8 @@ npm run dev
 # Build for production
 npm run build
 
-# Manual Deploy (Manual Trigger)
-# This will build the project, functions and deploy to Firebase
+# Deploy Firebase CLI-managed resources only
+# The Nuxt app itself is expected to deploy through Firebase App Hosting
 npm run deploy
 ```
 
@@ -161,6 +161,7 @@ npx vue-tsc --noEmit
 - **Required for Development**: Copy `.env.example` to `.env.local` and fill in values
 - **Sensitive Data**: Use `runtimeConfig` for secrets, never expose API keys
 - **Firebase Credentials**: Stored in `FIREBASE_FRONTEND_KEY` (public) and `FIREBASE_ADMIN_KEY` (server-only)
+- **App Hosting**: In production, App Hosting may provide `FIREBASE_WEBAPP_CONFIG` and `FIREBASE_CONFIG` automatically
 - **Local Development**: Use `.env.local` for machine-specific overrides (never commit to Git)
 - **Environment Files**:
   - `.env.sample` - Minimal template (for reference)

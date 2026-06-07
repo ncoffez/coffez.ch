@@ -6,13 +6,16 @@ import { getAnalytics, logEvent as logAnalyticsEvent, isSupported } from "fireba
 export default defineNuxtPlugin(async (nuxtApp) => {
 	try {
 		const config = useRuntimeConfig();
+		const rawFirebaseConfig = config.public.FIREBASE_FRONTEND_KEY || config.public.FIREBASE_WEBAPP_CONFIG;
 
-		if (!config.public.FIREBASE_FRONTEND_KEY) {
-			console.error('Firebase configuration not found. Make sure FIREBASE_FRONTEND_KEY is set in your environment variables.')
-			throw new Error('FIREBASE_FRONTEND_KEY not configured')
+		if (!rawFirebaseConfig) {
+			console.error(
+				"Firebase configuration not found. Set FIREBASE_FRONTEND_KEY locally or rely on FIREBASE_WEBAPP_CONFIG in App Hosting."
+			);
+			throw new Error("Firebase frontend config not configured");
 		}
 
-		const firebaseConfig = JSON.parse(config.public.FIREBASE_FRONTEND_KEY);
+		const firebaseConfig = JSON.parse(rawFirebaseConfig);
 
 		const { initializeApp } = await import("firebase/app");
 		const app = initializeApp(firebaseConfig);
@@ -26,7 +29,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 			logEvent = (event: string) => logAnalyticsEvent(analytics, event);
 		}
 
-		console.log('Firebase initialized successfully')
+		console.log("Firebase initialized successfully");
 
 		return {
 			provide: {
@@ -37,7 +40,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 			},
 		};
 	} catch (error) {
-		console.error('Firebase plugin initialization error:', error)
-		throw error
+		console.error("Firebase plugin initialization error:", error);
+		throw error;
 	}
 });

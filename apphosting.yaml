@@ -1,0 +1,20 @@
+# Firebase App Hosting configuration for Coffez.ch
+# Docs:
+# https://firebase.google.com/docs/app-hosting/configure
+
+runConfig:
+  cpu: 1
+  memoryMiB: 512
+  maxInstances: 10
+  minInstances: 0
+  concurrency: 80
+
+env:
+  - variable: ENV
+    value: production
+
+  - variable: GITHUB_BRANCH
+    value: main
+
+  - variable: GOOGLE_MAPS_EMBED_API_KEY
+    secret: GOOGLE_MAPS_EMBED_API_KEY

@@ -9,7 +9,7 @@ The production site is available at [coffez.ch](https://www.coffez.ch).
 - Nuxt 4
 - Vue 3
 - Tailwind CSS
-- Firebase Hosting
+- Firebase App Hosting
 - Firebase Functions
 - Firestore
 
@@ -17,7 +17,7 @@ The production site is available at [coffez.ch](https://www.coffez.ch).
 
 - Node.js 22
 - npm
-- Firebase CLI for manual deploys
+- Firebase CLI for local Firebase workflows
 
 This repository includes an `.nvmrc` file:
 
@@ -86,23 +86,33 @@ Nuxt runtime config is defined in [nuxt.config.ts](/Users/nco/Coffez-Labs/coffez
 
 - Server-only:
   - `FIREBASE_ADMIN_KEY`
+  - `FIREBASE_CONFIG`
   - `ENV`
 - Public:
   - `FIREBASE_FRONTEND_KEY`
+  - `FIREBASE_WEBAPP_CONFIG`
   - `GOOGLE_MAPS_EMBED_API_KEY`
 
-Firebase functions still use `process.env.*` directly where appropriate.
+Local development uses `FIREBASE_FRONTEND_KEY` and `FIREBASE_ADMIN_KEY` from `.env.local`.
+
+In Firebase App Hosting:
+
+- `FIREBASE_WEBAPP_CONFIG` is populated automatically for the web SDK
+- `FIREBASE_CONFIG` is populated automatically for the Admin SDK
+- [apphosting.yaml](/Users/nco/Coffez-Labs/coffez.ch/apphosting.yaml:1) is used for App Hosting runtime settings and additional environment variables
 
 ## Deployment
 
-There are two deployment paths in this repository:
+This project is now intended to deploy through Firebase App Hosting.
 
-- Manual deploy:
-  - `npm run deploy`
-- GitHub Actions publish on push to `main`:
-  - [deploy-hosting-on-push.yml](/Users/nco/Coffez-Labs/coffez.ch/.github/workflows/deploy-hosting-on-push.yml:1)
+App Hosting setup is created in the Firebase console by connecting the GitHub repository and enabling rollouts from the live branch. Firebase’s App Hosting docs describe that flow here:
 
-The publish workflow expects the relevant GitHub secrets to be configured, including Firebase credentials and function-related secrets.
+- [Get started with App Hosting](https://firebase.google.com/docs/app-hosting/get-started)
+- [Configure App Hosting backends](https://firebase.google.com/docs/app-hosting/configure)
+
+Repository-side App Hosting config lives in [apphosting.yaml](/Users/nco/Coffez-Labs/coffez.ch/apphosting.yaml:1).
+
+`npm run deploy` no longer deploys the Nuxt app. It only deploys the remaining Firebase CLI-managed resources in this repository, such as custom Cloud Functions and Firestore configuration.
 
 ## Project Structure
 
@@ -132,6 +142,7 @@ The publish workflow expects the relevant GitHub secrets to be configured, inclu
 - If `npm run dev` shows a socket permission error on macOS, use the repository script as provided. It already routes Nuxt temp files through `.tmp/`.
 - If card content looks wrong in one language, check the locale files in `locales/`.
 - If local Firebase-backed pages fail, verify both frontend and admin Firebase keys in `.env.local`.
+- If App Hosting deploys fail, confirm the backend is connected to the correct GitHub repository and that the required App Hosting secret `GOOGLE_MAPS_EMBED_API_KEY` exists.
 
 ## Contact
 

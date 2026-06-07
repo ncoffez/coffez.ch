@@ -20,9 +20,7 @@ The app will run at http://localhost:3000
 
 ## Troubleshooting
 
-If you see "spawn EBADF" error, it's a known issue with Nitro's Firebase preset in local development. The app should still load in the browser despite this error in the console.
-
-If you see i18n config warnings, check that i18.config.ts exists (not .js).
+If you see socket permission errors from Nuxt on macOS, use the repository's `npm run dev` script as-is. It already routes temp files through `.tmp`.
 
 ## Environment Variables Required
 

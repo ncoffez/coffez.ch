@@ -7,7 +7,7 @@ For deeper repository rules and coding conventions, also review [AGENTS.md](/Use
 ## Project Summary
 
 - Framework: Nuxt 4
-- Backend: Firebase Functions and Nitro server routes
+- Backend: Firebase App Hosting, Firebase Functions, and Nitro server routes
 - Styling: Tailwind CSS
 - Languages: German, English, French
 - Runtime: Node 22
@@ -41,7 +41,7 @@ npm run build
 # Build functions
 npm run functions
 
-# Full deploy flow
+# Deploy Firebase CLI-managed resources
 npm run deploy
 
 # Unit tests
@@ -68,6 +68,11 @@ Common required values:
 
 Nuxt runtime config is declared in [nuxt.config.ts](/Users/nco/Coffez-Labs/coffez.ch/nuxt.config.ts:1). Prefer `useRuntimeConfig()` over reading environment variables directly in Nuxt app code.
 
+In Firebase App Hosting, prefer the platform-provided Firebase variables when available:
+
+- `FIREBASE_WEBAPP_CONFIG`
+- `FIREBASE_CONFIG`
+
 ## Coding Instructions
 
 - Use `<script setup lang="ts">` in Vue components.
@@ -89,12 +94,10 @@ Nuxt runtime config is declared in [nuxt.config.ts](/Users/nco/Coffez-Labs/coffe
 
 ## Deployment Notes
 
-- Main publish workflow:
-  - [deploy-hosting-on-push.yml](/Users/nco/Coffez-Labs/coffez.ch/.github/workflows/deploy-hosting-on-push.yml:1)
-- Manual deploy command:
-  - `npm run deploy`
-
-Do not assume CI is fully verified until a real GitHub Actions run succeeds.
+- The Nuxt app is intended to ship through Firebase App Hosting.
+- Repo-level App Hosting config lives in [apphosting.yaml](/Users/nco/Coffez-Labs/coffez.ch/apphosting.yaml:1).
+- `npm run deploy` is only for the remaining Firebase CLI-managed resources in this repository.
+- App Hosting rollout setup still requires Firebase console/backend configuration outside the repo.
 
 ## Validation Guidance
 

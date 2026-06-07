@@ -1,107 +1,39 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	compatibilityDate: "2024-07-04",
+	compatibilityDate: "2026-06-07",
+	srcDir: ".",
+	dir: {
+		app: "app",
+	},
 	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
 	tailwindcss: {
 		cssPath: "@/assets/theme.css",
 	},
-	imports: { dirs: ["utils"] },
-	devtools: { enabled: true },
-	routeRules: { "/live/:id/download": { redirect: "/live/:id" } },
-	css: ["@/assets/theme.css"],
-	ssr: true,
+	i18n: {
+		defaultLocale: "de",
+		strategy: "no_prefix",
+		langDir: "../locales",
+		locales: [
+			{ code: "de", name: "Deutsch", file: "de.js" },
+			{ code: "en", name: "English", file: "en.js" },
+			{ code: "fr", name: "Francais", file: "fr.js" },
+		],
+	},
 	runtimeConfig: {
+		FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
+		ENV: process.env.ENV,
 		public: {
 			FIREBASE_FRONTEND_KEY: process.env.FIREBASE_FRONTEND_KEY,
-			TEST_VARIABLE: process.env.TEST_VARIABLE,
-			CUSTOM_ENV: process.env.CUSTOM_ENV,
-			ENV: process.env.ENV,
-			FUNCTION_NAME: process.env.FUNCTION_NAME,
-			GITHUB_BRANCH: process.env.GITHUB_BRANCH,
 			GOOGLE_MAPS_EMBED_API_KEY: process.env.GOOGLE_MAPS_EMBED_API_KEY,
-		},
-		FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
-		TEST_SECRET: process.env.TEST_SECRET,
-	},
-	nitro: {
-		preset: "firebase",
-		firebase: {
-			serverFunctionName: process.env.FUNCTION_NAME,
-			gen: 2,
-			httpsOptions: {
-				region: "europe-west6",
-				maxInstances: 3,
-				cpu: "gcf_gen1",
-			},
 		},
 	},
 	app: {
 		head: {
-			bodyAttrs: {
-				class: "overflow-x-hidden",
-			},
-			link: [
-				{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-				{ rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-				// { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" },
-				{
-					rel: "stylesheet",
-					href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-				},
-				{ rel: "icon", type: "image/png", href: "/favicon.png" },
-			],
 			title: "Coffez.ch",
 			meta: [
 				{ charset: "utf-8" },
-				{ name: "viewport", content: "width=device-width, initial-scale=1.0" },
-				{
-					name: "description",
-					content:
-						"Coffez.ch - einzigartige Karikaturen für Ihre Veranstaltung. Ob digital oder auf Papier, wir verewigen Ihre Gäste mit einem Lächeln. #Karikaturen #Veranstaltungen #Hochzeit #Zeichnungen",
-				},
-				{
-					name: "keywords",
-					content:
-						"Karikaturen, Veranstaltungen, Digitale Karikaturen, Hochzeitskarikaturen, Personalisierte Karikaturen, Unterhaltung für Veranstaltungen, Portraits, Zeichnungen, Caricatures",
-				},
-				{ property: "og:title", content: "Coffez.ch - Karikaturen für Veranstaltungen" },
-				{
-					property: "og:description",
-					content:
-						"Coffez.ch bietet einzigartige und personalisierte Karikaturen für Veranstaltungen. Ob digital oder auf Papier, wir haben für alle Ihre Veranstaltungen die passende Lösung.",
-				},
-				{ property: "og:type", content: "website" },
-				{ property: "og:url", content: "https://coffez.ch" },
-				{
-					property: "og:image",
-					content: "https://storage.googleapis.com/coffez-ch/analoge_zeichnung.jpeg",
-				},
-			],
-		},
+				{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+			]
+		}
 	},
-	i18n: {
-		vueI18n: "~/i18.config.js",
-		strategy: "no_prefix",
-		bundle: {
-			optimizeTranslationDirective: false,
-		},
-		locales: [
-			{
-				code: "de",
-				name: "Deutsch",
-			},
-			{
-				code: "fr",
-				name: "Français",
-			},
-			{
-				code: "en",
-				name: "English",
-			},
-		],
-		detectBrowserLanguage: {
-			useCookie: true,
-			fallbackLocale: "de",
-		},
-	},
-});
+})

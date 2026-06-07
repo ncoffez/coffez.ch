@@ -1,8 +1,9 @@
-import { db } from "./firestore"; 
+import { db } from "./firestore";
+import { logger } from "firebase-functions/v2";
 
-export async function getEventList(request: any) { 
+export async function getEventList(request: any) {
   const { limit } = request.data;
-  console.log(`Requested getEventList with limit ${limit}`);
+  logger.debug(`Requested getEventList with limit ${limit}`);
   const latestEvent = await db.collection("events").orderBy('startDate', 'desc').limit(limit).get();
   let events: any[] = [];
 

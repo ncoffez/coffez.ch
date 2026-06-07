@@ -12,11 +12,20 @@ nvm use
 
 ### Running Tests
 ```bash
-# Run all tests
+# Run all unit tests
 npx vitest run
 
 # Run a single test file
 npx vitest run path/to/test-file.test.ts
+
+# Run tests with coverage
+npx vitest run --coverage
+
+# Run E2E tests with Playwright
+npx playwright test
+
+# Run E2E tests in headed mode
+npx playwright test --headed
 ```
 
 ### Development
@@ -135,6 +144,46 @@ npx vue-tsc --noEmit
   ```
 - Server-side functions return JSON responses via `defineEventHandler`
 - Handle errors gracefully with appropriate HTTP status codes
+
+### Security & Authentication
+- **Admin Authentication**: Use `useIsAdmin()` composable to verify Firebase Custom Claims
+- **Firestore Security Rules**: All collections require authentication. Admin role required for writes to events, gallery, portraits, printQueue
+- **Custom Claims**: Set via Firebase Admin SDK. Use `admin.auth().setCustomUserClaims(uid, { admin: true })`
+- **Middleware Protection**: `user-is-admin` middleware protects `/admin` routes
+
+### Critical Alerts System
+- Production errors trigger email alerts to `ncoffez@gmail.com`
+- Implemented in `functions/src/util/criticalAlert.ts`
+- Uses Postmark for email delivery
+- Alerts sent for Firebase errors, unexpected failures, and security violations
+
+### Environment Variables
+- **Required for Development**: Copy `.env.example` to `.env.local` and fill in values
+- **Sensitive Data**: Use `runtimeConfig` for secrets, never expose API keys
+- **Firebase Credentials**: Stored in `FIREBASE_FRONTEND_KEY` (public) and `FIREBASE_ADMIN_KEY` (server-only)
+- **Local Development**: Use `.env.local` for machine-specific overrides (never commit to Git)
+- **Environment Files**:
+  - `.env.sample` - Minimal template (for reference)
+  - `.env.example` - Full template with placeholders (for new developers)
+  - `.env.local` - Your actual environment variables (NOT in Git)
+
+**Setting up Local Development:**
+```bash
+# 1. Copy the example template
+cp .env.example .env.local
+
+# 2. Fill in your Firebase credentials from Firebase Console
+# 3. Add your Google Maps API key
+# 4. Run the dev server
+npm run dev
+```
+
+**Required Environment Variables:**
+- `FIREBASE_FRONTEND_KEY` - Firebase web app config (public)
+- `FIREBASE_ADMIN_KEY` - Firebase admin config (server-only)
+- `FUNCTION_NAME` - Set to `server` for local development
+- `GOOGLE_MAPS_EMBED_API_KEY` - Google Maps API key
+- `ENV` - Set to `development` for local environment
 
 ## Testing Guidelines
 

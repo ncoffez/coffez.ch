@@ -3,17 +3,76 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // This rule allows anyone with your Firestore database reference to view, edit,
-    // and delete all data in your Firestore database. It is useful for getting
-    // started, but it is configured to expire after 30 days because it
-    // leaves your app open to attackers. At that time, all client
-    // requests to your Firestore database will be denied.
-    //
-    // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Firestore database will be denied until you Update
-    // your rules
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && 
+             request.auth.token.admin == true;
+    }
+
+    // Helper function to check if user owns the data
+    function isOwner() {
+      return request.auth != null && 
+             request.auth.uid == resource.data.uid;
+    }
+
+    // Helper function for data validation
+    function isValidEventData() {
+      return request.method == 'get' ||
+             (request.resource.data.title is string &&
+              request.resource.data.startDate is timestamp &&
+              request.resource.data.endDate is timestamp);
+    }
+
+    function isValidPortraitData() {
+      return request.method == 'get' ||
+             (request.resource.data.name is string &&
+              request.resource.data.createdDate is timestamp &&
+              (request.resource.data.imageUrl is string || request.resource.data.urlFirebaseOriginal is string));
+    }
+
+    // ==========================================
+    // EVENTS COLLECTION - Anyone can read, only admin can write
+    // ==========================================
+    match /events/{eventId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidEventData();
+    }
+
+    // ==========================================
+    // GALLERY COLLECTION - Anyone can read, only admin can write
+    // ==========================================
+    match /gallery/{galleryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ==========================================
+    // PORTRAITS COLLECTION - Anyone can read, only admin can write
+    // ==========================================
+    match /portraits/{portraitId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidPortraitData();
+    }
+
+    // ==========================================
+    // PRINT QUEUE - Only admin can read/write
+    // ==========================================
+    match /printQueue/{documentId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ==========================================
+    // SETTINGS - Only admin can read/write
+    // ==========================================
+    match /settings/{settingId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ==========================================
+    // DEFAULT RULE - Deny all other access
+    // ==========================================
     match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2025, 10, 13);
+      allow read, write: if false;
     }
   }
 }

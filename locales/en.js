@@ -8,7 +8,7 @@ export default {
 			url: "/About",
 			media: {
 				type: "image",
-				legacy: "/img/800x800_coffezch-team.jpeg",
+				legacy: "/img/800x800_coffezch-team.jpg",
 				modern: "/img/800x800_coffezch-team.webp",
 			},
 		},
@@ -92,7 +92,7 @@ export default {
 			url: "/Order",
 			media: {
 				type: "image",
-				legacy: "/img/800x800_woman_looks_at_tablet.jpg",
+				legacy: "/img/800x800_woman_looks_at_tablet.jpeg",
 				modern: "/img/800x800_woman_looks_at_tablet.webp",
 			},
 		},

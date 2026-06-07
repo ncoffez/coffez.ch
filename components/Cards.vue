@@ -18,19 +18,30 @@
           muted="true"
           loop="true"
           playsinline="true">
-          <source :src="card.media?.modern" type="video/webm" />
-          <source :src="card.media?.legacy" type="video/mp4" />
+          <source :src="card.media.modern" type="video/webm" />
+          <source :src="card.media.legacy" type="video/mp4" />
         </video>
         <picture v-else>
-          <source :srcset="card.media?.modern" type="image/webp" />
-          <source :srcset="card.media?.legacy" type="image/jpeg" />
-          <img :src="card.media?.legacy" :alt="card.header" />
+          <source :srcset="card.media.modern" type="image/webp" />
+          <source :srcset="card.media.legacy" type="image/jpeg" />
+          <img :src="card.media.legacy" :alt="card.header" />
         </picture>
       </div>
       <div id="text" :class="index % 2 === 0 ? 'md:order-2' : 'md:order-1'">
         <h1 class="text-3xl font-bold my-4 dark:text-slate-100 text-stone-900">{{ card.header }}</h1>
         <p class="dark:text-slate-400 text-md pb-2 max-w-prose md:text-lg leading-relaxed">{{ card.lead }}</p>
-        <button :class="`button-${(index%4) + 1}`" @click="handleAction(card.url)" v-if="card.action">{{ card.action }}</button>
+        <NuxtLink
+          v-if="card.action && isInternalRoute(card.url)"
+          :to="card.url"
+          :class="`button-${(index % 4) + 1}`">
+          {{ card.action }}
+        </NuxtLink>
+        <button
+          v-else-if="card.action"
+          :class="`button-${(index % 4) + 1}`"
+          @click="handleAction(card.url)">
+          {{ card.action }}
+        </button>
       </div>
     </article>
   </section>
@@ -38,16 +49,35 @@
 
 <script setup lang="ts">
 import { scrollTo } from "~~/methods/scrollTo";
-const { tm } = useI18n();
+const { rt, tm } = useI18n();
 
-const sections: Ref<any[]> = computed(() => tm("sections"));
+function resolveMessage(value: unknown) {
+  return typeof value === "string" ? value : String(rt(value as never) || "");
+}
+
+const sections: Ref<any[]> = computed(() =>
+  (tm("sections") as any[]).map((card) => ({
+    ...card,
+    header: resolveMessage(card.header),
+    lead: resolveMessage(card.lead),
+    action: card.action ? resolveMessage(card.action) : "",
+    url: card.url ? resolveMessage(card.url) : "",
+    media: {
+      ...card.media,
+      type: resolveMessage(card.media.type),
+      legacy: resolveMessage(card.media.legacy),
+      modern: resolveMessage(card.media.modern),
+    },
+  })),
+);
+
+function isInternalRoute(action: string) {
+  return typeof action === "string" && action.startsWith("/");
+}
 
 async function handleAction(action: string) {
-  if (["/live"].includes(action)) {
-    await navigateTo(action);
-  } else {
-    scrollTo("contact");
-  }
+  if (isInternalRoute(action)) return;
+  scrollTo("contact");
 }
 </script>
 

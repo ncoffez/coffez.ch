@@ -1,9 +1,10 @@
 import { bucket } from "./firestore";
 import createResizedImageCopy from "./util/createResizedImageCopy";
+import { logger } from "firebase-functions/v2";
 
 export async function uploadEventCover(request: any) {
-  const { imageBase64, name, folder } = request.data; // Receive Base64
-  console.log({ imageBase64, name }); // Verify receipt
+  const { imageBase64, name, folder } = request.data;
+  logger.debug(`Processing uploadEventCover for ${name}`);
 
   // Decode Base64 to Buffer
   const imageBuffer = Buffer.from(imageBase64, 'base64');

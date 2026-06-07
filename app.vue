@@ -1,10 +1,5 @@
 <template>
-	<div class="w-full">
-		<NuxtLoadingIndicator />
-		<NuxtLayout></NuxtLayout>
-	</div>
+	<NuxtLayout>
+		<NuxtPage />
+	</NuxtLayout>
 </template>
-
-<script setup></script>
-
-<style scoped></style>

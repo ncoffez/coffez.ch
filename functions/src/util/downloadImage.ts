@@ -20,7 +20,12 @@ export async function downloadImage(url: string, sourceApplication: "slack" | "A
   } else {
     throw `Source application ${sourceApplication} is not recognized.`;
   }
-  const contentType = response.headers["content-type"];
-  console.log({ headers: response.headers })
+  const contentTypeHeader = response.headers["content-type"];
+  const contentType = typeof contentTypeHeader === "string"
+    ? contentTypeHeader
+    : Array.isArray(contentTypeHeader)
+      ? contentTypeHeader[0]
+      : "application/octet-stream";
+  logger.debug({ headers: response.headers });
   return { imageBuffer: response.data, contentType };
 }

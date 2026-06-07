@@ -1,4 +1,5 @@
 import { ofetch } from 'ofetch'
+import { logger } from "firebase-functions/v2";
 
 async function notifySlack(data: any, plain_text = false) {
   let body = `{
@@ -59,7 +60,7 @@ async function notifySlack(data: any, plain_text = false) {
     const data = response;
     return data;
   } catch (e) {
-    console.log(`Fetch failed. ${e}`);
+    logger.error(`Fetch failed. ${e}`);
     return e;
   }
 }

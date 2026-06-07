@@ -4,6 +4,7 @@
 .nuxt
 .nitro
 .cache
+.tmp
 dist
 
 # Node dependencies
@@ -19,11 +20,14 @@ node_modules
 
 # Local env files
 .env
-.env.*
+.env.local
+.env.production
+.env.*.local
 *.env.*
 !.env.example
 !.env.sample
 !*.env.sample.json
+!.env.template
 
 # Firebase
 .firebase

@@ -1,12 +1,17 @@
 <template>
-	<NuxtLink
-		:to="link"
-		class="w-64 h-full my-4 dark:bg-zinc-800 bg-white shadow-lg overflow-clip rounded-xl hover:scale-105 active:scale-100 transition duration-300 ease-in-out cursor-pointer">
+	<a
+		:href="link"
+		@click="handleClick"
+		@pointerdown="handlePointerDown"
+		@pointerup="handlePointerUp"
+		@pointercancel="resetPointer"
+		class="w-64 h-full my-4 dark:bg-zinc-800 bg-white shadow-lg overflow-clip rounded-xl hover:scale-105 active:scale-100 transition duration-300 ease-in-out cursor-pointer select-none">
 		<div class="w-64">
 			<div class="md:shrink-0">
 				<img
 					class="h-48 w-full object-cover"
 					:src="coverImage || '/img/analoge_zeichnung.webp'"
+					draggable="false"
 					alt="Pascal Coffez drawing at the Rhine Falls" />
 			</div>
 			<div class="p-6">
@@ -29,18 +34,73 @@
 				</div>
 			</div>
 		</div>
-	</NuxtLink>
+	</a>
 </template>
 <script lang="ts" setup>
 import { differenceInCalendarDays } from "date-fns";
 import { isWithinInterval } from "date-fns";
+
 const props = defineProps(["title", "startDate", "endDate", "coverImage", "description", "id", "admin", "disabled"]);
+const router = useRouter();
+const pointerStart = ref<{ x: number; y: number } | null>(null);
+let ignoreSyntheticClick = false;
 
 const link = computed(() => {
 	if (props.disabled) return "";
 	if (props.admin) return `/admin/event/${props.id}`;
 	return `/live/${props.id}`;
 });
+
+async function handleClick(event: MouseEvent) {
+	if (props.disabled || !link.value) {
+		event.preventDefault();
+		return;
+	}
+
+	if (ignoreSyntheticClick) {
+		ignoreSyntheticClick = false;
+		event.preventDefault();
+		return;
+	}
+
+	if (
+		event.defaultPrevented ||
+		event.button !== 0 ||
+		event.metaKey ||
+		event.ctrlKey ||
+		event.shiftKey ||
+		event.altKey
+	) {
+		return;
+	}
+
+	event.preventDefault();
+	await router.push(link.value);
+}
+
+function handlePointerDown(event: PointerEvent) {
+	if (event.pointerType !== "touch") return;
+	pointerStart.value = { x: event.clientX, y: event.clientY };
+}
+
+async function handlePointerUp(event: PointerEvent) {
+	if (event.pointerType !== "touch" || !pointerStart.value || props.disabled || !link.value) return;
+
+	const movedX = Math.abs(event.clientX - pointerStart.value.x);
+	const movedY = Math.abs(event.clientY - pointerStart.value.y);
+	pointerStart.value = null;
+
+	// Treat light taps as navigation, but let real horizontal swipes keep scrolling.
+	if (movedX > 12 || movedY > 12) return;
+
+	ignoreSyntheticClick = true;
+	event.preventDefault();
+	await router.push(link.value);
+}
+
+function resetPointer() {
+	pointerStart.value = null;
+}
 
 const duration = computed(() => {
 	if (!props.endDate) return 0;

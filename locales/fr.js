@@ -2,9 +2,9 @@ export default {
 	sections: [
 		{
 			id: 1,
-			header: "😎 Qui sommes-nous?",
-			lead: "Deux esprits, deux univers – un informaticien et un artiste. Découvrez comment notre famille suisse fusionne technologie et créativité pour donner vie à des œuvres d'art vibrantes de joie de vivre.",
-			action: "Plus d'infos",
+			header: "Live Portrait Show",
+			lead: "Pascal Coffez réalise des portraits live en 3 minutes, devant le public, à Montreux au bord du lac Léman. Chaque portrait est ressemblant, valorisant, et signé Coffez. L'expérience est immédiate, humaine et inoubliable.",
+			action: "Découvrir",
 			url: "/About",
 			media: {
 				type: "image",
@@ -14,9 +14,9 @@ export default {
 		},
 		{
 			id: 2,
-			header: "👨🏼‍🎨 L'artiste",
-			lead: "Pascal, un caricaturiste de presse bien connu et une attraction célèbre aux chutes du Rhin, n'est nulle part plus joyeux et excentrique que dans une foule. Son rire seul est un remède contre la mélancolie. Es-tu prêt à combiner joie, performance artistique et rêves dans ta vie ? 3, 2, 1, GO !",
-			action: "Plus d'infos",
+			header: "L'artiste",
+			lead: "Pascal Coffez est un artiste-performer basé à Montreux, sur la Riviera suisse. Chaque jour, face au Palais Oriental, il dessine des visiteurs venus du monde entier. Son trait puissant, sa précision et sa capacité à valoriser chaque personne font de chaque portrait un moment unique.",
+			action: "En savoir plus",
 			url: "/Artists/PascalCoffez",
 			media: {
 				type: "image",
@@ -26,8 +26,8 @@ export default {
 		},
 		{
 			id: 3,
-			header: "🇨🇭 Fabriqué en Suisse",
-			lead: "En tant que Suisse par choix résidant à Berne, notre artiste national voyage dans toute la Suisse. Ses voyages sont calculés depuis son lieu de résidence et sont exclusivement réservés au public suisse... pour le moment !",
+			header: "Montreux · Riviera Suisse",
+			lead: "Au bord du lac Léman, face aux Alpes, Pascal Coffez dessine chaque jour sur le Quai de la Rouvenaz. Un lieu, une scène, une rencontre. Visiteurs de passage, couples, familles — tous repartent avec leur portrait et un souvenir de Montreux.",
 			action: "",
 			url: "",
 			media: {
@@ -38,8 +38,8 @@ export default {
 		},
 		{
 			id: 4,
-			header: "🎉 Surprise !",
-			lead: "Chers retardataires, pressés et hésitants, il est possible de réserver à court terme en préférant passer ta réservation par téléphone. Ne nous abandonnes pas par manque de temps : rien ne peut nous arrêter... sauf un engagement préalable !",
+			header: "3 minutes",
+			lead: "Trois minutes. Le public observe. Le trait apparaît. La ressemblance surgit. La révélation provoque le rire, la surprise, l'émotion. C'est la cérémonie Coffez — rapide, maîtrisée, intense.",
 			action: "Nous contacter",
 			url: "/About/Contact",
 			media: {
@@ -50,8 +50,8 @@ export default {
 		},
 		{
 			id: 5,
-			header: "🍿 Détend l'atmosphère",
-			lead: "Place au spectacle ! Pascal attire les foules, suscite la curiosité et brise la glace avec sa bonne humeur contagieuse. Personne ne peut rester indifférent à ses performances originales et festives. Tu aimerais voir te invités flotter sur un nuage ? Le rire est garanti à 100% !",
+			header: "L'expérience",
+			lead: "Le portrait live crée un moment collectif. Le public s'arrête, regarde, attend. Puis vient la révélation. Les amis réagissent. Les couples s'embrassent. Les groupes applaudissent. Les téléphones sortent. L'énergie circule. C'est ça, l'expérience Coffez.",
 			action: "En savoir plus",
 			url: "/Artists/PascalCoffez",
 			media: {
@@ -62,10 +62,10 @@ export default {
 		},
 		{
 			id: 6,
-			header: "🎬 Are you ready ?",
-			lead: "Une pincée de lumière de haute qualité pour faciliter le travail de l'artiste, une pincée de bonne volonté de la part du modèle, un sourire mûri au soleil du cœur, et tous les ingrédients sont là pour faire de ton événement un succès ! Temps de préparation : 3 minutes par dessin, c'est parti ! Amuses-toi bien !",
-			action: "Réserver maintenant",
-			url: "/Order",
+			header: "Votre portrait",
+			lead: "Ressemblant. Valorisant. Signé. Chaque portrait est réalisé en direct, en 3 minutes, sur papier ou en digital. Vous repartez immédiatement avec votre oeuvre — ou vous la retrouvez en ligne sur coffez.ch/live.",
+			action: "Voir la galerie live",
+			url: "/live",
 			media: {
 				type: "image",
 				legacy: "/img/800x800_are_you_ready.jpeg",
@@ -74,9 +74,9 @@ export default {
 		},
 		{
 			id: 7,
-			header: "💍 Mariage",
-			lead: "Nous adorons les amoureux ! Pour égayer le plus beau jour de votre vie, laissez-vous séduire par notre animation festive et créative. L'option digitale vous offre un souvenir impérissable grâce à la galerie en ligne qui rassemble tous les portraits réalisés. Dans la version traditionnelle, Pascal peut se déplacer de table en table pour partager ses créations et sa bonne humeur avec tous vos invités.",
-			action: "Passer commande",
+			header: "Mariages",
+			lead: "Pour le plus beau jour de votre vie, Pascal Coffez crée des portraits live de vos invités — valorisants, joyeux, inoubliables. L'option digitale permet à chaque invité de retrouver son portrait en ligne immédiatement après la cérémonie.",
+			action: "Nous contacter",
 			url: "/Order",
 			media: {
 				type: "image",
@@ -86,9 +86,9 @@ export default {
 		},
 		{
 			id: 8,
-			header: "💼 Événement d'entreprise",
-			lead: "Veux-tu te démarquer de tes concurrents, attirer des gens sur ton stand et faire de la publicité pour ton entreprise ? Souhaites-tu renforcer la cohésion de ton équipe ? Nous te proposons un événement festif, créatif et original que ni tes employés ni tes clients n'oublieront !",
-			action: "Réserver maintenant",
+			header: "Evenements corporate",
+			lead: "IWC, UBS, Roche, Sisley Paris, Manor — des marques exigeantes font confiance à Pascal Coffez pour animer leurs evenements premium. Une prestation autonome, photogenique, socialement puissante. Vos invites deviennent le centre du moment.",
+			action: "Demande de devis",
 			url: "/Order",
 			media: {
 				type: "image",
@@ -98,8 +98,8 @@ export default {
 		},
 		{
 			id: 9,
-			header: "✍🏼 Dessin analogique",
-			lead: "En quelques minutes, sans aucune préparation, Pascal crée des portraits au format A3 ou A4. L'exécution est extrêmement rapide et le travail est immédiatement disponible. Un chevalet, des crayons, du papier - des dessins clé en main sans la contrainte d'une installation numérique !",
+			header: "Portrait analogique",
+			lead: "Feutres Lyra sur papier. Un trait puissant, noir, immediat. Le portrait analogique est realise en direct, format A3 ou A4, et remis immediatement. Aucune installation technique requise — juste l'artiste, son chevalet et son geste.",
 			action: "",
 			url: "",
 			media: {
@@ -110,9 +110,9 @@ export default {
 		},
 		{
 			id: 10,
-			header: "👨🏽‍💻 Dessin numérique",
-			lead: "Vive le progrès ! Notre installation numérique permet à notre artiste de créer des portraits numériques sur l'iPad Pro. Un câble HDMI, une imprimante Wi-Fi, et tu peux obtenir tes portraits sur papier immédiatement, avec l'option d'un format A5 et la disponibilité de toutes les œuvres sur Dropbox, pour que tes invités (et toi-même) ne manquent rien du service !",
-			action: "Voir l'événement en direct",
+			header: "Portrait digital · Galerie live",
+			lead: "Dessine sur iPad Pro, le portrait digital est publie instantanement sur coffez.ch/live. Scannez le QR code au stand, enregistrez-vous, et recevez votre portrait en temps reel sur votre telephone — sans rien faire.",
+			action: "Voir la galerie live",
 			url: "/live",
 			media: {
 				type: "video",
@@ -123,51 +123,51 @@ export default {
 	],
 	header: {
 		title: {
-			text: "L'événement devient une",
-			special: "œuvre d'art",
+			text: "Live Portrait Show",
+			special: "Montreux",
 		},
 		subtitle:
-			"Vis un événement qui restera dans les mémoires. Art et divertissement en parfaite harmonie, présentés par le talentueux caricaturiste Pascal Coffez. Tes invités seront ravis et l'atmosphère sera détendue et agréable, exactement ce qui fait qu'un événement est réussi.",
+			"Portrait live en 3 minutes. Ressemblant. Valorisant. Inoubliable. Pascal Coffez dessine vos invites en direct — a Montreux ou lors de vos evenements premium.",
 		button: "Nous contacter",
 		link: "contact",
 	},
-	theseBrandsTrustUs: "Ces entreprises nous font confiance",
+	theseBrandsTrustUs: "Ils nous font confiance",
 	navigation: {
 		home: "Accueil",
-		about: "L'équipe",
+		about: "L'artiste",
 		portfolio: "Portfolio",
 		contact: "Contact",
 	},
 	contact: {
-		title: "Nous contacter",
+		title: "Contact",
 		name: "Nom",
 		mail: "E-mail",
-		phone: "Téléphone",
+		phone: "Telephone",
 		message: "Message",
 		send: "Envoyer",
-		sent: "Envoyé",
-		error: "Erreur, le message n'a pas pu être envoyé.",
+		sent: "Envoye",
+		error: "Erreur, le message n'a pas pu etre envoye.",
 		success: {
-			title: "Message envoyé",
-			subtitle: "Merci pour ton message. Nous te contacterons dans les plus brefs délais.",
+			title: "Message envoye",
+			subtitle: "Merci pour votre message. Pascal vous repondra dans les plus brefs delais.",
 		},
 	},
 	footer: {
-		legal: "Mentions légales",
-		privacy: "Protection des données",
-		settings: "Réglages",
+		legal: "Mentions legales",
+		privacy: "Protection des donnees",
+		settings: "Reglages",
 		login: "Se connecter",
-		logout: "Se déconnecter",
-    loggedInAs: "Connecté en tant que"
+		logout: "Se deconnecter",
+		loggedInAs: "Connecte en tant que",
 	},
 	admin: {
 		event: {
 			new: {
 				title: "Titre",
-				startDate: "Date de début",
+				startDate: "Date de debut",
 				endDate: "Date de fin",
 				description: "Description",
-				reset: "Réinitialiser",
+				reset: "Reinitialiser",
 				save: "Enregistrer",
 			},
 		},
@@ -176,25 +176,25 @@ export default {
 				title: "Titre",
 				description: "Description",
 				save: "Enregistrer",
-				reset: "Réinitialiser",
+				reset: "Reinitialiser",
 			},
 		},
 		sidebar: {
-			create: "Créer",
-			viewEvents: "Voir les événements",
+			create: "Creer",
+			viewEvents: "Voir les evenements",
 			viewGalleries: "Voir les galeries",
-			setLocation: "Mettre à jour l'emplacement",
+			setLocation: "Mettre a jour l'emplacement",
 			currentLocation: "Voir l'emplacement actuel",
-			settings: "Paramètres",
+			settings: "Parametres",
 		},
 		create: {
 			event: {
-				title: "Créer un nouvel événement",
-				description: "Démarrer un nouvel événement et créer une galerie de caricatures.",
+				title: "Creer un nouvel evenement",
+				description: "Demarrer un nouvel evenement et creer une galerie de portraits.",
 			},
 			gallery: {
-				title: "Créer une nouvelle galerie",
-				description: "Créer une nouvelle galerie pour présenter vos œuvres.",
+				title: "Creer une nouvelle galerie",
+				description: "Creer une nouvelle galerie pour presenter vos portraits.",
 			},
 		},
 		setLocation: {
@@ -202,24 +202,23 @@ export default {
 				loading: "Chargement de l'emplacement...",
 				loaded: "Emplacement",
 			},
-			description:
-				"Mettre à jour l'emplacement actuel de votre événement en cours. Cette information sera visible sur la page d'accueil si un événement est prévu aujourd'hui.",
-			upload: "Télécharger votre emplacement",
-			lastUpdated: "Dernière mise à jour",
+			description: "Mettre a jour l'emplacement actuel. Cette information sera visible sur la page d'accueil si un evenement est prevu aujourd'hui.",
+			upload: "Telecharger votre emplacement",
+			lastUpdated: "Derniere mise a jour",
 		},
 		location: {
 			title: "Emplacement",
 			longitude: "Longitude",
 			latitude: "Latitude",
-			lastUpdated: "Dernière mise à jour",
+			lastUpdated: "Derniere mise a jour",
 		},
 		settings: {
-			warning: "Ces paramètres s'appliquent à tous les utilisateurs du site. Veuillez modifier avec prudence.",
-			theme: "Thème",
+			warning: "Ces parametres s'appliquent a tous les utilisateurs du site. Veuillez modifier avec prudence.",
+			theme: "Theme",
 			primaryColor: "Couleur principale",
 			colorChange: {
-				success: "Thème mis à jour avec succès",
-				error: "Erreur lors de la mise à jour du thème",
+				success: "Theme mis a jour avec succes",
+				error: "Erreur lors de la mise a jour du theme",
 			},
 		},
 	},

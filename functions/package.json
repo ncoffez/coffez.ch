@@ -19,7 +19,7 @@
     "@slack/web-api": "^7.9.1",
     "firebase-admin": "^13.6.0",
     "firebase-functions": "^7.0.3",
-    "nodemailer": "^7.0.12",
+    "nodemailer": "^8.0.5",
     "ofetch": "^1.4.1",
     "postmark": "^4.0.5",
     "qrcode": "^1.5.4",

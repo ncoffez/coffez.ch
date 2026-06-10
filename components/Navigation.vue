@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <img src="/img/coffez-logo.png" alt="COFFEZ" class="logo">
+    <<img src="/img/coffez-logo.png" alt="COFFEZ" class="logo">
   </nav>
 </template>
 

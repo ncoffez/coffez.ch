@@ -1,6 +1,7 @@
 <template>
 	<footer class="text-center flex w-full pt-8 pb-12 mt-8">
 		<div class="grid w-full">
+			<UiSocialLinks :size="26" gapClass="gap-8" class="justify-center my-3" />
 			<div id="copyright" class="my-4">Copyright © Coffez.ch {{ new Date().getFullYear() }}</div>
 			<div id="legal-mentions">
 				<div>

@@ -2,6 +2,7 @@
 	<nav class="flex bg-white dark:bg-stone-500/5 h-15 shadow-md py-2 w-full md:px-12 px-6">
 		<CoffezLogo />
 		<div id="spacer" class="w-full"></div>
+		<UiSocialLinks :size="22" gapClass="gap-4 md:gap-5" class="me-4 md:me-6" />
 		<UiLanguageSwitcher />
 		<UiThemePicker />
 	</nav>

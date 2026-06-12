@@ -73,6 +73,10 @@ const clients = [
   margin: 64px auto 56px;
 }
 .brands-flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   font-family: "Didot", "Bodoni 72", "Playfair Display", Georgia, serif;
   font-size: clamp(21px, 3.4vw, 36px);
   font-weight: 400;
@@ -82,7 +86,6 @@ const clients = [
 .brands-name { white-space: nowrap; }
 .brands-sep {
   font-size: 0.45em;
-  vertical-align: middle;
   padding: 0 0.9em;
 }
 </style>

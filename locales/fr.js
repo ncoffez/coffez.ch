@@ -26,8 +26,8 @@ export default {
 		},
 		{
 			id: 3,
-			header: "Qui sommes-nous",
-			lead: "Nicolas inspire et dirige. Pascal dessine. Père et fils. Montreux.",
+			header: "Notre dream team",
+			lead: "Nicolas ? Il a tout orchestré depuis le début. Cecilia ? Le cash-flow, c'est son art ; offres et factures filent droit. Pascal… ? Just wing it, guys 😉",
 			action: "",
 			url: "",
 			media: {

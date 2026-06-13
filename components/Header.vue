@@ -10,9 +10,13 @@
 			class="absolute inset-0 w-full h-full object-cover"
 		></video>
 		<div class="absolute inset-0 bg-black/20"></div>
-		<div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2">
+		<div class="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-4">
 			<p class="text-white text-sm tracking-widest uppercase opacity-70">Coffez · 3 min · Montreux</p>
-			<button @click="scrollTo('contact')" class="text-white opacity-60 text-2xl animate-bounce">↓</button>
+			<button
+				@click="scrollTo('contact')"
+				class="px-8 py-3 rounded-full border border-white/80 text-white text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-200">
+				Contact
+			</button>
 		</div>
 	</section>
 </template>

@@ -2,30 +2,6 @@ export default {
 	sections: [
 		{
 			id: 1,
-			header: "Firmenanlässe",
-			lead: "IWC, UBS, Roche, Sisley Paris, Manor. Autonome Performance, keine Installation nötig.",
-			action: "Offerte anfragen",
-			url: "contact",
-			media: {
-				type: "image",
-				legacy: "/img/800x800_event_live.jpg",
-				modern: "/img/800x800_event_live.webp",
-			},
-		},
-		{
-			id: 2,
-			header: "Hochzeiten",
-			lead: "Live-Porträts Ihrer Gäste. Jeder nimmt seines mit nach Hause.",
-			action: "Termin buchen",
-			url: "contact",
-			media: {
-				type: "image",
-				legacy: "/img/800x800_hochzeit.jpg",
-				modern: "/img/800x800_hochzeit.webp",
-			},
-		},
-		{
-			id: 3,
 			header: "Unser Dream Team",
 			lead: "Nicolas? Er hat von Anfang an alles orchestriert. Cecilia? Cashflow ist ihre Kunst — Offerten und Rechnungen immer im Griff. Pascal… ? Just wing it, guys 😉",
 			action: "",
@@ -47,6 +23,17 @@ export default {
 		link: "contact",
 	},
 	theseBrandsTrustUs: "Diese Unternehmen vertrauen uns",
+	galleriesTitle: "Live-Galerien",
+	presentation: {
+		title: "Live Portrait Performer",
+		p1: "Coffez.ch schafft Live-Porträt-Erlebnisse für Firmenanlässe, Luxusmarken, private Feiern und öffentliche Orte.",
+		p2: "In nur wenigen Minuten erhält jeder Gast ein stilvolles, von Hand gezeichnetes Porträt – live vor Publikum entstanden.",
+		p3: "Die Performance wird Teil des Anlasses. Man schaut zu. Man lächelt. Man versammelt sich. Man kommt ins Gespräch.",
+		p4: "Jedes Porträt wird sorgfältig fertiggestellt – bereit zum Mitnehmen, Rahmen oder Teilen.",
+		p5: "Zu den Kunden von Coffez.ch zählen Luxusmarken, internationale Unternehmen, Kongresszentren und Städte in der ganzen Schweiz.",
+		tagline: "Elegant. Schnell. Menschlich. Live.",
+		cta: "Kontakt",
+	},
 	navigation: {
 		home: "Home",
 		about: "Über uns",

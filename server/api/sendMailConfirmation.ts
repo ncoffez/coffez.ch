@@ -3,19 +3,33 @@ import axios, { type AxiosResponse } from "axios";
 export default defineEventHandler(async (event) => {
   const data = await readBody(event);
   const url = "https://sendmail-huczelrjxq-oa.a.run.app";
-  
+
+  // Notification au propriétaire (Pascal) — bloc ISOLÉ : ne doit jamais
+  // interrompre l'envoi principal ni la notification Slack existante.
+  try {
+    await axios.post(url, {
+      to: "pascalcoffez@gmail.com",
+      name: data.name,
+      message: data.message,
+      phone: data.phone,
+    });
+  } catch (notifyError) {
+    console.error("Notification email au proprietaire echouee:", notifyError);
+  }
+
+  // Envoi existant INCHANGÉ : confirmation au visiteur + notification Slack.
   const payload = {
     to: data.email,
     name: data.name,
     message: data.message,
-    phone: data.phone
+    phone: data.phone,
   };
 
   try {
     const response: AxiosResponse = await axios.post(url, payload);
     return {
       status: response.status,
-      data: response.data
+      data: response.data,
     }; // Return only the necessary data
   } catch (error) {
     console.error(error);

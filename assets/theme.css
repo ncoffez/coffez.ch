@@ -44,7 +44,7 @@
 	}
 
 	.dark {
-		@apply bg-zinc-900 text-stone-300;
+		@apply bg-black text-stone-300;
 	}
 
 	#__nuxt {

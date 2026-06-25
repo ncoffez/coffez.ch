@@ -19,7 +19,7 @@
 			<p class="hero-statement">Let the Joy <em>Shine</em> In</p>
 			<button
 				@click="scrollTo('contact')"
-				class="px-8 py-3 rounded-full border border-white/80 text-white text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-200">
+				class="px-8 py-3 rounded-full bg-[#E9DC73] text-black text-sm tracking-widest uppercase hover:bg-[#F0E796] transition-colors duration-200">
 				Contact
 			</button>
 		</div>

@@ -12,11 +12,14 @@
 		<div class="absolute inset-0 bg-black/20"></div>
 		<a
 			href="https://coffez.ch/live/Tx1pN24ALqarPZDFMrt7"
-			class="absolute top-6 left-1/2 -translate-x-1/2 z-10 px-7 py-3 rounded-full bg-amber-400 text-black text-sm tracking-widest uppercase font-medium shadow-xl hover:scale-105 transition-transform duration-200">
-			Montreux Faces ↗
+			class="absolute top-5 left-1/2 -translate-x-1/2 z-10 inline-flex px-3 py-1.5 rounded-lg bg-black/35 backdrop-blur-sm border border-white/30 hover:bg-white/10 transition-colors duration-200 leading-none">
+			<MontreuxFacesLogo style="font-size: 30px" />
 		</a>
 		<div class="absolute bottom-12 left-0 right-0 flex flex-col items-center gap-6 px-6 text-center">
-			<p class="hero-line text-white italic">I make your guests shine.</p>
+			<div class="flex flex-col items-center gap-3">
+				<span class="text-white/85 text-[11px] md:text-xs tracking-[0.3em] uppercase">Live Portrait Performance</span>
+				<p class="hero-line text-white">Every guest becomes the star of a three-minute show.</p>
+			</div>
 			<button
 				@click="scrollTo('contact')"
 				class="px-8 py-3 rounded-full border border-white/80 text-white text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-200">

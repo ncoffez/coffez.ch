@@ -9,34 +9,34 @@
 
 	:root,
 	.light {
-		--color-primary-50: theme("colors.rose.50");
-		--color-primary-100: theme("colors.rose.100");
-		--color-primary-200: theme("colors.rose.200");
-		--color-primary-300: theme("colors.rose.300");
-		--color-primary-400: theme("colors.rose.400");
-		--color-primary-500: theme("colors.rose.500");
-		--color-primary-600: theme("colors.rose.600");
-		--color-primary-700: theme("colors.rose.700");
-		--color-primary-800: theme("colors.rose.800");
-		--color-primary-900: theme("colors.rose.900");
+		--color-primary-50: theme("colors.yellow.50");
+		--color-primary-100: theme("colors.yellow.100");
+		--color-primary-200: theme("colors.yellow.200");
+		--color-primary-300: theme("colors.yellow.300");
+		--color-primary-400: theme("colors.yellow.400");
+		--color-primary-500: theme("colors.yellow.500");
+		--color-primary-600: theme("colors.yellow.600");
+		--color-primary-700: theme("colors.yellow.700");
+		--color-primary-800: theme("colors.yellow.800");
+		--color-primary-900: theme("colors.yellow.900");
 	}
 
 	.dark {
-		--color-primary-50: theme("colors.pink.50");
-		--color-primary-100: theme("colors.pink.100");
-		--color-primary-200: theme("colors.pink.200");
-		--color-primary-300: theme("colors.pink.300");
-		--color-primary-400: theme("colors.pink.400");
-		--color-primary-500: theme("colors.pink.500");
-		--color-primary-600: theme("colors.pink.600");
-		--color-primary-700: theme("colors.pink.700");
-		--color-primary-800: theme("colors.pink.800");
-		--color-primary-900: theme("colors.pink.900");
+		--color-primary-50: theme("colors.yellow.50");
+		--color-primary-100: theme("colors.yellow.100");
+		--color-primary-200: theme("colors.yellow.200");
+		--color-primary-300: theme("colors.yellow.300");
+		--color-primary-400: theme("colors.yellow.400");
+		--color-primary-500: theme("colors.yellow.500");
+		--color-primary-600: theme("colors.yellow.600");
+		--color-primary-700: theme("colors.yellow.700");
+		--color-primary-800: theme("colors.yellow.800");
+		--color-primary-900: theme("colors.yellow.900");
 	}
 
 	button {
-		@apply px-4 py-3 my-4 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95;
-		@apply bg-primary-600 hover:bg-primary-700 focus-visible:ring-primary-800 dark:bg-primary-700 dark:hover:bg-primary-800 dark:focus-visible:ring-primary-700;
+		@apply px-4 py-3 my-4 text-center text-sm font-semibold inline-block text-black cursor-pointer uppercase transition duration-200 ease-in-out rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95;
+		@apply bg-[#E9DC73] hover:bg-[#F0E796] focus-visible:ring-[#E9DC73] dark:bg-[#E9DC73] dark:hover:bg-[#F0E796] dark:focus-visible:ring-[#E9DC73];
 	}
 
 	:root {

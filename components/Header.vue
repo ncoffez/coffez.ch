@@ -12,14 +12,11 @@
 		<div class="absolute inset-0 bg-black/20"></div>
 		<a
 			href="https://coffez.ch/live/Tx1pN24ALqarPZDFMrt7"
-			class="absolute top-5 left-1/2 -translate-x-1/2 z-10 inline-flex px-3 py-1.5 rounded-lg bg-black/35 backdrop-blur-sm border border-white/30 hover:bg-white/10 transition-colors duration-200 leading-none">
-			<MontreuxFacesLogo style="font-size: 30px" />
+			class="absolute top-5 left-1/2 -translate-x-1/2 z-10 inline-flex px-4 py-2 rounded-lg bg-black/55 backdrop-blur-sm border border-white/25 hover:bg-black/70 transition-colors duration-200 leading-none">
+			<MontreuxFacesLogo style="font-size: 32px" />
 		</a>
 		<div class="absolute bottom-12 left-0 right-0 flex flex-col items-center gap-6 px-6 text-center">
-			<div class="flex flex-col items-center gap-3">
-				<span class="text-white/85 text-[11px] md:text-xs tracking-[0.3em] uppercase">Live Portrait Performance</span>
-				<p class="hero-line text-white">Every guest becomes the star of a three-minute show.</p>
-			</div>
+			<p class="hero-statement">Let the Joy <em>Shine</em> In</p>
 			<button
 				@click="scrollTo('contact')"
 				class="px-8 py-3 rounded-full border border-white/80 text-white text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-200">
@@ -54,10 +51,16 @@ async function next() {
 </script>
 
 <style scoped>
-.hero-line {
+.hero-statement {
 	font-family: "Didot", "Bodoni 72", "Playfair Display", Georgia, serif;
-	font-size: clamp(28px, 6vw, 56px);
-	line-height: 1.1;
-	text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+	font-size: clamp(34px, 6.5vw, 68px);
+	font-weight: 400;
+	line-height: 1.12;
+	color: #fff;
+	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+.hero-statement em {
+	font-style: italic;
+	color: #c9a44c;
 }
 </style>

@@ -18,6 +18,12 @@ export default defineNuxtConfig({
 			{ code: "en", name: "English", file: "en.js" },
 			{ code: "fr", name: "Francais", file: "fr.js" },
 		],
+		detectBrowserLanguage: {
+			useCookie: true,
+			cookieKey: "i18n_redirected",
+			redirectOn: "all",
+			fallbackLocale: "en",
+		},
 	},
 	runtimeConfig: {
 		FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
@@ -32,6 +38,9 @@ export default defineNuxtConfig({
 	app: {
 		head: {
 			title: "Coffez.ch",
+			htmlAttrs: {
+				class: "dark",
+			},
 			meta: [
 				{ charset: "utf-8" },
 				{ name: "viewport", content: "width=device-width, initial-scale=1.0" }

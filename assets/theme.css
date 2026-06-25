@@ -40,7 +40,7 @@
 	}
 
 	:root {
-		@apply bg-zinc-50 text-stone-700;
+		@apply bg-black text-stone-300;
 	}
 
 	.dark {

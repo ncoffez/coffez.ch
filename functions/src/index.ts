@@ -24,3 +24,4 @@ exports.getAppleShortcut = onRequest(getAppleShortcut);
 exports.uploadEventCover = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadEventCover);
 exports.uploadGalleryImage = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadGalleryImage);
 exports.uploadGalleryVideo = onCall({ memory: "1GiB", timeoutSeconds: 300 }, uploadGalleryVideo);
+export { getVideoUpload } from "./getVideoUpload";

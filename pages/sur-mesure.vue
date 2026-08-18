@@ -79,6 +79,16 @@
       </div>
     </div>
 
+    <div class="popart-duo">
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 20px 56px rgba(15,25,35,0.13);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-planche-six-portraits.jpg" alt="Planche de six portraits pop art, styles et couleurs vari&eacute;s" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 20px 56px rgba(15,25,35,0.13);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-lausanne-homme-lunettes-rouge.jpg" alt="Portrait pop art, fond rouge, homme en lunettes de soleil, Lausanne" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+    </div>
+    <p style="text-align:center;margin-top:12px;" class="lbl">D&rsquo;autres possibilit&eacute;s existent selon vos envies.</p>
+
     <div class="hero-duo" style="margin-top:var(--s3);">
       <figure style="background:var(--grey-cool);border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 56px rgba(15,25,35,0.13);overflow:hidden;">
         <img src="/riviera/img/offre-branding-sisley-5min.jpg" alt="Client tenant son portrait branded Sisley Paris, panneau 5 minutes en arri&egrave;re-plan" style="aspect-ratio:auto;object-fit:contain;max-height:420px;box-shadow:none;border-radius:0;">
@@ -252,6 +262,8 @@ onMounted(() => {
 @media(max-width:1000px){.surmesure-root .dom{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:860px){.surmesure-root .dom{grid-template-columns:1fr;}}
 .surmesure-root .dom > div{background:#fff;padding:34px 30px;}
+.surmesure-root .popart-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-top:var(--s2);}
+@media(max-width:600px){.surmesure-root .popart-duo{grid-template-columns:1fr;}}
 .surmesure-root .dom h3{font-family:'Sora',sans-serif;font-size:19px;font-weight:800;letter-spacing:-0.02em;margin:0 0 var(--s1);}
 .surmesure-root .dom ul{list-style:none;padding:0;margin:0;}
 .surmesure-root .dom li{font-size:15px;line-height:1.55;color:var(--muted);padding:7px 0;border-top:1px solid var(--border);}

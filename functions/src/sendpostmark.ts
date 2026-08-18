@@ -22,7 +22,7 @@ function constructEmailTemplate(body: any) {
       message: body.message,
       userPhone: body.phone,
       company_name: "Coffez.ch",
-      company_address: process.env.COMPANY_ADDRESS || "Kasthoferstrasse 50, 3006 Bern", // Use an environment variable for the company address
+      company_address: process.env.COMPANY_ADDRESS || "Montreux, Suisse", // Use an environment variable for the company address
     },
   };
 }

@@ -2,13 +2,12 @@
 Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:
 
 
-Coffez .ch  
-Nicolas Coffez  
-Kasthoferstrasse 50  
-3006 Bern  
+Coffez.ch  
+Pascal Coffez  
+Montreux  
 
-Telefon: +41 78 260 67 77  
-E-Mail: ncoffez@gmail.com  
+E-Mail: pascalcoffez@gmail.com  
+Contact : via le formulaire sur https://www.coffez.ch/riviera#contact  
 WebSite: https://www.coffez.ch/  
 
  

@@ -8,8 +8,8 @@
         "node": "22.22.3"
     },
     "scripts": {
-        "predev": "mkdir -p .tmp",
-        "dev": "TMPDIR=$PWD/.tmp nuxt dev --clear",
+        "predev": "mkdir -p /tmp/coffez-nuxt-dev",
+        "dev": "TMPDIR=/tmp/coffez-nuxt-dev nuxt dev --clear",
         "build": "nuxt build",
         "postinstall": "nuxt prepare",
         "functions": "cd functions && npm i && npm run build && cd ..",

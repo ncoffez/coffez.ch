@@ -9,10 +9,21 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 		const rawFirebaseConfig = config.public.FIREBASE_FRONTEND_KEY || config.public.FIREBASE_WEBAPP_CONFIG;
 
 		if (!rawFirebaseConfig) {
-			console.error(
-				"Firebase configuration not found. Set FIREBASE_FRONTEND_KEY locally or rely on FIREBASE_WEBAPP_CONFIG in App Hosting."
+			// Dev local sans clés : on démarre quand même, en mode dégradé.
+			// En production (App Hosting) FIREBASE_WEBAPP_CONFIG est toujours
+			// fourni, donc ce chemin n'est jamais emprunté en ligne.
+			console.warn(
+				"[firebase] Configuration absente — démarrage en mode dégradé (pas d'auth, pas d'analytics). " +
+					"Définir FIREBASE_FRONTEND_KEY dans .env.local pour activer Firebase en local."
 			);
-			throw new Error("Firebase frontend config not configured");
+			return {
+				provide: {
+					db: null,
+					auth: null,
+					functions: null,
+					logEvent: (_event: string) => {},
+				},
+			};
 		}
 
 		const firebaseConfig = JSON.parse(rawFirebaseConfig);
@@ -40,7 +51,16 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 			},
 		};
 	} catch (error) {
+		// Ne jamais faire tomber toute l'application à cause de Firebase :
+		// on journalise et on repart en mode dégradé.
 		console.error("Firebase plugin initialization error:", error);
-		throw error;
+		return {
+			provide: {
+				db: null,
+				auth: null,
+				functions: null,
+				logEvent: (_event: string) => {},
+			},
+		};
 	}
 });

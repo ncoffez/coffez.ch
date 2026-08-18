@@ -237,6 +237,40 @@
 </section>
 
 
+<!-- ── B-bis. POP ART ─────────────────────── -->
+<section class="section bg-white">
+  <div class="wrap">
+
+    <div class="grid-head">
+      <div>
+        <span class="lbl">Style</span>
+        <h2 class="h2" style="color:var(--text)">Pop art.</h2>
+      </div>
+    </div>
+
+    <p class="viv-chapo">Aplat de couleur, contraste fort, silhouette reconnaissable au premier coup d&rsquo;&oelig;il &mdash; dessin&eacute; &agrave; la main sur iPad.</p>
+
+    <div class="popart-grid">
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-lausanne-homme-lunettes-rouge.jpg" alt="Portrait pop art, fond rouge, homme en lunettes de soleil, Lausanne" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-lausanne-femme-rire-peche.jpg" alt="Portrait pop art, fond p&ecirc;che, femme riant aux &eacute;clats, Lausanne" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-montreux-homme-lunettes-rose.jpg" alt="Portrait pop art, fond rose fluo, homme en lunettes, Montreux" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-montreux-couple-coeur.jpg" alt="Portrait pop art d'un couple souriant avec un c&oelig;ur, Montreux" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-homme-casquette-ny-vert.jpg" alt="Portrait pop art, fond vert, homme casquette NY" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── C. RÉFÉRENCES PHOTO ─────────────────────── -->
 <section class="section bg-white" id="preuve" style="">
   <div class="wrap">
@@ -2015,6 +2049,10 @@ onMounted(() => {
   .envergure-quad{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:var(--s2);margin-top:var(--s2);}
   @media(max-width:900px){.envergure-quad{grid-template-columns:1fr 1fr;}}
   @media(max-width:600px){.envergure-duo,.envergure-quad{grid-template-columns:1fr;}}
+
+  .popart-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s2);margin-top:var(--s2);}
+  @media(max-width:900px){.popart-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:600px){.popart-grid{grid-template-columns:repeat(2,1fr);}}
 
 
   .emporte{display:flex;justify-content:center;margin:0 0 60px;}

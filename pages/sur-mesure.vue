@@ -71,11 +71,17 @@
           <li v-for="item in $tm('surMesure.domBrandingItems')" :key="item">{{ $rt(item) }}</li>
         </ul>
       </div>
+      <div>
+        <h3>{{ $t('surMesure.domEcrin') }}</h3>
+        <ul>
+          <li v-for="item in $tm('surMesure.domEcrinItems')" :key="item">{{ $rt(item) }}</li>
+        </ul>
+      </div>
     </div>
 
     <div class="hero-duo" style="margin-top:var(--s3);">
       <figure style="background:var(--grey-cool);border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 56px rgba(15,25,35,0.13);overflow:hidden;">
-        <img src="/riviera/img/offre-dessin-glamour-ipad-live.jpg" alt="Portrait glamour dessin&eacute; en direct sur iPad, cliente visible en entier" style="aspect-ratio:auto;object-fit:contain;max-height:420px;box-shadow:none;border-radius:0;">
+        <img src="/riviera/img/offre-branding-sisley-5min.jpg" alt="Client tenant son portrait branded Sisley Paris, panneau 5 minutes en arri&egrave;re-plan" style="aspect-ratio:auto;object-fit:contain;max-height:420px;box-shadow:none;border-radius:0;">
       </figure>
       <div>
         <span class="lbl">{{ $t('surMesure.eyebrow2min') }}</span>
@@ -91,7 +97,7 @@
         <p class="txt">{{ $t('surMesure.brandText') }}</p>
       </div>
       <figure style="order:2;background:var(--grey-cool);border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 56px rgba(15,25,35,0.13);overflow:hidden;">
-        <img src="/riviera/img/offre-popart-mcdonalds-jaune.jpg" alt="Portrait pop art jaune et noir aux couleurs de McDonald's" style="aspect-ratio:auto;object-fit:contain;max-height:420px;box-shadow:none;border-radius:0;">
+        <img src="/riviera/img/offre-branding-matis-live.jpg" alt="Portrait dessin&eacute; en direct avec le logo Matis Paris int&eacute;gr&eacute; &agrave; l'illustration" style="aspect-ratio:auto;object-fit:contain;max-height:420px;box-shadow:none;border-radius:0;">
       </figure>
     </div>
   </div>
@@ -240,8 +246,9 @@ onMounted(() => {
 .surmesure-root .hero-duo img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
 @media(max-width:860px){.surmesure-root .hero-duo{grid-template-columns:1fr;} .surmesure-root .hero-duo figure{order:-1;}}
 
-.surmesure-root .dom{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);
+.surmesure-root .dom{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);
      border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+@media(max-width:1200px){.surmesure-root .dom{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:1000px){.surmesure-root .dom{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:860px){.surmesure-root .dom{grid-template-columns:1fr;}}
 .surmesure-root .dom > div{background:#fff;padding:34px 30px;}

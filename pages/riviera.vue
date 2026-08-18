@@ -255,7 +255,7 @@
 
         <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — KGV Zürich"
              data-media-title="KGV Z&uuml;rich &middot; Theater Kaufleuten"
-             data-media='[{"t":"v","src":"/riviera/videos/kgv-scene-ecran.mp4","poster":"/riviera/img/cas-kgv-kgv-scene-video-poster.jpg"},{"t":"v","src":"/riviera/videos/kgv-duo-rires.mp4","poster":"/riviera/img/cas-kgv-kgv-duo-rires-poster.jpg"},{"t":"v","src":"/riviera/videos/kgv-reaction-guest.mp4","poster":"/riviera/img/cas-kgv-kgv-reaction-video-poster.jpg"},{"t":"p","src":"/riviera/img/cas-kgv-kgv-cinq-portraits-ecran.jpg"},{"t":"p","src":"/riviera/img/cas-kgv-kgv-salle-comble.jpg"},{"t":"p","src":"/riviera/img/16-clients-ville-de-zurich-minitres-sur-scne.jpg"}]'>
+             data-media='[{"t":"v","src":"/riviera/videos/kgv-duo-rires.mp4","poster":"/riviera/img/cas-kgv-kgv-duo-rires-poster.jpg"},{"t":"v","src":"/riviera/videos/kgv-reaction-guest.mp4","poster":"/riviera/img/cas-kgv-kgv-reaction-video-poster.jpg"},{"t":"p","src":"/riviera/img/cas-kgv-kgv-cinq-portraits-ecran.jpg"},{"t":"p","src":"/riviera/img/cas-kgv-kgv-salle-comble.jpg"},{"t":"p","src":"/riviera/img/16-clients-ville-de-zurich-minitres-sur-scne.jpg"},{"t":"v","src":"/riviera/videos/kgv-scene-ecran.mp4","poster":"/riviera/img/cas-kgv-kgv-scene-video-poster.jpg"}]'>
           <svg class="photo-play" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
           <img src="/riviera/img/16-clients-ville-de-zurich-minitres-sur-scne.jpg" alt="KGV Zurich" loading="lazy">
           <div class="photo-hover">
@@ -265,7 +265,7 @@
         </div>
         <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — Journées Nationales Suisses sur la Stérilisation"
              data-media-title="Journ&eacute;es Nationales Suisses sur la St&eacute;rilisation &middot; Bienne"
-             data-media='[{"t":"v","src":"/riviera/videos/sterilisation-live.mp4","poster":"/riviera/img/cas-sterilisation-sterilisation-live-poster.jpg"},{"t":"p","src":"/riviera/img/16-clients-villede-bienneevent-bienn-gdecran.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-salon-vue-large.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-galerie-portraits-fil.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-duo-galerie.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-selfie-ecran-geant.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-dessin-en-cours.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-dessin-invitee.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-invitee-portraits-ecran.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-invitee-table.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-poste-dessin.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-groupe-rires.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-portrait-officiel-20e.jpg"}]'>
+             data-media='[{"t":"p","src":"/riviera/img/16-clients-villede-bienneevent-bienn-gdecran.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-salon-vue-large.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-galerie-portraits-fil.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-duo-galerie.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-selfie-ecran-geant.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-dessin-en-cours.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-dessin-invitee.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-invitee-portraits-ecran.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-invitee-table.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-poste-dessin.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-groupe-rires.jpg"},{"t":"p","src":"/riviera/img/cas-sterilisation-sterilisation-portrait-officiel-20e.jpg"},{"t":"v","src":"/riviera/videos/sterilisation-live.mp4","poster":"/riviera/img/cas-sterilisation-sterilisation-live-poster.jpg"}]'>
           <svg class="photo-play" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
           <img src="/riviera/img/16-clients-villede-bienneevent-bienn-gdecran.jpg" alt="Congres suisse" loading="lazy">
           <div class="photo-hover">
@@ -284,7 +284,7 @@
         </div>
         <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — IT Concepts"
              data-media-title="IT Concepts &middot; Congr&egrave;s SMFS"
-             data-media='[{"t":"p","src":"/riviera/img/16-clients-itconceptsevent-itconcepts-17nov-2022.jpg"},{"t":"p","src":"/riviera/img/cas-itconcepts-itconcepts-live-drawing.jpg"},{"t":"p","src":"/riviera/img/cas-itconcepts-itconcepts-carte-branded.jpg"},{"t":"p","src":"/riviera/img/cas-itconcepts-itconcepts-thumbsup-radisson.jpg"}]'>
+             data-media='[{"t":"p","src":"/riviera/img/16-clients-itconceptsevent-itconcepts-17nov-2022.jpg"},{"t":"p","src":"/riviera/img/cas-itconcepts-itconcepts-live-drawing.jpg"},{"t":"p","src":"/riviera/img/cas-itconcepts-itconcepts-carte-branded.jpg"},{"t":"p","src":"/riviera/img/cas-itconcepts-itconcepts-thumbsup-radisson.jpg"},{"t":"p","src":"/riviera/img/cas-itconcepts-itconcepts-artiste-invite.jpg"}]'>
           <img src="/riviera/img/16-clients-itconceptsevent-itconcepts-17nov-2022.jpg" alt="IT Concepts" loading="lazy">
           <div class="photo-hover">
             <div class="photo-hover-brand">IT Concepts</div>
@@ -357,8 +357,7 @@
         </div>
         <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — McDonald's Suisse"
              data-media-title="McDonald&rsquo;s Suisse &middot; Ouverture, Bienne"
-             data-media='[{"t":"v","src":"/riviera/videos/mcdo-hero.mp4","poster":"/riviera/img/16-clients-mcdo.jpg"},{"t":"p","src":"/riviera/img/cas-mcdonalds-famille-avant.jpg"},{"t":"p","src":"/riviera/img/cas-mcdonalds-popart-jaune.jpg"},{"t":"p","src":"/riviera/img/cas-mcdonalds-hero-terrasse-mccafe.jpg"}]'>
-          <svg class="photo-play" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+             data-media='[{"t":"p","src":"/riviera/img/cas-mcdonalds-famille-avant.jpg"},{"t":"p","src":"/riviera/img/cas-mcdonalds-popart-jaune.jpg"},{"t":"p","src":"/riviera/img/cas-mcdonalds-hero-terrasse-mccafe.jpg"}]'>
           <img src="/riviera/img/16-clients-mcdo.jpg" alt="McDonald's Suisse" loading="lazy">
           <div class="photo-hover">
             <div class="photo-hover-brand">McDonald&rsquo;s Suisse</div>

@@ -54,11 +54,11 @@
       <a href="#contact" class="btn-hero-primary">{{ $t('riviera.heroCta') }}</a>
     </div>
     <div class="hero-socials">
-      <a href="https://www.instagram.com/coffez.ch" target="_blank" class="hero-social-link">
+      <a href="https://www.instagram.com/pascalcoffez" target="_blank" class="hero-social-link">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         Instagram
       </a>
-      <a href="https://www.linkedin.com/in/pascalcoffez" target="_blank" class="hero-social-link">
+      <a href="https://www.linkedin.com/in/coffez/" target="_blank" class="hero-social-link">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
@@ -596,10 +596,7 @@
       </figure>
     </div>
 
-    <div class="equipe-duo">
-      <figure>
-        <img src="/riviera/img/equipe-cecilia-portrait.jpg" alt="C&eacute;cilia Coffez, en charge de l&rsquo;organisation, des devis et de la coordination des &eacute;v&eacute;nements">
-      </figure>
+    <div class="equipe-solo">
       <figure>
         <video src="/riviera/videos/equipe-cargo-karate.mp4" poster="/riviera/img/equipe-cargo-karate-poster.jpg"
                muted loop playsinline autoplay preload="metadata"></video>
@@ -2026,13 +2023,11 @@ onMounted(() => {
   @media(max-width:900px){.envergure-quad{grid-template-columns:1fr 1fr;}}
   @media(max-width:600px){.envergure-duo,.envergure-quad{grid-template-columns:1fr;}}
 
-  .equipe-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-top:var(--s2);}
-  .equipe-duo figure{margin:0;}
-  .equipe-duo img,.equipe-duo video{width:100%;height:420px;object-fit:cover;display:block;
+  .equipe-solo{margin-top:var(--s2);}
+  .equipe-solo figure{margin:0;max-width:520px;}
+  .equipe-solo video{width:100%;height:420px;object-fit:cover;display:block;
     border-radius:20px;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);}
-  .equipe-duo figcaption{font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:12px;}
-  @media(max-width:700px){.equipe-duo{grid-template-columns:1fr;}
-    .equipe-duo img,.equipe-duo video{height:340px;}}
+  @media(max-width:700px){.equipe-solo video{height:340px;}}
 
 
   .emporte{display:flex;justify-content:center;margin:0 0 60px;}

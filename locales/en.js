@@ -227,6 +227,7 @@ export default {
 		domEcrin: "Presentation",
 		domEcrinItems: ["Premium / metal paper", "Coloured paper", "Sleeve", "Tiny box (branded card box)", "Metal box, DIN long format (225 × 115 mm)"],
 		eyebrow2min: "2 minutes",
+		diffYes2Sub: "Drawing in 2 minutes flat.",
 		liveTitle: "Live, by hand.",
 		liveText: "No artificial intelligence, no filter: every portrait is drawn in front of the guest, from the first stroke to the last. The surprise comes from the instant likeness, the staging (a heart, a personal detail), and a speed few people believe possible until they've seen it.",
 		eyebrowPopArt: "Pop art",

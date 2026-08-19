@@ -490,7 +490,7 @@
               </li>
               <li style="display:flex;gap:14px;align-items:flex-start;">
                 <span style="font-size:16px;line-height:1.2;flex-shrink:0;">✅</span>
-                <span style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.5;">Drawing maximum 3 mn.</span>
+                <span style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.5;">{{ $t('riviera.diffYes2Sub') }}</span>
               </li>
               <li style="display:flex;gap:14px;align-items:flex-start;">
                 <span style="font-size:16px;line-height:1.2;flex-shrink:0;">✅</span>
@@ -517,40 +517,7 @@
 
 
 
-<!-- ── C3. 50 000 PORTRAITS ────────────────────── -->
-<section class="sec section bg-white" id="parcours" style="text-align:center;display:none">
-  <div class="wrap" style="max-width:680px;">
 
-    <span class="section-label">[ Votre texte ]</span>
-
-    <!-- Grand nombre -->
-    <div style="margin:36px 0 44px;">
-      <p style="font-family:'Sora',sans-serif;font-size:clamp(72px,13vw,128px);font-weight:800;color:var(--teal-dark);letter-spacing:-0.04em;line-height:1;margin:0;">50 000</p>
-      <p style="font-family:'Sora',sans-serif;font-size:clamp(13px,1.8vw,17px);font-weight:600;color:var(--teal);letter-spacing:0.16em;text-transform:uppercase;margin:14px 0 0;">portraits</p>
-    </div>
-
-    <!-- Sous-stats -->
-    <div style="display:flex;gap:0;justify-content:center;align-items:stretch;margin:0 0 52px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 0;">
-      <div style="flex:1;text-align:center;padding:0 24px;">
-        <p style="font-family:'Sora',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--teal-dark);margin:0 0 6px;">2 min</p>
-        <p style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin:0;">par portrait</p>
-      </div>
-      <div style="width:1px;background:var(--border);flex-shrink:0;"></div>
-      <div style="flex:1;text-align:center;padding:0 24px;">
-        <p style="font-family:'Sora',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--teal-dark);margin:0 0 6px;">[ X ]</p>
-        <p style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin:0;">[ Votre texte ]</p>
-      </div>
-      <div style="width:1px;background:var(--border);flex-shrink:0;"></div>
-      <div style="flex:1;text-align:center;padding:0 24px;">
-        <p style="font-family:'Sora',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--teal-dark);margin:0 0 6px;">[ X ]</p>
-        <p style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin:0;">[ Votre texte ]</p>
-      </div>
-    </div>
-
-    <p style="font-size:16px;color:var(--muted);line-height:1.8;max-width:460px;margin:0 auto;">[ Votre texte ]</p>
-
-  </div>
-</section>
 
 
 

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 		cssPath: "@/assets/theme.css",
 	},
 	i18n: {
-		defaultLocale: "de",
+		defaultLocale: "fr",
 		strategy: "no_prefix",
 		langDir: "../locales",
 		locales: [
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
 			useCookie: true,
 			cookieKey: "i18n_redirected",
 			redirectOn: "all",
-			fallbackLocale: "en",
+			fallbackLocale: "fr",
 		},
 	},
 	runtimeConfig: {

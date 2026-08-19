@@ -33,7 +33,7 @@
         <p class="meta" style="white-space:pre-line;">{{ $t('surMesure.metaLine') }}</p>
       </div>
       <figure style="background:var(--grey-cool);border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 56px rgba(15,25,35,0.13);overflow:hidden;">
-        <img src="/riviera/img/offre-popart-en-contexte.jpg" alt="Invit&eacute;s d&eacute;couvrant leur portrait pop art en direct sur tablette" style="aspect-ratio:auto;object-fit:contain;max-height:420px;box-shadow:none;border-radius:0;">
+        <img src="/riviera/img/cas-itconcepts-itconcepts-artiste-invite.jpg" alt="Stand IT Concepts&nbsp;: l'artiste dessine en direct, l'invit&eacute; assis face &agrave; lui sur le si&egrave;ge VIP" style="aspect-ratio:auto;object-fit:contain;max-height:420px;box-shadow:none;border-radius:0;">
       </figure>
     </div>
   </div>
@@ -138,6 +138,36 @@
 
     <div class="refs" style="margin-top:var(--s3);">
       <span>UBS</span><i>&#9670;</i><span>Roche</span><i>&#9670;</i><span>IWC Schaffhausen</span><i>&#9670;</i><span>Sisley Paris</span><i>&#9670;</i><span>KGV Z&uuml;rich</span><i>&#9670;</i><span>ITConcepts</span><i>&#9670;</i><span>JobCloud</span><i>&#9670;</i><span>Orbis</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── STYLES DE DESSIN (en construction) ─────────── -->
+<section class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px;">
+      <span class="lbl" style="margin:0;">{{ $t('surMesure.stylesLabel') }}</span>
+      <span class="soon-badge">{{ $t('surMesure.stylesSoon') }}</span>
+    </div>
+    <h2 class="h2">{{ $t('surMesure.stylesTitle') }}</h2>
+    <p class="txt" style="max-width:680px;">{{ $t('surMesure.stylesIntro') }}</p>
+
+    <div class="popart-grid">
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-lausanne-homme-lunettes-rouge.jpg" alt="Portrait pop art, fond rouge, homme en lunettes de soleil, Lausanne" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-lausanne-femme-rire-peche.jpg" alt="Portrait pop art, fond p&ecirc;che, femme riant aux &eacute;clats, Lausanne" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-montreux-homme-lunettes-rose.jpg" alt="Portrait pop art, fond rose fluo, homme en lunettes, Montreux" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-homme-fume-gris.jpg" alt="Portrait pop art, fond gris, homme fumant" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
+      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
+        <img src="/riviera/img/popart-homme-casquette-ny-vert.jpg" alt="Portrait pop art, fond vert, homme casquette NY" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </figure>
     </div>
   </div>
 </section>
@@ -264,6 +294,11 @@ onMounted(() => {
 .surmesure-root .dom > div{background:#fff;padding:34px 30px;}
 .surmesure-root .popart-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-top:var(--s2);}
 @media(max-width:600px){.surmesure-root .popart-duo{grid-template-columns:1fr;}}
+.surmesure-root .soon-badge{display:inline-block;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:800;
+  letter-spacing:0.18em;text-transform:uppercase;color:#0F1923;background:#FFD84D;padding:6px 12px;border-radius:999px;}
+.surmesure-root .popart-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s2);margin-top:var(--s2);}
+@media(max-width:900px){.surmesure-root .popart-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.surmesure-root .popart-grid{grid-template-columns:repeat(2,1fr);}}
 .surmesure-root .dom h3{font-family:'Sora',sans-serif;font-size:19px;font-weight:800;letter-spacing:-0.02em;margin:0 0 var(--s1);}
 .surmesure-root .dom ul{list-style:none;padding:0;margin:0;}
 .surmesure-root .dom li{font-size:15px;line-height:1.55;color:var(--muted);padding:7px 0;border-top:1px solid var(--border);}

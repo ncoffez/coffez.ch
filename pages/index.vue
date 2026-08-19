@@ -237,40 +237,6 @@
 </section>
 
 
-<!-- ── B-bis. POP ART ─────────────────────── -->
-<section class="section bg-white">
-  <div class="wrap">
-
-    <div class="grid-head">
-      <div>
-        <span class="lbl">Style</span>
-        <h2 class="h2" style="color:var(--text)">Pop art.</h2>
-      </div>
-    </div>
-
-    <p class="viv-chapo">Aplat de couleur, contraste fort, silhouette reconnaissable au premier coup d&rsquo;&oelig;il &mdash; dessin&eacute; &agrave; la main sur iPad.</p>
-
-    <div class="popart-grid">
-      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
-        <img src="/riviera/img/popart-lausanne-homme-lunettes-rouge.jpg" alt="Portrait pop art, fond rouge, homme en lunettes de soleil, Lausanne" style="width:100%;height:100%;object-fit:contain;display:block;">
-      </figure>
-      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
-        <img src="/riviera/img/popart-lausanne-femme-rire-peche.jpg" alt="Portrait pop art, fond p&ecirc;che, femme riant aux &eacute;clats, Lausanne" style="width:100%;height:100%;object-fit:contain;display:block;">
-      </figure>
-      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
-        <img src="/riviera/img/popart-montreux-homme-lunettes-rose.jpg" alt="Portrait pop art, fond rose fluo, homme en lunettes, Montreux" style="width:100%;height:100%;object-fit:contain;display:block;">
-      </figure>
-      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
-        <img src="/riviera/img/popart-montreux-couple-coeur.jpg" alt="Portrait pop art d'un couple souriant avec un c&oelig;ur, Montreux" style="width:100%;height:100%;object-fit:contain;display:block;">
-      </figure>
-      <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
-        <img src="/riviera/img/popart-homme-casquette-ny-vert.jpg" alt="Portrait pop art, fond vert, homme casquette NY" style="width:100%;height:100%;object-fit:contain;display:block;">
-      </figure>
-    </div>
-
-  </div>
-</section>
-
 <!-- ── C. RÉFÉRENCES PHOTO ─────────────────────── -->
 <section class="section bg-white" id="preuve" style="">
   <div class="wrap">
@@ -629,6 +595,18 @@
         <img src="/riviera/img/img-800x800-coffezch-team-v2.jpg" alt="Pascal et Nicolas Coffez">
       </figure>
     </div>
+
+    <div class="equipe-duo">
+      <figure>
+        <img src="/riviera/img/equipe-cecilia-portrait.jpg" alt="C&eacute;cilia Coffez, en charge de l&rsquo;organisation, des devis et de la coordination des &eacute;v&eacute;nements">
+        <figcaption>{{ $t('riviera.teamCeciliaCaption') }}</figcaption>
+      </figure>
+      <figure>
+        <video src="/riviera/videos/equipe-cargo-karate.mp4" poster="/riviera/img/equipe-cargo-karate-poster.jpg"
+               muted loop playsinline autoplay preload="metadata"></video>
+        <figcaption>{{ $t('riviera.teamPascalCaption') }}</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -719,7 +697,7 @@
       <a href="mailto:pascalcoffez@gmail.com">pascalcoffez@gmail.com</a>
     </div>
   </div>
-  <p class="foot-legal">{{ $t('siteFooter.legal') }}</p>
+  <p class="foot-legal">{{ $t('siteFooter.legal') }} · <a href="/admin" style="color:inherit;text-decoration:underline;">{{ $t('siteFooter.login') }}</a></p>
 </footer>
 
 <!-- ── WIDGET CONTACT ─────────────────────────────── -->
@@ -2050,9 +2028,13 @@ onMounted(() => {
   @media(max-width:900px){.envergure-quad{grid-template-columns:1fr 1fr;}}
   @media(max-width:600px){.envergure-duo,.envergure-quad{grid-template-columns:1fr;}}
 
-  .popart-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s2);margin-top:var(--s2);}
-  @media(max-width:900px){.popart-grid{grid-template-columns:repeat(3,1fr);}}
-  @media(max-width:600px){.popart-grid{grid-template-columns:repeat(2,1fr);}}
+  .equipe-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-top:var(--s2);}
+  .equipe-duo figure{margin:0;}
+  .equipe-duo img,.equipe-duo video{width:100%;height:420px;object-fit:cover;display:block;
+    border-radius:20px;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);}
+  .equipe-duo figcaption{font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:12px;}
+  @media(max-width:700px){.equipe-duo{grid-template-columns:1fr;}
+    .equipe-duo img,.equipe-duo video{height:340px;}}
 
 
   .emporte{display:flex;justify-content:center;margin:0 0 60px;}

@@ -599,12 +599,10 @@
     <div class="equipe-duo">
       <figure>
         <img src="/riviera/img/equipe-cecilia-portrait.jpg" alt="C&eacute;cilia Coffez, en charge de l&rsquo;organisation, des devis et de la coordination des &eacute;v&eacute;nements">
-        <figcaption>{{ $t('riviera.teamCeciliaCaption') }}</figcaption>
       </figure>
       <figure>
         <video src="/riviera/videos/equipe-cargo-karate.mp4" poster="/riviera/img/equipe-cargo-karate-poster.jpg"
                muted loop playsinline autoplay preload="metadata"></video>
-        <figcaption>{{ $t('riviera.teamPascalCaption') }}</figcaption>
       </figure>
     </div>
   </div>
@@ -697,7 +695,7 @@
       <a href="mailto:pascalcoffez@gmail.com">pascalcoffez@gmail.com</a>
     </div>
   </div>
-  <p class="foot-legal">{{ $t('siteFooter.legal') }} · <a href="/admin" style="color:inherit;text-decoration:underline;">{{ $t('siteFooter.login') }}</a></p>
+  <p class="foot-legal">{{ $t('siteFooter.legal') }} · <AdminFooterLink /></p>
 </footer>
 
 <!-- ── WIDGET CONTACT ─────────────────────────────── -->

@@ -161,6 +161,7 @@ export default {
 		meTrouver: "Me trouver",
 		faq: "FAQ",
 		login: "Connexion",
+		adminSpace: "Espace admin",
 		legal: "Coffez.ch · Live Portrait Show depuis 2004 · Montreux",
 	},
 	formules: {

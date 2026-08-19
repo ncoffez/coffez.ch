@@ -162,6 +162,7 @@ export default {
 		meTrouver: "Kontakt & Standort",
 		faq: "FAQ",
 		login: "Anmelden",
+		adminSpace: "Admin-Bereich",
 		legal: "Coffez.ch · Live Portrait Show seit 2004 · Montreux",
 	},
 	formules: {

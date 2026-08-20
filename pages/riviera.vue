@@ -246,14 +246,13 @@
         <span class="lbl">Types d&rsquo;&eacute;v&eacute;nements</span>
         <h2 class="h2" style="color:var(--text)">Nos r&eacute;alisations.</h2>
       </div>
-      <a href="#en-action" class="grid-more">Voir plus</a>
     </div>
 
     <p class="viv-chapo">Congress &middot; Trade Fair &middot; Product Launch &middot; Retail Week &middot; Staff Party &middot; In-Store Activation &middot; Annual Client Event &middot; Store Opening &middot; Wedding</p>
 
     <div class="viv">
 
-        <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — KGV Zürich"
+        <div id="ref-kgv" class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — KGV Zürich"
              data-media-title="KGV Z&uuml;rich &middot; Theater Kaufleuten"
              data-media='[{"t":"v","src":"/riviera/videos/kgv-duo-rires.mp4","poster":"/riviera/img/cas-kgv-kgv-duo-rires-poster.jpg"},{"t":"v","src":"/riviera/videos/kgv-reaction-guest.mp4","poster":"/riviera/img/cas-kgv-kgv-reaction-video-poster.jpg"},{"t":"p","src":"/riviera/img/cas-kgv-kgv-cinq-portraits-ecran.jpg"},{"t":"p","src":"/riviera/img/cas-kgv-kgv-salle-comble.jpg"},{"t":"p","src":"/riviera/img/16-clients-ville-de-zurich-minitres-sur-scne.jpg"},{"t":"v","src":"/riviera/videos/kgv-scene-ecran.mp4","poster":"/riviera/img/cas-kgv-kgv-scene-video-poster.jpg"}]'>
           <svg class="photo-play" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
@@ -327,7 +326,7 @@
             <div class="photo-hover-facts">F&ecirc;te de No&euml;l du personnel &middot; Animation live</div>
           </div>
         </div>
-        <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — Stein am Rhein"
+        <div id="ref-ville" class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — Stein am Rhein"
              data-media-title="Stein am Rhein &middot; Ch&acirc;teau de Hohenklingen"
              data-media='[{"t":"v","src":"/riviera/videos/stein-duo-rires.mp4","poster":"/riviera/img/cas-stein-am-rhein-stein-video-poster.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-femme-cheveux-longs.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-femme-portrait.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-trio-pouces-leves.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-couple-rires.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-couple-portrait.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-portrait-coeur.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-jeune-homme-portrait.jpg"},{"t":"p","src":"/riviera/img/cas-stein-am-rhein-stein-portraits-suspendus.jpg"}]'>
           <svg class="photo-play" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
@@ -355,7 +354,7 @@
             <div class="photo-hover-facts">Rendez-vous annuel clients &middot; Zurich &amp; Gen&egrave;ve &middot; Deux dates</div>
           </div>
         </div>
-        <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — McDonald's Suisse"
+        <div id="ref-mcdonalds" class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — McDonald's Suisse"
              data-media-title="McDonald&rsquo;s Suisse &middot; Ouverture, Bienne"
              data-media='[{"t":"p","src":"/riviera/img/cas-mcdonalds-famille-avant.jpg"},{"t":"p","src":"/riviera/img/cas-mcdonalds-popart-jaune.jpg"},{"t":"p","src":"/riviera/img/cas-mcdonalds-hero-terrasse-mccafe.jpg"}]'>
           <img src="/riviera/img/16-clients-mcdo.jpg" alt="McDonald's Suisse" loading="lazy">
@@ -364,7 +363,7 @@
             <div class="photo-hover-facts">Ouverture du restaurant et du McCaf&eacute; &middot; Bienne</div>
           </div>
         </div>
-        <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — Mariage"
+        <div id="ref-mariage" class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — Mariage"
              data-media-title="Mariage &middot; Kevin &amp; Flavia"
              data-media='[{"t":"v","src":"/riviera/videos/mariage-kevin-flavia.mp4","poster":"/riviera/img/cas-mariage-mariage-video-poster.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-luz-groupe-thumbsup.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-luz-femme-seule.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-luz-jeune-homme.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-luz-jardin-ambiance.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-luz-couple-lac.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-luz-famille-groupe.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-sh-couple-noeud.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-cla-ambiance-salle.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-cla-marie-pouces.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-cla-couple-vert.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-cla-les-maries.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-zh-couple-rires.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-zh-amies-coeur.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-zh-demoiselles.jpg"},{"t":"p","src":"/riviera/img/cas-mariage-mariage-zh-famille-bebe.jpg"}]'>
           <svg class="photo-play" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
@@ -563,7 +562,10 @@
       </figure>
     </div>
 
-    <div class="equipe-solo">
+    <div class="equipe-duo">
+      <figure>
+        <img src="/riviera/img/equipe-pascal-pouces-scene.jpg" alt="Pascal Coffez pouces lev&eacute;s devant son chevalet, lumi&egrave;re de sc&egrave;ne bleue, soir&eacute;e d&rsquo;entreprise">
+      </figure>
       <figure>
         <video src="/riviera/videos/equipe-cargo-karate.mp4" poster="/riviera/img/equipe-cargo-karate-poster.jpg"
                muted loop playsinline autoplay preload="metadata"></video>
@@ -637,19 +639,17 @@
       <a href="/sur-mesure">{{ $t('siteFooter.surMesure') }}</a>
       <a href="/formules">{{ $t('siteFooter.formules') }}</a>
       <a href="/riviera#offres">{{ $t('siteFooter.evenementsEntreprise') }}</a>
-      <a href="/riviera#offres">{{ $t('siteFooter.aDistance') }}</a>
     </div>
     <div class="foot-col">
       <span class="foot-h">{{ $t('siteFooter.etudesDeCas') }}</span>
-      <a href="/riviera#preuve">{{ $t('siteFooter.kgv') }}</a>
-      <a href="/riviera#preuve">{{ $t('siteFooter.mcdonalds') }}</a>
+      <a href="/riviera#ref-kgv">{{ $t('siteFooter.kgv') }}</a>
+      <a href="/riviera#ref-mcdonalds">{{ $t('siteFooter.mcdonalds') }}</a>
       <a href="/riviera#preuve">{{ $t('siteFooter.toutesReferences') }}</a>
     </div>
     <div class="foot-col">
       <span class="foot-h">{{ $t('siteFooter.autresOccasions') }}</span>
-      <a href="/riviera#preuve">{{ $t('siteFooter.mariage') }}</a>
-      <a href="/riviera#preuve">{{ $t('siteFooter.fetesDeVille') }}</a>
-      <a href="/riviera#preuve">{{ $t('siteFooter.soireesClub') }}</a>
+      <a href="/riviera#ref-mariage">{{ $t('siteFooter.mariage') }}</a>
+      <a href="/riviera#ref-ville">{{ $t('siteFooter.fetesDeVille') }}</a>
       <a href="/riviera#preuve">{{ $t('siteFooter.cargoStudio') }}</a>
     </div>
     <div class="foot-col">
@@ -702,7 +702,7 @@
       </div>
       <button type="submit" class="chat-send">Envoyer &rarr;</button>
     </form>
-    <p class="chat-foot">&Eacute;v&eacute;nement d&rsquo;entreprise&nbsp;? <a href="#bespoke" onclick="closeChat()" style="color:var(--teal-dark);font-weight:700;text-decoration:none;">Demander un devis &rarr;</a></p>
+    <p class="chat-foot">&Eacute;v&eacute;nement d&rsquo;entreprise&nbsp;? <a href="/sur-mesure" style="color:var(--teal-dark);font-weight:700;text-decoration:none;">Demander un devis &rarr;</a></p>
   </div>
 </div>
 
@@ -1990,11 +1990,12 @@ onMounted(() => {
   @media(max-width:900px){.envergure-quad{grid-template-columns:1fr 1fr;}}
   @media(max-width:600px){.envergure-duo,.envergure-quad{grid-template-columns:1fr;}}
 
-  .equipe-solo{margin-top:var(--s2);}
-  .equipe-solo figure{margin:0;max-width:520px;}
-  .equipe-solo video{width:100%;height:420px;object-fit:cover;display:block;
+  .equipe-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-top:var(--s2);}
+  .equipe-duo figure{margin:0;}
+  .equipe-duo img,.equipe-duo video{width:100%;height:420px;object-fit:cover;display:block;
     border-radius:20px;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);}
-  @media(max-width:700px){.equipe-solo video{height:340px;}}
+  @media(max-width:700px){.equipe-duo{grid-template-columns:1fr;}
+    .equipe-duo img,.equipe-duo video{height:340px;}}
 
 
   .emporte{display:flex;justify-content:center;margin:0 0 60px;}

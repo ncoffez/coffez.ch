@@ -132,19 +132,17 @@
       <a href="/sur-mesure">{{ $t('siteFooter.surMesure') }}</a>
       <a href="/formules">{{ $t('siteFooter.formules') }}</a>
       <a href="/riviera#offres">{{ $t('siteFooter.evenementsEntreprise') }}</a>
-      <a href="/riviera#offres">{{ $t('siteFooter.aDistance') }}</a>
     </div>
     <div class="foot-col">
       <span class="foot-h">{{ $t('siteFooter.etudesDeCas') }}</span>
-      <a href="/riviera#preuve">{{ $t('siteFooter.kgv') }}</a>
-      <a href="/riviera#preuve">{{ $t('siteFooter.mcdonalds') }}</a>
+      <a href="/riviera#ref-kgv">{{ $t('siteFooter.kgv') }}</a>
+      <a href="/riviera#ref-mcdonalds">{{ $t('siteFooter.mcdonalds') }}</a>
       <a href="/riviera#preuve">{{ $t('siteFooter.toutesReferences') }}</a>
     </div>
     <div class="foot-col">
       <span class="foot-h">{{ $t('siteFooter.autresOccasions') }}</span>
-      <a href="/riviera#preuve">{{ $t('siteFooter.mariage') }}</a>
-      <a href="/riviera#preuve">{{ $t('siteFooter.fetesDeVille') }}</a>
-      <a href="/riviera#preuve">{{ $t('siteFooter.soireesClub') }}</a>
+      <a href="/riviera#ref-mariage">{{ $t('siteFooter.mariage') }}</a>
+      <a href="/riviera#ref-ville">{{ $t('siteFooter.fetesDeVille') }}</a>
       <a href="/riviera#preuve">{{ $t('siteFooter.cargoStudio') }}</a>
     </div>
     <div class="foot-col">
@@ -154,7 +152,7 @@
       <a href="mailto:pascalcoffez@gmail.com">pascalcoffez@gmail.com</a>
     </div>
   </div>
-  <p class="foot-legal">{{ $t('siteFooter.legal') }}</p>
+  <p class="foot-legal">{{ $t('siteFooter.legal') }} &middot; <AdminFooterLink /></p>
 </footer>
 
 <div id="booking-modal" onclick="if(event.target===this)closeBooking()" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,30,43,0.80);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">

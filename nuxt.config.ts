@@ -29,6 +29,7 @@ export default defineNuxtConfig({
 		FIREBASE_ADMIN_KEY: process.env.FIREBASE_ADMIN_KEY,
 		FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
 		ENV: process.env.ENV,
+		STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
 		public: {
 			FIREBASE_FRONTEND_KEY: process.env.FIREBASE_FRONTEND_KEY,
 			FIREBASE_WEBAPP_CONFIG: process.env.FIREBASE_WEBAPP_CONFIG,

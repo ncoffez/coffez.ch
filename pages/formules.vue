@@ -176,7 +176,7 @@
         <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:12px;">
           <div>
             <label style="display:block;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Date de l'&eacute;v&eacute;nement *</label>
-            <input type="date" id="bk-date" onchange="updateSchedule()" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+            <input type="date" id="bk-date" onchange="updateSchedule(); window.dateChecked=false; var m=document.getElementById('bk-check-msg'); if(m) m.style.display='none';" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
           </div>
           <div>
             <label style="display:block;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Heure de d&eacute;but *</label>
@@ -184,6 +184,8 @@
           </div>
         </div>
         <p style="font-size:12px;color:var(--muted);margin:9px 0 0;line-height:1.5;">L'artiste arrive <strong style="color:var(--text);">au minimum 30 minutes avant</strong> l'heure de d&eacute;but, installation comprise.</p>
+        <button type="button" id="bk-check-btn" onclick="checkDate()" style="width:100%;margin-top:14px;padding:13px 18px;background:#fff;color:var(--teal-dark);border:1.5px solid var(--teal);border-radius:11px;font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:all .18s;">V&eacute;rifier si cette date est libre</button>
+        <div id="bk-check-msg" style="display:none;margin-top:12px;padding:14px 16px;border-radius:11px;font-size:13.5px;line-height:1.6;"></div>
       </div>
 
       <label style="display:block;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Votre paiement</label>
@@ -205,11 +207,11 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
         <div>
           <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:7px;">Pr&eacute;nom &amp; Nom *</label>
-          <input type="text" placeholder="Jean Dupont" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+          <input type="text" id="bk-name" placeholder="Jean Dupont" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
         </div>
         <div>
           <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:7px;">Email *</label>
-          <input type="email" placeholder="votre@email.com" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+          <input type="email" id="bk-email" placeholder="votre@email.com" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
         </div>
       </div>
 
@@ -363,9 +365,88 @@ onMounted(() => {
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeBooking();
       });
-      window.handlePayment = function () {
+      window.dateChecked = false;
+
+      window.checkDate = async function () {
+        var input = document.getElementById('bk-date');
+        var box   = document.getElementById('bk-check-msg');
+        var btn   = document.getElementById('bk-check-btn');
+        var date  = input ? input.value : '';
+        if (!date) {
+          box.style.display = 'block';
+          box.style.background = '#FFF4D6';
+          box.style.color = '#7A5B00';
+          box.innerHTML = 'Choisissez d\\'abord une date.';
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'V\\u00e9rification\\u2026';
+        try {
+          var res  = await fetch('/api/check-date', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ date: date })
+          });
+          var data = await res.json();
+          box.style.display = 'block';
+          if (data.available) {
+            window.dateChecked = true;
+            box.style.background = '#E6F7F7';
+            box.style.color = '#0B6E6E';
+            box.innerHTML = '<strong>Cette date est libre.</strong><br>Sous r\\u00e9serve d\\'une r\\u00e9servation re\\u00e7ue entre-temps aujourd\\'hui m\\u00eame. Le paiement de l\\'acompte bloque d\\u00e9finitivement la date.';
+          } else if (data.reason === 'past') {
+            window.dateChecked = false;
+            box.style.background = '#FFF4D6';
+            box.style.color = '#7A5B00';
+            box.innerHTML = 'Cette date est d\\u00e9j\\u00e0 pass\\u00e9e. Choisissez une date \\u00e0 venir.';
+          } else {
+            window.dateChecked = false;
+            box.style.background = '#FDECEC';
+            box.style.color = '#9B2C2C';
+            box.innerHTML = '<strong>Cette date est d\\u00e9j\\u00e0 r\\u00e9serv\\u00e9e.</strong><br>Mais selon l\\'horaire, c\\'est peut-\\u00eatre encore possible\\u00a0: une soir\\u00e9e reste souvent libre apr\\u00e8s un \\u00e9v\\u00e9nement de journ\\u00e9e. <strong>Appelez-moi, on regarde ensemble.</strong><br><a href="tel:+41791237833" style="color:#9B2C2C;font-weight:800;font-size:15px;">079 123 78 33</a> &middot; <a href="mailto:pascalcoffez@gmail.com" style="color:#9B2C2C;font-weight:700;">pascalcoffez@gmail.com</a>';
+          }
+        } catch (e) {
+          box.style.display = 'block';
+          box.style.background = '#FFF4D6';
+          box.style.color = '#7A5B00';
+          box.innerHTML = 'V\\u00e9rification indisponible. \\u00c9crivez-nous\\u00a0: pascalcoffez@gmail.com';
+        }
+        btn.disabled = false;
+        btn.textContent = 'V\\u00e9rifier si cette date est libre';
+      };
+
+      window.handlePayment = async function () {
         if (!document.getElementById('bk-conditions').checked) return;
-        alert('Paiement sécurisé Stripe — intégration en cours.\\n\\nPour réserver dès maintenant : pascalcoffez@gmail.com');
+        var btn   = document.getElementById('bk-pay-btn');
+        var date  = (document.getElementById('bk-date')  || {}).value;
+        var time  = (document.getElementById('bk-time')  || {}).value;
+        var name  = (document.getElementById('bk-name')  || {}).value;
+        var email = (document.getElementById('bk-email') || {}).value;
+        if (!date || !time || !name || !email) {
+          alert('Merci de remplir la date, l\\'heure, votre nom et votre e-mail.');
+          return;
+        }
+        if (!window.dateChecked) {
+          alert('Merci de v\\u00e9rifier d\\'abord que votre date est libre.');
+          return;
+        }
+        var original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Redirection vers le paiement…';
+        try {
+          var res = await fetch('/api/stripe-checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tier: window.currentTier, date: date, time: time, name: name, email: email })
+          });
+          var data = await res.json();
+          if (data && data.url) { window.location.href = data.url; return; }
+          throw new Error((data && (data.statusMessage || data.message)) || 'Erreur inconnue');
+        } catch (e) {
+          alert('Le paiement en ligne est momentanément indisponible.\\n\\nÉcrivez-nous : pascalcoffez@gmail.com');
+          btn.disabled = false;
+          btn.textContent = original;
+        }
       };
     })();
   `

@@ -118,12 +118,10 @@
       <div class="lw-cell lw-lg"><img src="/riviera/img/references-logos-image.jpg" alt="Eventmodus" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">IT&nbsp;Concepts</span></div>
       <div class="lw-cell"><span class="lw-txt">Meier&nbsp;+&nbsp;Cie</span></div>
-      <div class="lw-cell"><span class="lw-txt">Thurgauer<br>Kantonalbank</span></div>
+      <div class="lw-cell"><img src="/riviera/img/references-logos-thurgauer-kantonalbank.svg" alt="Thurgauer Kantonalbank" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">Cuore&nbsp;Weddings</span></div>
-      <div class="lw-cell"><span class="lw-txt">Swiss&nbsp;Label</span></div>
-      <div class="lw-cell"><span class="lw-txt">Stadt<br>Winterthur</span></div>
-      <div class="lw-cell"><span class="lw-txt">Biel-Seeland</span></div>
-      <div class="lw-cell"><span class="lw-txt">Weingut<br>Besson-Strasser</span></div>
+      <div class="lw-cell"><img src="/riviera/img/references-logos-stadt-winterthur.svg" alt="Stadt Winterthur" loading="lazy"></div>
+      <div class="lw-cell"><img src="/riviera/img/references-logos-seeland-biel-bienne.svg" alt="Seeland Biel/Bienne" loading="lazy"></div>
     </div>
   </div>
 

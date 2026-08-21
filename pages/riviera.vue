@@ -120,6 +120,7 @@
       <div class="lw-cell"><span class="lw-txt">Meier&nbsp;+&nbsp;Cie</span></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-thurgauer-kantonalbank.svg" alt="Thurgauer Kantonalbank" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">Cuore&nbsp;Weddings</span></div>
+      <div class="lw-cell"><span class="lw-txt">FL&Uuml;GELWEST</span></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-stadt-winterthur.svg" alt="Stadt Winterthur" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-seeland-biel-bienne.svg" alt="Seeland Biel/Bienne" loading="lazy"></div>
     </div>

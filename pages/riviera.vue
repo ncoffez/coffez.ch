@@ -121,6 +121,9 @@
       <div class="lw-cell"><span class="lw-txt">Thurgauer<br>Kantonalbank</span></div>
       <div class="lw-cell"><span class="lw-txt">Cuore&nbsp;Weddings</span></div>
       <div class="lw-cell"><span class="lw-txt">Swiss&nbsp;Label</span></div>
+      <div class="lw-cell"><span class="lw-txt">Stadt<br>Winterthur</span></div>
+      <div class="lw-cell"><span class="lw-txt">Biel-Seeland</span></div>
+      <div class="lw-cell"><span class="lw-txt">Weingut<br>Besson-Strasser</span></div>
     </div>
   </div>
 
@@ -1954,8 +1957,8 @@ onMounted(() => {
   @media(max-width:600px){.envergure-duo,.envergure-quad{grid-template-columns:1fr;}}
 
   /* ── MUR DE LOGOS (Trusted by) ─────────────── */
-  .logo-wall{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;
-    max-width:1080px;margin:var(--s3) auto 0;}
+  .logo-wall{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;
+    width:100%;margin:var(--s3) 0 0;}
   .logo-wall .lw-cell{background:#fff;border:1px solid var(--border);border-radius:14px;
     height:104px;display:flex;align-items:center;justify-content:center;
     padding:20px 28px;box-sizing:border-box;}

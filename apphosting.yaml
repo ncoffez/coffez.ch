@@ -19,5 +19,8 @@ env:
   - variable: GOOGLE_MAPS_EMBED_API_KEY
     secret: GOOGLE_MAPS_EMBED_API_KEY
 
-  - variable: STRIPE_SECRET_KEY
-    secret: STRIPE_SECRET_KEY
+  # ⏸ EN ATTENTE — à réactiver dès que Nicolas aura accordé l'accès au secret :
+  #    firebase apphosting:secrets:grantaccess STRIPE_SECRET_KEY --backend coffez-ch-app
+  #    Tant que cette ligne est active sans l'autorisation, TOUS les déploiements échouent.
+  # - variable: STRIPE_SECRET_KEY
+  #   secret: STRIPE_SECRET_KEY

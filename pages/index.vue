@@ -104,7 +104,7 @@
       <div class="lw-cell"><img src="/riviera/img/references-logos-ubs-logo-1536x922.jpg" alt="UBS" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-roche-clean.jpg" alt="Roche Diagnostics" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-iwc-1.jpg" alt="IWC Schaffhausen" loading="lazy"></div>
-      <div class="lw-cell lw-lg"><img src="/riviera/img/references-logos-manor-logo-opengraph.jpg" alt="Manor" loading="lazy"></div>
+      <div class="lw-cell"><img src="/riviera/img/references-logos-manor-logo-opengraph.jpg" alt="Manor" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-mcd-goldenarches-1235-rgb-switzerland-2.png" alt="McDonald&rsquo;s Suisse" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-sisley-paris-logo-svg.jpg" alt="Sisley Paris" loading="lazy"></div>
       <div class="lw-cell lw-xxl"><img src="/riviera/img/references-logos-matis-paris-clean.jpg" alt="Matis Paris" loading="lazy"></div>
@@ -112,7 +112,7 @@
       <div class="lw-cell"><img src="/riviera/img/references-logos-image-11-02-23-10-34.jpg" alt="SRF" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">SRG SSR</span></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-image-11-02-23-11-10.jpg" alt="KGV Z&uuml;rich" loading="lazy"></div>
-      <div class="lw-cell lw-xxl"><img src="/riviera/img/references-logos-images-1.jpg" alt="Sanacare" loading="lazy"></div>
+      <div class="lw-cell"><img src="/riviera/img/references-logos-images-1.jpg" alt="Sanacare" loading="lazy"></div>
       <div class="lw-cell lw-xl"><img src="/riviera/img/references-logos-logo.png" alt="JP Rosselet Cosmetics" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-logo0x0.jpg" alt="Swiss Marketing" loading="lazy"></div>
       <div class="lw-cell lw-lg"><img src="/riviera/img/references-logos-image.jpg" alt="Eventmodus" loading="lazy"></div>

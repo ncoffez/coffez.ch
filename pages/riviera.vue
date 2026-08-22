@@ -104,7 +104,7 @@
       <div class="lw-cell"><img src="/riviera/img/references-logos-ubs-logo-1536x922.jpg" alt="UBS" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-roche-clean.jpg" alt="Roche Diagnostics" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-iwc-1.jpg" alt="IWC Schaffhausen" loading="lazy"></div>
-      <div class="lw-cell"><img src="/riviera/img/references-logos-manor-logo-opengraph.jpg" alt="Manor" loading="lazy"></div>
+      <div class="lw-cell lw-wide"><img src="/riviera/img/references-logos-manor-logo-opengraph.jpg" alt="Manor" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-mcd-goldenarches-1235-rgb-switzerland-2.png" alt="McDonald&rsquo;s Suisse" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-sisley-paris-logo-svg.jpg" alt="Sisley Paris" loading="lazy"></div>
       <div class="lw-cell lw-xxl"><img src="/riviera/img/references-logos-matis-paris-clean.jpg" alt="Matis Paris" loading="lazy"></div>
@@ -112,7 +112,7 @@
       <div class="lw-cell"><img src="/riviera/img/references-logos-image-11-02-23-10-34.jpg" alt="SRF" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">SRG SSR</span></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-image-11-02-23-11-10.jpg" alt="KGV Z&uuml;rich" loading="lazy"></div>
-      <div class="lw-cell"><img src="/riviera/img/references-logos-images-1.jpg" alt="Sanacare" loading="lazy"></div>
+      <div class="lw-cell lw-wide"><img src="/riviera/img/references-logos-images-1.jpg" alt="Sanacare" loading="lazy"></div>
       <div class="lw-cell lw-xl"><img src="/riviera/img/references-logos-logo.png" alt="JP Rosselet Cosmetics" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-logo0x0.jpg" alt="Swiss Marketing" loading="lazy"></div>
       <div class="lw-cell lw-lg"><img src="/riviera/img/references-logos-image.jpg" alt="Eventmodus" loading="lazy"></div>
@@ -1962,6 +1962,7 @@ onMounted(() => {
     height:104px;display:flex;align-items:center;justify-content:center;
     padding:20px 28px;box-sizing:border-box;}
   .logo-wall img{max-width:100%;max-height:100%;width:auto;object-fit:contain;display:block;}
+  .logo-wall .lw-cell.lw-wide{grid-column:span 2;padding:16px 34px;}
   .logo-wall .lw-cell.lw-lg{padding:10px 22px;}
   .logo-wall .lw-cell.lw-xl{padding:8px 20px;}
   .logo-wall .lw-cell.lw-xxl{padding:4px 12px;}
@@ -1973,7 +1974,8 @@ onMounted(() => {
   @media(max-width:760px){.logo-wall{grid-template-columns:repeat(3,1fr);gap:14px;}
     .logo-wall .lw-cell{height:78px;padding:12px 16px;}
     .logo-wall .lw-txt{font-size:15px;}}
-  @media(max-width:460px){.logo-wall{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:460px){.logo-wall{grid-template-columns:repeat(2,1fr);}
+    .logo-wall .lw-cell.lw-wide{grid-column:span 2;}}
 
   .equipe-duo{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-top:var(--s2);}
   .equipe-duo figure{margin:0;}

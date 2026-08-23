@@ -9,6 +9,10 @@ const PACKAGES: Record<string, { label: string; total: number; hours: number }> 
 	standard: { label: "Formule Standard · 3 heures", total: 770, hours: 3 },
 	classic: { label: "Formule Classic · 4 heures", total: 880, hours: 4 },
 	super: { label: "Formule Super · 5 heures", total: 990, hours: 5 },
+	// ⚠️ TEMPORAIRE — tarif de vérification à petit montant.
+	// Accessible uniquement via la page cachée /test-paiement.
+	// À SUPPRIMER une fois la chaîne de paiement validée.
+	test: { label: "TEST technique — ne pas utiliser", total: 20, hours: 0 },
 };
 
 export default defineEventHandler(async (event) => {

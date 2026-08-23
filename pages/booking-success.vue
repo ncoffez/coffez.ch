@@ -29,6 +29,18 @@
 
 <script setup>
 definePageMeta({ layout: false });
+
+// Prévient Pascal (Slack + e-mail) dès l'arrivée sur la page de confirmation.
+const route = useRoute();
+onMounted(async () => {
+  const sid = route.query.session_id;
+  if (!sid) return;
+  try {
+    await $fetch('/api/booking-notify', { method: 'POST', body: { session_id: sid } });
+  } catch (e) {
+    console.error('Notification de reservation non envoyee', e);
+  }
+});
 useHead({
   title: "Réservation confirmée · coffez.ch",
   meta: [{ name: "robots", content: "noindex" }],

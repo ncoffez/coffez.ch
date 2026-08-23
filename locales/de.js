@@ -244,7 +244,7 @@ export default {
 	},
 	riviera: {
 		seoTitle: "Coffez.ch · Live-Porträt · Montreux",
-		seoDescription: "Live-Porträt für Firmen- und Privatanlässe in der Schweiz. Handgezeichnet in 3 Minuten, 9:16-Clips live geteilt. UBS, Roche, IWC Schaffhausen, Sisley Paris, Manor.",
+		seoDescription: "Live-Porträt für Firmen- und Privatanlässe in der Schweiz. Handgezeichnet in 3 Minuten. UBS, Roche, IWC Schaffhausen, Sisley Paris, Manor.",
 		promoStrong: "Weihnachten & Jahresend-Events 2026",
 		promoText: "Dezember-Termine werden jetzt reserviert.",
 		promoLink: "Termine prüfen →",

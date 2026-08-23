@@ -243,7 +243,7 @@ export default {
 	},
 	riviera: {
 		seoTitle: "Coffez.ch · Portrait live · Montreux",
-		seoDescription: "Portrait live pour événements d'entreprise et privés en Suisse. Dessin à la main en 3 minutes, clips 9:16 partagés en direct. UBS, Roche, IWC Schaffhausen, Sisley Paris, Manor.",
+		seoDescription: "Portrait live pour événements d'entreprise et privés en Suisse. Dessin à la main en 3 minutes. UBS, Roche, IWC Schaffhausen, Sisley Paris, Manor.",
 		promoStrong: "Fêtes de fin d'année 2026",
 		promoText: "les dates de décembre se réservent maintenant.",
 		promoLink: "Vérifier mes dates →",

@@ -406,76 +406,7 @@
 
 
 
-<!-- ── C2. COMPARISON : Animation classique vs Coffez Live ─── -->
-<section class="sec section" style="background:var(--teal-dark);display:none" id="difference">
-  <div class="wrap" style="max-width:1080px;">
 
-    <div style="display:grid;grid-template-columns:1fr 400px;gap:64px;align-items:center;">
-
-      <!-- GAUCHE : titre + deux cartes -->
-      <div>
-        <div style="margin-bottom:44px;">
-          <span class="section-label-dark">La différence</span>
-          <h2 class="h2" style="color:#fff">
-            Their face<br>says it all.
-          </h2>
-          <p style="font-size:16px;color:rgba(255,255,255,0.62);line-height:1.6;font-weight:300;margin:0;">
-            You can watch it happen, live, on their face.
-          </p>
-        </div>
-
-        <!-- Deux cartes -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-
-          <!-- Ce que je ne fais PAS -->
-          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:32px 28px;">
-            <p style="font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.44);margin:0 0 24px;">What I don't do</p>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px;">
-              <li style="display:flex;gap:14px;align-items:flex-start;">
-                <span style="font-size:16px;line-height:1.2;flex-shrink:0;">❌</span>
-                <span style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Ridicule people for laughs</span>
-              </li>
-              <li style="display:flex;gap:14px;align-items:flex-start;">
-                <span style="font-size:16px;line-height:1.2;flex-shrink:0;">❌</span>
-                <span style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Drawings that take longer than 5, 7 or even 12 minutes</span>
-              </li>
-
-            </ul>
-          </div>
-
-          <!-- Coffez Live -->
-          <div style="background:rgba(26,191,191,0.07);border:1.5px solid var(--teal);border-radius:20px;padding:32px 28px;position:relative;">
-            <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:44px;height:3px;background:var(--gold);border-radius:0 0 4px 4px;"></div>
-            <p style="font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal);margin:0 0 24px;">Coffez.Live: LIVE</p>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px;">
-              <li style="display:flex;gap:14px;align-items:flex-start;">
-                <span style="font-size:16px;line-height:1.2;flex-shrink:0;">✅</span>
-                <span style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.5;">Positive, flattering & fun portraits</span>
-              </li>
-              <li style="display:flex;gap:14px;align-items:flex-start;">
-                <span style="font-size:16px;line-height:1.2;flex-shrink:0;">✅</span>
-                <span style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.5;">{{ $t('riviera.diffYes2Sub') }}</span>
-              </li>
-              <li style="display:flex;gap:14px;align-items:flex-start;">
-                <span style="font-size:16px;line-height:1.2;flex-shrink:0;">✅</span>
-                <span style="font-size:13px;color:#fff;line-height:1.5;font-weight:500;">Portrait · clip · photo — instantly on their phone</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- DROITE : photo preuve -->
-      <div>
-        <img src="/riviera/img/16-clients-procom-superdessin.jpg" alt="Guest reaction"
-             style="width:100%;height:500px;object-fit:cover;object-position:center top;border-radius:24px;display:block;">
-      </div>
-
-    </div>
-
-  </div>
-</section>
 
 
 

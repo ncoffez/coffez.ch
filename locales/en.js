@@ -244,7 +244,7 @@ export default {
 	},
 	riviera: {
 		seoTitle: "Coffez.ch · Live Portrait Show · Montreux",
-		seoDescription: "Live portrait entertainment for corporate and private events in Switzerland. Hand-drawn in 3 minutes, 9:16 clips shared live. Trusted by UBS, Roche, IWC Schaffhausen, Sisley Paris, Manor.",
+		seoDescription: "Live portrait entertainment for corporate and private events in Switzerland. Hand-drawn in 3 minutes. Trusted by UBS, Roche, IWC Schaffhausen, Sisley Paris, Manor.",
 		promoStrong: "Holiday season 2026",
 		promoText: "December dates are booking up now.",
 		promoLink: "Check my dates →",

@@ -455,13 +455,17 @@ onMounted(() => {
 </script>
 
 <style>
-  /* Champs date et heure : icones natives fortement agrandies */
-  .bk-bigfield::-webkit-calendar-picker-indicator{
-    width:34px;height:34px;padding:4px;margin-left:6px;cursor:pointer;
-    transform:scale(1.6);transform-origin:right center;opacity:.85;
+  /* Champs date et heure : grande cible tactile, compatible iPhone.
+     Aucune transformation sur l'icone native : sur iOS cela casse la zone de tap. */
+  .bk-bigfield{
+    -webkit-appearance:none; appearance:none;
+    -webkit-tap-highlight-color:rgba(26,191,191,0.18);
+    background:#fff; cursor:pointer;
   }
-  .bk-bigfield::-webkit-calendar-picker-indicator:hover{opacity:1;}
-  .bk-bigfield::-webkit-datetime-edit{font-size:19px;font-weight:600;}
+  .bk-bigfield::-webkit-calendar-picker-indicator{
+    width:30px; height:30px; padding:0 2px; cursor:pointer; opacity:.75;
+  }
+  .bk-bigfield::-webkit-date-and-time-value{ text-align:left; }
 
 .formules-root {
     --sky:        #E0F5FA;

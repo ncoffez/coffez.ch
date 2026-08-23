@@ -19,5 +19,9 @@ env:
   - variable: GOOGLE_MAPS_EMBED_API_KEY
     secret: GOOGLE_MAPS_EMBED_API_KEY
 
-  - variable: STRIPE_SECRET_KEY
-    secret: STRIPE_SECRET_KEY
+  # ⏸ DÉSACTIVÉ — l'autorisation d'accès au secret ne fonctionne toujours pas.
+  #    Tant que cette ligne est active, TOUS les déploiements échouent et
+  #    plus aucune modification du site ne peut être mise en ligne.
+  #    À réactiver seulement une fois l'accès réellement vérifié.
+  # - variable: STRIPE_SECRET_KEY
+  #   secret: STRIPE_SECRET_KEY

@@ -176,11 +176,11 @@
         <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:12px;">
           <div>
             <label style="display:block;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Date de l'&eacute;v&eacute;nement *</label>
-            <input type="date" id="bk-date" onchange="updateSchedule(); window.dateChecked=false; var m=document.getElementById('bk-check-msg'); if(m) m.style.display='none';" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+            <input type="date" id="bk-date" onchange="updateSchedule(); window.dateChecked=false; var m=document.getElementById('bk-check-msg'); if(m) m.style.display='none';" class="bk-bigfield" style="width:100%;padding:18px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:19px;font-weight:600;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;min-height:60px;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
           </div>
           <div>
             <label style="display:block;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Heure de d&eacute;but *</label>
-            <input type="time" id="bk-time" step="900" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+            <input type="time" id="bk-time" step="900" class="bk-bigfield" style="width:100%;padding:18px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:19px;font-weight:600;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;min-height:60px;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
           </div>
         </div>
         <p style="font-size:12px;color:var(--muted);margin:9px 0 0;line-height:1.5;">L'artiste arrive <strong style="color:var(--text);">au minimum 30 minutes avant</strong> l'heure de d&eacute;but, installation comprise.</p>
@@ -207,11 +207,11 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
         <div>
           <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:7px;">Pr&eacute;nom &amp; Nom *</label>
-          <input type="text" id="bk-name" placeholder="Jean Dupont" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+          <input type="text" id="bk-name" placeholder="Jean Dupont" class="bk-bigfield" style="width:100%;padding:18px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:19px;font-weight:600;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;min-height:60px;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
         </div>
         <div>
           <label style="display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:7px;">Email *</label>
-          <input type="email" id="bk-email" placeholder="votre@email.com" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+          <input type="email" id="bk-email" placeholder="votre@email.com" class="bk-bigfield" style="width:100%;padding:18px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:19px;font-weight:600;font-family:'Inter',sans-serif;outline:none;color:var(--text);box-sizing:border-box;min-height:60px;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
         </div>
       </div>
 
@@ -455,6 +455,14 @@ onMounted(() => {
 </script>
 
 <style>
+  /* Champs date et heure : icones natives fortement agrandies */
+  .bk-bigfield::-webkit-calendar-picker-indicator{
+    width:34px;height:34px;padding:4px;margin-left:6px;cursor:pointer;
+    transform:scale(1.6);transform-origin:right center;opacity:.85;
+  }
+  .bk-bigfield::-webkit-calendar-picker-indicator:hover{opacity:1;}
+  .bk-bigfield::-webkit-datetime-edit{font-size:19px;font-weight:600;}
+
 .formules-root {
     --sky:        #E0F5FA;
     --white:      #FFFFFF;

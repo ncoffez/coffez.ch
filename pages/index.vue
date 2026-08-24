@@ -111,8 +111,8 @@
       <div class="lw-cell"><img src="/riviera/img/references-logos-jobcloud-responsive-rgb-1000x232-1.jpg" alt="JobCloud" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-image-11-02-23-10-34.jpg" alt="SRF" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">SRG SSR</span></div>
-      <div class="lw-cell"><img src="/riviera/img/references-logos-image-11-02-23-11-10.jpg" alt="KGV Z&uuml;rich" loading="lazy"></div>
-      <div class="lw-cell lw-wide"><img src="/riviera/img/references-logos-images-1.jpg" alt="Sanacare" loading="lazy"></div>
+      <div class="lw-cell lw-tight"><img src="/riviera/img/references-logos-image-11-02-23-11-10.jpg" alt="KGV Z&uuml;rich" loading="lazy"></div>
+      <div class="lw-cell"><img src="/riviera/img/references-logos-images-1.jpg" alt="Sanacare" loading="lazy"></div>
       <div class="lw-cell lw-xl"><img src="/riviera/img/references-logos-logo.png" alt="JP Rosselet Cosmetics" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-logo0x0.jpg" alt="Swiss Marketing" loading="lazy"></div>
       <div class="lw-cell lw-lg"><img src="/riviera/img/references-logos-image.jpg" alt="Eventmodus" loading="lazy"></div>
@@ -121,8 +121,9 @@
       <div class="lw-cell"><img src="/riviera/img/references-logos-thurgauer-kantonalbank.svg" alt="Thurgauer Kantonalbank" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">Cuore&nbsp;Weddings</span></div>
       <div class="lw-cell"><span class="lw-txt">FL&Uuml;GELWEST</span></div>
-      <div class="lw-cell"><img src="/riviera/img/references-logos-stadt-winterthur.svg" alt="Stadt Winterthur" loading="lazy"></div>
-      <div class="lw-cell"><img src="/riviera/img/references-logos-seeland-biel-bienne.svg" alt="Seeland Biel/Bienne" loading="lazy"></div>
+      <div class="lw-cell lw-tight"><img src="/riviera/img/references-logos-stadt-winterthur.svg" alt="Stadt Winterthur" loading="lazy"></div>
+      <div class="lw-cell lw-tight"><img src="/riviera/img/references-logos-seeland-biel-bienne.svg" alt="Seeland Biel/Bienne" loading="lazy"></div>
+      <div class="lw-cell lw-tight"><img src="/riviera/img/references-logos-procom.jpg" alt="PROCOM" loading="lazy"></div>
     </div>
   </div>
 
@@ -1903,6 +1904,7 @@ onMounted(() => {
     padding:20px 28px;box-sizing:border-box;}
   .logo-wall img{max-width:100%;max-height:100%;width:auto;object-fit:contain;display:block;}
   .logo-wall .lw-cell.lw-wide{grid-column:span 2;padding:16px 34px;}
+  .logo-wall .lw-cell.lw-tight{padding:8px 12px;}
   .logo-wall .lw-cell.lw-lg{padding:10px 22px;}
   .logo-wall .lw-cell.lw-xl{padding:8px 20px;}
   .logo-wall .lw-cell.lw-xxl{padding:4px 12px;}

@@ -283,6 +283,15 @@
             <div class="photo-hover-facts">Beauty Days &middot; Winterthour &amp; Schaffhouse &middot; Portrait remis &agrave; la cliente</div>
           </div>
         </div>
+        <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir — PROCOM"
+             data-media-title="PROCOM &middot; Lancement de l&rsquo;app"
+             data-media='[{"t":"p","src":"/riviera/img/cas-procom-procom-portrait-couronne.jpg"},{"t":"p","src":"/riviera/img/cas-procom-procom-couple-rires.jpg"},{"t":"p","src":"/riviera/img/cas-procom-procom-trio-lunettes.jpg"},{"t":"p","src":"/riviera/img/cas-procom-procom-jeune-femme.jpg"},{"t":"p","src":"/riviera/img/cas-procom-procom-homme-pull-vert.jpg"},{"t":"p","src":"/riviera/img/cas-procom-procom-homme-champion.jpg"}]'>
+          <img src="/riviera/img/cas-procom-procom-portrait-couronne.jpg" alt="Invit&eacute;e PROCOM avec son portrait dessin&eacute; en direct" loading="lazy">
+          <div class="photo-hover">
+            <div class="photo-hover-brand">PROCOM</div>
+            <div class="photo-hover-facts">Lancement de l&rsquo;app &middot; Olten</div>
+          </div>
+        </div>
         <!-- masqu&eacute;s temporairement (fiches pas termin&eacute;es) -->
         <div class="photo-card" style="display:none">
           <img src="/riviera/img/16-clients-iwc.jpg" alt="IWC Schaffhausen" loading="lazy">

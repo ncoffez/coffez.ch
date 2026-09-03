@@ -8,9 +8,10 @@
  * ─────────────────────────────────────────────────────────────
  */
 const DATES_INDISPONIBLES = [
-	"2026-09-04",
+	"2026-09-04", // First Friday, Schaffhauser Nachrichten
 	"2026-09-17",
 	"2026-10-31",
+	"2026-12-11", // Pletscher Metallbau AG — Weihnachtsessen Wunderklingen, Hallau
 ];
 
 export default defineEventHandler(async (event) => {

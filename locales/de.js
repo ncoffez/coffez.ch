@@ -265,6 +265,7 @@ export default {
 		offreSurMesureText: "Zeichnung, Stile, Formate, Branding und Ausspielung — nach Ihrem Briefing aufgebaut.",
 		offreSurMesureLink: "Offerte anfragen →",
 		diffYes2Sub: "Zeichnung in 3 Minuten.",
+		contactReassure: "Antwort innert 24 Stunden. Ihre Daten bleiben vertraulich.",
 		teamLabel: "Das Team",
 		teamTitle: "Wer wir sind.",
 		teamNicolas: "Nicolas Coffez, Gründer von coffez.ch. Das Konzept, das VIP-Erlebnis, die Pakete — das ist er.",

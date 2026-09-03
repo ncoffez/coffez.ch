@@ -18,7 +18,7 @@
 <!-- ── NAV ──────────────────────────────────── -->
 <!-- ── BANDEAU ACTUALITÉ : FÊTES DE FIN D'ANNÉE ────────── -->
 <div class="promo-bar">
-  <span class="promo-bar-text"><strong>{{ $t('riviera.promoStrong') }}</strong> &mdash; {{ $t('riviera.promoText') }} <a href="#actu-noel">{{ $t('riviera.promoLink') }}</a></span>
+  <span class="promo-bar-text"><strong>{{ $t('riviera.promoStrong') }}</strong> &mdash; {{ $t('riviera.promoText') }} <a href="/formules#offre">{{ $t('riviera.promoLink') }}</a></span>
 </div>
 
 <nav>
@@ -512,14 +512,12 @@
         <input type="text"  v-model="contact.name"  :placeholder="$t('riviera.contactName')" required>
         <input type="email" v-model="contact.email" :placeholder="$t('riviera.contactEmail')" required>
       </div>
-      <div class="ask-row">
-        <input type="tel"  v-model="contact.phone" :placeholder="$t('riviera.contactPhone')">
-        <input type="date" v-model="contact.date">
-      </div>
+      <input type="date" v-model="contact.date">
       <textarea v-model="contact.message" :placeholder="$t('riviera.contactMessage')" required></textarea>
       <button type="submit" class="ask-send" :disabled="contactState === 'sending'">
         {{ contactState === 'sending' ? $t('riviera.contactSending') : $t('riviera.contactSend') }}
       </button>
+      <p class="ask-reassure">{{ $t('riviera.contactReassure') }}</p>
       <p class="ask-note" v-if="contactError">
         {{ $t('riviera.contactError') }}
       </p>
@@ -1950,16 +1948,17 @@ onMounted(() => {
   .ask-form{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px;
     text-align:left;box-shadow:0 20px 50px rgba(15,25,35,0.08);}
   .ask-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-  .ask-form input,.ask-form textarea{width:100%;box-sizing:border-box;padding:13px 15px;
+  .ask-form input,.ask-form textarea{width:100%;box-sizing:border-box;padding:17px 16px;font-size:16px;
     border:1.5px solid var(--border);border-radius:10px;font-family:'Inter',sans-serif;
     font-size:14.5px;color:var(--text);background:#fafbfc;}
   .ask-form input:focus,.ask-form textarea:focus{outline:none;border-color:var(--teal);background:#fff;}
   .ask-form textarea{min-height:88px;resize:vertical;margin-bottom:16px;font-family:inherit;}
-  .ask-send{width:100%;padding:15px;border:none;border-radius:10px;background:var(--teal);color:#fff;
+  .ask-send{width:100%;padding:19px;border:none;border-radius:12px;background:var(--teal-dark);color:#fff;
     font-family:'Sora',sans-serif;font-weight:800;font-size:14.5px;cursor:pointer;
-    box-shadow:0 12px 30px rgba(26,191,191,0.28);transition:transform .15s;}
-  .ask-send:hover{transform:translateY(-2px);}
+    box-shadow:0 12px 30px rgba(0,30,43,0.22);transition:transform .15s, background .15s;}
+  .ask-send:hover{transform:translateY(-2px);background:var(--teal-mid);}
   .ask-note{font-size:11.5px;color:var(--muted);text-align:center;margin:12px 0 0;}
+  .ask-reassure{font-size:12.5px;color:var(--muted);text-align:center;margin:14px 0 0;}
   .ask-alt{font-size:13.5px;color:var(--muted);margin:20px 0 0;}
   .ask-alt a{color:var(--teal-dark);font-weight:700;text-decoration:none;}
   @media (max-width:520px){ .ask-row{grid-template-columns:1fr;} }
@@ -2020,17 +2019,18 @@ onMounted(() => {
 .ask-form{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px;
   text-align:left;box-shadow:0 20px 50px rgba(15,25,35,0.08);}
 .ask-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-.ask-form input,.ask-form textarea{width:100%;box-sizing:border-box;padding:13px 15px;
+.ask-form input,.ask-form textarea{width:100%;box-sizing:border-box;padding:17px 16px;font-size:16px;
   border:1.5px solid var(--border);border-radius:10px;font-family:'Inter',sans-serif;
   font-size:14.5px;color:var(--text);background:#fafbfc;}
 .ask-form input:focus,.ask-form textarea:focus{outline:none;border-color:var(--teal);background:#fff;}
 .ask-form textarea{min-height:88px;resize:vertical;margin-bottom:16px;font-family:inherit;}
-.ask-send{width:100%;padding:15px;border:none;border-radius:10px;background:var(--teal);color:#fff;
+.ask-send{width:100%;padding:19px;border:none;border-radius:12px;background:var(--teal-dark);color:#fff;
   font-family:'Sora',sans-serif;font-weight:800;font-size:14.5px;cursor:pointer;
-  box-shadow:0 12px 30px rgba(26,191,191,0.28);transition:transform .15s;}
-.ask-send:hover{transform:translateY(-2px);}
+  box-shadow:0 12px 30px rgba(0,30,43,0.22);transition:transform .15s, background .15s;}
+.ask-send:hover{transform:translateY(-2px);background:var(--teal-mid);}
 .ask-send:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 .ask-note{font-size:12px;color:#b45309;text-align:center;margin:12px 0 0;}
+.ask-reassure{font-size:12.5px;color:var(--muted);text-align:center;margin:14px 0 0;}
 .ask-done{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:40px 28px;
   box-shadow:0 20px 50px rgba(15,25,35,0.08);}
 .ask-done-h{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin:0 0 8px;}

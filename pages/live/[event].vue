@@ -23,6 +23,22 @@
 					</UiDownloadAllImages>
 				</div>
 			</div>
+			<div id="live-hint" class="mx-4 mb-6 mt-2 max-w-3xl rounded-xl border border-stone-200 dark:border-stone-700
+				bg-white/70 dark:bg-stone-800/50 px-6 py-5">
+				<p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-400 dark:text-stone-500 mb-3">
+					Live
+				</p>
+				<p class="text-base leading-relaxed text-stone-700 dark:text-stone-300">
+					Pendant l&rsquo;&eacute;v&eacute;nement, vos portraits et vos photos apparaissent ici, en direct.
+				</p>
+				<p class="text-base leading-relaxed text-stone-500 dark:text-stone-400 mt-2">
+					W&auml;hrend des Anlasses erscheinen Ihre Portr&auml;ts und Fotos hier, live.
+				</p>
+				<p class="text-base leading-relaxed text-stone-500 dark:text-stone-400 mt-2">
+					During the event, your portraits and photos appear here, live.
+				</p>
+			</div>
+
 			<section
 				id="images"
 				class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-y-4 gap-x-6"
@@ -48,7 +64,18 @@
 			<div id="up-next" class="ml-auto block dark:bg-primary-600 text-white text-2xl font-light p-4">
 				{{ settings?.title }}
 			</div>
-			<UiComingSoon class="place-self-center h-full my-auto" />
+			<div class="place-self-center my-auto max-w-2xl px-8 text-center">
+				<UiComingSoon class="mx-auto" />
+				<p class="mt-8 text-lg leading-relaxed text-stone-700 dark:text-stone-300">
+					Pendant l&rsquo;&eacute;v&eacute;nement, vos portraits et vos photos apparaissent ici, en direct.
+				</p>
+				<p class="mt-3 text-lg leading-relaxed text-stone-500 dark:text-stone-400">
+					W&auml;hrend des Anlasses erscheinen Ihre Portr&auml;ts und Fotos hier, live.
+				</p>
+				<p class="mt-3 text-lg leading-relaxed text-stone-500 dark:text-stone-400">
+					During the event, your portraits and photos appear here, live.
+				</p>
+			</div>
 		</section>
 	</div>
 </template>

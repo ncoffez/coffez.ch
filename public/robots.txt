@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Espaces privés et pages techniques — inutiles dans les résultats de recherche
+Disallow: /admin
+Disallow: /booking-success
+Disallow: /test-paiement
+Disallow: /sales/
+
+Sitemap: https://coffez.ch/sitemap.xml

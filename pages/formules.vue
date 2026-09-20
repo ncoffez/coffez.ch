@@ -36,11 +36,10 @@
 
     <div class="pricing-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:stretch;">
 
-      <!-- STANDARD (Populaire) -->
-      <div class="pkg-card pkg-card--featured">
-        <div class="pkg-badge">{{ $t('formules.populaire') }}</div>
+      <!-- ORIGINAL -->
+      <div class="pkg-card">
         <span class="pkg-tier">{{ $t('formules.tierStandard') }}</span>
-        <div class="pkg-price">CHF 770</div>
+        <div class="pkg-price">CHF 1’100</div>
         <div class="pkg-split">{{ $t('formules.splitStandard') }}</div>
         <p class="pkg-duration"><strong>{{ $t('formules.durationStandard') }}</strong> <span>&middot; {{ $t('formules.animationLive') }}</span></p>
         <div class="pkg-divider"></div>
@@ -50,14 +49,15 @@
           <li><span class="pkg-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6.5L4.8 9.2L10 3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>{{ $t('formules.feature2') }}</span></li>
           <li><span class="pkg-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6.5L4.8 9.2L10 3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>{{ $t('formules.feature3') }}</span></li>
         </ul>
-        <a href="#" class="pkg-cta" onclick="setTier('standard');openBooking('Standard');return false;">{{ $t('formules.reserveStandard') }}</a>
+        <a href="#" class="pkg-cta" onclick="setTier('standard');openBooking('Original');return false;">{{ $t('formules.reserveStandard') }}</a>
         <p class="pkg-note">{{ $t('formules.noSupplement') }}<br>{{ $t('formules.paymentNote') }}</p>
       </div>
 
-      <!-- CLASSIC -->
-      <div class="pkg-card">
+      <!-- SIGNATURE (Most popular) -->
+      <div class="pkg-card pkg-card--featured">
+        <div class="pkg-badge">{{ $t('formules.populaire') }}</div>
         <span class="pkg-tier">{{ $t('formules.tierClassic') }}</span>
-        <div class="pkg-price">CHF 880</div>
+        <div class="pkg-price">CHF 1’350</div>
         <div class="pkg-split">{{ $t('formules.splitClassic') }}</div>
         <p class="pkg-duration"><strong>{{ $t('formules.durationClassic') }}</strong> <span>&middot; {{ $t('formules.animationLive') }}</span></p>
         <div class="pkg-divider"></div>
@@ -67,14 +67,14 @@
           <li><span class="pkg-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6.5L4.8 9.2L10 3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>{{ $t('formules.feature2') }}</span></li>
           <li><span class="pkg-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6.5L4.8 9.2L10 3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>{{ $t('formules.feature3') }}</span></li>
         </ul>
-        <a href="#" class="pkg-cta" onclick="setTier('classic');openBooking('Classic');return false;">{{ $t('formules.reserveClassic') }}</a>
+        <a href="#" class="pkg-cta" onclick="setTier('classic');openBooking('Signature');return false;">{{ $t('formules.reserveClassic') }}</a>
         <p class="pkg-note">{{ $t('formules.noSupplement') }}<br>{{ $t('formules.paymentNote') }}</p>
       </div>
 
-      <!-- SUPER -->
+      <!-- CELEBRATION -->
       <div class="pkg-card">
         <span class="pkg-tier">{{ $t('formules.tierSuper') }}</span>
-        <div class="pkg-price">CHF 990</div>
+        <div class="pkg-price">CHF 1’700</div>
         <div class="pkg-split">{{ $t('formules.splitSuper') }}</div>
         <p class="pkg-duration"><strong>{{ $t('formules.durationSuper') }}</strong> <span>&middot; {{ $t('formules.animationLive') }}</span></p>
         <div class="pkg-divider"></div>
@@ -84,7 +84,7 @@
           <li><span class="pkg-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6.5L4.8 9.2L10 3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>{{ $t('formules.feature2') }}</span></li>
           <li><span class="pkg-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6.5L4.8 9.2L10 3.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>{{ $t('formules.feature3') }}</span></li>
         </ul>
-        <a href="#" class="pkg-cta" onclick="setTier('super');openBooking('Super');return false;">{{ $t('formules.reserveSuper') }}</a>
+        <a href="#" class="pkg-cta" onclick="setTier('super');openBooking('Celebration');return false;">{{ $t('formules.reserveSuper') }}</a>
         <p class="pkg-note">{{ $t('formules.noSupplement') }}<br>{{ $t('formules.paymentNote') }}</p>
       </div>
 
@@ -169,7 +169,7 @@
 
       <div style="background:var(--sky);border-radius:14px;padding:16px 20px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;">
         <span id="bk-tier-label" style="font-size:13px;color:var(--muted);">Prestation 3h</span>
-        <span id="bk-total" style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--text);">CHF 770</span>
+        <span id="bk-total" style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--text);">CHF 1’100</span>
       </div>
 
       <div style="margin-bottom:20px;">
@@ -192,12 +192,12 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
         <div style="padding:16px 14px;border:1.5px solid var(--teal);border-radius:12px;background:var(--sky);text-align:center;">
           <div style="font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-dark);">Aujourd&rsquo;hui</div>
-          <div id="bk-half-1" style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--text);margin-top:6px;">CHF 385</div>
+          <div id="bk-half-1" style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--text);margin-top:6px;">CHF 550</div>
           <div style="font-size:11px;color:var(--muted);margin-top:3px;">la date est bloqu&eacute;e</div>
         </div>
         <div style="padding:16px 14px;border:1.5px solid var(--border);border-radius:12px;background:#fff;text-align:center;">
           <div style="font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);">Le jour J</div>
-          <div id="bk-half-2" style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--text);margin-top:6px;">CHF 385</div>
+          <div id="bk-half-2" style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--text);margin-top:6px;">CHF 550</div>
           <div style="font-size:11px;color:var(--muted);margin-top:3px;">virement, TWINT ou esp&egrave;ces</div>
         </div>
       </div>
@@ -232,10 +232,10 @@
       </label>
 
       <button id="bk-pay-btn" onclick="handlePayment()" disabled style="width:100%;padding:18px 24px;background:#e5e7eb;color:#9ca3af;border:none;border-radius:14px;font-family:'Sora',sans-serif;font-weight:700;font-size:15px;cursor:not-allowed;letter-spacing:0.01em;transition:all 0.18s;">
-        Payer CHF 385 aujourd&rsquo;hui &rarr;
+        Payer CHF 550 aujourd&rsquo;hui &rarr;
       </button>
       <p id="bk-balance-note" style="font-size:11px;color:var(--muted);text-align:center;margin:12px 0 0;line-height:1.6;">
-        Total CHF 770 &middot; Paiement s&eacute;curis&eacute; Stripe
+        Total CHF 1’100 &middot; Paiement s&eacute;curis&eacute; Stripe
       </p>
 
     </div>
@@ -264,15 +264,15 @@ useHead({
 
 onMounted(() => {
   const src = `
-    window.currentPrice = 770;
+    window.currentPrice = 1350;
     window.currentTier  = 'standard';
     window.setTier = function(tier) {
-      var prices = { standard: 770, classic: 880, super: 990 };
+      var prices = { standard: 1100, classic: 1350, super: 1700 };
       window.currentTier  = tier;
-      window.currentPrice = prices[tier] || 770;
+      window.currentPrice = prices[tier] || 1350;
     };
     (function () {
-      var BASE  = 770;
+      var BASE  = 1350;
       var modal = document.getElementById('booking-modal');
       function fmtChf(n) {
         n = Math.round(n * 100) / 100;
@@ -326,7 +326,7 @@ onMounted(() => {
       window.setSplit = function () {};
       window.updateSchedule = function () { renderSchedule(); };
       window.openBooking = function (pkg) {
-        BASE = window.currentPrice || 770;
+        BASE = window.currentPrice || 1350;
         document.getElementById('modal-pkg-label').textContent = pkg.toUpperCase();
         var tier = document.getElementById('bk-tier-label');
         if (tier) tier.textContent = ({standard:'Prestation 3h',classic:'Prestation 4h',super:'Prestation 5h'}[window.currentTier] || 'Prestation') + '';
@@ -528,7 +528,7 @@ onMounted(() => {
 .formules-root .pkg-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:40px 32px 32px;display:flex;flex-direction:column;box-shadow:var(--shadow);position:relative;transition:transform .18s ease,box-shadow .18s ease;}
 .formules-root .pkg-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
 .formules-root .pkg-card--featured{border:2px solid var(--teal-dark);box-shadow:var(--shadow-md);}
-.formules-root .pkg-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--teal-dark);border-radius:100px;padding:7px 20px;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;box-shadow:0 4px 14px rgba(201,162,75,.35);}
+.formules-root .pkg-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--teal-dark);border-radius:100px;padding:7px 18px;font-family:'Sora',sans-serif;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;box-shadow:0 4px 14px rgba(201,162,75,.35);}
 .formules-root .pkg-tier{display:inline-block;align-self:flex-start;background:var(--teal-dark);color:#fff;border-radius:100px;padding:9px 20px;margin-bottom:18px;font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;}
 .formules-root .pkg-price{font-family:'Sora',sans-serif;font-size:38px;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1;}
 .formules-root .pkg-split{display:inline-block;background:var(--gold-light);border-radius:10px;padding:8px 14px;margin-top:12px;font-family:'Sora',sans-serif;font-size:13px;color:var(--muted);font-weight:600;}

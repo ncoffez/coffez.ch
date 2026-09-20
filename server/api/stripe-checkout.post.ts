@@ -6,9 +6,9 @@ import Stripe from "stripe";
  */
 
 const PACKAGES: Record<string, { label: string; total: number; hours: number }> = {
-	standard: { label: "Formule Standard · 3 heures", total: 770, hours: 3 },
-	classic: { label: "Formule Classic · 4 heures", total: 880, hours: 4 },
-	super: { label: "Formule Super · 5 heures", total: 990, hours: 5 },
+	standard: { label: "Formule Original · 3 heures", total: 1100, hours: 3 },
+	classic: { label: "Formule Signature · 4 heures", total: 1350, hours: 4 },
+	super: { label: "Formule Celebration · 5 heures", total: 1700, hours: 5 },
 	// ⚠️ TEMPORAIRE — tarif de vérification à petit montant.
 	// Accessible uniquement via la page cachée /test-paiement.
 	// À SUPPRIMER une fois la chaîne de paiement validée.

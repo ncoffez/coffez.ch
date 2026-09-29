@@ -13,6 +13,7 @@
     <li><a href="/riviera#preuve">{{ $t('siteNav.references') }}</a></li>
     <li><a href="/formules">{{ $t('siteNav.formules') }}</a></li>
     <li><a href="/sur-mesure">{{ $t('siteNav.surMesure') }}</a></li>
+    <li><a href="/presse">{{ $t('siteNav.presse') }}</a></li>
     <li><a href="/riviera#faq">{{ $t('siteNav.faq') }}</a></li>
   </ul>
   <div class="nav-right">
@@ -147,6 +148,7 @@
     </div>
     <div class="foot-col">
       <span class="foot-h">{{ $t('siteFooter.contact') }}</span>
+      <a href="/presse">{{ $t('siteFooter.presse') }}</a>
       <a href="/riviera#contact">{{ $t('siteFooter.meTrouver') }}</a>
       <a href="/riviera#faq">{{ $t('siteFooter.faq') }}</a>
       <a href="mailto:pascalcoffez@gmail.com">pascalcoffez@gmail.com</a>
@@ -448,6 +450,24 @@ onMounted(() => {
           btn.textContent = original;
         }
       };
+    })();
+
+    /* Arrivee depuis la page d'accueil : ?tier=classic&date=...&time=...
+       On reouvre la reservation avec la bonne formule deja selectionnee. */
+    (function () {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var tier = p.get('tier');
+        if (!tier || ['standard','classic','super'].indexOf(tier) === -1) return;
+        var noms = { standard: 'Original', classic: 'Signature', super: 'Celebration' };
+        window.setTier(tier);
+        window.openBooking(noms[tier]);
+        var d = p.get('date'), t = p.get('time');
+        var de = document.getElementById('bk-date'), te = document.getElementById('bk-time');
+        if (d && de) { de.value = d; }
+        if (t && te) { te.value = t; }
+        if (window.updateSchedule) window.updateSchedule();
+      } catch (e) {}
     })();
   `
   try { const run = new Function(src); run() } catch (e) { console.error('[formules] script error', e) }

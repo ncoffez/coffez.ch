@@ -294,6 +294,15 @@
             <div class="photo-hover-facts">Lancement de l&rsquo;app &middot; Olten</div>
           </div>
         </div>
+        <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir &mdash; First Friday Schaffhauser Nachrichten"
+             data-media-title="Schaffhauser Nachrichten &middot; First Friday &mdash; Photos&nbsp;: Roger Hofstetter"
+             data-media='[{"t":"p","src":"/riviera/img/cas-firstfriday-pascal-chevalet.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-tatjana.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-charlotte.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-yvette.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-harnoor.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-lail.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-andrea.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-marco.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-daniel.jpg"}]'>
+          <img src="/riviera/img/cas-firstfriday-pascal-chevalet.jpg" alt="Pascal Coffez dessinant les visiteurs au First Friday des Schaffhauser Nachrichten" loading="lazy">
+          <div class="photo-hover">
+            <div class="photo-hover-brand">Schaffhauser Nachrichten</div>
+            <div class="photo-hover-facts">First Friday &middot; Zunftsaal, Schaffhouse &middot; Portraits des visiteurs, 17h&ndash;21h &middot; Photos&nbsp;: Roger Hofstetter</div>
+          </div>
+        </div>
         <!-- masqu&eacute;s temporairement (fiches pas termin&eacute;es) -->
         <div class="photo-card" style="display:none">
           <img src="/riviera/img/16-clients-iwc.jpg" alt="IWC Schaffhausen" loading="lazy">
@@ -2040,5 +2049,6 @@ onMounted(() => {
 .ask-alt{font-size:13.5px;color:var(--muted);margin:20px 0 0;}
 .ask-alt a{color:var(--teal-dark);font-weight:700;text-decoration:none;}
 @media (max-width:520px){ .ask-row{grid-template-columns:1fr;} }
+
 
 </style>

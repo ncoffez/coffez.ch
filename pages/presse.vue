@@ -279,13 +279,8 @@ useHead({
 .presse-root .txt{font-size:var(--t-body);line-height:1.65;color:var(--muted);margin:0 0 var(--s1);max-width:62ch;}
 
 
-     border:1px solid var(--border);border-radius:20px;overflow:hidden;}
-  letter-spacing:0.18em;text-transform:uppercase;color:#0F1923;background:#FFD84D;padding:6px 12px;border-radius:999px;}
 
-        border-radius:18px;padding:26px 28px;text-decoration:none;color:var(--text);
-        transition:border-color .15s, transform .15s;}
 
-           text-transform:uppercase;color:var(--text);}
 
 .presse-root footer{background:var(--teal-dark);color:rgba(255,255,255,0.7);padding:76px 24px 32px;}
 .presse-root footer .foot-wrap{max-width:1080px;margin:0 auto;padding:0 40px 34px;display:grid;

@@ -33,55 +33,8 @@
   </div>
 </section>
 
-<!-- ══ 5 SEPTEMBRE 2026 ══════════════════════════ -->
-<section class="sec" id="shn-first-friday">
-  <div class="wrap">
-    <article class="art">
-
-      <div class="art-src">
-        <span class="art-journal">Schaffhauser Nachrichten</span>
-        <span class="art-date">{{ $t('presse.ffDate') }}</span>
-      </div>
-
-      <h2 class="art-title">First Friday bei den SN</h2>
-      <p class="art-lead">&laquo;Einmal ehrlich hinschauen&raquo; &mdash; Pascal Coffez hielt den G&auml;sten am First Friday den Spiegel vor.</p>
-      <p class="art-by">Bilder&nbsp;: Roger Hofstetter</p>
-
-      <button class="clip" type="button" @click="zoom({ src:'/riviera/presse/shn-2026-09-05-firstfriday.jpg', cap:'Schaffhauser Nachrichten, ' + $t('presse.ffDate') + ' \u00b7 \u00abHeute sind wir die News\u00bb' })">
-        <img src="/riviera/presse/shn-2026-09-05-firstfriday.jpg" alt="Page Heute sind wir die News : les portraits realises au First Friday des Schaffhauser Nachrichten" loading="lazy">
-        <span class="clip-hint">{{ $t('presse.zoomHint') }}</span>
-      </button>
-
-      <div class="thumbs">
-        <button type="button" @click="zoom({ src:'/riviera/presse/shn-2026-09-05-une.jpg', cap:'Schaffhauser Nachrichten, ' + $t('presse.ffDate') + ' \u00b7 ' + $t('presse.une') })">
-          <img src="/riviera/presse/shn-2026-09-05-une.jpg" alt="Une du 5 septembre 2026" loading="lazy">
-          <span class="tl">{{ $t('presse.une') }}</span>
-        </button>
-        <button type="button" @click="zoom({ src:'/riviera/presse/shn-2026-09-05-manchette.jpg', cap:'\u00abEinmal ehrlich hinschauen\u00bb \u00b7 ' + $t('presse.ffDate') })">
-          <img src="/riviera/presse/shn-2026-09-05-manchette.jpg" alt="Photo de Une : Pascal Coffez dessinant au First Friday" loading="lazy">
-          <span class="tl">{{ $t('presse.photoUne') }}</span>
-        </button>
-      </div>
-
-      <button class="read-btn" :class="{ 'is-open': openFF }" type="button" @click="openFF = !openFF">
-        <span class="chev">&#9660;</span>{{ openFF ? $t('presse.hideArticle') : $t('presse.readArticle') }}
-      </button>
-
-      <div class="read-body" v-show="openFF">
-        <p class="art-lead">Wer schon immer wissen wollte, wie er als Karikatur aussieht, bekam gestern Abend die Gelegenheit dazu: SN-Karikaturist Pascal Coffez zeichnete am First Friday Besucherinnen und Besucher der &laquo;Schaffhauser Nachrichten&raquo;. Vielen Dank f&uuml;r Ihren Besuch&nbsp;!</p>
-        <blockquote>&laquo;Einmal ehrlich hinschauen&raquo;</blockquote>
-        <p>Pascal Coffez hielt den G&auml;sten am First Friday den Spiegel vor &ndash; allerdings einen, der so manche Nase etwas gr&ouml;sser und manches L&auml;cheln etwas breiter erscheinen liess. Der SN-Karikaturist sorgte damit f&uuml;r viel Vergn&uuml;gen im Zunftsaal.</p>
-        <div class="art-note">
-          <p><strong>Schaffhauser Nachrichten</strong>, {{ $t('presse.ffDate') }} &middot; {{ $t('presse.ffCredit') }}</p>
-        </div>
-      </div>
-
-    </article>
-  </div>
-</section>
-
 <!-- ══ 27 AOUT 2026 ══════════════════════════════ -->
-<section class="sec" id="shn-2026" style="border-top:1px solid var(--border);">
+<section class="sec" id="shn-2026">
   <div class="wrap">
     <article class="art">
 
@@ -155,6 +108,53 @@
   </div>
 </section>
 
+<!-- ══ 5 SEPTEMBRE 2026 ══════════════════════════ -->
+<section class="sec" id="shn-first-friday" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <article class="art">
+
+      <div class="art-src">
+        <span class="art-journal">Schaffhauser Nachrichten</span>
+        <span class="art-date">{{ $t('presse.ffDate') }}</span>
+      </div>
+
+      <h2 class="art-title">First Friday bei den SN</h2>
+      <p class="art-lead">&laquo;Einmal ehrlich hinschauen&raquo; &mdash; Pascal Coffez hielt den G&auml;sten am First Friday den Spiegel vor.</p>
+      <p class="art-by">Bilder&nbsp;: Roger Hofstetter</p>
+
+      <button class="clip" type="button" @click="zoom({ src:'/riviera/presse/shn-2026-09-05-firstfriday.jpg', cap:'Schaffhauser Nachrichten, ' + $t('presse.ffDate') + ' \u00b7 \u00abHeute sind wir die News\u00bb' })">
+        <img src="/riviera/presse/shn-2026-09-05-firstfriday.jpg" alt="Page Heute sind wir die News : les portraits realises au First Friday des Schaffhauser Nachrichten" loading="lazy">
+        <span class="clip-hint">{{ $t('presse.zoomHint') }}</span>
+      </button>
+
+      <div class="thumbs">
+        <button type="button" @click="zoom({ src:'/riviera/presse/shn-2026-09-05-une.jpg', cap:'Schaffhauser Nachrichten, ' + $t('presse.ffDate') + ' \u00b7 ' + $t('presse.une') })">
+          <img src="/riviera/presse/shn-2026-09-05-une.jpg" alt="Une du 5 septembre 2026" loading="lazy">
+          <span class="tl">{{ $t('presse.une') }}</span>
+        </button>
+        <button type="button" @click="zoom({ src:'/riviera/presse/shn-2026-09-05-manchette.jpg', cap:'\u00abEinmal ehrlich hinschauen\u00bb \u00b7 ' + $t('presse.ffDate') })">
+          <img src="/riviera/presse/shn-2026-09-05-manchette.jpg" alt="Photo de Une : Pascal Coffez dessinant au First Friday" loading="lazy">
+          <span class="tl">{{ $t('presse.photoUne') }}</span>
+        </button>
+      </div>
+
+      <button class="read-btn" :class="{ 'is-open': openFF }" type="button" @click="openFF = !openFF">
+        <span class="chev">&#9660;</span>{{ openFF ? $t('presse.hideArticle') : $t('presse.readArticle') }}
+      </button>
+
+      <div class="read-body" v-show="openFF">
+        <p class="art-lead">Wer schon immer wissen wollte, wie er als Karikatur aussieht, bekam gestern Abend die Gelegenheit dazu: SN-Karikaturist Pascal Coffez zeichnete am First Friday Besucherinnen und Besucher der &laquo;Schaffhauser Nachrichten&raquo;. Vielen Dank f&uuml;r Ihren Besuch&nbsp;!</p>
+        <blockquote>&laquo;Einmal ehrlich hinschauen&raquo;</blockquote>
+        <p>Pascal Coffez hielt den G&auml;sten am First Friday den Spiegel vor &ndash; allerdings einen, der so manche Nase etwas gr&ouml;sser und manches L&auml;cheln etwas breiter erscheinen liess. Der SN-Karikaturist sorgte damit f&uuml;r viel Vergn&uuml;gen im Zunftsaal.</p>
+        <div class="art-note">
+          <p><strong>Schaffhauser Nachrichten</strong>, {{ $t('presse.ffDate') }} &middot; {{ $t('presse.ffCredit') }}</p>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</section>
+
 <!-- ══ VISIONNEUSE ═══════════════════════════════ -->
 <div class="vz" v-if="viewer" @click.self="viewer = null">
   <button class="vz-x" type="button" @click="viewer = null" :aria-label="$t('presse.close')">&times;</button>
@@ -204,7 +204,7 @@ definePageMeta({ layout: false })
 const { locale, setLocale, t } = useI18n()
 
 const openFF  = ref(false)
-const openAug = ref(false)
+const openAug = ref(true)
 const viewer  = ref(null)
 const big     = ref(false)
 
@@ -384,6 +384,27 @@ useHead({
 .presse-root .vz-x:hover{background:rgba(255,255,255,0.26);}
 .presse-root .vz-cap{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:rgba(255,255,255,0.8);
   font-size:13px;padding:0 24px;}
+
+/* ── Confort de lecture de l'article ─────────── */
+.presse-root .read-body{max-width:66ch;margin-left:auto;margin-right:auto;}
+.presse-root .read-body p{font-size:18.5px;line-height:1.82;color:#1B2733;margin:0 0 22px;
+  hyphens:auto;-webkit-hyphens:auto;}
+.presse-root .read-body h3{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;
+  letter-spacing:-0.02em;margin:44px 0 16px;color:var(--text);}
+.presse-root .read-body h3::before{content:'';display:block;width:42px;height:3px;
+  background:var(--teal);margin-bottom:16px;border-radius:2px;}
+.presse-root .read-body > p:first-of-type::first-letter{font-family:'Sora',sans-serif;
+  font-size:56px;font-weight:800;float:left;line-height:0.86;margin:6px 12px 0 0;color:var(--teal-dark);}
+.presse-root .read-body blockquote{margin:34px 0;padding:0 0 0 24px;border-left:3px solid var(--teal);
+  font-family:'Sora',sans-serif;font-size:23px;font-weight:700;line-height:1.38;
+  letter-spacing:-0.02em;color:var(--text);}
+.presse-root .read-body .art-lead{font-size:20px;line-height:1.6;font-weight:600;color:var(--text);}
+.presse-root .read-body .art-note{max-width:none;}
+@media(max-width:700px){
+  .presse-root .read-body p{font-size:17.5px;line-height:1.78;}
+  .presse-root .read-body > p:first-of-type::first-letter{font-size:46px;}
+  .presse-root .read-body blockquote{font-size:20px;}
+}
 </style>
 
 

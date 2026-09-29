@@ -72,6 +72,7 @@
       </button>
 
       <div class="read-body" v-show="openAug">
+<div v-if="locale === 'de'">
 <p>Pascal Coffez, seit 2013 mit dem Zeichenstift f&uuml;r die &laquo;Schaffhauser Nachrichten&raquo; t&auml;tig, redet schnell, mit charmantem franz&ouml;sischem Akzent. Im ersten Moment wirkt alles etwas wirr. Aber sehr bald merkt man, es geht ihm nicht um seine Biografie, es geht um seine Philosophie, die er unbedingt vermitteln m&ouml;chte, sich best&auml;ndig wiederholend. Vielleicht, weil sie so v&ouml;llig anders ist, als man sie von einem politischen Karikaturisten erwarten w&uuml;rde. Dieser muss ja Woche f&uuml;r Woche den Finger auf wunde Punkte der Gesellschaft legen. &laquo;Das entspricht aber nicht meinem Wesen als K&uuml;nstler und als Mensch. Eigentlich m&ouml;chte ich niemandem wehtun&raquo;, erkl&auml;rt Pascal Coffez. Jemanden nur aufgrund seines Aussehens, seiner Hautfarbe oder seiner Religion mit einer Karikatur aufs Korn zu nehmen, ist nicht sein Stil. Seine Kritik setzt er in aller Regel sehr behutsam an, mit einem eigenen, sympathischen Schalk, wie es fr&uuml;her, auf eine ganz andere Art, Fritz B&uuml;nzli mit seinem M&auml;uschen getan hat.</p>
 
       <h3>Ein vielseitiger Autodidakt</h3>
@@ -99,6 +100,69 @@
       <p>&laquo;Ich habe gesp&uuml;rt, dass ich eigentlich ein Maler bin. Doch mit &Ouml;l zu malen, dauert mir zu lange, bei mir muss auch dies schnell, schnell gehen.&raquo; Er habe dann seine Bildvisionen zun&auml;chst kleinformatig festgehalten. Und dann in einem komplexen fotografischen Belichtungsverfahren umgesetzt. Das so entwickelte Bild kommt sp&auml;ter unter Plexiglas auf einen Aluminiumtr&auml;ger. Jedes Bild ist ein Unikat. &laquo;Die Sch&ouml;pfung ist handgemacht. Die Offenbarung durch das Licht und die Montage erfolgen im Atelier&raquo;, erkl&auml;rt Don S. alias Pascal Coffez. &laquo;Ich habe die Bilder jahrelang niemandem gezeigt ausser zwei englischen Kuratorinnen. Nun aber bin ich bereit, auch diese andere Seite von mir mit der &Ouml;ffentlichkeit zu teilen.&raquo; Zu sehen sind die Bilder bereits auf einer Webseite, m&ouml;glich werden k&ouml;nnten nun auch Ausstellungen.</p>
 
       <p>Und Coffez weiss auch, wie eine zuk&uuml;nftige Vernissage ablaufen w&uuml;rde: &laquo;Ein Ausstellungsraum w&auml;re ganz leer, und ich w&uuml;rde ihn f&uuml;llen mit 3-Minuten-Portr&auml;ts der Vernissageg&auml;ste &hellip;&raquo;</p>
+      </div>
+
+      <div v-else-if="locale === 'fr'">
+      <p>Pascal Coffez, qui tient le crayon des &laquo;&nbsp;Schaffhauser Nachrichten&nbsp;&raquo; depuis 2013, parle vite, avec un charmant accent fran&ccedil;ais. Au premier abord, tout para&icirc;t un peu d&eacute;sordonn&eacute;. Mais on comprend tr&egrave;s vite que ce n'est pas sa biographie qui l'int&eacute;resse&nbsp;: c'est sa philosophie, qu'il tient absolument &agrave; transmettre et qu'il r&eacute;p&egrave;te sans se lasser. Peut-&ecirc;tre parce qu'elle est si &eacute;loign&eacute;e de ce qu'on attendrait d'un caricaturiste politique. Celui-ci doit, semaine apr&egrave;s semaine, mettre le doigt sur les plaies de la soci&eacute;t&eacute;. &laquo;&nbsp;Cela ne correspond ni &agrave; ma nature d'artiste ni &agrave; ma nature d'homme. Au fond, je ne veux faire de mal &agrave; personne&nbsp;&raquo;, explique Pascal Coffez. Prendre quelqu'un pour cible &agrave; cause de son apparence, de sa couleur de peau ou de sa religion, ce n'est pas son style. Sa critique se pose en g&eacute;n&eacute;ral avec beaucoup de d&eacute;licatesse, avec une malice bien &agrave; lui, sympathique, comme le faisait autrefois, d'une tout autre mani&egrave;re, Fritz B&uuml;nzli avec sa petite souris.</p>
+
+      <h3>Un autodidacte aux multiples talents</h3>
+
+      <p>On est tent&eacute; de l'appeler simplement Pascal, mais Coffez n'est pas seulement son nom de famille&nbsp;: c'est aussi son nom d'artiste. Coffez, donc, rit souvent, rit fort, rit intens&eacute;ment, rit de fa&ccedil;on contagieuse. Surtout quand on croise son regard en m&ecirc;me temps &ndash; et c'est ce qu'il exige de qui veut se faire dessiner.</p>
+
+      <blockquote>&laquo;&nbsp;Il faut communiquer avec moi, alors cela va tr&egrave;s vite, hop, j'attrape un papillon et je le pose sur le papier.&nbsp;&raquo;</blockquote>
+
+      <p>&laquo;&nbsp;Mais sans cet &eacute;change, mon crayon ne suit plus. Un portrait d'apr&egrave;s photo, j'ai un mal fou &agrave; le faire.&nbsp;&raquo;</p>
+
+      <p>Coffez est n&eacute; dans le nord de la France, dans un petit patelin nomm&eacute; Sainghin-en-Weppes, pr&egrave;s de Lille. &laquo;&nbsp;Je me suis souvent assis devant l'&Eacute;cole des beaux-arts, mais je n'ai jamais os&eacute; monter ces impressionnants escaliers de marbre&nbsp;&raquo;, se souvient le caricaturiste des SN. Il a peint et dessin&eacute; depuis l'enfance, mais n'a jamais suivi de cours d'art. &laquo;&nbsp;C'est d'autant plus particulier que j'ai enseign&eacute; plus tard plusieurs ann&eacute;es &agrave; l'&eacute;cole d'art de Winterthour.&nbsp;&raquo;</p>
+
+      <p>En autodidacte, il a travaill&eacute; pour des journaux fran&ccedil;ais, comme dessinateur pour des entreprises et sur des places publiques anim&eacute;es. En 2004, il arrive en Suisse, &agrave; Uhwiesen&nbsp;; il dessine aux chutes du Rhin et au ch&acirc;teau de Laufen, et depuis 2007 aussi pour l'&laquo;&nbsp;Andelfinger Zeitung&nbsp;&raquo;. Jusqu'en 2023, il y a fait para&icirc;tre le &laquo;&nbsp;Coffez de la semaine&nbsp;&raquo;. &laquo;&nbsp;Le Weinland m'a inspir&eacute;&nbsp;: j'ai dessin&eacute; ce que j'y ai v&eacute;cu, le Hilari par exemple.&nbsp;&raquo; Parall&egrave;lement, il a continu&eacute; &agrave; dessiner lors d'&eacute;v&eacute;nements d'entreprise, mais aussi au ch&acirc;teau de Laufen, &laquo;&nbsp;o&ugrave; l'on m'a peut-&ecirc;tre d&eacute;j&agrave; crois&eacute;&nbsp;&raquo;.</p>
+
+      <h3>Tout est affaire d'&eacute;motions</h3>
+
+      <p>Et si on ne l'a pas vu, on l'a au moins entendu. Car sa mani&egrave;re de portraiturer est un spectacle t&eacute;l&eacute;g&eacute;nique, tr&egrave;s appr&eacute;ci&eacute; sur Instagram, et la musique tourne toujours. Coffez saute et danse autour de la personne qu'il repr&eacute;sente, jusqu'&agrave; ce qu'elle s'oublie compl&egrave;tement et se mette elle aussi &agrave; danser, &agrave; rire, &agrave; chanter, livrant ainsi ce qu'elle a de plus intime. C'est cela que Coffez saisit en un instant, comme le papillon, et qu'il porte sur le papier. Il ne cherche donc pas un portrait photographiquement exact, mais un portrait qui montre ce qu'il a vu et ressenti dans ce moment partag&eacute;. Et, cerise sur le g&acirc;teau, il pose une petite couronne sur la t&ecirc;te des dames qu'il dessine. De l'&eacute;motion pure.</p>
+
+      <p>En visitant son site bilingue, on comprend d&egrave;s le premier clic de quoi il s'agit&nbsp;: joy, autrement dit la joie. Ce qui y est propos&eacute; n'est rien de moins qu'un spectacle de portrait en direct. &laquo;&nbsp;Le site et le compte Instagram, c'est mon fils Nicolas qui les a faits, et je travaille excellemment avec lui. C'est &agrave; cause de lui que j'ai d&eacute;m&eacute;nag&eacute; &agrave; Berne il y a quelque temps. Mais je reste attach&eacute; au Weinland pour toujours, d'autant que mon autre fils Manuel habite encore &agrave; Schaffhouse.&nbsp;&raquo;</p>
+
+      <h3>Le peintre Don S.</h3>
+
+      <p>Comme il est presque impossible de portraiturer en plein air &agrave; Berne &ndash; l'interdiction de la mendicit&eacute; emp&ecirc;che de rester longtemps au m&ecirc;me endroit &ndash;, il est r&eacute;cemment parti plus loin, &agrave; Montreux. C'est l&agrave; qu'il a trouv&eacute; son grand amour, C&eacute;cilia Harris. Elle a suscit&eacute; en lui une nouvelle ouverture vers un second pilier artistique. En 2020, dans son atelier du ch&acirc;teau de Laufen, il a soudain vu devant lui des tableaux achev&eacute;s, comme des &eacute;toiles filantes, toute une s&eacute;rie, raconte-t-il.</p>
+
+      <p>&laquo;&nbsp;J'ai senti que j'&eacute;tais au fond un peintre. Mais peindre &agrave; l'huile me prend trop de temps&nbsp;: chez moi, cela aussi doit aller vite, vite.&nbsp;&raquo; Il a d'abord fix&eacute; ses visions en petit format. Puis il les a r&eacute;alis&eacute;es par un proc&eacute;d&eacute; photographique d'exposition complexe. L'image ainsi d&eacute;velopp&eacute;e est ensuite plac&eacute;e sous plexiglas sur un support en aluminium. Chaque image est une pi&egrave;ce unique. &laquo;&nbsp;La cr&eacute;ation est faite &agrave; la main. La r&eacute;v&eacute;lation par la lumi&egrave;re et le montage se font &agrave; l'atelier&nbsp;&raquo;, explique Don S., alias Pascal Coffez. &laquo;&nbsp;Pendant des ann&eacute;es, je n'ai montr&eacute; ces images &agrave; personne, sauf &agrave; deux conservatrices anglaises. Mais aujourd'hui, je suis pr&ecirc;t &agrave; partager avec le public cette autre facette de moi.&nbsp;&raquo; Les images sont d&eacute;j&agrave; visibles sur un site&nbsp;; des expositions pourraient d&eacute;sormais devenir possibles.</p>
+
+      <p>Et Coffez sait aussi comment se d&eacute;roulerait un futur vernissage&nbsp;: &laquo;&nbsp;Une salle d'exposition serait enti&egrave;rement vide, et je la remplirais avec les portraits en trois minutes des invit&eacute;s du vernissage&hellip;&nbsp;&raquo;</p>
+        <p class="trad-note">{{ $t('presse.tradNote') }}</p>
+      </div>
+
+      <div v-else>
+      <p>Pascal Coffez, who has been drawing for the &laquo;Schaffhauser Nachrichten&raquo; since 2013, speaks fast, with a charming French accent. At first everything seems a little scattered. But you quickly realise that his biography is not what interests him: it is his philosophy, which he absolutely wants to pass on, and which he repeats tirelessly. Perhaps because it is so far from what one would expect of a political cartoonist. Week after week, that job means putting a finger on society's sore points. &laquo;But that matches neither my nature as an artist nor my nature as a man. Deep down, I don't want to hurt anyone,&raquo; Pascal Coffez explains. Taking aim at someone because of their looks, their skin colour or their religion is not his style. His criticism is usually applied with great care, with a mischief of his own, a likeable one, much as Fritz B&uuml;nzli once did, in a completely different way, with his little mouse.</p>
+
+      <h3>A versatile self-taught artist</h3>
+
+      <p>One is tempted to call him simply Pascal, but Coffez is not only his family name: it is also his artist's name. So Coffez laughs often, laughs loudly, laughs intensely, laughs infectiously. Above all when you meet his gaze at the same time &ndash; and that is what he requires of anyone who wants to be drawn by him.</p>
+
+      <blockquote>&laquo;You have to communicate with me, then it goes very fast, whoosh, I catch a butterfly and put it on the paper.&raquo;</blockquote>
+
+      <p>&laquo;But without that exchange my pencil fails me. A portrait from a photograph &ndash; I find that terribly hard.&raquo;</p>
+
+      <p>Coffez was born in northern France, in a small place called Sainghin-en-Weppes, near Lille. &laquo;I often sat in front of the &Eacute;cole des beaux-arts, but I never dared climb those impressive marble stairs,&raquo; the SN cartoonist recalls. He painted and drew from childhood, but never took an art class. &laquo;Which is all the more curious, since later in life I taught for several years at the Winterthur art school.&raquo;</p>
+
+      <p>Self-taught, he worked for French newspapers, as a cartoonist for corporate clients and in busy public squares. In 2004 he came to Switzerland, to Uhwiesen; he drew at the Rhine Falls and at Laufen Castle, and from 2007 also for the &laquo;Andelfinger Zeitung&raquo;. Until 2023 he conjured up the &laquo;Coffez of the week&raquo; for them. &laquo;The Weinland inspired me: I drew what I experienced there, the Hilari for instance.&raquo; Alongside that he kept drawing at corporate events, and at Laufen Castle too, &laquo;where people may well have seen me already&raquo;.</p>
+
+      <h3>It is all about emotion</h3>
+
+      <p>And if you haven't seen him, you have at least heard him. His way of portraying people is a telegenic spectacle &ndash; a favourite on Instagram &ndash; and the music is always playing. Coffez hops and dances around the person he is drawing until they forget themselves entirely and start dancing, laughing and singing too, giving away their innermost self. That is what Coffez catches in an instant, just like the butterfly, and brings onto the paper. So he is not after a photographically accurate portrait, but one that shows what he saw and felt in that shared moment. And as the finishing touch, he places a little crown on the heads of the women he draws. Pure emotion.</p>
+
+      <p>Visit his bilingual website and the first click makes it clear what this is about: joy. What is on offer is nothing less than a live portrait show. &laquo;My son Nicolas made the website and the Instagram account, and I work outstandingly well with him. He is the reason I moved to Bern some time ago. But I remain attached to the Weinland forever, all the more so since my other son Manuel still lives in Schaffhausen.&raquo;</p>
+
+      <h3>Don S. the painter</h3>
+
+      <p>Because outdoor portrait work is barely possible in Bern &ndash; the ban on begging means you can never stay long in one spot &ndash; he recently moved further on, to Montreux. There he found his great love, C&eacute;cilia Harris. She brought about in him a new openness towards a second artistic pillar. In 2020, in his studio at Laufen Castle, he suddenly saw finished pictures in front of him &ndash; like shooting stars &ndash; a whole series, he says.</p>
+
+      <p>&laquo;I felt that I am really a painter. But painting in oils takes me too long: with me, this too has to go fast, fast.&raquo; He first captured his visions in small format. Then he realised them through a complex photographic exposure process. The developed image is later mounted under Plexiglas on an aluminium support. Each picture is unique. &laquo;The creation is handmade. The revelation through light and the mounting happen in the studio,&raquo; explains Don S., alias Pascal Coffez. &laquo;For years I showed the pictures to no one except two English curators. But now I am ready to share this other side of me with the public.&raquo; The pictures can already be seen on a website; exhibitions could now become possible.</p>
+
+      <p>And Coffez also knows how a future opening would go: &laquo;An exhibition room would be completely empty, and I would fill it with three-minute portraits of the guests at the opening&hellip;&raquo;</p>
+        <p class="trad-note">{{ $t('presse.tradNote') }}</p>
+      </div>
         <div class="art-note">
           <p><strong>Schaffhauser Nachrichten</strong>, {{ $t('presse.shnDate') }} &middot; {{ $t('presse.credit') }}</p>
         </div>
@@ -393,7 +457,7 @@ useHead({
   letter-spacing:-0.02em;margin:44px 0 16px;color:var(--text);}
 .presse-root .read-body h3::before{content:'';display:block;width:42px;height:3px;
   background:var(--teal);margin-bottom:16px;border-radius:2px;}
-.presse-root .read-body > p:first-of-type::first-letter{font-family:'Sora',sans-serif;
+.presse-root .read-body > div > p:first-of-type::first-letter{font-family:'Sora',sans-serif;
   font-size:56px;font-weight:800;float:left;line-height:0.86;margin:6px 12px 0 0;color:var(--teal-dark);}
 .presse-root .read-body blockquote{margin:34px 0;padding:0 0 0 24px;border-left:3px solid var(--teal);
   font-family:'Sora',sans-serif;font-size:23px;font-weight:700;line-height:1.38;
@@ -402,9 +466,29 @@ useHead({
 .presse-root .read-body .art-note{max-width:none;}
 @media(max-width:700px){
   .presse-root .read-body p{font-size:17.5px;line-height:1.78;}
-  .presse-root .read-body > p:first-of-type::first-letter{font-size:46px;}
+  .presse-root .read-body > div > p:first-of-type::first-letter{font-size:46px;}
   .presse-root .read-body blockquote{font-size:20px;}
 }
+
+/* ── Resume dans la langue du visiteur ───────── */
+.presse-root .resume{background:var(--sky);border-radius:18px;padding:28px 32px;margin:0 0 40px;
+  border-left:4px solid var(--teal);}
+.presse-root .resume-k{display:inline-flex;align-items:center;gap:9px;font-family:'Sora',sans-serif;
+  font-size:10px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;color:var(--teal-dark);
+  margin-bottom:14px;}
+.presse-root .resume-k::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--teal);}
+.presse-root .read-body .resume p{font-size:17px;line-height:1.72;color:#12303a;margin:0;}
+.presse-root .read-body .resume p::first-letter{font-size:inherit;float:none;margin:0;font-weight:inherit;
+  font-family:inherit;line-height:inherit;color:inherit;}
+.presse-root .read-body .resume .resume-note{font-size:12.5px;line-height:1.55;color:var(--muted);
+  margin-top:14px;font-style:italic;}
+@media(max-width:700px){.presse-root .resume{padding:22px 22px;}
+  .presse-root .read-body .resume p{font-size:16.5px;}}
+
+.presse-root .trad-note{font-size:13px;line-height:1.6;color:var(--muted);font-style:italic;
+  border-top:1px solid var(--border);padding-top:16px;margin-top:30px;}
+.presse-root .read-body .trad-note::first-letter{font-size:inherit;float:none;margin:0;
+  font-weight:inherit;font-family:inherit;line-height:inherit;color:inherit;}
 </style>
 
 

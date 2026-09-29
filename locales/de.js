@@ -213,6 +213,7 @@ export default {
 		intro: "Journalistinnen und Journalisten, die meine Arbeit begleiten, beschreiben oft besser als ich, was während einer Sitzung geschieht. Hier sind ihre Texte im Original.",
 		shnDate: "27. August 2026",
 		page: "Seite",
+		tradNote: "Originalfassung der Schaffhauser Nachrichten.",
 		zoomHint: "Zum Vergrössern klicken",
 		readArticle: "Artikel lesen",
 		hideArticle: "Text ausblenden",

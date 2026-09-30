@@ -151,7 +151,53 @@
       <span class="soon-badge">{{ $t('surMesure.stylesSoon') }}</span>
     </div>
     <h2 class="h2">{{ $t('surMesure.stylesTitle') }}</h2>
-    <p class="txt" style="max-width:680px;">{{ $t('surMesure.stylesIntro') }}</p>
+    <p class="txt" style="max-width:700px;">{{ $t('surMesure.stylesIntro') }}</p>
+
+    <div class="st-list">
+      <div class="st-row st-row--base">
+        <div class="st-head">
+          <span class="st-name">{{ $t('surMesure.st1Name') }}</span>
+          <span class="st-sup st-sup--base">{{ $t('surMesure.st1Sup') }}</span>
+        </div>
+        <p class="st-txt">{{ $t('surMesure.st1Txt') }}</p>
+      </div>
+
+      <span class="st-group">{{ $t('surMesure.stGroupBrush') }}</span>
+
+      <div class="st-row">
+        <div class="st-head">
+          <span class="st-name">{{ $t('surMesure.st2Name') }}</span>
+          <span class="st-sup">{{ $t('surMesure.stSupBrush') }}</span>
+        </div>
+        <p class="st-txt">{{ $t('surMesure.st2Txt') }}</p>
+      </div>
+      <div class="st-row">
+        <div class="st-head">
+          <span class="st-name">{{ $t('surMesure.st3Name') }}</span>
+          <span class="st-sup">{{ $t('surMesure.stSupBrush') }}</span>
+        </div>
+        <p class="st-txt">{{ $t('surMesure.st3Txt') }}</p>
+      </div>
+      <div class="st-row">
+        <div class="st-head">
+          <span class="st-name">{{ $t('surMesure.st4Name') }}</span>
+          <span class="st-sup">{{ $t('surMesure.stSupBrush') }}</span>
+        </div>
+        <p class="st-txt">{{ $t('surMesure.st4Txt') }}</p>
+      </div>
+
+      <span class="st-group">{{ $t('surMesure.stGroupDigital') }}</span>
+
+      <div class="st-row">
+        <div class="st-head">
+          <span class="st-name">{{ $t('surMesure.st5Name') }}</span>
+          <span class="st-sup st-sup--digital">{{ $t('surMesure.stSupDigital') }}</span>
+        </div>
+        <p class="st-txt">{{ $t('surMesure.st5Txt') }}</p>
+      </div>
+    </div>
+
+    <p class="st-cap">{{ $t('surMesure.stylesPopartCap') }}</p>
 
     <div class="popart-grid">
       <figure style="margin:0;border-radius:20px;overflow:hidden;box-shadow:0 16px 44px rgba(15,25,35,0.14);background:var(--grey-cool);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;">
@@ -335,4 +381,21 @@ onMounted(() => {
 @media(max-width:520px){.surmesure-root footer .foot-wrap{grid-template-columns:1fr;}}
 
 .surmesure-root section[id] { scroll-margin-top: 110px; }
+
+.surmesure-root .st-list{display:flex;flex-direction:column;gap:2px;max-width:820px;
+  margin:var(--s2) 0 var(--s2);}
+.surmesure-root .st-group{font-family:'Sora',sans-serif;font-size:10px;font-weight:800;
+  letter-spacing:0.26em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;}
+.surmesure-root .st-row{padding:18px 0;border-top:1px solid var(--border);}
+.surmesure-root .st-row--base{border-top:none;padding-top:0;}
+.surmesure-root .st-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:6px;}
+.surmesure-root .st-name{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;
+  letter-spacing:-0.02em;color:var(--text);}
+.surmesure-root .st-sup{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-dark);background:var(--sky);
+  padding:5px 11px;border-radius:999px;}
+.surmesure-root .st-sup--base{background:var(--teal);color:#fff;}
+.surmesure-root .st-sup--digital{background:#0F1923;color:#fff;}
+.surmesure-root .st-txt{font-size:16px;line-height:1.6;color:var(--muted);margin:0;max-width:60ch;}
+.surmesure-root .st-cap{font-size:13.5px;color:var(--muted);margin:0 0 6px;font-style:italic;}
 </style>

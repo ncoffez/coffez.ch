@@ -296,11 +296,11 @@
         </div>
         <div class="photo-card" tabindex="0" role="button" aria-label="Ouvrir &mdash; First Friday Schaffhauser Nachrichten"
              data-media-title="Schaffhauser Nachrichten &middot; First Friday &mdash; Photos&nbsp;: Roger Hofstetter"
-             data-media='[{"t":"p","src":"/riviera/img/cas-firstfriday-pascal-chevalet.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-tatjana.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-charlotte.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-yvette.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-harnoor.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-lail.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-andrea.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-marco.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-daniel.jpg"}]'>
-          <img src="/riviera/img/cas-firstfriday-pascal-chevalet.jpg" alt="Pascal Coffez dessinant les visiteurs au First Friday des Schaffhauser Nachrichten" loading="lazy">
+             data-media='[{"t":"p","src":"/riviera/presse/shn-2026-09-05-firstfriday.jpg"},{"t":"p","src":"/riviera/presse/shn-2026-09-05-une.jpg"},{"t":"p","src":"/riviera/img/cas-firstfriday-pascal-chevalet.jpg"}]'>
+          <img src="/riviera/img/cas-firstfriday-page-journal.jpg" alt="Page enti&egrave;re des Schaffhauser Nachrichten consacr&eacute;e au First Friday dessin&eacute; par Pascal Coffez" loading="lazy">
           <div class="photo-hover">
             <div class="photo-hover-brand">Schaffhauser Nachrichten</div>
-            <div class="photo-hover-facts">First Friday &middot; Zunftsaal, Schaffhouse &middot; Portraits des visiteurs, 17h&ndash;21h &middot; Photos&nbsp;: Roger Hofstetter</div>
+            <div class="photo-hover-facts">First Friday &middot; Zunftsaal, Schaffhouse &middot; Une pleine page dans le quotidien &middot; Photos&nbsp;: Roger Hofstetter</div>
           </div>
         </div>
         <!-- masqu&eacute;s temporairement (fiches pas termin&eacute;es) -->

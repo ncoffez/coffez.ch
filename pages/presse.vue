@@ -165,6 +165,9 @@
       </div>
         <div class="art-note">
           <p><strong>Schaffhauser Nachrichten</strong>, {{ $t('presse.shnDate') }} &middot; {{ $t('presse.credit') }}</p>
+          <p style="margin-top:12px;">
+            <a class="src-link" href="https://www.shn.ch/leben-genuss/2026-08-27/wollen-sie-von-sn-karikaturist-pascal-coffez-gezeichnet-werden-am-first" target="_blank" rel="noopener">{{ $t('presse.sourceLink') }} &rarr;</a>
+          </p>
         </div>
       </div>
 
@@ -183,8 +186,8 @@
       </div>
 
       <h2 class="art-title">First Friday bei den SN</h2>
-      <p class="art-lead">&laquo;Einmal ehrlich hinschauen&raquo; &mdash; Pascal Coffez hielt den G&auml;sten am First Friday den Spiegel vor.</p>
-      <p class="art-by">Bilder&nbsp;: Roger Hofstetter</p>
+      <p class="art-lead">{{ $t('presse.ffLead') }}</p>
+      <p class="art-by">Bilder&nbsp;: Roger Hofstetter, Jeannette Vogel &middot; Text&nbsp;: Till Burgherr</p>
 
       <button class="clip" type="button" @click="zoom({ src:'/riviera/presse/shn-2026-09-05-firstfriday.jpg', cap:'Schaffhauser Nachrichten, ' + $t('presse.ffDate') + ' \u00b7 \u00abHeute sind wir die News\u00bb' })">
         <img src="/riviera/presse/shn-2026-09-05-firstfriday.jpg" alt="Page Heute sind wir die News : les portraits realises au First Friday des Schaffhauser Nachrichten" loading="lazy">
@@ -207,11 +210,34 @@
       </button>
 
       <div class="read-body" v-show="openFF">
-        <p class="art-lead">Wer schon immer wissen wollte, wie er als Karikatur aussieht, bekam gestern Abend die Gelegenheit dazu: SN-Karikaturist Pascal Coffez zeichnete am First Friday Besucherinnen und Besucher der &laquo;Schaffhauser Nachrichten&raquo;. Vielen Dank f&uuml;r Ihren Besuch&nbsp;!</p>
-        <blockquote>&laquo;Einmal ehrlich hinschauen&raquo;</blockquote>
-        <p>Pascal Coffez hielt den G&auml;sten am First Friday den Spiegel vor &ndash; allerdings einen, der so manche Nase etwas gr&ouml;sser und manches L&auml;cheln etwas breiter erscheinen liess. Der SN-Karikaturist sorgte damit f&uuml;r viel Vergn&uuml;gen im Zunftsaal.</p>
+
+        <div v-if="locale === 'de'">
+          <p>Am 2. September k&uuml;ndigen die &laquo;Schaffhauser Nachrichten&raquo; ihren Leserinnen und Lesern an, dass sie sich zeichnen lassen k&ouml;nnen. Am Freitag, dem 4., zeichnet Pascal Coffez von 17 bis 21 Uhr die Besucherinnen und Besucher im Zunftsaal der Zeitung an der Vordergasse 58.</p>
+          <blockquote>&laquo;Einmal ehrlich hinschauen&raquo;</blockquote>
+          <p>&Uuml;ber zwanzig Karikaturen entstehen an diesem Abend, darunter jene von Kantonsratspr&auml;sident Christian Di Ronco. Noch am selben Abend ver&ouml;ffentlicht die Zeitung die Bildergalerie, und in der Ausgabe vom 5. September widmet sie dem Anlass eine ganze Seite: &laquo;Heute sind wir die News&raquo;.</p>
+          <p>Pascal Coffez hielt den G&auml;sten den Spiegel vor &ndash; allerdings einen, der so manche Nase etwas gr&ouml;sser und manches L&auml;cheln etwas breiter erscheinen liess. Der SN-Karikaturist sorgte damit f&uuml;r viel Vergn&uuml;gen im Zunftsaal.</p>
+        </div>
+
+        <div v-else-if="locale === 'fr'">
+          <p>Le 2 septembre, les &laquo;&nbsp;Schaffhauser Nachrichten&nbsp;&raquo; annoncent &agrave; leurs lecteurs qu'ils peuvent venir se faire dessiner. Le vendredi 4, de 17 &agrave; 21 heures, Pascal Coffez dessine les visiteurs dans le Zunftsaal du journal, Vordergasse 58.</p>
+          <blockquote>&laquo;&nbsp;Se regarder honn&ecirc;tement, pour une fois.&nbsp;&raquo;</blockquote>
+          <p>Plus de vingt caricatures naissent ce soir-l&agrave;, parmi lesquelles celle de Christian Di Ronco, pr&eacute;sident du Grand Conseil de Schaffhouse. Le journal publie la galerie le soir m&ecirc;me, puis consacre une pleine page &agrave; la soir&eacute;e dans son &eacute;dition du 5 septembre&nbsp;: &laquo;&nbsp;Aujourd'hui, c'est nous l'actualit&eacute;&nbsp;&raquo;.</p>
+          <p>Pascal Coffez a tendu un miroir aux invit&eacute;s &ndash; un miroir qui rendait certains nez un peu plus grands et certains sourires un peu plus larges. Le caricaturiste du journal a ainsi mis beaucoup de gaiet&eacute; dans le Zunftsaal.</p>
+        </div>
+
+        <div v-else>
+          <p>On 2 September the &laquo;Schaffhauser Nachrichten&raquo; invite their readers to come and be drawn. On Friday the 4th, from 5 to 9 pm, Pascal Coffez draws the visitors in the paper's Zunftsaal at Vordergasse 58.</p>
+          <blockquote>&laquo;An honest look, for once.&raquo;</blockquote>
+          <p>More than twenty caricatures are made that evening, among them one of Christian Di Ronco, president of the Schaffhausen cantonal parliament. The paper publishes the gallery the same evening, and devotes a full page to the event in its 5 September edition: &laquo;Today we are the news&raquo;.</p>
+          <p>Pascal Coffez held up a mirror to the guests &ndash; one that made a few noses a little bigger and a few smiles a little wider. The paper's cartoonist brought a great deal of cheer to the Zunftsaal.</p>
+        </div>
+
         <div class="art-note">
-          <p><strong>Schaffhauser Nachrichten</strong>, {{ $t('presse.ffDate') }} &middot; {{ $t('presse.ffCredit') }}</p>
+          <p><strong>Schaffhauser Nachrichten</strong> &middot; {{ $t('presse.ffCredit') }}</p>
+          <p style="margin-top:14px;line-height:2.2;">
+            <a class="src-link" href="https://www.shn.ch/region/stadt/2026-09-02/die-sn-am-first-friday-kommen-sie-vorbei-und-lassen-sie-sich-von-pascal" target="_blank" rel="noopener">2.9. &middot; {{ $t('presse.ffLink1') }} &rarr;</a><br>
+            <a class="src-link" href="https://www.shn.ch/region/stadt/2026-09-04/first-friday-die-besten-karikaturen-des-abends" target="_blank" rel="noopener">4.9. &middot; {{ $t('presse.ffLink2') }} &rarr;</a>
+          </p>
         </div>
       </div>
 
@@ -489,6 +515,10 @@ useHead({
   border-top:1px solid var(--border);padding-top:16px;margin-top:30px;}
 .presse-root .read-body .trad-note::first-letter{font-size:inherit;float:none;margin:0;
   font-weight:inherit;font-family:inherit;line-height:inherit;color:inherit;}
+
+.presse-root .src-link{font-family:'Sora',sans-serif;font-size:13.5px;font-weight:700;
+  color:var(--teal-dark);text-decoration:none;border-bottom:2px solid var(--teal);padding-bottom:2px;}
+.presse-root .src-link:hover{color:var(--teal);}
 </style>
 
 

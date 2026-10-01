@@ -435,20 +435,41 @@ onMounted(() => {
         var original = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Redirection vers le paiement…';
-        try {
-          var res = await fetch('/api/stripe-checkout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ tier: window.currentTier, date: date, time: time, name: name, email: email })
-          });
-          var data = await res.json();
-          if (data && data.url) { window.location.href = data.url; return; }
-          throw new Error((data && (data.statusMessage || data.message)) || 'Erreur inconnue');
-        } catch (e) {
-          alert('Le paiement en ligne est momentanément indisponible.\\n\\nÉcrivez-nous : pascalcoffez@gmail.com');
+        /* Liens de paiement Stripe (crees par Pascal dans son compte Stripe). */
+        var LINKS = {
+          standard: 'https://buy.stripe.com/28E8wP5qn3xvaBocj3aEE01',
+          classic:  'https://buy.stripe.com/28E14n6ur5FD8tg96RaEE02',
+          "super":  'https://buy.stripe.com/bJe28rf0X1pn24S6YJaEE03'
+        };
+        var NOMS = { standard: 'Original', classic: 'Signature', "super": 'Celebration' };
+        var link = LINKS[window.currentTier];
+        if (!link) {
+          alert("Le paiement en ligne est momentanement indisponible. Ecrivez-nous : pascalcoffez@gmail.com");
           btn.disabled = false;
           btn.textContent = original;
+          return;
         }
+        /* Stripe ne connait pas la date : on previent Pascal avant la redirection. */
+        try {
+          await fetch('/api/sendMailConfirmation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: 'RESERVATION EN COURS (paiement Stripe) - ' + name,
+              email: email,
+              phone: '-',
+              message: 'Formule : ' + (NOMS[window.currentTier] || window.currentTier)
+                + '\\nDate : ' + date + ' a ' + time
+                + '\\nClient : ' + name + ' (' + email + ')'
+                + '\\nTotal : CHF ' + window.currentPrice
+                + '\\n\\nLe client part maintenant payer l acompte sur Stripe. Verifier le paiement dans Stripe.'
+            })
+          });
+        } catch (e) {}
+        var ref = (window.currentTier + '_' + date + '_' + time).replace(/[^A-Za-z0-9_-]/g, '-');
+        window.location.href = link
+          + '?prefilled_email=' + encodeURIComponent(email)
+          + '&client_reference_id=' + encodeURIComponent(ref);
       };
     })();
 

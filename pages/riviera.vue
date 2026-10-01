@@ -204,20 +204,6 @@
 </section>
 
 
-<!-- ── B4. LA SÉQUENCE ─────────────────────── -->
-<section class="section bg-white" id="sequence" style="padding-bottom:0;">
-  <div class="wrap" style="text-align:center;max-width:860px;">
-    <span class="lbl">{{ $t('riviera.seqEyebrow') }}</span>
-    <h2 class="h2" style="color:var(--text)">{{ $t('riviera.seqTitle') }}</h2>
-    <p style="font-size:18px;line-height:1.6;color:var(--muted);margin:16px auto 0;max-width:640px;">{{ $t('riviera.seqLead') }}</p>
-    <div style="margin:36px auto 0;padding:28px 20px;border-top:2px solid #C9A24B;border-bottom:1px solid var(--border);">
-      <div style="font-family:'Sora',sans-serif;font-size:64px;font-weight:700;line-height:1;color:#1ABFBF;">{{ $t('riviera.seqStat') }}</div>
-      <div style="margin-top:8px;font-size:16px;color:var(--text);">{{ $t('riviera.seqStatTxt') }}</div>
-    </div>
-    <p style="margin-top:20px;font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);">{{ $t('riviera.seqP1') }} &nbsp;·&nbsp; {{ $t('riviera.seqP2') }} &nbsp;·&nbsp; {{ $t('riviera.seqP3') }}</p>
-  </div>
-</section>
-
 <!-- ── C. RÉFÉRENCES PHOTO ─────────────────────── -->
 <section class="section bg-white" id="preuve" style="">
   <div class="wrap">

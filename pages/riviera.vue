@@ -697,11 +697,13 @@
       <div style="background:var(--sky);border-radius:12px;padding:16px 18px;margin:12px 0 14px;">
         <p style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;">Conditions de r&eacute;servation</p>
         <div style="display:flex;flex-direction:column;gap:7px;">
-          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Le premier versement confirme et bloque la date.</span></div>
-          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Solde au plus tard le jour de l&rsquo;&eacute;v&eacute;nement, par virement, TWINT ou esp&egrave;ces.</span></div>
-          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Arriv&eacute;e de l&rsquo;artiste au minimum 30 min avant l&rsquo;heure de d&eacute;but.</span></div>
-          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Annulation &agrave; plus de 30 jours : l&rsquo;acompte reste acquis, le reste est rembours&eacute;.</span></div>
-          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Si je replace la date, ce que j&rsquo;encaisse vient en d&eacute;duction de ce que vous devez.</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Votre date est réservée dès que je reçois l’acompte (50 %).</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Vous payez le solde (50 %) au plus tard le jour de l’événement, par virement, TWINT ou espèces.</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>J’arrive au moins 30 minutes avant l’heure de début pour m’installer.</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Vous changez de date ? C’est possible une fois, sans frais, pour une date libre dans les 12 mois. Votre acompte compte pour la nouvelle date.</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Vous annulez plus de 30 jours avant : je garde l’acompte, vous ne payez pas le solde.</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Vous annulez 30 jours ou moins avant : vous payez aussi le solde.</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Je ne peux pas venir (maladie, accident) : je vous rembourse tout ce que vous avez payé.</span></div>
         </div>
       </div>
 

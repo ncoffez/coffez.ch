@@ -118,6 +118,7 @@
       <div class="lw-cell"><img src="/riviera/img/references-logos-logo0x0.jpg" alt="Swiss Marketing" loading="lazy"></div>
       <div class="lw-cell lw-lg"><img src="/riviera/img/references-logos-image.jpg" alt="Eventmodus" loading="lazy"></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-it-concepts.svg" alt="IT Concepts" loading="lazy"></div>
+      <div class="lw-cell"><img src="/riviera/img/references-logos-orbis.svg" alt="Orbis" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">Meier&nbsp;+&nbsp;Cie</span></div>
       <div class="lw-cell"><img src="/riviera/img/references-logos-thurgauer-kantonalbank.svg" alt="Thurgauer Kantonalbank" loading="lazy"></div>
       <div class="lw-cell"><span class="lw-txt">Cuore&nbsp;Weddings</span></div>

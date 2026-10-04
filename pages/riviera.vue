@@ -703,7 +703,7 @@
           <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Vous changez de date ? C’est possible une fois, sans frais, pour une date libre dans les 12 mois. Votre acompte compte pour la nouvelle date.</span></div>
           <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Vous annulez plus de 30 jours avant : je garde l’acompte, vous ne payez pas le solde.</span></div>
           <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Vous annulez 30 jours ou moins avant : vous payez aussi le solde.</span></div>
-          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Je ne peux pas venir (maladie, accident) : je vous rembourse tout ce que vous avez payé.</span></div>
+          <div style="font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45;"><span style="color:var(--gold);flex-shrink:0;font-weight:700;">&middot;</span><span>Je ne peux pas venir (maladie, accident) : je fais tout mon possible pour vous trouver, dans mon réseau, un ou une artiste de confiance qui me remplace. Si personne n’est disponible, ou si vous refusez ce remplacement, je vous rembourse tout ce que vous avez payé.</span></div>
         </div>
       </div>
 

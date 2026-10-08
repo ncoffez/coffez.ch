@@ -132,7 +132,18 @@ export default {
 		day: "Tag",
 		days: "Tage",
 	},
+	artiste: {
+		label: "Der Künstler",
+		title: "Der Künstler hinter dem Porträt.",
+		lead: "Jedes Porträt ist ein Original.",
+		p1: "Pascal Coffez ist auch Maler unter dem Namen Don S. Seine Werke sind von Verisart zertifiziert, einer internationalen Plattform für die Zertifizierung von Kunstwerken.",
+		p2: "Das Porträt, das Ihre Gäste mitnehmen, ist vom selben Künstler signiert.",
+		btn: "Die Gemälde von Don S. entdecken →",
+		cap: "Originalwerke von Don S. — digitale Inszenierung.",
+		alt: "Originalwerke von Don S., goldene Figuren auf schwarzem Grund, in einem Ausstellungsraum gehängt",
+	},
 	siteNav: {
+		artiste: "Der Künstler",
 		references: "Referenzen",
 		formules: "Pakete",
 		surMesure: "Massgeschneidert",
@@ -145,6 +156,7 @@ export default {
 		live: "Live",
 	},
 	siteFooter: {
+		peintures: "Gemälde: Don S. → don-s.ch",
 		entreprises: "Unternehmen",
 		surMesure: "Massgeschneidert",
 		formules: "Pakete",
@@ -168,6 +180,7 @@ export default {
 		legal: "Coffez.ch · Live Portrait Show seit 2004 · Montreux",
 	},
 	formules: {
+		originalLine: "Jeder Gast geht mit einem signierten Original des Malers Don S. nach Hause.",
 		seoTitle: "Pakete · coffez.ch · Drei Festpreise, alles inklusive",
 		seoDescription: "Drei Live-Porträt-Pakete: Original 3 Std. CHF 1’100, Signature 4 Std. CHF 1’350, Celebration 5 Std. CHF 1’700. Transport, Material, Clips und Album inklusive. Online buchen.",
 		eyebrow: "Pakete",

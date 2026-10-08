@@ -14,6 +14,7 @@
     <li><a href="/formules">{{ $t('siteNav.formules') }}</a></li>
     <li><a href="/sur-mesure">{{ $t('siteNav.surMesure') }}</a></li>
     <li><a href="/presse">{{ $t('siteNav.presse') }}</a></li>
+    <li><a href="/riviera#artiste">{{ $t('siteNav.artiste') }}</a></li>
     <li><a href="/riviera#faq">{{ $t('siteNav.faq') }}</a></li>
   </ul>
   <div class="nav-right">
@@ -91,7 +92,9 @@
 
     </div>
 
-    <p style="text-align:center;font-size:15px;color:var(--muted);line-height:1.7;max-width:660px;margin:44px auto 0;">{{ $t('formules.footNote') }}<br>{{ $t('formules.footNote2Pre') }} <a href="/sur-mesure" style="color:var(--text);font-weight:700;text-decoration:none;border-bottom:2px solid var(--teal);">{{ $t('formules.surDevisLink') }}</a> {{ $t('formules.footNote2Post') }}</p>
+    <p style="text-align:center;font-family:'Sora',sans-serif;font-weight:700;font-size:17px;max-width:660px;margin:44px auto 0;">{{ $t('formules.originalLine') }}</p>
+
+    <p style="text-align:center;font-size:15px;color:var(--muted);line-height:1.7;max-width:660px;margin:20px auto 0;">{{ $t('formules.footNote') }}<br>{{ $t('formules.footNote2Pre') }} <a href="/sur-mesure" style="color:var(--text);font-weight:700;text-decoration:none;border-bottom:2px solid var(--teal);">{{ $t('formules.surDevisLink') }}</a> {{ $t('formules.footNote2Post') }}</p>
   </div>
 </section>
 
@@ -151,6 +154,7 @@
       <a href="/presse">{{ $t('siteFooter.presse') }}</a>
       <a href="/riviera#contact">{{ $t('siteFooter.meTrouver') }}</a>
       <a href="/riviera#faq">{{ $t('siteFooter.faq') }}</a>
+      <a href="https://don-s.ch" target="_blank" rel="noopener">{{ $t('siteFooter.peintures') }}</a>
       <a href="mailto:pascalcoffez@gmail.com">pascalcoffez@gmail.com</a>
     </div>
   </div>

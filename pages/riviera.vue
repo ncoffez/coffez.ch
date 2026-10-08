@@ -28,6 +28,7 @@
     <li><a href="/formules">{{ $t('siteNav.formules') }}</a></li>
     <li><a href="/sur-mesure">{{ $t('siteNav.surMesure') }}</a></li>
     <li><a href="/presse">{{ $t('siteNav.presse') }}</a></li>
+    <li><a href="/riviera#artiste">{{ $t('siteNav.artiste') }}</a></li>
     <li><a href="/riviera#faq">{{ $t('siteNav.faq') }}</a></li>
   </ul>
   <div class="nav-right">
@@ -491,6 +492,29 @@
 </section>
 
 
+<!-- ── ARTISTE : Don S. ─────────────────────────── -->
+<section class="sec section bg-white" id="artiste" style="scroll-margin-top:90px">
+  <div class="wrap" style="max-width:1080px;">
+    <div class="artiste-top">
+      <div>
+        <span class="lbl">{{ $t('artiste.label') }}</span>
+        <h2 class="h2">{{ $t('artiste.title') }}</h2>
+        <p class="artiste-lead">{{ $t('artiste.lead') }}</p>
+      </div>
+      <div>
+        <p class="txt">{{ $t('artiste.p1') }}</p>
+        <p class="txt">{{ $t('artiste.p2') }}</p>
+        <a href="https://don-s.ch" target="_blank" rel="noopener" class="artiste-btn"><b>{{ $t('artiste.btn') }}</b><small>don-s.ch</small></a>
+      </div>
+    </div>
+    <figure class="artiste-scene">
+      <img src="/riviera/img/don-s-mise-en-situation.jpg" :alt="$t('artiste.alt')" loading="lazy" decoding="async">
+      <figcaption>{{ $t('artiste.cap') }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+
 <!-- ── G. FAQ ────────────────────────────────────── -->
 <section class="section" id="faq" style="background:var(--grey-cool);">
   <div class="wrap">
@@ -571,6 +595,7 @@
       <a href="/presse">{{ $t('siteFooter.presse') }}</a>
       <a href="/riviera#contact">{{ $t('siteFooter.meTrouver') }}</a>
       <a href="/riviera#faq">{{ $t('siteFooter.faq') }}</a>
+      <a href="https://don-s.ch" target="_blank" rel="noopener">{{ $t('siteFooter.peintures') }}</a>
       <a href="mailto:pascalcoffez@gmail.com">pascalcoffez@gmail.com</a>
     </div>
   </div>
@@ -2069,4 +2094,17 @@ onMounted(() => {
 @media (max-width:520px){ .ask-row{grid-template-columns:1fr;} }
 
 
+
+  /* ── Artiste : Don S. ── */
+  .artiste-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;}
+  .artiste-lead{font-family:'Sora',sans-serif;font-weight:700;font-size:24px;line-height:1.3;letter-spacing:-0.02em;margin:0;}
+  .artiste-btn{display:inline-flex;flex-direction:column;gap:2px;border:1.5px solid var(--border);border-radius:100px;
+    padding:14px 30px;text-decoration:none;color:var(--text);margin-top:16px;transition:transform .2s;}
+  .artiste-btn:hover{transform:translateY(-2px);}
+  .artiste-btn b{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;}
+  .artiste-btn small{font-size:12px;color:var(--muted);}
+  .artiste-scene{margin:64px 0 0;}
+  .artiste-scene img{width:100%;height:auto;display:block;border-radius:20px;box-shadow:0 24px 60px rgba(15,25,35,0.22);}
+  .artiste-scene figcaption{font-size:13px;color:var(--muted);margin-top:16px;}
+  @media(max-width:760px){.artiste-top{grid-template-columns:1fr;gap:16px;} .artiste-scene{margin-top:32px;}}
 </style>
